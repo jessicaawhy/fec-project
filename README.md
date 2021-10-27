@@ -13,6 +13,10 @@ The client has requested a modernization of their  product detail page to be imp
 3. Questions & Answers
 4. Related Items & Outfit Creation
 
+## Technologies
+
+We use React with hooks for our frontend codebase. For styling, we use React Styled Components. We largely follow Airbnb's Style Guide.
+
 ## Installation
 
 To run this project locally, in your terminal...
@@ -25,6 +29,11 @@ To run this project locally, in your terminal...
 
 ## Team Members
 
-[Olivia Schwerdtfeger](https://github.com/oliviaschwerdt)
-[Jerry Ma](https://github.com/jerry-jma)
-[Jessica Yang](https://github.com/jessicaawhy)
+Olivia Schwerdtfeger
+[GitHub](https://github.com/oliviaschwerdt) / [LinkedIn](https://www.linkedin.com/in/oliviaschwerdtfeger/)
+
+Jerry Ma
+[GitHub](https://github.com/jerry-jma) / [LinkedIn](https://www.linkedin.com/in/jerry-jma/)
+
+Jessica Yang
+[GitHub](https://github.com/jessicaawhy) / [LinkedIn](https://www.linkedin.com/in/jscayang/)
