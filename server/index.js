@@ -6,4 +6,4 @@ app.use(express.static(__dirname + '/../public'));
 
 app.listen(port, () => {
   console.log(`app listening at http://localhost:${port}`);
-})
+});
