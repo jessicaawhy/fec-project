@@ -2,10 +2,13 @@ const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
-  entry: './client/index.js',
+  entry: './client/index.jsx',
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'public/dist'),
+  },
+  resolve: {
+    extensions: ['.js', '.jsx']
   },
   module: {
     rules: [
