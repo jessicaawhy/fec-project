@@ -21,5 +21,6 @@
         "webpack.config.js"
     ],
     "rules": {
+        "no-console": 0
     }
 }
