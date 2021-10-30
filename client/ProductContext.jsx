@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 
-const ProductContext = React.createContext();
-const ProductContextUpdate = React.createContext();
+export const ProductContext = React.createContext();
+export const ProductContextUpdate = React.createContext();
 
 export const useProduct = () => (
   useContext(ProductContext)
@@ -13,7 +13,10 @@ export const useProductUpdate = () => (
 );
 
 export const ProductProvider = ({ children }) => {
-  const [product, setProduct] = useState(null);
+  // hardcoded product id
+  // may need to update this if the DB is updated & product doesn't exist anymore
+  // consider fetching all products on app initialization & picking one to render
+  const [product, setProduct] = useState(61575);
 
   const updateProduct = (id) => (
     setProduct(id)
