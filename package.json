@@ -8,6 +8,12 @@
     "build": "webpack",
     "start": "nodemon server/index.js"
   },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "setupFilesAfterEnv": [
+      "<rootDir>/jest-setup.js"
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/7satsumas/fec-project.git"
