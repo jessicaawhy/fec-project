@@ -28,6 +28,7 @@
         "jest/no-identical-title": "error",
         "jest/prefer-to-have-length": "warn",
         "jest/valid-expect": "error",
-        "react/jsx-filename-extension": [0]
+        "react/jsx-filename-extension": [0],
+        "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
     }
 }

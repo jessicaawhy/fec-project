@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const ReviewsListItem = ({ review }) => (
-  <div>
+  <div data-testid="review">
     {/* this will need to be updated to display rating stars */}
     <span>{review.rating}</span>
     {/* verified needs to be updated to a checkmark */}
     <span>{`${review.recommend ? 'Verified ' : ''}${review.reviewer_name}`}</span>
     {/* add library here to adjust date format */}
     <span>{review.date}</span>
-    {/* the summary neds to allow truncattion in the future */}
+    {/* the summary neds to allow truncation in the future */}
     <p>{review.summary}</p>
     <p>{review.body}</p>
     <div>
