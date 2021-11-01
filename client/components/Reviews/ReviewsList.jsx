@@ -4,7 +4,7 @@ import ReviewsListItem from './ReviewsListItem';
 
 const ReviewsList = ({ reviews }) => (
   <div data-testid="reviews-list">
-    {reviews.map((review) => <ReviewsListItem review={review} />)}
+    {reviews.map((review) => <ReviewsListItem key={review.review_id} review={review} />)}
   </div>
 );
 
