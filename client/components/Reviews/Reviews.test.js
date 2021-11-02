@@ -20,5 +20,7 @@ it('should render a reviews list', () => {
 it('should display initial UI', () => {
   render(<Reviews reviews={exampleReviews} />);
 
-  expect(screen.getByRole('button', { name: 'relevance' })).toBeInTheDocument();
+  expect(screen.getByRole('button', { name: /relevance/i })).toBeInTheDocument();
+  expect(screen.getByRole('button', { name: /more reviews/i })).toBeInTheDocument();
+  expect(screen.getByRole('button', { name: /add a review/i })).toBeInTheDocument();
 });

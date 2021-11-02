@@ -14,6 +14,6 @@ it('should render a review element', () => {
 it('should display initial UI', () => {
   render(<ReviewsListItem review={exampleReviews} />);
 
-  expect(screen.getByRole('button', { name: 'Yes' })).toBeInTheDocument();
-  expect(screen.getByRole('button', { name: 'Report' })).toBeInTheDocument();
+  expect(screen.getByRole('button', { name: /yes/i })).toBeInTheDocument();
+  expect(screen.getByRole('button', { name: /report/i })).toBeInTheDocument();
 });

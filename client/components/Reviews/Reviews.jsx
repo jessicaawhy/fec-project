@@ -9,6 +9,8 @@ const Reviews = ({ reviews }) => (
       <button type="button">relevance</button>
     </div>
     <ReviewsList reviews={reviews} />
+    <button type="button">MORE REVIEWS</button>
+    <button type="button">ADD A REVIEW</button>
   </div>
 );
 
