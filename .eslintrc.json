@@ -6,7 +6,8 @@
     },
     "extends": [
         "plugin:react/recommended",
-        "airbnb"
+        "airbnb",
+        "plugin:styled-components-a11y/recommended"
     ],
     "parserOptions": {
         "ecmaFeatures": {
@@ -16,7 +17,7 @@
         "sourceType": "module"
     },
     "plugins": [
-        "react", "jest"
+        "react", "jest", "styled-components-a11y"
     ],
     "ignorePatterns": [
         "webpack.config.js"
@@ -27,6 +28,8 @@
         "jest/no-focused-tests": "error",
         "jest/no-identical-title": "error",
         "jest/prefer-to-have-length": "warn",
-        "jest/valid-expect": "error"
+        "jest/valid-expect": "error",
+        "react/jsx-filename-extension": [0],
+        "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
     }
 }
