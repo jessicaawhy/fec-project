@@ -11,7 +11,7 @@ const SearchQuestion = () => {
   };
 
   return (
-    <Search>
+    <Search data-testid='searchQuestions'>
       <input
         type="text"
         placeholder="HAVE A QUESTIONS? SEARCH FOR ANSWERS... " // 🔍
