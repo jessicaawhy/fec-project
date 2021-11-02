@@ -1,5 +1,6 @@
 import React from 'react';
 import MasterQA from './QuestionsAndAnswers/MasterQA';
+// import ReviewsComponent from './Reviews/ReviewsComponent';
 
 const App = () => (
   <>

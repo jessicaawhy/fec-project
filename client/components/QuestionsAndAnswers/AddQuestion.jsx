@@ -2,7 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 
 const AddQuestion = () => (
-  <Button onClick={() => console.log('clicked?')}>
+  <Button
+    data-testid='addQuestion'
+    onClick={() => console.log('clicked?')}
+  >
     ADD A QUESTION +
   </Button>
 );
