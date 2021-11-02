@@ -9,6 +9,6 @@ it("render add a question + button correctly", () => {
 
 
 it('should display initial MoreQuestions UI', () => {
-  render(<MoreQuestions />;
+  render(<MoreQuestions />);
   expect(screen.getByRole('button', { name: /MORE ANSWERED QUESTIONS/ })).toBeInTheDocument();
 });

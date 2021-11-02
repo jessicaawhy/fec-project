@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import AnswerItem from './AnswerItem';
 
 const AnswerList = ({ answers }) => (
-  <div>
+  <div data-testid='answerList'>
     {Object.values(answers).map((answer) => (
       <AnswerItem answer={answer} key={answer.id} />
     ))}

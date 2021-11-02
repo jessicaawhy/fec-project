@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import QuestionItem from './QuestionItem';
 
 const QuestionList = ({ questions }) => (
-  <div>
+  <div data-testid='questionList'>
     {questions.map((question) => (
       <QuestionItem question={question} key={question.question_id} />
     ))}

@@ -5,7 +5,7 @@ import AnswerList from './AnswerList';
 
 const QuestionItem = ({ question }) => (
   <div>
-    <QuestionDiv>
+    <QuestionDiv data-testid='questionItem'>
       <h4>
         Q:
         {question.question_body}
