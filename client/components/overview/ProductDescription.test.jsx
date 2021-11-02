@@ -6,7 +6,7 @@ import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import ProductDescription from './ProductDescription';
 
-it('should display text from Overview Container', () => {
+it('should display testid from Product Description', () => {
   const { getByTestId } = render(<ProductDescription />);
   expect(getByTestId('productDescription')).toBeInTheDocument();
 });

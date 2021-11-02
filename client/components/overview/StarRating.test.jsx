@@ -6,7 +6,7 @@ import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import StarRating from './StarRating';
 
-it('should display text from Overview Container', () => {
+it('should display testid from StarRating', () => {
   const { getByTestId } = render(<StarRating />);
   expect(getByTestId('starRating')).toBeInTheDocument();
 });
