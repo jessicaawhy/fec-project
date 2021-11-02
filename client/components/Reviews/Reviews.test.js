@@ -14,7 +14,7 @@ it('should render a reviews list', () => {
 
   expect(reviews).toBeInTheDocument();
   expect(reviewsList).toBeInTheDocument();
-  expect(reviewsInList).toHaveLength(5);
+  expect(reviewsInList).toHaveLength(2);
 });
 
 it('should display initial UI', () => {
