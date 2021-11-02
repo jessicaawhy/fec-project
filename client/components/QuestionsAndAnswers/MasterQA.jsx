@@ -10,7 +10,7 @@ import Data from './dummyData';
 const MasterQA = () => {
   const [questions, setQuestions] = useState(Data.questions.results);
   return (
-    <div>
+    <div data-testid='masterQA'>
       <h2>QUESTIONS & ANSWERS</h2>
       <SearchQuestion />
       <QuestionList questions={questions} />
