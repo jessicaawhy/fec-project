@@ -5,7 +5,7 @@ import ReviewsList from './ReviewsList';
 const Reviews = ({ reviews }) => (
   <div data-testid="reviews">
     <div>
-      {`${reviews.count} reviews, sorted by `}
+      {`${reviews.length} reviews, sorted by `}
       <button type="button">relevance</button>
     </div>
     <ReviewsList reviews={reviews} />
