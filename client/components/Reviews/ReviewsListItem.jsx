@@ -1,25 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ReviewsListItem = ({ review }) => (
-  <div data-testid="review">
-    {/* this will need to be updated to display rating stars */}
-    <span>{review.rating}</span>
-    {/* verified needs to be updated to a checkmark */}
-    <span>{`${review.recommend ? 'Verified ' : ''}${review.reviewer_name}`}</span>
-    {/* add library here to adjust date format */}
-    <span>{review.date}</span>
-    {/* the summary neds to allow truncation in the future */}
-    <p>{review.summary}</p>
-    <p>{review.body}</p>
-    <div>
-      <span>Helpful? </span>
-      <button type="button">Yes</button>
-      <span>{`(${review.helpfulness})`}</span>
-      <button type="button">Report</button>
+const ReviewsListItem = ({ review }) => {
+  const formatDate = (date) => (
+    new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+  );
+
+  return (
+    <div data-testid="review">
+      {/* this will need to be updated to display rating stars */}
+      <span>{review.rating}</span>
+      {/* verified needs to be updated to a checkmark */}
+      <span>{`${review.recommend ? 'Verified ' : ''}${review.reviewer_name}`}</span>
+      {/* add library here to adjust date format */}
+      <span>{formatDate(review.date)}</span>
+      {/* the summary needs to allow truncation in the future */}
+      <p>{review.summary}</p>
+      <p>{review.body}</p>
+      <div>
+        <span>Helpful? </span>
+        <button type="button">Yes</button>
+        <span>{`(${review.helpfulness})`}</span>
+        <button type="button">Report</button>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default ReviewsListItem;
 
