@@ -44,5 +44,6 @@ export default Reviews;
 
 Reviews.propTypes = {
   reviews: PropTypes.arrayOf(PropTypes.object).isRequired,
+  sort: PropTypes.number.isRequired,
   setSort: PropTypes.func.isRequired,
 };

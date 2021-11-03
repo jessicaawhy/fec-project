@@ -10,7 +10,7 @@ import exampleReviewsMeta from './exampleReviewsMeta';
 const ReviewsComponent = () => {
   const [sort, setSort] = useState(0);
   const [filter, setFilter] = useState({});
-  const [reviews, setReviews] = useState(exampleGetReviews.results);
+  const [reviews] = useState(exampleGetReviews.results);
   const [subset, setSubset] = useState(reviews);
 
   useEffect(() => {
