@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const ProductInfo = ({ /* styles */ id }) => (
   <div data-testid="productInfo">
-    <div>{id.category}</div>
+    <h3>{id.category}</h3>
     <h1>{id.name}</h1>
     <p>
       $
