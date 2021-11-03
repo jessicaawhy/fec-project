@@ -2,10 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import QuestionItem from './QuestionItem';
 
-const QuestionList = ({ questions }) => (
+const QuestionList = ({ questions, updateHelpfulness }) => (
   <div data-testid='questionList'>
-    {questions.map((question) => (
-      <QuestionItem question={question} key={question.question_id} />
+    {questions.map((question, index) => (
+      <QuestionItem
+        question={question}
+        key={question.question_id}
+        index={index}
+        updateHelpfulness={updateHelpfulness}
+      />
     ))}
   </div>
 );

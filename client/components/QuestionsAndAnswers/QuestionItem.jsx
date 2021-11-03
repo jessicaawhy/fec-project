@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import AnswerList from './AnswerList';
 
-const QuestionItem = ({ question }) => (
+const QuestionItem = ({ question, index, updateHelpfulness }) => (
   <div>
     <QuestionDiv data-testid='questionItem'>
       <h4>
@@ -13,7 +13,7 @@ const QuestionItem = ({ question }) => (
       <h6>
         Helpful?
       </h6>
-      <UnderLine onClick={() => console.log('is this question helpful?')}>
+      <UnderLine onClick={() => {updateHelpfulness(index)}}>
         Yes
       </UnderLine>
       <h6>

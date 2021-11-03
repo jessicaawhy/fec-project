@@ -10,19 +10,11 @@ import Data from './dummyData';
 const MasterQA = () => {
   const sortedQuestions = Data.questions.results.sort(compareFn);
 
-  // var questionsLength = 2;
   const [questionsLength, setQuestionsLength] = useState(2);
   const [questions, setQuestions] = useState(sortedQuestions.slice(0, questionsLength));
 
-  // const renderMoreQuestions = () => {
-  //   questionsLength += 2;
-  //   if (questionsLength  <= sortedQuestions.length) {
-  //     setQuestions(sortedQuestions.slice(0, questionsLength))
-  //   } else {
-  //     setQuestions(sortedQuestions.slice(0, sortedQuestions.length))
-  //   }
-  // }
   const renderMoreQuestions = () => {
+    console.log(sortedQuestions[0].question_helpfulness);
     if ((questionsLength + 2) <= sortedQuestions.length) {
       setQuestions(sortedQuestions.slice(0, setQuestionsLength(questionsLength + 2)))
     } else {
@@ -30,11 +22,16 @@ const MasterQA = () => {
     }
   }
 
+  const updateHelpfulness = (index) => {
+    sortedQuestions[index].question_helpfulness++;
+    setQuestions(sortedQuestions.slice(0, questionsLength)); // might introduce a bug here
+  }
+
   return (
     <div data-testid='masterQA'>
       <h2>QUESTIONS & ANSWERS</h2>
       <SearchQuestion />
-      <QuestionList questions={questions} />
+      <QuestionList questions={questions} updateHelpfulness={updateHelpfulness}/>
       <Btn>
         {(questionsLength !== sortedQuestions.length &&
          sortedQuestions.length !== 1 && sortedQuestions.length !== 0) &&
@@ -55,18 +52,3 @@ const Btn = styled.div`
 `;
 
 export default MasterQA;
-
-// {questionsLength !== sortedQuestions.length && <Button
-//   data-testid='MoreQuestions'
-//   onClick={ renderMoreQuestions }
-// >
-//   MORE ANSWERED QUESTIONS
-// </Button>}
-// const Button = styled.button`
-//   padding: 25px;
-//   font-size: 1em;
-//   color: black;
-//   border: 2px solid black;
-//   margin: 5px;
-//   cursor: pointer;
-// `;
