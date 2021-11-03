@@ -8,3 +8,6 @@ it("should render QuestionItem component correctly", () => {
   expect(getByTestId('questionItem')).toBeInTheDocument();
 });
 
+{/* <QuestionItem question={Data.questions.results.sort(() => {
+  return b.question_helpfulness - a.question_helpfulness;
+})[0] */}

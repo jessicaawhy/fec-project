@@ -10,6 +10,7 @@ const AnswerList = ({ answers }) => {
   // const [displayedAnswers, setDisplayedAnswers] = useState(sortedAnswers.slice(0, 2))
   return(
     <div data-testid='answerList'>
+      {console.log('from answerList Component', answers)}
       {answers.map((answer) => (
         <AnswerItem answer={answer} key={answer.id} />
       ))}
@@ -18,7 +19,8 @@ const AnswerList = ({ answers }) => {
 };
 
 AnswerList.propTypes = {
-  answers: PropTypes.isRequired,
+  answers: PropTypes.any.isRequired
+  // answers: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default AnswerList;

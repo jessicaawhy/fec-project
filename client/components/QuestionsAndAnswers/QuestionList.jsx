@@ -4,6 +4,7 @@ import QuestionItem from './QuestionItem';
 
 const QuestionList = ({ questions, updateHelpfulness }) => (
   <div data-testid='questionList'>
+    {console.log('from QuestionList', typeof questions, questions, typeof updateHelpfulness)}
     {questions.map((question, index) => (
       <QuestionItem
         question={question}
@@ -16,7 +17,8 @@ const QuestionList = ({ questions, updateHelpfulness }) => (
 );
 
 QuestionList.propTypes = {
-  questions: PropTypes.isRequired,
+  questions: PropTypes.any.isRequired,
+  // updateHelpfulness: PropTypes.func
 };
 
 export default QuestionList;

@@ -10,12 +10,9 @@ const QuestionItem = ({ question, index, updateHelpfulness }) => {
   const [length, setLength] = useState(2);
   const [displayedAnswers, setDisplayedAnswers] = useState(sortedAnswers.slice(0, length));
 
-  const loadMoreAnswers = () => {
-    if ((length + 2) <= sortedAnswers.length) {
-      setDisplayedAnswers(sortedAnswers.slice(0, setLength(length + 2)))
-    } else {
-      setDisplayedAnswers(sortedAnswers.slice(0, sortedAnswers.length))
-    }
+  const loadMoreAnswers = (e) => {
+    console.log(e.target.innerText);
+    setDisplayedAnswers(sortedAnswers.slice(0, sortedAnswers.length))
   }
 
   return (
@@ -42,13 +39,20 @@ const QuestionItem = ({ question, index, updateHelpfulness }) => {
         </UnderLine>
       </QuestionDiv>
       <AnswerList answers={Object.values(displayedAnswers)} />
-      {sortedAnswers.length !== 0 && <LoadMore onClick={loadMoreAnswers}> LOAD MORE ANSWERS</LoadMore>}
+      {sortedAnswers.length !== 0 &&
+      <LoadMore onClick={loadMoreAnswers}>
+        {displayedAnswers.length !== sortedAnswers.length ? 'LOAD MORE ANSWERS' : 'COLLAPSE ANSWERS'}
+      </LoadMore>}
     </div>
   )
 };
 
 QuestionItem.propTypes = {
-  question: PropTypes.isRequired,
+  // question: PropTypes.arrayOf(PropTypes.object).isRequired,
+  question: PropTypes.any.isRequired,
+  index: PropTypes.number,
+  answers: PropTypes.any.isRequired
+  // updateHelpfulness: PropTypes.func
 };
 
 // style

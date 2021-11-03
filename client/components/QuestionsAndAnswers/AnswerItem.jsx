@@ -43,7 +43,8 @@ const AnswerItem = ({ answer }) => (
 );
 
 AnswerItem.propTypes = {
-  answer: PropTypes.isRequired,
+  answer: PropTypes.any.isRequired
+  // answer: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 // style
