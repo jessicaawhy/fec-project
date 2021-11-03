@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const MoreQuestions = () => (
+const MoreQuestions = ({ renderMoreQuestions }) => (
   <Button
     data-testid='MoreQuestions'
-    onClick={() => console.log('show me more answered questions')}
+    onClick={ renderMoreQuestions }
   >
     MORE ANSWERED QUESTIONS
   </Button>

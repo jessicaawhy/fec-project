@@ -27,6 +27,7 @@ const QuestionItem = ({ question }) => (
       </UnderLine>
     </QuestionDiv>
     <AnswerList answers={question.answers} />
+    {Object.keys(question.answers).length !== 0 && <h6> LOAD MORE ANSWERS</h6>}
   </div>
 );
 
