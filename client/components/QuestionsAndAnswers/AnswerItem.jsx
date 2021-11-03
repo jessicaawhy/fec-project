@@ -18,26 +18,24 @@ const AnswerItem = ({ answer }) => (
         {' '}
       </AnswererName>
       <AnswerDate>
-        {answer.date}
+        {new Date(answer.date).toLocaleDateString('en-US', {year: 'numeric', month: 'long', day: 'numeric'})}
       </AnswerDate>
       <AnswerHelpfulness>
         Helpful?
         {'   '}
       </AnswerHelpfulness>
-      <UnderLineYes>
+      <UnderLineYes onClick={() => console.log('is this answer helpful?')}>
         {'   '}
         Yes
         {' '}
       </UnderLineYes>
       <AnswerHelpfulness>
-        (
-        {answer.helpfulness}
-        )
+        ({answer.helpfulness})
       </AnswerHelpfulness>
       <Divide>
         |
       </Divide>
-      <Report>
+      <Report onClick={() => console.log('report this answer?')}>
         Report
       </Report>
     </AnswerDetails>
@@ -45,7 +43,8 @@ const AnswerItem = ({ answer }) => (
 );
 
 AnswerItem.propTypes = {
-  answer: PropTypes.isRequired,
+  answer: PropTypes.any.isRequired
+  // answer: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 // style

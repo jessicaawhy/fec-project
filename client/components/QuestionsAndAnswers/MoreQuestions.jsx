@@ -1,8 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const MoreQuestions = () => (
-  <Button data-testid='MoreQuestions'>
+const MoreQuestions = ({ renderMoreQuestions }) => (
+  <Button
+    data-testid='MoreQuestions'
+    onClick={ renderMoreQuestions }
+  >
     MORE ANSWERED QUESTIONS
   </Button>
 );
