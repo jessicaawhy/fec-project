@@ -24,6 +24,7 @@ const MasterQA = () => {
 
   const updateHelpfulness = (index) => {
     sortedQuestions[index].question_helpfulness++;
+    console.log('from masterQA file - updatehelpfulness', sortedQuestions[index], sortedQuestions)
     setQuestions(sortedQuestions.slice(0, questionsLength)); // might introduce a bug here
   }
 
@@ -33,8 +34,7 @@ const MasterQA = () => {
       <SearchQuestion />
       <QuestionList questions={questions} updateHelpfulness={updateHelpfulness}/>
       <Btn>
-        {(questionsLength !== sortedQuestions.length &&
-         sortedQuestions.length !== 1 && sortedQuestions.length !== 0) &&
+        {(questionsLength !== sortedQuestions.length && sortedQuestions.length >= 2) &&
         <MoreQuestions renderMoreQuestions={renderMoreQuestions}/>}
         <AddQuestion />
       </Btn>
