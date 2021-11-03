@@ -18,7 +18,7 @@ const AnswerItem = ({ answer }) => (
         {' '}
       </AnswererName>
       <AnswerDate>
-        {answer.date}
+        {new Date(answer.date).toLocaleDateString('en-US', {year: 'numeric', month: 'long', day: 'numeric'})}
       </AnswerDate>
       <AnswerHelpfulness>
         Helpful?
