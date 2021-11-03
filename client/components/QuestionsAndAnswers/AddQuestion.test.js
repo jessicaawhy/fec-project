@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen} from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import AddQuestion from './AddQuestion';
 
 it("should render add a question + button correctly", () => {

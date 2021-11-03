@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen} from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import QuestionItem from './QuestionItem';
 import Data from './dummyData';
 
