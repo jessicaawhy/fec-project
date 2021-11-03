@@ -17,9 +17,7 @@ const QuestionItem = ({ question }) => (
         Yes
       </UnderLine>
       <h6>
-        (
-        {question.question_helpfulness}
-        )
+        ({question.question_helpfulness})
       </h6>
       <h6>
         |
