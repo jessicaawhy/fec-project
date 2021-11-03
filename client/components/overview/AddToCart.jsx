@@ -13,7 +13,7 @@ const AddToCart = ({ styles }) => (
     <select name="sizes" id="sizes">
       {styles.results.map((style) => (
         map(style.skus, (sku) => (
-          // renders all sizes for all styles of a product; refactor to limit to one style
+          // does not yet reflect corresponding size/quantity data
           <option value={`${sku}`}>{sku.size}</option>
         ))
       ))}
@@ -21,7 +21,7 @@ const AddToCart = ({ styles }) => (
     <select name="quantity" id="quantity">
       {styles.results.map((style) => (
         map(style.skus, (sku) => (
-          // renders all quantities for all styles of a product; refactor to limit to one style
+          // does not yet reflect corresponding size/quantity data
           <option value={`${sku}`}>{sku.quantity}</option>
         ))
       ))}
