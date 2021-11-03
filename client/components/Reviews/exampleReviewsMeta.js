@@ -1,29 +1,19 @@
 const exampleReviewsMeta = {
-  product_id: '61575',
+  product_id: '61576',
   ratings: {
-    4: '1',
+    2: '1',
+    3: '2',
+    4: '2',
     5: '1',
   },
   recommended: {
-    false: '1',
-    true: '1',
+    false: '2',
+    true: '4',
   },
   characteristics: {
-    Fit: {
-      id: 206673,
-      value: '4.0000000000000000',
-    },
-    Length: {
-      id: 206674,
-      value: '3.5000000000000000',
-    },
-    Comfort: {
-      id: 206675,
-      value: '5.0000000000000000',
-    },
     Quality: {
-      id: 206676,
-      value: '4.0000000000000000',
+      id: 206677,
+      value: '4.200000000000000',
     },
   },
 };
