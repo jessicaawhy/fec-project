@@ -8,15 +8,6 @@ import exampleGetReviews from './exampleGetReviews';
 import exampleReviewsMeta from './exampleReviewsMeta';
 
 const ReviewsComponent = () => {
-  const Container = styled.div`
-    display: grid;
-    grid-template-columns: 30% 70%;
-    margin: 0 50px;
-  `;
-
-  // Summary = styled(Summary)`
-  // `;
-
   const [sort, setSort] = useState(0);
   const [filter, setFilter] = useState({});
   const [reviews, setReviews] = useState(exampleGetReviews.results);
@@ -43,10 +34,16 @@ const ReviewsComponent = () => {
     }
   }, [filter]);
 
+  const Container = styled.div`
+    display: grid;
+    grid-template-columns: 30% 70%;
+    margin: 0 50px;
+  `;
+
   return (
     <Container>
       <Summary filter={filter} setFilter={setFilter} meta={exampleReviewsMeta} />
-      <Reviews reviews={subset} setSort={setSort} />
+      <Reviews reviews={subset} sort={sort} setSort={setSort} />
     </Container>
   );
 };

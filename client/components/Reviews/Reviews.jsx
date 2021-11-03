@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import ReviewsList from './ReviewsList';
 
-const Reviews = ({ reviews, setSort }) => {
+const Reviews = ({ reviews, sort, setSort }) => {
   const [num, setNum] = useState(reviews.length < 2 ? reviews.length : 2);
 
   const handleSelect = (e) => {
@@ -30,15 +30,22 @@ const Reviews = ({ reviews, setSort }) => {
     }
   `;
 
+  const SelectSort = styled.select`
+    background-color: inherit;
+    border: none;
+    text-decoration: underline;
+  `;
+
   return (
     <div data-testid="reviews">
       <div>
         {`${reviews.length} reviews, sorted by `}
-        <select name="sort" id="sort-options" onChange={handleSelect}>
-          <option value="0">Relevant</option>
-          <option value="1">Helpful</option>
-          <option value="2">Newest</option>
-        </select>
+        {/* eslint-disable-next-line styled-components-a11y/no-onchange */}
+        <SelectSort name="sort" id="sort-options" value={sort} onChange={handleSelect}>
+          <option value="0">relevance</option>
+          <option value="1">helpful</option>
+          <option value="2">newest</option>
+        </SelectSort>
       </div>
       <ReviewsList reviews={reviews.filter((review, i) => i < num)} />
       {

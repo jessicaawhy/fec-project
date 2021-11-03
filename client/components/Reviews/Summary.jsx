@@ -11,7 +11,6 @@ const Summary = ({ meta, filter, setFilter }) => {
 
   const RatingContainer = styled.div`
     display: flex;
-    // justify-content: flex-start;
     width: 100%;
     > * {
       margin: 5px;
@@ -23,6 +22,9 @@ const Summary = ({ meta, filter, setFilter }) => {
     border: none;
     text-decoration: underline;
     cursor: pointer;
+    &:active {
+      transform: translateY(1px);
+    }
   `;
 
   const ProgressBorder = styled.div`
@@ -106,7 +108,6 @@ const Summary = ({ meta, filter, setFilter }) => {
           <ProgressBorder><ProgressBar style={{ width: `${ratingsBreakdown[1 - 1] * 100}%` }} /></ProgressBorder>
         </RatingContainer>
       </LinkContainer>
-      <div>summary characteristics go here</div>
       {
         Object.keys(meta.characteristics).map((char) => (
           <div>

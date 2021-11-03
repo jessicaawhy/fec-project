@@ -3,13 +3,17 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const ReviewsListItem = ({ review }) => {
+  const formatDate = (date) => (
+    new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+  );
+
   const Item = styled.div`
-    > * {
-      margin: 15px 0;
-    };
-    // border: 1px solid black;
-    padding: 10px 0;
-  `;
+  > * {
+    // margin: 15px 0;
+    padding: 10px;
+  };
+  // border: 1px solid black;
+`;
 
   const Header = styled.div`
     display: flex;
@@ -40,11 +44,10 @@ const ReviewsListItem = ({ review }) => {
     border: none;
     text-decoration: underline;
     cursor: pointer;
+    &:active {
+      transform: translateY(1px);
+    }
   `;
-
-  const formatDate = (date) => (
-    new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
-  );
 
   return (
     <Item data-testid="review">
