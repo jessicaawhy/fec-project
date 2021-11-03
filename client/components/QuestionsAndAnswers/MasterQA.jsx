@@ -28,10 +28,23 @@ const MasterQA = () => {
     setQuestions(sortedQuestions.slice(0, questionsLength)); // might introduce a bug here
   }
 
+  const handleSearch = (input) => {
+    if (input.length < 3) {
+      setQuestions(sortedQuestions.slice(0, questionsLength));
+    }
+    if (input.length >= 3) {
+      const matchedQuestions = sortedQuestions.filter((question) => (
+        question.question_body.toLowerCase().indexOf(input) !== -1
+        )
+      )
+      setQuestions(matchedQuestions);
+    }
+  }
+
   return (
     <div data-testid='masterQA'>
       <h2>QUESTIONS & ANSWERS</h2>
-      <SearchQuestion />
+      <SearchQuestion handleSearch={handleSearch}/>
       <QuestionList questions={questions} updateHelpfulness={updateHelpfulness}/>
       <Btn>
         {(questionsLength !== sortedQuestions.length && sortedQuestions.length >= 2) &&

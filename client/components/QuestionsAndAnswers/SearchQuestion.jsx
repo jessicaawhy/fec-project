@@ -3,11 +3,13 @@ import styled from 'styled-components';
 
 // style
 
-const SearchQuestion = () => {
+const SearchQuestion = ({ handleSearch }) => {
   const [searchInput, setSearchInput] = useState('');
 
   const handleSearchInput = (e) => {
-    setSearchInput(e.target.value);
+    const input = e.target.value.toLowerCase();
+    // setSearchInput(input);
+    handleSearch(input);
   };
 
   return (
