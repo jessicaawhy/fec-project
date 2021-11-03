@@ -1,57 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import {
+  LinkContainer, RatingContainer, ButtonLink, ProgressBorder, ProgressBar, CharBorder, CharMarker,
+} from './styles/Summary.styled';
 import { getAverageRating, getAverageRec } from './helpers/helpers';
 
 const Summary = ({ meta, filter, setFilter }) => {
-  const LinkContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-  `;
-
-  const RatingContainer = styled.div`
-    display: flex;
-    width: 100%;
-    > * {
-      margin: 5px;
-    }
-  `;
-
-  const ButtonLink = styled.button`
-    background-color: inherit;
-    border: none;
-    text-decoration: underline;
-    cursor: pointer;
-    &:active {
-      transform: translateY(1px);
-    }
-  `;
-
-  const ProgressBorder = styled.div`
-    background-color: #9e9e9e;
-    height: 15px;
-    flex-grow: 1;
-  `;
-
-  const ProgressBar = styled.div`
-    background-color: black;
-    height: 15px;
-  `;
-
-  const CharBorder = styled.div`
-    background-color: #9e9e9e;
-    height: 15px;
-    flex-grow: 1;
-  `;
-
-  const CharMarker = styled.div`
-    background-color: black;
-    height: 15px;
-    width: 4px;
-    position: relative;
-    left: 50%;
-  `;
-
   const currentFilter = Object.keys(filter);
   const ratingsTotal = Object.values(meta.ratings).reduce((acc, curr) => acc + Number(curr), 0);
   const ratingsBreakdown = [1, 2, 3, 4, 5].map((x) => (meta.ratings[x] || 0) / ratingsTotal);

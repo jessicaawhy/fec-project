@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
+import { Container } from './styles/ReviewsComponent.styled';
 import Summary from './Summary';
 import Reviews from './Reviews';
 import { sortReviews } from './helpers/helpers';
@@ -33,12 +33,6 @@ const ReviewsComponent = () => {
       setSubset(sortReviews(filtered, sort));
     }
   }, [filter]);
-
-  const Container = styled.div`
-    display: grid;
-    grid-template-columns: 30% 70%;
-    margin: 0 50px;
-  `;
 
   return (
     <Container>
