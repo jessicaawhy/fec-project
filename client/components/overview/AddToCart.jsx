@@ -32,8 +32,6 @@ const AddToCart = ({ styles }) => (
 export default AddToCart;
 
 AddToCart.propTypes = PropTypes.shape({
-  styles: PropTypes.shape({
-    results: PropTypes.arrayOf(PropTypes.any),
-  }),
+  styles: PropTypes.objectOf(PropTypes.any),
   id: PropTypes.objectOf(PropTypes.any),
-});
+}).isRequired;
