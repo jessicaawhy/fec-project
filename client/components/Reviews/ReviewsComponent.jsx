@@ -8,16 +8,34 @@ import exampleReviewsMeta from './exampleReviewsMeta';
 
 const ReviewsComponent = () => {
   const [sort, setSort] = useState(0);
+  const [filter, setFilter] = useState({});
   const [reviews, setReviews] = useState(exampleGetReviews.results);
   const [subset, setSubset] = useState(reviews);
 
   useEffect(() => {
-    setSubset(sortReviews(reviews, sort));
+    setSubset(sortReviews(subset, sort));
   }, [sort]);
+
+  useEffect(() => {
+    if (Object.keys(filter).length === 0) {
+      setSubset(sortReviews(reviews, sort));
+    } else {
+      const filtered = [];
+
+      for (let i = 0; i < reviews.length; i += 1) {
+        const { rating } = reviews[i];
+        if (filter[rating]) {
+          filtered.push(reviews[i]);
+        }
+      }
+
+      setSubset(sortReviews(filtered, sort));
+    }
+  }, [filter]);
 
   return (
     <>
-      <Summary meta={exampleReviewsMeta} />
+      <Summary filter={filter} setFilter={setFilter} meta={exampleReviewsMeta} />
       <Reviews reviews={subset} setSort={setSort} />
     </>
   );

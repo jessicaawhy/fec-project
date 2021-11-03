@@ -1,43 +1,45 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getAverageRating, getAverageRec } from './helpers/helpers';
 
-const Summary = ({ meta }) => {
-  const getAverageRating = (ratings) => {
-    let total = 0;
-    let count = 0;
+const Summary = ({ meta, filter, setFilter }) => {
+  const currentFilter = Object.keys(filter);
 
-    for (let i = 0; i < 6; i += 1) {
-      if (ratings[i]) {
-        const currentCount = Number(ratings[i]);
-        count += currentCount;
-        total += currentCount * i;
-      }
+  const updateFilter = (e) => {
+    const copy = { ...filter };
+
+    if (!copy[e.target.value]) {
+      copy[e.target.value] = true;
+    } else {
+      delete copy[e.target.value];
     }
 
-    return total / count;
-  };
-
-  const getAverageRec = (recommended) => {
-    const trueCount = recommended.true ? Number(recommended.true) : 0;
-    const falseCount = recommended.false ? Number(recommended.false) : 0;
-
-    if (trueCount + falseCount === 0) {
-      return '0';
-    }
-
-    return trueCount / (trueCount + falseCount);
+    setFilter(copy);
   };
 
   return (
     <div data-testid="summary-reviews">
       <p>{`${getAverageRating(meta.ratings).toFixed(1)} average rating`}</p>
       <p>{`${(getAverageRec(meta.recommended) * 100).toFixed(0)}% of reviews recommend this product`}</p>
+      {
+        currentFilter.length > 0
+        && (
+        <div>
+          <p>
+            Current ratings filter:
+            {' '}
+            {currentFilter.join(', ')}
+          </p>
+          <button onClick={() => setFilter({})} type="button">Remove all filters</button>
+        </div>
+        )
+      }
       <div>
-        <button type="button">5 stars</button>
-        <button type="button">4 stars</button>
-        <button type="button">3 stars</button>
-        <button type="button">2 stars</button>
-        <button type="button">1 stars</button>
+        <button value={5} onClick={updateFilter} type="button">5 stars</button>
+        <button value={4} onClick={updateFilter} type="button">4 stars</button>
+        <button value={3} onClick={updateFilter} type="button">3 stars</button>
+        <button value={2} onClick={updateFilter} type="button">2 stars</button>
+        <button value={1} onClick={updateFilter} type="button">1 stars</button>
       </div>
       <div>summary characteristics go here</div>
     </div>
@@ -87,4 +89,6 @@ Summary.propTypes = {
       }),
     }),
   }).isRequired,
+  filter: PropTypes.shape({}).isRequired,
+  setFilter: PropTypes.func.isRequired,
 };

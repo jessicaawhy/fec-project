@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import ReviewsList from './ReviewsList';
 
@@ -20,23 +20,15 @@ const Reviews = ({ reviews, setSort }) => {
 
   return (
     <div data-testid="reviews">
-      {
-        reviews.length > 0
-          ? (
-            <>
-              <div>
-                {`${reviews.length} reviews, sorted by `}
-                <select name="sort" id="sort-options" onSelect={handleSelect}>
-                  <option value="0">Relevant</option>
-                  <option value="1">Helpful</option>
-                  <option value="2">Newest</option>
-                </select>
-              </div>
-              <ReviewsList reviews={reviews.filter((review, i) => i < num)} />
-            </>
-          )
-          : <div>No reviews</div>
-      }
+      <div>
+        {`${reviews.length} reviews, sorted by `}
+        <select name="sort" id="sort-options" onChange={handleSelect}>
+          <option value="0">Relevant</option>
+          <option value="1">Helpful</option>
+          <option value="2">Newest</option>
+        </select>
+      </div>
+      <ReviewsList reviews={reviews.filter((review, i) => i < num)} />
       {
         num < reviews.length
         && <button type="button" onClick={loadMoreReviews}>MORE REVIEWS</button>
