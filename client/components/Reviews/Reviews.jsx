@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import ReviewsList from './ReviewsList';
 
 const Reviews = ({ reviews, setSort }) => {
@@ -18,6 +19,17 @@ const Reviews = ({ reviews, setSort }) => {
     }
   };
 
+  const Button = styled.button`
+    background-color: inherit;
+    padding: 10px;
+    border: 1px solid black;
+    margin: 5px;
+    cursor: pointer;
+    &:active {
+      transform: translateY(3px);
+    }
+  `;
+
   return (
     <div data-testid="reviews">
       <div>
@@ -31,9 +43,9 @@ const Reviews = ({ reviews, setSort }) => {
       <ReviewsList reviews={reviews.filter((review, i) => i < num)} />
       {
         num < reviews.length
-        && <button type="button" onClick={loadMoreReviews}>MORE REVIEWS</button>
+        && <Button type="button" onClick={loadMoreReviews}>MORE REVIEWS</Button>
       }
-      <button type="button">ADD A REVIEW</button>
+      <Button type="button">ADD A REVIEW +</Button>
     </div>
   );
 };

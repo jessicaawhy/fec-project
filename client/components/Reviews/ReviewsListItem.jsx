@@ -1,29 +1,77 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 const ReviewsListItem = ({ review }) => {
+  const Item = styled.div`
+    > * {
+      margin: 15px 0;
+    };
+    // border: 1px solid black;
+    padding: 10px 0;
+  `;
+
+  const Header = styled.div`
+    display: flex;
+    justify-content: space-between;
+  `;
+
+  const HeaderDetail = styled.div`
+    > span {
+      padding: 4px;
+    };
+  `;
+
+  const Summary = styled.div`
+    font-weight: bold;
+  `;
+
+  const Body = styled.div`
+  `;
+
+  const Footer = styled.div`
+    > * {
+      font-size: inherit;
+    }
+  `;
+
+  const ButtonLink = styled.button`
+    background-color: inherit;
+    border: none;
+    text-decoration: underline;
+    cursor: pointer;
+  `;
+
   const formatDate = (date) => (
     new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
   );
 
   return (
-    <div data-testid="review">
-      {/* this will need to be updated to display rating stars */}
-      <span>{review.rating}</span>
-      {/* verified needs to be updated to a checkmark */}
-      <span>{`${review.recommend ? 'Verified ' : ''}${review.reviewer_name}`}</span>
-      {/* add library here to adjust date format */}
-      <span>{formatDate(review.date)}</span>
-      {/* the summary needs to allow truncation in the future */}
-      <p>{review.summary}</p>
-      <p>{review.body}</p>
-      <div>
+    <Item data-testid="review">
+
+      <Header>
+        <div>{review.rating}</div>
+        <HeaderDetail>
+          {
+            review.recommend
+            && <span>✓</span>
+          }
+          <span>{`${review.reviewer_name},`}</span>
+          <span>{formatDate(review.date)}</span>
+        </HeaderDetail>
+      </Header>
+
+      <Summary>{review.summary}</Summary>
+
+      <Body>{review.body}</Body>
+
+      <Footer>
         <span>Helpful? </span>
-        <button type="button">Yes</button>
+        <ButtonLink type="button">Yes</ButtonLink>
         <span>{`(${review.helpfulness})`}</span>
-        <button type="button">Report</button>
-      </div>
-    </div>
+        <ButtonLink type="button">Report</ButtonLink>
+      </Footer>
+    </Item>
   );
 };
 
