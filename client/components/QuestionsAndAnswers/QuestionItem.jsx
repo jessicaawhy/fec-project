@@ -7,7 +7,7 @@ const QuestionItem = ({ question }) => (
   <div>
     <QuestionDiv data-testid='questionItem'>
       <h4>
-        Q:
+        Q: {' '}
         {question.question_body}
       </h4>
       <h6>

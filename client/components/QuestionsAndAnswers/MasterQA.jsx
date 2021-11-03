@@ -8,9 +8,7 @@ import Data from './dummyData';
 
 // component
 const MasterQA = () => {
-  const initialData = Data.questions.results;
-  const sortedData = initialData.sort(compareFn)
-  const [questions, setQuestions] = useState(sortedData);
+  const [questions, setQuestions] = useState(sortedQuestions);
   return (
     <div data-testid='masterQA'>
       <h2>QUESTIONS & ANSWERS</h2>
@@ -24,9 +22,12 @@ const MasterQA = () => {
   );
 };
 
+const initialData = Data.questions.results;
+const sortedQuestions = initialData.sort(compareFn)
 const compareFn = (a, b) => {
   return b.question_helpfulness - a.question_helpfulness;
 }
+
 // style
 const Btn = styled.div`
   display: flex;
