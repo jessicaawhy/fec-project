@@ -13,7 +13,7 @@ const QuestionItem = ({ question }) => (
       <h6>
         Helpful?
       </h6>
-      <UnderLine>
+      <UnderLine onClick={() => console.log('is this question helpful?')}>
         Yes
       </UnderLine>
       <h6>
@@ -24,7 +24,7 @@ const QuestionItem = ({ question }) => (
       <h6>
         |
       </h6>
-      <UnderLine>
+      <UnderLine onClick={() => console.log('wanna add an answer?')}>
         Add Answer
       </UnderLine>
     </QuestionDiv>

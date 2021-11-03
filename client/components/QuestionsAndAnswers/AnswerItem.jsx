@@ -24,20 +24,18 @@ const AnswerItem = ({ answer }) => (
         Helpful?
         {'   '}
       </AnswerHelpfulness>
-      <UnderLineYes>
+      <UnderLineYes onClick={() => console.log('is this answer helpful?')}>
         {'   '}
         Yes
         {' '}
       </UnderLineYes>
       <AnswerHelpfulness>
-        (
-        {answer.helpfulness}
-        )
+        ({answer.helpfulness})
       </AnswerHelpfulness>
       <Divide>
         |
       </Divide>
-      <Report>
+      <Report onClick={() => console.log('report this answer?')}>
         Report
       </Report>
     </AnswerDetails>
