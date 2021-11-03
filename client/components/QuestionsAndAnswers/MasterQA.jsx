@@ -31,8 +31,7 @@ const MasterQA = () => {
   const handleSearch = (input) => {
     if (input.length < 3) {
       setQuestions(sortedQuestions.slice(0, questionsLength));
-    }
-    if (input.length >= 3) {
+    } else if (input.length >= 3) {
       const matchedQuestions = sortedQuestions.filter((question) => (
         question.question_body.toLowerCase().indexOf(input) !== -1
         )
