@@ -12,7 +12,11 @@ const QuestionItem = ({ question, index, updateHelpfulness }) => {
 
   const loadMoreAnswers = (e) => {
     console.log(e.target.innerText);
-    setDisplayedAnswers(sortedAnswers.slice(0, sortedAnswers.length))
+    if (e.target.innerText === 'COLLAPSE ANSWERS') {
+      setDisplayedAnswers(sortedAnswers.slice(0, 2))
+    } else if (e.target.innerText === 'LOAD MORE ANSWERS') {
+      setDisplayedAnswers(sortedAnswers.slice(0, sortedAnswers.length))
+    }
   }
 
   return (
@@ -39,9 +43,9 @@ const QuestionItem = ({ question, index, updateHelpfulness }) => {
         </UnderLine>
       </QuestionDiv>
       <AnswerList answers={Object.values(displayedAnswers)} />
-      {sortedAnswers.length !== 0 &&
+      {sortedAnswers.length > 2 &&
       <LoadMore onClick={loadMoreAnswers}>
-        {displayedAnswers.length !== sortedAnswers.length ? 'LOAD MORE ANSWERS' : 'COLLAPSE ANSWERS'}
+        {displayedAnswers.length < sortedAnswers.length ? 'LOAD MORE ANSWERS' : 'COLLAPSE ANSWERS'}
       </LoadMore>}
     </div>
   )
