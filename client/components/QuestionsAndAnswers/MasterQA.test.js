@@ -1,8 +1,8 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import MasterQA from './MasterQA';
 
-it("should render MasterQA component correctly", () => {
+it('should render MasterQA component correctly', () => {
   const { getByTestId } = render(<MasterQA />);
   expect(getByTestId('masterQA')).toBeInTheDocument();
 });

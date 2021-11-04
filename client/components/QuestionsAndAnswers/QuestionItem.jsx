@@ -4,71 +4,112 @@ import styled from 'styled-components';
 import AnswerList from './AnswerList';
 
 const QuestionItem = ({ question, index, updateHelpfulness }) => {
-  const sortedAnswers = Object.values(question.answers).sort((a, b) => {
-    return b.helpfulness - a.helpfulness;
-  });
+  const sortedAnswers = Object.values(question.answers).sort(
+    (a, b) => b.helpfulness - a.helpfulness,
+  );
+  const [isHelpful, setIsHelpful] = useState(false);
   const [length, setLength] = useState(2);
   const [displayedAnswers, setDisplayedAnswers] = useState(sortedAnswers.slice(0, length));
 
   const loadMoreAnswers = (e) => {
     console.log(e.target.innerText);
-    setDisplayedAnswers(sortedAnswers.slice(0, sortedAnswers.length))
-  }
+    if (e.target.innerText === 'COLLAPSE ANSWERS') {
+      setDisplayedAnswers(sortedAnswers.slice(0, 2));
+    } else if (e.target.innerText === 'LOAD MORE ANSWERS') {
+      setDisplayedAnswers(sortedAnswers.slice(0, sortedAnswers.length));
+    }
+  };
+
+  const handleQuestionHelpfulness = () => {
+    if (!isHelpful) {
+      setIsHelpful(true);
+      updateHelpfulness(index);
+    }
+  };
+
+  const updateAnswerHelpfulness = () => {
+    sortedAnswers[index].helpfulness++;
+    setDisplayedAnswers(sortedAnswers.slice(0, length));
+  };
 
   return (
     <div>
-      <QuestionDiv data-testid='questionItem'>
-        <h4>
-          Q: {' '}
+      <QuestionDiv data-testid="questionItem">
+        <QuestionBody>
+          Q:
+        </QuestionBody>
+        <QuestionBody>
           {question.question_body}
-        </h4>
-        <h6>
+        </QuestionBody>
+        <QuestionMisc>
           Helpful?
-        </h6>
-        <UnderLine onClick={() => {updateHelpfulness(index)}}>
+        </QuestionMisc>
+        <UnderLine onClick={handleQuestionHelpfulness}>
           Yes
         </UnderLine>
-        <h6>
-          ({question.question_helpfulness})
-        </h6>
-        <h6>
+        <QuestionMisc>
+          (
+          {question.question_helpfulness}
+          )
+        </QuestionMisc>
+        <QuestionMisc>
           |
-        </h6>
+        </QuestionMisc>
         <UnderLine onClick={() => console.log('wanna add an answer?')}>
           Add Answer
         </UnderLine>
       </QuestionDiv>
-      <AnswerList answers={Object.values(displayedAnswers)} />
-      {sortedAnswers.length !== 0 &&
-      <LoadMore onClick={loadMoreAnswers}>
-        {displayedAnswers.length !== sortedAnswers.length ? 'LOAD MORE ANSWERS' : 'COLLAPSE ANSWERS'}
-      </LoadMore>}
+      <AnswerList
+        answers={Object.values(displayedAnswers)}
+        updateAnswerHelpfulness={updateAnswerHelpfulness}
+      />
+      {
+        sortedAnswers.length > 2
+        && (
+        <LoadMore onClick={loadMoreAnswers}>
+          {displayedAnswers.length < sortedAnswers.length ? 'LOAD MORE ANSWERS' : 'COLLAPSE ANSWERS'}
+        </LoadMore>
+        )
+      }
     </div>
-  )
+  );
 };
 
 QuestionItem.propTypes = {
-  // question: PropTypes.arrayOf(PropTypes.object).isRequired,
-  question: PropTypes.any.isRequired,
-  index: PropTypes.number,
-  answers: PropTypes.any.isRequired
-  // updateHelpfulness: PropTypes.func
+  question: PropTypes.shape({
+    question_body: PropTypes.string,
+    question_helpfulness: PropTypes.number,
+    answers: PropTypes.shape({}),
+  }).isRequired,
+  index: PropTypes.number.isRequired,
+  updateHelpfulness: PropTypes.func.isRequired,
 };
 
 // style
 const QuestionDiv = styled.div`
   display: flex;
   justify-content: flex-start;
-  textDecorationLine: underline;
 `;
 
-const UnderLine = styled.h6`
+const QuestionBody = styled.h4`
+  padding: 2px;
+`;
+const QuestionMisc = styled.h6`
+  padding: 2px;
+`;
+const UnderLine = styled.button`
   text-decoration: underline;
   cursor: pointer;
+  border: 0;
+  background-color: inherit;
 `;
 
-const LoadMore = styled.h5`
+const LoadMore = styled.button`
   cursor: pointer;
+  border: 0;
+  padding: 8px;
+  background-color: inherit;
+  // text: bold;
 `;
 // const QuestionBody = styled.h4`
 
