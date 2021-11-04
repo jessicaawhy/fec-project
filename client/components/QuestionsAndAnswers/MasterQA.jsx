@@ -43,7 +43,7 @@ const MasterQA = () => {
   };
 
   return (
-    <div data-testid="masterQA">
+    <MasterContainer data-testid="masterQA">
       <h2>QUESTIONS & ANSWERS</h2>
       <SearchQuestion handleSearch={handleSearch} />
       <Scroller>
@@ -54,12 +54,18 @@ const MasterQA = () => {
         && <MoreQuestions renderMoreQuestions={renderMoreQuestions} />}
         <AddQuestion />
       </Btn>
-      {/* <ModalForm /> */}
-    </div>
+      <ModalForm />
+    </MasterContainer>
   );
 };
 
 // style
+const MasterContainer = styled.div`
+  height: 100px,
+  display: flex,
+  align-items: center,
+  justify-content: center,
+`;
 const Btn = styled.div`
   display: flex;
 `;
