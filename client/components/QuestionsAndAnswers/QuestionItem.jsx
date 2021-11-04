@@ -7,6 +7,7 @@ const QuestionItem = ({ question, index, updateHelpfulness }) => {
   const sortedAnswers = Object.values(question.answers).sort((a, b) => {
     return b.helpfulness - a.helpfulness;
   });
+  const [isHelpful, setIsHelpful] = useState(false);
   const [length, setLength] = useState(2);
   const [displayedAnswers, setDisplayedAnswers] = useState(sortedAnswers.slice(0, length));
 
@@ -16,6 +17,13 @@ const QuestionItem = ({ question, index, updateHelpfulness }) => {
       setDisplayedAnswers(sortedAnswers.slice(0, 2))
     } else if (e.target.innerText === 'LOAD MORE ANSWERS') {
       setDisplayedAnswers(sortedAnswers.slice(0, sortedAnswers.length))
+    }
+  }
+
+  const handleHelpfulnessClick = () => {
+    if (!isHelpful) {
+      setIsHelpful(true);
+      updateHelpfulness(index);
     }
   }
 
@@ -29,7 +37,7 @@ const QuestionItem = ({ question, index, updateHelpfulness }) => {
         <h6>
           Helpful?
         </h6>
-        <UnderLine onClick={() => {updateHelpfulness(index)}}>
+        <UnderLine onClick={handleHelpfulnessClick}>
           Yes
         </UnderLine>
         <h6>
