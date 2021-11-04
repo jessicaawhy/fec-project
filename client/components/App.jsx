@@ -1,5 +1,5 @@
 import React from 'react';
-// import OverviewContainer from './overview/OverviewContainer';
+import OverviewContainer from './Overview/OverviewContainer';
 // import MasterQA from './QuestionsAndAnswers/MasterQA';
 // import ReviewsComponent from './Reviews/ReviewsComponent';
 
@@ -7,7 +7,7 @@ const App = () => (
   <>
     {/* place main module components within this fragment */}
     <h1>7 Satsumas</h1>
-    {/* <OverviewContainer /> */}
+    <OverviewContainer />
     {/* <MasterQA /> */}
     {/* <ReviewsComponent /> */}
   </>
