@@ -58,4 +58,10 @@ const getAverageRec = (recommended) => {
   return trueCount / (trueCount + falseCount);
 };
 
-module.exports = { sortReviews, getAverageRating, getAverageRec };
+const formatDate = (date) => (
+  new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+);
+
+module.exports = {
+  sortReviews, getAverageRating, getAverageRec, formatDate,
+};

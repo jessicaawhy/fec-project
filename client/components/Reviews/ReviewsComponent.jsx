@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
+import { Container } from './styles/ReviewsComponent.styled';
 import Summary from './Summary';
 import Reviews from './Reviews';
 import { sortReviews } from './helpers/helpers';
@@ -10,7 +10,7 @@ import exampleReviewsMeta from './exampleReviewsMeta';
 const ReviewsComponent = () => {
   const [sort, setSort] = useState(0);
   const [filter, setFilter] = useState({});
-  const [reviews, setReviews] = useState(exampleGetReviews.results);
+  const [reviews] = useState(exampleGetReviews.results);
   const [subset, setSubset] = useState(reviews);
 
   useEffect(() => {
@@ -33,12 +33,6 @@ const ReviewsComponent = () => {
       setSubset(sortReviews(filtered, sort));
     }
   }, [filter]);
-
-  const Container = styled.div`
-    display: grid;
-    grid-template-columns: 30% 70%;
-    margin: 0 50px;
-  `;
 
   return (
     <Container>
