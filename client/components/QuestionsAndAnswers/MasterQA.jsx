@@ -54,7 +54,7 @@ const MasterQA = () => {
         && <MoreQuestions renderMoreQuestions={renderMoreQuestions} />}
         <AddQuestion />
       </Btn>
-      <ModalForm />
+      {/* <ModalForm /> */}
     </div>
   );
 };
