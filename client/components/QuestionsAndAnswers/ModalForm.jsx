@@ -45,6 +45,7 @@ export const QuestionModal = () => (
     <SubmitInput type="submit" value="Submit Question" />
   </form>
 );
+
 export const AnswerModal = () => (
   <form>
     <Container1>
@@ -71,6 +72,31 @@ export const AnswerModal = () => (
         For privacy reasons, do not use your full name or email address
       </Notes>
     </Container1>
+    <Container1>
+      <LabelArea htmlFor="yourEmail">
+        Your Email
+      </LabelArea>
+      <InputArea
+        id="yourEmail"
+        type="email"
+        maxlength="60"
+        placeholder="Example: jack@email.com"
+      />
+      <Notes>
+        For authentication reasons, you will not be emailed
+      </Notes>
+    </Container1>
+    <Container1>
+      <LabelArea htmlFor="photos">
+        Upload your photos
+      </LabelArea>
+      <InputArea
+        id="photos"
+        type="file"
+        accept="image/*"
+      />
+    </Container1>
+    <SubmitInput type="submit" value="Submit Answer" />
   </form>
 );
 
