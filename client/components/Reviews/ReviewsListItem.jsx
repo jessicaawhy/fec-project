@@ -1,34 +1,98 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import Flex from '../styles/Flex.styled';
 import ButtonLink from '../styles/ButtonLink.styled';
+import Stars from '../styles/Stars.styled';
+import Modal from './Modal';
 import {
-  Item, Header, HeaderDetail, Summary, Body, Footer,
+  Item, Header, Summary, Footer, Response, ImgIcon,
 } from './styles/ReviewsListItem.styled';
 import { formatDate } from './helpers/helpers';
 
-const ReviewsListItem = ({ review }) => (
-  <Item data-testid="review">
-    <Header>
-      <div>{review.rating}</div>
-      <HeaderDetail>
-        {
-          review.recommend
-          && <span>✓</span>
-        }
-        <span>{`${review.reviewer_name},`}</span>
-        <span>{formatDate(review.date)}</span>
-      </HeaderDetail>
-    </Header>
-    <Summary>{review.summary}</Summary>
-    <Body>{review.body}</Body>
-    <Footer>
-      <span>Helpful? </span>
-      <ButtonLink type="button">Yes</ButtonLink>
-      <span>{`(${review.helpfulness})`}</span>
-      <ButtonLink type="button">Report</ButtonLink>
-    </Footer>
-  </Item>
-);
+const ReviewsListItem = ({ review }) => {
+  const [showReview, setShowReview] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [currentImg, setCurrentImg] = useState('');
+
+  const renderModal = (url) => {
+    setCurrentImg(url);
+    setShowModal(true);
+  };
+
+  return (
+    <Item data-testid="review">
+      {/* Header */}
+      <Header>
+        <Stars rating={review.rating} />
+        <Flex>
+          <span>{`${review.reviewer_name},`}</span>
+          <span>{formatDate(review.date)}</span>
+        </Flex>
+      </Header>
+
+      {/* Body */}
+      {
+        review.summary.length <= 60
+          ? <Summary>{review.summary}</Summary>
+          : <Summary>{`${review.summary.substring(0, 60)}...`}</Summary>
+      }
+      {
+        review.body.length < 250 || showReview
+          ? <p>{review.body}</p>
+          : (
+            <div>
+              <span>{`${review.body.substring(0, 250)}... ` }</span>
+              <ButtonLink onClick={() => setShowReview(true)}>Show more</ButtonLink>
+            </div>
+          )
+      }
+      {
+        review.recommend
+        && <span>✓ I recommend this product</span>
+      }
+      {
+        review.response.length > 0
+        && (
+          <Response>
+            <span>Response:</span>
+            <span>{review.response}</span>
+          </Response>
+        )
+      }
+      {
+        review.photos.length > 0
+        && (
+          <Flex>
+            {
+              review.photos.map((photo) => (
+                <ImgIcon
+                  src={photo.url}
+                  onClick={() => renderModal(photo.url)}
+                  alt="Product Image"
+                />
+              ))
+            }
+          </Flex>
+        )
+      }
+
+      {/* Footer */}
+      <Footer>
+        <Flex>
+          <span>Helpful? </span>
+          <ButtonLink type="button">Yes</ButtonLink>
+          <span>{`(${review.helpfulness})`}</span>
+        </Flex>
+        <div className="separator">|</div>
+        <ButtonLink type="button">Report</ButtonLink>
+      </Footer>
+      {
+        showModal
+        && <Modal currentImg={currentImg} setShowModal={setShowModal} />
+      }
+    </Item>
+  );
+};
 
 export default ReviewsListItem;
 

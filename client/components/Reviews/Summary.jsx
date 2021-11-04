@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ButtonLink from '../styles/ButtonLink.styled';
+import Stars from '../styles/Stars.styled';
 import {
-  LinkContainer, CharBorder, CharMarker,
+  Header, LinkContainer, CharBorder, CharMarker,
 } from './styles/Summary.styled';
-
 import SummaryRatingItem from './SummaryRatingItem';
 import { getAverageRating, getAverageRec } from './helpers/helpers';
 
@@ -15,8 +15,13 @@ const Summary = ({ meta, filter, setFilter }) => {
 
   return (
     <div data-testid="summary-reviews">
-      <p>{`${getAverageRating(meta.ratings).toFixed(1)} average rating`}</p>
+      <Header>
+        <span>{getAverageRating(meta.ratings)}</span>
+        <Stars rating={getAverageRating(meta.ratings)} />
+      </Header>
+
       <p>{`${(getAverageRec(meta.recommended) * 100).toFixed(0)}% of reviews recommend this product`}</p>
+
       {
         currentFilter.length > 0
         && (
