@@ -4,9 +4,7 @@ import styled from 'styled-components';
 import AnswerList from './AnswerList';
 
 const QuestionItem = ({ question, index, updateHelpfulness }) => {
-  const sortedAnswers = Object.values(question.answers).sort((a, b) => {
-    return b.helpfulness - a.helpfulness;
-  });
+  const sortedAnswers = Object.values(question.answers).sort((a, b) => b.helpfulness - a.helpfulness);
   const [isHelpful, setIsHelpful] = useState(false);
   const [length, setLength] = useState(2);
   const [displayedAnswers, setDisplayedAnswers] = useState(sortedAnswers.slice(0, length));
@@ -14,29 +12,31 @@ const QuestionItem = ({ question, index, updateHelpfulness }) => {
   const loadMoreAnswers = (e) => {
     console.log(e.target.innerText);
     if (e.target.innerText === 'COLLAPSE ANSWERS') {
-      setDisplayedAnswers(sortedAnswers.slice(0, 2))
+      setDisplayedAnswers(sortedAnswers.slice(0, 2));
     } else if (e.target.innerText === 'LOAD MORE ANSWERS') {
-      setDisplayedAnswers(sortedAnswers.slice(0, sortedAnswers.length))
+      setDisplayedAnswers(sortedAnswers.slice(0, sortedAnswers.length));
     }
-  }
+  };
 
   const handleQuestionHelpfulness = () => {
     if (!isHelpful) {
       setIsHelpful(true);
       updateHelpfulness(index);
     }
-  }
+  };
 
   const updateAnswerHelpfulness = (index) => {
     sortedAnswers[index].helpfulness++;
     setDisplayedAnswers(sortedAnswers.slice(0, length));
-  }
+  };
 
   return (
     <div>
-      <QuestionDiv data-testid='questionItem'>
+      <QuestionDiv data-testid="questionItem">
         <h4>
-          Q: {' '}
+          Q:
+          {' '}
+          {' '}
           {question.question_body}
         </h4>
         <h6>
@@ -46,7 +46,9 @@ const QuestionItem = ({ question, index, updateHelpfulness }) => {
           Yes
         </UnderLine>
         <h6>
-          ({question.question_helpfulness})
+          (
+          {question.question_helpfulness}
+          )
         </h6>
         <h6>
           |
@@ -60,20 +62,22 @@ const QuestionItem = ({ question, index, updateHelpfulness }) => {
         updateAnswerHelpfulness={updateAnswerHelpfulness}
       />
       {
-        sortedAnswers.length > 2 &&
+        sortedAnswers.length > 2
+        && (
         <LoadMore onClick={loadMoreAnswers}>
           {displayedAnswers.length < sortedAnswers.length ? 'LOAD MORE ANSWERS' : 'COLLAPSE ANSWERS'}
         </LoadMore>
+        )
       }
     </div>
-  )
+  );
 };
 
 QuestionItem.propTypes = {
   // question: PropTypes.arrayOf(PropTypes.object).isRequired,
   question: PropTypes.any.isRequired,
-  index: PropTypes.number,
-  answers: PropTypes.any.isRequired
+  index: PropTypes.number.isRequired,
+  answers: PropTypes.any.isRequired,
   // updateHelpfulness: PropTypes.func
 };
 

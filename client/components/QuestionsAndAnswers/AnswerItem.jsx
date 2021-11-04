@@ -6,15 +6,15 @@ const AnswerItem = ({ answer, index, updateAnswerHelpfulness }) => {
   const [isHelpful, setIsHelpful] = useState(false);
 
   const handleAnswerHelpfulness = () => {
-    console.log('clicked -------')
+    console.log('clicked -------');
     if (!isHelpful) {
       setIsHelpful(true);
       updateAnswerHelpfulness(index);
     }
-  }
+  };
 
-  return(
-    <AnswerContainer data-testid='answerContainer'>
+  return (
+    <AnswerContainer data-testid="answerContainer">
       <AnswerBody>
         A:
         {' '}
@@ -29,7 +29,7 @@ const AnswerItem = ({ answer, index, updateAnswerHelpfulness }) => {
           {' '}
         </AnswererName>
         <AnswerDate>
-          {new Date(answer.date).toLocaleDateString('en-US', {year: 'numeric', month: 'long', day: 'numeric'})}
+          {new Date(answer.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
         </AnswerDate>
         <AnswerHelpfulness>
           Helpful?
@@ -41,7 +41,9 @@ const AnswerItem = ({ answer, index, updateAnswerHelpfulness }) => {
           {' '}
         </UnderLineYes>
         <AnswerHelpfulness>
-          ({answer.helpfulness})
+          (
+          {answer.helpfulness}
+          )
         </AnswerHelpfulness>
         <Divide>
           |
@@ -51,11 +53,11 @@ const AnswerItem = ({ answer, index, updateAnswerHelpfulness }) => {
         </Report>
       </AnswerDetails>
     </AnswerContainer>
-  )
+  );
 };
 
 AnswerItem.propTypes = {
-  answer: PropTypes.any.isRequired
+  answer: PropTypes.any.isRequired,
   // answer: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 

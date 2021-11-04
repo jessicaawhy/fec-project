@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import QuestionItem from './QuestionItem';
 
 const QuestionList = ({ questions, updateHelpfulness }) => (
-  <div data-testid='questionList'>
+  <div data-testid="questionList">
     {console.log('from QuestionList', typeof questions, questions, typeof updateHelpfulness)}
     {questions.map((question, index) => (
       <QuestionItem
@@ -18,7 +18,7 @@ const QuestionList = ({ questions, updateHelpfulness }) => (
 
 QuestionList.propTypes = {
   questions: PropTypes.any.isRequired,
-  // updateHelpfulness: PropTypes.func
+  updateHelpfulness: PropTypes.func.isRequired,
 };
 
 export default QuestionList;
