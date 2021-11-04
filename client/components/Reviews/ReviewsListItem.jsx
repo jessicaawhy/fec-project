@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Flex from '../styles/Flex.styled';
 import ButtonLink from '../styles/ButtonLink.styled';
+import Stars from '../styles/Stars.styled';
 import {
   Item, Header, Summary, Footer, Response, ImgIcon,
 } from './styles/ReviewsListItem.styled';
@@ -14,7 +15,7 @@ const ReviewsListItem = ({ review }) => {
     <Item data-testid="review">
       {/* Header */}
       <Header>
-        <span>{review.rating}</span>
+        <Stars rating={review.rating} />
         <Flex>
           <span>{`${review.reviewer_name},`}</span>
           <span>{formatDate(review.date)}</span>
