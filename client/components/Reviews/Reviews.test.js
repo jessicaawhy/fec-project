@@ -1,6 +1,5 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import Reviews from './Reviews';
 import exampleGetReviews from './exampleGetReviews';
 
@@ -21,7 +20,7 @@ it('should render a reviews list', () => {
 it('should display initial UI', () => {
   render(<Reviews reviews={exampleReviews} />);
 
-  expect(screen.getByRole('option', { name: /relevant/i })).toBeInTheDocument();
+  expect(screen.getByRole('option', { name: /relevance/i })).toBeInTheDocument();
   expect(screen.getByRole('option', { name: /helpful/i })).toBeInTheDocument();
   expect(screen.getByRole('option', { name: /newest/i })).toBeInTheDocument();
 

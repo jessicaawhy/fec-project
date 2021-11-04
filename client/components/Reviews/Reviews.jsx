@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import { Button, SelectSort } from './styles/Reviews.styled';
 import ReviewsList from './ReviewsList';
 
 const Reviews = ({ reviews, sort, setSort }) => {
@@ -18,23 +18,6 @@ const Reviews = ({ reviews, sort, setSort }) => {
       setNum(reviews.length);
     }
   };
-
-  const Button = styled.button`
-    background-color: inherit;
-    padding: 10px;
-    border: 1px solid black;
-    margin: 5px;
-    cursor: pointer;
-    &:active {
-      transform: translateY(3px);
-    }
-  `;
-
-  const SelectSort = styled.select`
-    background-color: inherit;
-    border: none;
-    text-decoration: underline;
-  `;
 
   return (
     <div data-testid="reviews">
@@ -61,5 +44,6 @@ export default Reviews;
 
 Reviews.propTypes = {
   reviews: PropTypes.arrayOf(PropTypes.object).isRequired,
+  sort: PropTypes.number.isRequired,
   setSort: PropTypes.func.isRequired,
 };

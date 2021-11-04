@@ -1,72 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import {
+  LinkContainer, ButtonLink, CharBorder, CharMarker,
+} from './styles/Summary.styled';
+
+import SummaryRatingItem from './SummaryRatingItem';
 import { getAverageRating, getAverageRec } from './helpers/helpers';
 
 const Summary = ({ meta, filter, setFilter }) => {
-  const LinkContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-  `;
-
-  const RatingContainer = styled.div`
-    display: flex;
-    width: 100%;
-    > * {
-      margin: 5px;
-    }
-  `;
-
-  const ButtonLink = styled.button`
-    background-color: inherit;
-    border: none;
-    text-decoration: underline;
-    cursor: pointer;
-    &:active {
-      transform: translateY(1px);
-    }
-  `;
-
-  const ProgressBorder = styled.div`
-    background-color: #9e9e9e;
-    height: 15px;
-    flex-grow: 1;
-  `;
-
-  const ProgressBar = styled.div`
-    background-color: black;
-    height: 15px;
-  `;
-
-  const CharBorder = styled.div`
-    background-color: #9e9e9e;
-    height: 15px;
-    flex-grow: 1;
-  `;
-
-  const CharMarker = styled.div`
-    background-color: black;
-    height: 15px;
-    width: 4px;
-    position: relative;
-    left: 50%;
-  `;
-
   const currentFilter = Object.keys(filter);
   const ratingsTotal = Object.values(meta.ratings).reduce((acc, curr) => acc + Number(curr), 0);
   const ratingsBreakdown = [1, 2, 3, 4, 5].map((x) => (meta.ratings[x] || 0) / ratingsTotal);
-
-  const updateFilter = (e) => {
-    const copy = { ...filter };
-
-    if (!copy[e.target.value]) {
-      copy[e.target.value] = true;
-    } else {
-      delete copy[e.target.value];
-    }
-
-    setFilter(copy);
-  };
 
   return (
     <div data-testid="summary-reviews">
@@ -86,33 +30,26 @@ const Summary = ({ meta, filter, setFilter }) => {
         )
       }
       <LinkContainer>
-        {/* a lot of repeated code, can be refactored */}
-        <RatingContainer>
-          <ButtonLink value={5} onClick={updateFilter} type="button">5 stars</ButtonLink>
-          <ProgressBorder><ProgressBar style={{ width: `${ratingsBreakdown[5 - 1] * 100}%` }} /></ProgressBorder>
-        </RatingContainer>
-        <RatingContainer>
-          <ButtonLink value={4} onClick={updateFilter} type="button">4 stars</ButtonLink>
-          <ProgressBorder><ProgressBar style={{ width: `${ratingsBreakdown[4 - 1] * 100}%` }} /></ProgressBorder>
-        </RatingContainer>
-        <RatingContainer>
-          <ButtonLink value={3} onClick={updateFilter} type="button">3 stars</ButtonLink>
-          <ProgressBorder><ProgressBar style={{ width: `${ratingsBreakdown[3 - 1] * 100}%` }} /></ProgressBorder>
-        </RatingContainer>
-        <RatingContainer>
-          <ButtonLink value={2} onClick={updateFilter} type="button">2 stars</ButtonLink>
-          <ProgressBorder><ProgressBar style={{ width: `${ratingsBreakdown[2 - 1] * 100}%` }} /></ProgressBorder>
-        </RatingContainer>
-        <RatingContainer>
-          <ButtonLink value={1} onClick={updateFilter} type="button">1 stars</ButtonLink>
-          <ProgressBorder><ProgressBar style={{ width: `${ratingsBreakdown[1 - 1] * 100}%` }} /></ProgressBorder>
-        </RatingContainer>
+        {
+          [5, 4, 3, 2, 1].map(
+            (curr) => (
+              <SummaryRatingItem
+                value={curr}
+                width={ratingsBreakdown[curr - 1] * 100}
+                filter={filter}
+                setFilter={setFilter}
+              />
+            ),
+          )
+        }
       </LinkContainer>
       {
         Object.keys(meta.characteristics).map((char) => (
           <div>
             {char}
-            <CharBorder><CharMarker style={{ left: `${(meta.characteristics[char].value / 5) * 100}%` }} /></CharBorder>
+            <CharBorder>
+              <CharMarker style={{ left: `${(meta.characteristics[char].value / 5) * 100}%` }} />
+            </CharBorder>
           </div>
         ))
       }
