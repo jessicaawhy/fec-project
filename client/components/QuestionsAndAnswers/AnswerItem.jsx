@@ -17,48 +17,40 @@ const AnswerItem = ({ answer, index, updateAnswerHelpfulness }) => {
     <AnswerContainer data-testid="answerContainer">
       <AnswerBody>
         A:
-        {' '}
+      </AnswerBody>
+      <AnswerBody>
         {answer.body}
-        {' '}
       </AnswerBody>
       <AnswerDetails>
-        <AnswererName>
+        <h6>
           by
-          {' '}
           {answer.answerer_name}
-          {' '}
-        </AnswererName>
-        <AnswerDate>
+        </h6>
+        <h6>
           {new Date(answer.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-        </AnswerDate>
-        <AnswerHelpfulness>
-          Helpful?
-          {'   '}
-        </AnswerHelpfulness>
-        <UnderLineYes onClick={handleAnswerHelpfulness}>
-          {'   '}
-          Yes
-          {' '}
-        </UnderLineYes>
-        <AnswerHelpfulness>
+        </h6>
+        <h6>Helpful? </h6>
+        <UnderLine type="button" onClick={handleAnswerHelpfulness}>Yes</UnderLine>
+        <h6>
           (
           {answer.helpfulness}
           )
-        </AnswerHelpfulness>
-        <Divide>
-          |
-        </Divide>
-        <Report onClick={() => console.log('report this answer?')}>
-          Report
-        </Report>
+        </h6>
+        <UnderLine type="button" onClick={() => console.log('report this answer?')}>Report</UnderLine>
       </AnswerDetails>
     </AnswerContainer>
   );
 };
 
 AnswerItem.propTypes = {
-  answer: PropTypes.any.isRequired,
-  // answer: PropTypes.arrayOf(PropTypes.object).isRequired
+  answer: PropTypes.shape({
+    body: PropTypes.string,
+    answerer_name: PropTypes.string,
+    date: PropTypes.string,
+    helpfulness: PropTypes.number,
+  }).isRequired,
+  index: PropTypes.number.isRequired,
+  updateAnswerHelpfulness: PropTypes.func.isRequired,
 };
 
 // style
@@ -67,33 +59,18 @@ const AnswerContainer = styled.div`
   flex-direction: column;
 `;
 const AnswerBody = styled.div`
-  display: flex;
+  padding: 3px;
 `;
 const AnswerDetails = styled.div`
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
+  width: 400px;
 `;
-const AnswererName = styled.h6`
-  flex: 2;
-`;
-const AnswerDate = styled.h6`
-  flex: 3;
-`;
-const AnswerHelpfulness = styled.h6`
-  flex: 1;
-`;
-const Divide = styled.h6`
-  flex: 1;
-`;
-const UnderLineYes = styled.h6`
-  flex: 1;
+const UnderLine = styled.button`
   text-decoration: underline;
   cursor: pointer;
-`;
-const Report = styled.h6`
-  flex: 33;
-  text-decoration: underline;
-  cursor: pointer;
+  background-color: inherit;
+  border: 0;
 `;
 
 export default AnswerItem;

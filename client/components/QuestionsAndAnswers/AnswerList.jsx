@@ -17,7 +17,7 @@ const AnswerList = ({ answers, updateAnswerHelpfulness }) => (
 );
 
 AnswerList.propTypes = {
-  answers: PropTypes.any.isRequired,
+  answers: PropTypes.arrayOf(PropTypes.object).isRequired,
   updateAnswerHelpfulness: PropTypes.func.isRequired,
   // answers: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
