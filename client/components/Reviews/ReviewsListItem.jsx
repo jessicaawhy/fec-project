@@ -3,13 +3,21 @@ import PropTypes from 'prop-types';
 import Flex from '../styles/Flex.styled';
 import ButtonLink from '../styles/ButtonLink.styled';
 import Stars from '../styles/Stars.styled';
+import Modal from './Modal';
 import {
   Item, Header, Summary, Footer, Response, ImgIcon,
 } from './styles/ReviewsListItem.styled';
 import { formatDate } from './helpers/helpers';
 
 const ReviewsListItem = ({ review }) => {
-  const [show, setShow] = useState(false);
+  const [showReview, setShowReview] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [currentImg, setCurrentImg] = useState('');
+
+  const renderModal = (url) => {
+    setCurrentImg(url);
+    setShowModal(true);
+  };
 
   return (
     <Item data-testid="review">
@@ -29,12 +37,12 @@ const ReviewsListItem = ({ review }) => {
           : <Summary>{`${review.summary.substring(0, 60)}...`}</Summary>
       }
       {
-        review.body.length < 250 || show
+        review.body.length < 250 || showReview
           ? <p>{review.body}</p>
           : (
             <div>
               <span>{`${review.body.substring(0, 250)}... ` }</span>
-              <ButtonLink onClick={() => setShow(true)}>Show more</ButtonLink>
+              <ButtonLink onClick={() => setShowReview(true)}>Show more</ButtonLink>
             </div>
           )
       }
@@ -59,7 +67,7 @@ const ReviewsListItem = ({ review }) => {
               review.photos.map((photo) => (
                 <ImgIcon
                   src={photo.url}
-                  onClick={() => console.log('toggle modal view!')}
+                  onClick={() => renderModal(photo.url)}
                   alt="Product Image"
                 />
               ))
@@ -78,6 +86,10 @@ const ReviewsListItem = ({ review }) => {
         <div className="separator">|</div>
         <ButtonLink type="button">Report</ButtonLink>
       </Footer>
+      {
+        showModal
+        && <Modal currentImg={currentImg} setShowModal={setShowModal} />
+      }
     </Item>
   );
 };
