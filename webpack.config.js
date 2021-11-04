@@ -1,5 +1,6 @@
 const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: './client/index.jsx',
@@ -7,6 +8,9 @@ module.exports = {
     filename: 'main.js',
     path: path.resolve(__dirname, 'public/dist'),
   },
+  plugins: [
+    new Dotenv()
+  ],
   resolve: {
     extensions: ['.js', '.jsx']
   },
