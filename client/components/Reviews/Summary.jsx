@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ButtonLink from '../styles/ButtonLink.styled';
 import {
-  LinkContainer, ButtonLink, CharBorder, CharMarker,
+  LinkContainer, CharBorder, CharMarker,
 } from './styles/Summary.styled';
 
 import SummaryRatingItem from './SummaryRatingItem';

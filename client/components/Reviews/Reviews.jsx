@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Button, SelectSort } from './styles/Reviews.styled';
+import SelectSort from '../styles/SelectSort.styled';
+import Button from '../styles/Button.styled';
 import ReviewsList from './ReviewsList';
 
 const Reviews = ({ reviews, sort, setSort }) => {
