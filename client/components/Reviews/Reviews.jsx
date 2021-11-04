@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import SelectSort from '../styles/SelectSort.styled';
 import Button from '../styles/Button.styled';
+import { StyledReviews } from './styles/Reviews.styled';
 import ReviewsList from './ReviewsList';
 
 const Reviews = ({ reviews, sort, setSort }) => {
@@ -21,7 +22,7 @@ const Reviews = ({ reviews, sort, setSort }) => {
   };
 
   return (
-    <div data-testid="reviews">
+    <StyledReviews data-testid="reviews">
       <div>
         {`${reviews.length} reviews, sorted by `}
         {/* eslint-disable-next-line styled-components-a11y/no-onchange */}
@@ -37,7 +38,7 @@ const Reviews = ({ reviews, sort, setSort }) => {
         && <Button type="button" onClick={loadMoreReviews}>MORE REVIEWS</Button>
       }
       <Button type="button">ADD A REVIEW +</Button>
-    </div>
+    </StyledReviews>
   );
 };
 

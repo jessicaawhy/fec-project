@@ -3,10 +3,10 @@ import Flex from '../../styles/Flex.styled';
 import ButtonLink from '../../styles/ButtonLink.styled';
 
 export const Item = styled.div`
-  margin: 10px 0;
   > * {
     margin: 10px 0;
   };
+  padding: 15px 0;
 `;
 
 /* Header */
