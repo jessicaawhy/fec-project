@@ -44,7 +44,9 @@ const MasterQA = () => {
     <div data-testid='masterQA'>
       <h2>QUESTIONS & ANSWERS</h2>
       <SearchQuestion handleSearch={handleSearch}/>
-      <QuestionList questions={questions} updateHelpfulness={updateHelpfulness}/>
+      <Scroller>
+        <QuestionList questions={questions} updateHelpfulness={updateHelpfulness}/>
+      </Scroller>
       <Btn>
         {(questionsLength !== sortedQuestions.length && sortedQuestions.length >= 2) &&
         <MoreQuestions renderMoreQuestions={renderMoreQuestions}/>}
@@ -61,6 +63,11 @@ const compareFn = (a, b) => {
 // style
 const Btn = styled.div`
   display: flex;
+`;
+const Scroller = styled.div`
+  height: 333px;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
 `;
 
 export default MasterQA;
