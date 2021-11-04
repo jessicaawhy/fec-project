@@ -1,5 +1,14 @@
 import styled from 'styled-components';
 
+export const Header = styled.div`
+  & :first-child {
+    font-weight: bold;
+    font-size: 55px;
+    margin-right: 15px;
+  }
+  margin-bottom: 20px;
+`;
+
 export const LinkContainer = styled.div`
   display: flex;
   flex-direction: column;
