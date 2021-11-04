@@ -29,13 +29,3 @@ export const Footer = styled.div`
     font-size: inherit;
   }
 `;
-
-export const ButtonLink = styled.button`
-  background-color: inherit;
-  border: none;
-  text-decoration: underline;
-  cursor: pointer;
-  &:active {
-    transform: translateY(1px);
-  }
-`;

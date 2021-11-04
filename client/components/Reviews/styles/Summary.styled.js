@@ -5,16 +5,6 @@ export const LinkContainer = styled.div`
   flex-direction: column;
 `;
 
-export const ButtonLink = styled.button`
-  background-color: inherit;
-  border: none;
-  text-decoration: underline;
-  cursor: pointer;
-  &:active {
-    transform: translateY(1px);
-  }
-`;
-
 export const CharBorder = styled.div`
   background-color: #9e9e9e;
   height: 15px;

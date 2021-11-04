@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Button = styled.button`
+const Button = styled.button`
   background-color: inherit;
   padding: 10px;
   border: 1px solid black;
@@ -11,8 +11,4 @@ export const Button = styled.button`
   }
 `;
 
-export const SelectSort = styled.select`
-  background-color: inherit;
-  border: none;
-  text-decoration: underline;
-`;
+export default Button;
