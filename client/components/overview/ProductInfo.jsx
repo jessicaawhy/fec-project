@@ -1,20 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {
+  ProductInfoContainer,
+  CategoryStyle,
+  NameStyle,
+  PriceStyle,
+} from './styles/ProductInfo.style';
 
 const ProductInfo = ({ /* styles */ id }) => (
-  <div data-testid="productInfo">
-    <h3>{id.category}</h3>
-    <h1>{id.name}</h1>
-    <p>
+  <ProductInfoContainer data-testid="productInfo">
+    <CategoryStyle>{id.category}</CategoryStyle>
+    <NameStyle>{id.name}</NameStyle>
+    <PriceStyle>
       $
       {id.default_price}
-    </p>
-  </div>
-
+    </PriceStyle>
+  </ProductInfoContainer>
 );
 
 export default ProductInfo;
-
 ProductInfo.propTypes = PropTypes.shape({
   products: PropTypes.arrayOf(PropTypes.object),
   styles: PropTypes.objectOf(PropTypes.any),
