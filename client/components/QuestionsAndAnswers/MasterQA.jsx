@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import AddQuestion from './AddQuestion';
-import ModalForm from './ModalForm';
+// import { QuestionModal, AnswerModal } from './ModalForm';
+import { QuestionModal, AnswerModal } from './ModalForm';
 import MoreQuestions from './MoreQuestions';
 import QuestionList from './QuestionList';
 import SearchQuestion from './SearchQuestion';
@@ -54,13 +55,15 @@ const MasterQA = () => {
         && <MoreQuestions renderMoreQuestions={renderMoreQuestions} />}
         <AddQuestion />
       </Btn>
-      <ModalForm />
+      <QuestionModal />
+      <AnswerModal />
     </MasterContainer>
   );
 };
 
 // style
 const MasterContainer = styled.div`
+  margin: 30px;
   height: 100px,
   display: flex,
   align-items: center,

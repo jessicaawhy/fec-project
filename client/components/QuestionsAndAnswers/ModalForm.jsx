@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 // for add question
-const ModalForm = () => (
+export const QuestionModal = () => (
   <form>
     <Container1>
       <LabelArea htmlFor="question">
@@ -45,6 +45,34 @@ const ModalForm = () => (
     <SubmitInput type="submit" value="Submit Question" />
   </form>
 );
+export const AnswerModal = () => (
+  <form>
+    <Container1>
+      <LabelArea htmlFor="yourAnswer">
+        Your Answer
+      </LabelArea>
+      <LargeText
+        id="yourAnswer"
+        type="text"
+        maxlength="1000"
+      />
+    </Container1>
+    <Container1>
+      <LabelArea htmlFor="yourNickname">
+        What is your nickname
+      </LabelArea>
+      <InputArea
+        id="yourNickname"
+        type="text"
+        maxlength="60"
+        placeholder="Example: jack543!"
+      />
+      <Notes>
+        For privacy reasons, do not use your full name or email address
+      </Notes>
+    </Container1>
+  </form>
+);
 
 const Container1 = styled.div`
   display: flex;
@@ -69,8 +97,6 @@ const Notes = styled.div`
 const SubmitInput = styled.input`
   padding: 10px;
 `;
-
-export default ModalForm;
 
 // 1.3.5.4.     Submit question (button)
 // A button by which the question can be submitted.
