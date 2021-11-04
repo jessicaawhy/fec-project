@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ButtonLink from '../styles/ButtonLink.styled';
 import {
-  RatingContainer, ButtonLink, ProgressBorder, ProgressBar,
+  RatingContainer, ProgressBorder, ProgressBar,
 } from './styles/SummaryRatingItem.styled';
 
 const SummaryRatingItem = ({
