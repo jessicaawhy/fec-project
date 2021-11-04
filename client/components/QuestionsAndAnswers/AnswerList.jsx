@@ -2,7 +2,7 @@ import React, { useState }from 'react';
 import PropTypes from 'prop-types';
 import AnswerItem from './AnswerItem';
 
-const AnswerList = ({ answers }) => {
+const AnswerList = ({ answers, updateAnswerHelpfulness }) => {
   // const sortedAnswers = Object.values(answers).sort((a, b) => {
   //   return b.helpfulness - a.helpfulness;
   // });
@@ -11,8 +11,13 @@ const AnswerList = ({ answers }) => {
   return(
     <div data-testid='answerList'>
       {console.log('from answerList Component', answers)}
-      {answers.map((answer) => (
-        <AnswerItem answer={answer} key={answer.id} />
+      {answers.map((answer, index) => (
+        <AnswerItem
+          answer={answer}
+          key={answer.id}
+          index={index}
+          updateAnswerHelpfulness={updateAnswerHelpfulness}
+        />
       ))}
     </div>
   );

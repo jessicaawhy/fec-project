@@ -20,11 +20,16 @@ const QuestionItem = ({ question, index, updateHelpfulness }) => {
     }
   }
 
-  const handleHelpfulnessClick = () => {
+  const handleQuestionHelpfulness = () => {
     if (!isHelpful) {
       setIsHelpful(true);
       updateHelpfulness(index);
     }
+  }
+
+  const updateAnswerHelpfulness = (index) => {
+    sortedAnswers[index].helpfulness++;
+    setDisplayedAnswers(sortedAnswers.slice(0, length));
   }
 
   return (
@@ -37,7 +42,7 @@ const QuestionItem = ({ question, index, updateHelpfulness }) => {
         <h6>
           Helpful?
         </h6>
-        <UnderLine onClick={handleHelpfulnessClick}>
+        <UnderLine onClick={handleQuestionHelpfulness}>
           Yes
         </UnderLine>
         <h6>
@@ -50,11 +55,16 @@ const QuestionItem = ({ question, index, updateHelpfulness }) => {
           Add Answer
         </UnderLine>
       </QuestionDiv>
-      <AnswerList answers={Object.values(displayedAnswers)} />
-      {sortedAnswers.length > 2 &&
-      <LoadMore onClick={loadMoreAnswers}>
-        {displayedAnswers.length < sortedAnswers.length ? 'LOAD MORE ANSWERS' : 'COLLAPSE ANSWERS'}
-      </LoadMore>}
+      <AnswerList
+        answers={Object.values(displayedAnswers)}
+        updateAnswerHelpfulness={updateAnswerHelpfulness}
+      />
+      {
+        sortedAnswers.length > 2 &&
+        <LoadMore onClick={loadMoreAnswers}>
+          {displayedAnswers.length < sortedAnswers.length ? 'LOAD MORE ANSWERS' : 'COLLAPSE ANSWERS'}
+        </LoadMore>
+      }
     </div>
   )
 };

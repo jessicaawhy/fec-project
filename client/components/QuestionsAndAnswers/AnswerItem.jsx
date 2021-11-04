@@ -1,46 +1,58 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const AnswerItem = ({ answer }) => (
-  <AnswerContainer data-testid='answerContainer'>
-    <AnswerBody>
-      A:
-      {' '}
-      {answer.body}
-      {' '}
-    </AnswerBody>
-    <AnswerDetails>
-      <AnswererName>
-        by
+const AnswerItem = ({ answer, index, updateAnswerHelpfulness }) => {
+  const [isHelpful, setIsHelpful] = useState(false);
+
+  const handleAnswerHelpfulness = () => {
+    console.log('clicked -------')
+    if (!isHelpful) {
+      setIsHelpful(true);
+      updateAnswerHelpfulness(index);
+    }
+  }
+
+  return(
+    <AnswerContainer data-testid='answerContainer'>
+      <AnswerBody>
+        A:
         {' '}
-        {answer.answerer_name}
+        {answer.body}
         {' '}
-      </AnswererName>
-      <AnswerDate>
-        {new Date(answer.date).toLocaleDateString('en-US', {year: 'numeric', month: 'long', day: 'numeric'})}
-      </AnswerDate>
-      <AnswerHelpfulness>
-        Helpful?
-        {'   '}
-      </AnswerHelpfulness>
-      <UnderLineYes onClick={() => console.log('is this answer helpful?')}>
-        {'   '}
-        Yes
-        {' '}
-      </UnderLineYes>
-      <AnswerHelpfulness>
-        ({answer.helpfulness})
-      </AnswerHelpfulness>
-      <Divide>
-        |
-      </Divide>
-      <Report onClick={() => console.log('report this answer?')}>
-        Report
-      </Report>
-    </AnswerDetails>
-  </AnswerContainer>
-);
+      </AnswerBody>
+      <AnswerDetails>
+        <AnswererName>
+          by
+          {' '}
+          {answer.answerer_name}
+          {' '}
+        </AnswererName>
+        <AnswerDate>
+          {new Date(answer.date).toLocaleDateString('en-US', {year: 'numeric', month: 'long', day: 'numeric'})}
+        </AnswerDate>
+        <AnswerHelpfulness>
+          Helpful?
+          {'   '}
+        </AnswerHelpfulness>
+        <UnderLineYes onClick={handleAnswerHelpfulness}>
+          {'   '}
+          Yes
+          {' '}
+        </UnderLineYes>
+        <AnswerHelpfulness>
+          ({answer.helpfulness})
+        </AnswerHelpfulness>
+        <Divide>
+          |
+        </Divide>
+        <Report onClick={() => console.log('report this answer?')}>
+          Report
+        </Report>
+      </AnswerDetails>
+    </AnswerContainer>
+  )
+};
 
 AnswerItem.propTypes = {
   answer: PropTypes.any.isRequired
