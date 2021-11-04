@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { ButtonStyle } from './styles/StyleSelector.style';
 
-const StyleButton = ({ style }) => (
-  <input type="image" name="style-button" src={style.photos.thumbnail_url} border="Specfiy Image Border " alt="style" />
+const StyleButton = ({ photo }) => (
+  <ButtonStyle type="image" name="style-button" src={photo.thumbnail_url} alt="style" />
 );
 
 export default StyleButton;
 
 StyleButton.propTypes = PropTypes.shape({
-  style: PropTypes.objectOf(PropTypes.any),
+  photo: PropTypes.objectOf(PropTypes.any),
 }).isRequired;
