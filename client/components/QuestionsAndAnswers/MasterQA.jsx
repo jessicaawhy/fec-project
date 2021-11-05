@@ -26,7 +26,7 @@ const MasterQA = () => {
   };
 
   const updateHelpfulness = (index) => {
-    console.log('testing  ');
+    console.log('testing');
     sortedQuestions[index].question_helpfulness++;
     setQuestions(sortedQuestions.slice(0, questionsLength)); // might introduce a bug here
   };
