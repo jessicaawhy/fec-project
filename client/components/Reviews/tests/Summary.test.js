@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import Summary from './Summary';
-import exampleReviewsMeta from './exampleReviewsMeta';
+import Summary from '../Summary';
+import exampleReviewsMeta from '../sampleData/exampleReviewsMeta';
 
 it('should render a summary component', () => {
   const setFilter = jest.fn();
