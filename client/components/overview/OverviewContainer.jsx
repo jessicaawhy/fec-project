@@ -5,9 +5,9 @@ import ProductDescription from './ProductDescription';
 import ImageGallery from './ImageGallery';
 import StyleSelector from './StyleSelector';
 import AddToCart from './AddToCart';
-import products from '../testData/testProducts';
-import styles from '../testData/testStyles';
-import id from '../testData/testId';
+import products from './tests/testData/testProducts';
+import styles from './tests/testData/testStyles';
+import id from './tests/testData/testId';
 
 const OverviewContainer = () => (
   <div data-testid="container">
