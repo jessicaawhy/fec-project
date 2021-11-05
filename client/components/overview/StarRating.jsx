@@ -1,6 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
 import Star from './Star';
+import StarRatingStyle from './styles/StarRating.style';
 
 const StarRating = () => (
   <div data-testid="starRating">
@@ -17,8 +17,3 @@ const StarRating = () => (
 );
 
 export default StarRating;
-
-const StarRatingStyle = styled.div`
-  display: flex;
-  flex-direction: row
-`;
