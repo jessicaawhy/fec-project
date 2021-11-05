@@ -17,7 +17,10 @@ const ImageGallery = ({ styles }) => (
       {styles.results.map((style) => (
         map(style.photos, (photo) => (
           <div>
-            <ThumbnailStyle src={photo.thumbnail_url} alt="thumbnail" />
+            <ThumbnailStyle
+              src={photo.thumbnail_url}
+              alt="thumbnail"
+            />
           </div>
         ))
       ))}
@@ -32,7 +35,10 @@ const ImageGallery = ({ styles }) => (
       {styles.results.map((style) => (
         map(style.photos, (photo) => (
           <div>
-            <ImageStyle src={photo.url} alt="fullImage" />
+            <ImageStyle
+              src={photo.url}
+              alt="fullImage"
+            />
           </div>
         ))
       ))}
