@@ -66,9 +66,10 @@ const ReviewsListItem = ({ review }) => {
             {
               review.photos.map((photo) => (
                 <ImgIcon
+                  key={photo.id}
                   src={photo.url}
                   onClick={() => renderModal(photo.url)}
-                  alt="Product Image"
+                  alt="Product Review Image"
                 />
               ))
             }
