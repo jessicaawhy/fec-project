@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import AnswerList from './AnswerList';
+import { AnswerModal } from './ModalForm';
 
 const QuestionItem = ({ question, index, updateHelpfulness }) => {
   const sortedAnswers = Object.values(question.answers).sort(
     (a, b) => b.helpfulness - a.helpfulness,
   );
+  const [isAdd, setIsAdd] = useState(false);
   const [isHelpful, setIsHelpful] = useState(false);
   const [length, setLength] = useState(2);
   const [displayedAnswers, setDisplayedAnswers] = useState(sortedAnswers.slice(0, length));
@@ -16,7 +18,7 @@ const QuestionItem = ({ question, index, updateHelpfulness }) => {
     if (e.target.innerText === 'COLLAPSE ANSWERS') {
       setDisplayedAnswers(sortedAnswers.slice(0, 2));
     } else if (e.target.innerText === 'LOAD MORE ANSWERS') {
-      setDisplayedAnswers(sortedAnswers.slice(0, sortedAnswers.length));
+      setDisplayedAnswers(sortedAnswers.slice(0, setLength(sortedAnswers.length)));
     }
   };
 
@@ -27,9 +29,20 @@ const QuestionItem = ({ question, index, updateHelpfulness }) => {
     }
   };
 
-  const updateAnswerHelpfulness = () => {
-    sortedAnswers[index].helpfulness++;
+  const updateAnswerHelpfulness = (currAnswer) => {
+    sortedAnswers[currAnswer].helpfulness++;
     setDisplayedAnswers(sortedAnswers.slice(0, length));
+  };
+
+  const handleAddAnswer = (newAnswer) => {
+    console.log(1);
+    console.log('cool');
+    const randomId = Math.floor(Math.random() * 389457934);
+    const temp = { ...question.answers, randomId: newAnswer };
+    const temp1 = Object.values(temp).sort(
+      (a, b) => b.helpfulness - a.helpfulness,
+    );
+    setDisplayedAnswers(temp1.slice(0, length));
   };
 
   return (
@@ -42,22 +55,19 @@ const QuestionItem = ({ question, index, updateHelpfulness }) => {
           {question.question_body}
         </QuestionBody>
         <QuestionMisc>
-          Helpful?
+          <span>Helpful? </span>
+          <UnderLine type="button" onClick={handleQuestionHelpfulness}>Yes</UnderLine>
+          <span>{`(${question.question_helpfulness})`}</span>
+          <UnderLine onClick={() => setIsAdd(true)}> Add Answer </UnderLine>
         </QuestionMisc>
-        <UnderLine onClick={handleQuestionHelpfulness}>
-          Yes
-        </UnderLine>
-        <QuestionMisc>
-          (
-          {question.question_helpfulness}
-          )
-        </QuestionMisc>
-        <QuestionMisc>
-          |
-        </QuestionMisc>
-        <UnderLine onClick={() => console.log('wanna add an answer?')}>
-          Add Answer
-        </UnderLine>
+        {isAdd
+        && (
+        <AnswerModal
+          question={question}
+          setIsAdd={setIsAdd}
+          handleAddAnswer={handleAddAnswer}
+        />
+        )}
       </QuestionDiv>
       <AnswerList
         answers={Object.values(displayedAnswers)}
@@ -94,8 +104,10 @@ const QuestionDiv = styled.div`
 const QuestionBody = styled.h4`
   padding: 2px;
 `;
-const QuestionMisc = styled.h6`
-  padding: 2px;
+const QuestionMisc = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 400px;
 `;
 const UnderLine = styled.button`
   text-decoration: underline;
@@ -109,7 +121,7 @@ const LoadMore = styled.button`
   border: 0;
   padding: 8px;
   background-color: inherit;
-  // text: bold;
+  font-weight: bold;
 `;
 // const QuestionBody = styled.h4`
 
