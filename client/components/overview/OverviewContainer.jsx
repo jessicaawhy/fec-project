@@ -22,10 +22,10 @@ const OverviewContainer = () => (
       <RightColumn>
         <StarRating products={products} />
         <ProductInfo styles={styles} id={id} />
-        <ProductDescription id={id} />
         <StyleSelector styles={styles} />
         <AddToCart styles={styles} />
       </RightColumn>
+      <ProductDescription id={id} />
     </Grid>
   </Container>
 );
