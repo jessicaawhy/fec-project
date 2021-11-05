@@ -2,24 +2,33 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 
-export const QuestionModal = ({ setOpen }) => (
+export const QuestionModal = ({ setOpen }) => {
   // const [localData, setLocalData] = useState(question);
-  ReactDOM.createPortal(
-    <>
-      <ModalShadow />
-      <Modal>
-        <h4>
-          Ask Your Question
-        </h4>
-        <h5>
-          About the [Procut Name Here]
-        </h5>
-        <QuestionForm />
-      </Modal>
-    </>,
-    document.getElementById('app-modal'),
-  )
-);
+  const [newQuestion, setNewQuestion] = useState({
+    question_body: '',
+    asker_name: '',
+    question_helpfulness: 0,
+    email: '',
+  });
+
+  return (
+    ReactDOM.createPortal(
+      <>
+        <ModalShadow />
+        <Modal>
+          <h4>
+            Ask Your Question
+          </h4>
+          <h5>
+            About the [Procut Name Here]
+          </h5>
+          <QuestionForm setNewQuestion={setNewQuestion} newQuestion={newQuestion} />
+        </Modal>
+      </>,
+      document.getElementById('app-modal'),
+    )
+  );
+};
 export const AnswerModal = ({ question, setOpen }) => (
   // const [localData, setLocalData] = useState(question);
   ReactDOM.createPortal(
@@ -39,8 +48,13 @@ export const AnswerModal = ({ question, setOpen }) => (
     document.getElementById('app-modal'),
   )
 );
-
-export const QuestionForm = () => (
+// const [newQuestion, setNewQuestion] = useState({
+//   question_body: '',
+//   asker_name: '',
+//   question_helpfulness: 0,
+//   email: '',
+// });
+export const QuestionForm = ({ newQuestion, setNewQuestion }) => (
   <form>
     <Container1>
       <LabelArea htmlFor="question">
@@ -50,6 +64,8 @@ export const QuestionForm = () => (
         id="question"
         type="text"
         maxlength="1000"
+        onChange={(e) => setNewQuestion({ ...newQuestion, question_body: e.target.value })}
+        // {console.log(newQuestion)}
       />
     </Container1>
     <Container1>

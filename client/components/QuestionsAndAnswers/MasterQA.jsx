@@ -44,18 +44,20 @@ const MasterQA = () => {
   };
 
   return (
-    <MasterContainer data-testid="masterQA">
-      <h2>QUESTIONS & ANSWERS</h2>
-      <SearchQuestion handleSearch={handleSearch} />
-      <Scroller>
-        <QuestionList questions={questions} updateHelpfulness={updateHelpfulness} />
-      </Scroller>
-      <Btn>
-        {(questionsLength !== sortedQuestions.length && sortedQuestions.length >= 2)
-        && <MoreQuestions renderMoreQuestions={renderMoreQuestions} />}
-        <AddQuestion />
-      </Btn>
-    </MasterContainer>
+    <>
+      <MasterContainer data-testid="masterQA">
+        <h2>QUESTIONS & ANSWERS</h2>
+        <SearchQuestion handleSearch={handleSearch} />
+        <Scroller>
+          <QuestionList questions={questions} updateHelpfulness={updateHelpfulness} />
+        </Scroller>
+        <Btn>
+          {(questionsLength !== sortedQuestions.length && sortedQuestions.length >= 2)
+          && <MoreQuestions renderMoreQuestions={renderMoreQuestions} />}
+          <AddQuestion />
+        </Btn>
+      </MasterContainer>
+    </>
   );
 };
 
