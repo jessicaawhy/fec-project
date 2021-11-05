@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import AddQuestion from './AddQuestion';
 // import { QuestionModal, AnswerModal } from './ModalForm';
-import { QuestionModal, AnswerModal } from './ModalForm';
+// import { QuestionModal, AnswerModal } from './ModalForm';
 import MoreQuestions from './MoreQuestions';
 import QuestionList from './QuestionList';
 import SearchQuestion from './SearchQuestion';
@@ -55,8 +55,8 @@ const MasterQA = () => {
         && <MoreQuestions renderMoreQuestions={renderMoreQuestions} />}
         <AddQuestion />
       </Btn>
-      <QuestionModal />
-      <AnswerModal />
+      {/* <QuestionModal /> */}
+      {/* <AnswerModal /> */}
     </MasterContainer>
   );
 };

@@ -1,8 +1,72 @@
-import React from 'react';
+import React, { useState } from 'react';
+import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 
+const ModalShadow = styled.div`
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0px;
+  background-color: black;
+  opacity: 0.7;
+  z-index: 4;
+`;
+const Modal = styled.div`
+  max-width: 600px;
+  background-color: white;
+  position: fixed;
+  top: 75px;
+  z-index: 5;
+  max-height: calc(100% - 200px);
+  left: calc(50% - 250px);
+  display: flex;
+  flex-direction: column;
+  @media (max-width: 600px) {
+    left: 0px;
+    margin: 0px 10px;
+    padding: 10px;
+  }
+`;
+
+export const QuestionModal = ({ setOpen }) => (
+  // const [localData, setLocalData] = useState(question);
+  ReactDOM.createPortal(
+    <>
+      <ModalShadow />
+      <Modal>
+        <h4>
+          Ask Your Question
+        </h4>
+        <h5>
+          About the [Procut Name Here]
+        </h5>
+        <QuestionForm />
+      </Modal>
+    </>,
+    document.getElementById('app-modal'),
+  )
+);
+export const AnswerModal = ({ setOpen }) => (
+  // const [localData, setLocalData] = useState(question);
+  ReactDOM.createPortal(
+    <>
+      <ModalShadow />
+      <Modal>
+        <h4>
+          Ask Your Question
+        </h4>
+        <h5>
+          About the [Procut Name Here]
+        </h5>
+        <QuestionForm />
+      </Modal>
+    </>,
+    document.getElementById('app-modal'),
+  )
+);
+
 // for add question
-export const QuestionModal = () => (
+export const QuestionForm = () => (
   <form>
     <Container1>
       <LabelArea htmlFor="question">
@@ -46,7 +110,7 @@ export const QuestionModal = () => (
   </form>
 );
 
-export const AnswerModal = () => (
+export const AnswerForm = () => (
   <form>
     <Container1>
       <LabelArea htmlFor="yourAnswer">
@@ -94,6 +158,7 @@ export const AnswerModal = () => (
         id="photos"
         type="file"
         accept="image/*"
+        multiple
       />
     </Container1>
     <SubmitInput type="submit" value="Submit Answer" />
