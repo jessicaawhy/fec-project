@@ -18,7 +18,7 @@ const QuestionItem = ({ question, index, updateHelpfulness }) => {
     if (e.target.innerText === 'COLLAPSE ANSWERS') {
       setDisplayedAnswers(sortedAnswers.slice(0, 2));
     } else if (e.target.innerText === 'LOAD MORE ANSWERS') {
-      setDisplayedAnswers(sortedAnswers.slice(0, sortedAnswers.length));
+      setDisplayedAnswers(sortedAnswers.slice(0, setLength(sortedAnswers.length)));
     }
   };
 
@@ -29,8 +29,8 @@ const QuestionItem = ({ question, index, updateHelpfulness }) => {
     }
   };
 
-  const updateAnswerHelpfulness = () => {
-    sortedAnswers[index].helpfulness++;
+  const updateAnswerHelpfulness = (currAnswer) => {
+    sortedAnswers[currAnswer].helpfulness++;
     setDisplayedAnswers(sortedAnswers.slice(0, length));
   };
 
@@ -114,7 +114,7 @@ const LoadMore = styled.button`
   border: 0;
   padding: 8px;
   background-color: inherit;
-  // text: bold;
+  font-weight: bold;
 `;
 // const QuestionBody = styled.h4`
 
