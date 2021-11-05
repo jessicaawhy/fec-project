@@ -18,7 +18,6 @@ const MasterQA = () => {
   const [questions, setQuestions] = useState(sortedQuestions.slice(0, questionsLength));
 
   const renderMoreQuestions = () => {
-    console.log(sortedQuestions[0].question_helpfulness);
     if ((questionsLength + 2) <= sortedQuestions.length) {
       setQuestions(sortedQuestions.slice(0, setQuestionsLength(questionsLength + 2)));
     } else {
@@ -28,7 +27,6 @@ const MasterQA = () => {
 
   const updateHelpfulness = (index) => {
     sortedQuestions[index].question_helpfulness++;
-    console.log('from masterQA file - updatehelpfulness', sortedQuestions[index], sortedQuestions);
     setQuestions(sortedQuestions.slice(0, questionsLength)); // might introduce a bug here
   };
 
