@@ -38,6 +38,10 @@ const AnswerItem = ({ answer, index, updateAnswerHelpfulness }) => {
         </h6>
         <UnderLine type="button" onClick={() => console.log('report this answer?')}>Report</UnderLine>
       </AnswerDetails>
+      <ImgContainer>
+        {answer.photos.length !== 0
+        && answer.photos.map((photo, i) => <Image src={`${photo}`} key={i} alt="Answerer's Images" />)}
+      </ImgContainer>
     </AnswerContainer>
   );
 };
@@ -48,6 +52,7 @@ AnswerItem.propTypes = {
     answerer_name: PropTypes.string,
     date: PropTypes.string,
     helpfulness: PropTypes.number,
+    photos: PropTypes.shape([]),
   }).isRequired,
   index: PropTypes.number.isRequired,
   updateAnswerHelpfulness: PropTypes.func.isRequired,
@@ -71,6 +76,15 @@ const UnderLine = styled.button`
   cursor: pointer;
   background-color: inherit;
   border: 0;
+`;
+const Image = styled.img`
+  margin: 0 10px;
+  height: 75px;
+  flex-direction: row;
+`;
+const ImgContainer = styled.div`
+  display: flex;
+  padding: 5px;
 `;
 
 export default AnswerItem;

@@ -62,7 +62,7 @@ const QuestionItem = ({ question, index, updateHelpfulness }) => {
         >
           Add Answer
         </UnderLine>
-        {isAdd && <AnswerModal />}
+        {isAdd && <AnswerModal question={question} />}
       </QuestionDiv>
       <AnswerList
         answers={Object.values(displayedAnswers)}

@@ -9,10 +9,10 @@ import SearchQuestion from './SearchQuestion';
 import Data from './dummyData';
 
 // component
-const compareFn = (a, b) => b.question_helpfulness - a.question_helpfulness;
-
 const MasterQA = () => {
-  const sortedQuestions = Data.questions.results.sort(compareFn);
+  const sortedQuestions = Data.questions.results.sort(
+    (a, b) => b.question_helpfulness - a.question_helpfulness,
+  );
 
   const [questionsLength, setQuestionsLength] = useState(2);
   const [questions, setQuestions] = useState(sortedQuestions.slice(0, questionsLength));
@@ -55,8 +55,6 @@ const MasterQA = () => {
         && <MoreQuestions renderMoreQuestions={renderMoreQuestions} />}
         <AddQuestion />
       </Btn>
-      {/* <QuestionModal /> */}
-      {/* <AnswerModal /> */}
     </MasterContainer>
   );
 };

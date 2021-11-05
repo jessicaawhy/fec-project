@@ -46,7 +46,7 @@ export const QuestionModal = ({ setOpen }) => (
     document.getElementById('app-modal'),
   )
 );
-export const AnswerModal = ({ setOpen }) => (
+export const AnswerModal = ({ question, setOpen }) => (
   // const [localData, setLocalData] = useState(question);
   ReactDOM.createPortal(
     <>
@@ -56,7 +56,8 @@ export const AnswerModal = ({ setOpen }) => (
           Submit Your Answer
         </h4>
         <h5>
-          [Procut Name Here]:[Question Body]
+          [Procut Name Here --- to be added]:
+          {question.question_body}
         </h5>
         <AnswerForm />
       </Modal>
