@@ -34,6 +34,17 @@ const QuestionItem = ({ question, index, updateHelpfulness }) => {
     setDisplayedAnswers(sortedAnswers.slice(0, length));
   };
 
+  const handleAddAnswer = (newAnswer) => {
+    console.log(1);
+    console.log('cool');
+    const randomId = Math.floor(Math.random() * 389457934);
+    const temp = { ...question.answers, randomId: newAnswer };
+    const temp1 = Object.values(temp).sort(
+      (a, b) => b.helpfulness - a.helpfulness,
+    );
+    setDisplayedAnswers(temp1.slice(0, length));
+  };
+
   return (
     <div>
       <QuestionDiv data-testid="questionItem">
@@ -62,7 +73,14 @@ const QuestionItem = ({ question, index, updateHelpfulness }) => {
         >
           Add Answer
         </UnderLine>
-        {isAdd && <AnswerModal question={question} />}
+        {isAdd
+        && (
+        <AnswerModal
+          question={question}
+          setIsAdd={setIsAdd}
+          handleAddAnswer={handleAddAnswer}
+        />
+        )}
       </QuestionDiv>
       <AnswerList
         answers={Object.values(displayedAnswers)}

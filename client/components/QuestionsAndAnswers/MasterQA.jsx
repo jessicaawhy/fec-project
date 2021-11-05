@@ -48,7 +48,8 @@ const MasterQA = () => {
     const temp1 = temp.sort(
       (a, b) => b.question_helpfulness - a.question_helpfulness,
     );
-    temp1 && setQuestions(temp1.slice(0, 2)); // need to change ModalForm onClick to onSumbit
+    setQuestions(temp1.slice(0, 2));
+    // temp1 && setQuestions(temp1.slice(0, 2));
   };
 
   // useEffect(() => {
