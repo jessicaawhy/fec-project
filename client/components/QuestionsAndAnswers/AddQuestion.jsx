@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { QuestionModal } from './ModalForm';
 
-const AddQuestion = () => {
+const AddQuestion = ({ handleAddQuestion }) => {
   const [open, setOpen] = useState(false);
   return (
     <div>
@@ -12,7 +12,7 @@ const AddQuestion = () => {
       >
         ADD A QUESTION +
       </Button>
-      {open && (<QuestionModal setOpen={setOpen} />)}
+      {open && (<QuestionModal setOpen={setOpen} handleAddQuestion={handleAddQuestion} />)}
     </div>
   );
 };

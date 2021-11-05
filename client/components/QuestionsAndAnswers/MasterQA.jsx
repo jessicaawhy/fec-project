@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import AddQuestion from './AddQuestion';
 // import { QuestionModal, AnswerModal } from './ModalForm';
@@ -22,7 +22,7 @@ const MasterQA = () => {
     if ((questionsLength + 2) <= sortedQuestions.length) {
       setQuestions(sortedQuestions.slice(0, setQuestionsLength(questionsLength + 2)));
     } else {
-      setQuestions(sortedQuestions.slice(0, sortedQuestions.length));
+      setQuestions(sortedQuestions.slice(0, setQuestionsLength(sortedQuestions.length)));
     }
   };
 
@@ -42,6 +42,15 @@ const MasterQA = () => {
       setQuestions(matchedQuestions);
     }
   };
+  const handleAddQuestion = (newQuestion) => {
+    console.log(Data.questions.results);
+    Data.questions.results.push(newQuestion);
+    setQuestions(sortedQuestions.slice(0, 2));
+  };
+
+  // useEffect(() => {
+  //   setQuestions(sortedQuestions.slice(0, 2));
+  // }, [Data.questions.results]);
 
   return (
     <>
@@ -54,7 +63,7 @@ const MasterQA = () => {
         <Btn>
           {(questionsLength !== sortedQuestions.length && sortedQuestions.length >= 2)
           && <MoreQuestions renderMoreQuestions={renderMoreQuestions} />}
-          <AddQuestion />
+          <AddQuestion handleAddQuestion={handleAddQuestion} />
         </Btn>
       </MasterContainer>
     </>

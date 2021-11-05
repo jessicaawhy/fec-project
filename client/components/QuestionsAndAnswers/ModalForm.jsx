@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 
-export const QuestionModal = ({ setOpen }) => {
+export const QuestionModal = ({ setOpen, handleAddQuestion }) => {
   // const [localData, setLocalData] = useState(question);
   const [newQuestion, setNewQuestion] = useState({
     question_body: '',
     asker_name: '',
-    question_helpfulness: 0,
+    question_helpfulness: 10,
     email: '',
   });
 
@@ -22,7 +22,11 @@ export const QuestionModal = ({ setOpen }) => {
           <h5>
             About the [Procut Name Here]
           </h5>
-          <QuestionForm setNewQuestion={setNewQuestion} newQuestion={newQuestion} />
+          <QuestionForm
+            setNewQuestion={setNewQuestion}
+            newQuestion={newQuestion}
+            handleAddQuestion={handleAddQuestion}
+          />
         </Modal>
       </>,
       document.getElementById('app-modal'),
@@ -54,7 +58,7 @@ export const AnswerModal = ({ question, setOpen }) => (
 //   question_helpfulness: 0,
 //   email: '',
 // });
-export const QuestionForm = ({ newQuestion, setNewQuestion }) => (
+export const QuestionForm = ({ newQuestion, setNewQuestion, handleAddQuestion }) => (
   <form>
     <Container1>
       <LabelArea htmlFor="question">
@@ -77,6 +81,7 @@ export const QuestionForm = ({ newQuestion, setNewQuestion }) => (
         type="text"
         maxlength="60"
         placeholder="Example: jackson11!"
+        onChange={(e) => setNewQuestion({ ...newQuestion, asker_name: e.target.value })}
       />
       <Notes>
         For privacy reasons, do not use your full name or email address
@@ -91,12 +96,17 @@ export const QuestionForm = ({ newQuestion, setNewQuestion }) => (
         type="email"
         maxlength="60"
         placeholder="Why did you like the product or not?"
+        onChange={(e) => setNewQuestion({ ...newQuestion, email: e.target.value })}
       />
       <Notes>
         For authentication reasons, you will not be emailed
       </Notes>
     </Container1>
-    <SubmitInput type="submit" value="Submit Question" />
+    <SubmitInput
+      type="submit"
+      value="Submit Question"
+      onSubmit={(e) => { e.preventDefault(); console.log('jsdhfkjsd'); handleAddQuestion(newQuestion); }}
+    />
   </form>
 );
 
