@@ -43,13 +43,16 @@ const MasterQA = () => {
     }
   };
   const handleAddQuestion = (newQuestion) => {
-    console.log(Data.questions.results);
-    Data.questions.results.push(newQuestion);
-    setQuestions(sortedQuestions.slice(0, 2));
+    console.log('from QA', Data.questions.results);
+    const temp = [...Data.questions.results, newQuestion];
+    const temp1 = temp.sort(
+      (a, b) => b.question_helpfulness - a.question_helpfulness,
+    );
+    temp1 && setQuestions(temp1.slice(0, 2)); // need to change ModalForm onClick to onSumbit
   };
 
   // useEffect(() => {
-  //   setQuestions(sortedQuestions.slice(0, 2));
+  //   setQuestions(sortedQuestions.slice(0, sortedQuestions.length));
   // }, [Data.questions.results]);
 
   return (

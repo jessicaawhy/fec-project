@@ -7,8 +7,9 @@ export const QuestionModal = ({ setOpen, handleAddQuestion }) => {
   const [newQuestion, setNewQuestion] = useState({
     question_body: '',
     asker_name: '',
-    question_helpfulness: 10,
+    question_helpfulness: 66666,
     email: '',
+    answers: {},
   });
 
   return (
@@ -26,6 +27,7 @@ export const QuestionModal = ({ setOpen, handleAddQuestion }) => {
             setNewQuestion={setNewQuestion}
             newQuestion={newQuestion}
             handleAddQuestion={handleAddQuestion}
+            setOpen={setOpen}
           />
         </Modal>
       </>,
@@ -58,7 +60,9 @@ export const AnswerModal = ({ question, setOpen }) => (
 //   question_helpfulness: 0,
 //   email: '',
 // });
-export const QuestionForm = ({ newQuestion, setNewQuestion, handleAddQuestion }) => (
+export const QuestionForm = ({
+  setOpen, newQuestion, setNewQuestion, handleAddQuestion,
+}) => (
   <form>
     <Container1>
       <LabelArea htmlFor="question">
@@ -69,7 +73,6 @@ export const QuestionForm = ({ newQuestion, setNewQuestion, handleAddQuestion })
         type="text"
         maxlength="1000"
         onChange={(e) => setNewQuestion({ ...newQuestion, question_body: e.target.value })}
-        // {console.log(newQuestion)}
       />
     </Container1>
     <Container1>
@@ -105,7 +108,7 @@ export const QuestionForm = ({ newQuestion, setNewQuestion, handleAddQuestion })
     <SubmitInput
       type="submit"
       value="Submit Question"
-      onSubmit={(e) => { e.preventDefault(); console.log('jsdhfkjsd'); handleAddQuestion(newQuestion); }}
+      onClick={(e) => { e.preventDefault(); console.log('jsdhfkjsd'); handleAddQuestion(newQuestion); setOpen(false); }}
     />
   </form>
 );
