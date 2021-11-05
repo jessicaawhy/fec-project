@@ -4,8 +4,8 @@ import Summary from './Summary';
 import Reviews from './Reviews';
 import { sortReviews } from './helpers/helpers';
 
-import exampleGetReviews from './exampleGetReviews';
-import exampleReviewsMeta from './exampleReviewsMeta';
+import exampleGetReviews from './sampleData/exampleGetReviews';
+import exampleReviewsMeta from './sampleData/exampleReviewsMeta';
 
 const ReviewsComponent = () => {
   const [sort, setSort] = useState(0);
