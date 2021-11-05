@@ -21,7 +21,7 @@ export const QuestionModal = ({ setOpen, handleAddQuestion }) => {
             Ask Your Question
           </h4>
           <h5>
-            About the [Procut Name Here]
+            About the [Product Name Here]
           </h5>
           <QuestionForm
             setNewQuestion={setNewQuestion}

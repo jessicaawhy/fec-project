@@ -55,24 +55,11 @@ const QuestionItem = ({ question, index, updateHelpfulness }) => {
           {question.question_body}
         </QuestionBody>
         <QuestionMisc>
-          Helpful?
+          <span>Helpful? </span>
+          <UnderLine type="button" onClick={handleQuestionHelpfulness}>Yes</UnderLine>
+          <span>{`(${question.question_helpfulness})`}</span>
+          <UnderLine onClick={() => setIsAdd(true)}> Add Answer </UnderLine>
         </QuestionMisc>
-        <UnderLine onClick={handleQuestionHelpfulness}>
-          Yes
-        </UnderLine>
-        <QuestionMisc>
-          (
-          {question.question_helpfulness}
-          )
-        </QuestionMisc>
-        <QuestionMisc>
-          |
-        </QuestionMisc>
-        <UnderLine
-          onClick={() => setIsAdd(true)}
-        >
-          Add Answer
-        </UnderLine>
         {isAdd
         && (
         <AnswerModal
@@ -117,8 +104,10 @@ const QuestionDiv = styled.div`
 const QuestionBody = styled.h4`
   padding: 2px;
 `;
-const QuestionMisc = styled.h6`
-  padding: 2px;
+const QuestionMisc = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 400px;
 `;
 const UnderLine = styled.button`
   text-decoration: underline;

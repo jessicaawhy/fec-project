@@ -22,20 +22,13 @@ const AnswerItem = ({ answer, index, updateAnswerHelpfulness }) => {
         {answer.body}
       </AnswerBody>
       <AnswerDetails>
-        <h6>
-          by
-          {answer.answerer_name}
-        </h6>
-        <h6>
+        <span>{answer.answerer_name}</span>
+        <span>
           {new Date(answer.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-        </h6>
-        <h6>Helpful? </h6>
+        </span>
+        <span>Helpful? </span>
         <UnderLine type="button" onClick={handleAnswerHelpfulness}>Yes</UnderLine>
-        <h6>
-          (
-          {answer.helpfulness}
-          )
-        </h6>
+        <span>{`(${answer.helpfulness})`}</span>
         <UnderLine type="button" onClick={() => console.log('report this answer?')}>Report</UnderLine>
       </AnswerDetails>
       <ImgContainer>
