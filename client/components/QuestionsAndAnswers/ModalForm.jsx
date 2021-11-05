@@ -53,12 +53,12 @@ export const AnswerModal = ({ setOpen }) => (
       <ModalShadow />
       <Modal>
         <h4>
-          Ask Your Question
+          Submit Your Answer
         </h4>
         <h5>
-          About the [Procut Name Here]
+          [Procut Name Here]:[Question Body]
         </h5>
-        <QuestionForm />
+        <AnswerForm />
       </Modal>
     </>,
     document.getElementById('app-modal'),

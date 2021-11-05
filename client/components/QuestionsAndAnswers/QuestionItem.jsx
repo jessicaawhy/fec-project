@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import AnswerList from './AnswerList';
+import { AnswerModal } from './ModalForm';
 
 const QuestionItem = ({ question, index, updateHelpfulness }) => {
   const sortedAnswers = Object.values(question.answers).sort(
     (a, b) => b.helpfulness - a.helpfulness,
   );
+  const [isAdd, setIsAdd] = useState(false);
   const [isHelpful, setIsHelpful] = useState(false);
   const [length, setLength] = useState(2);
   const [displayedAnswers, setDisplayedAnswers] = useState(sortedAnswers.slice(0, length));
@@ -55,9 +57,12 @@ const QuestionItem = ({ question, index, updateHelpfulness }) => {
         <QuestionMisc>
           |
         </QuestionMisc>
-        <UnderLine onClick={() => console.log('wanna add an answer?')}>
+        <UnderLine
+          onClick={() => setIsAdd(true)}
+        >
           Add Answer
         </UnderLine>
+        {isAdd && <AnswerModal />}
       </QuestionDiv>
       <AnswerList
         answers={Object.values(displayedAnswers)}
