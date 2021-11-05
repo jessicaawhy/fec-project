@@ -17,7 +17,8 @@ exports.review_get = (req, res) => {
     sort,
   })}`, config)
     .then((response) => response.data)
-    .then((data) => res.send(data));
+    .then((data) => res.send(data))
+    .catch(() => res.sendStatus(500));
 };
 
 exports.review_get_meta = (req, res) => {
@@ -31,5 +32,6 @@ exports.review_get_meta = (req, res) => {
     product_id,
   })}`, config)
     .then((response) => response.data)
-    .then((data) => res.send(data));
+    .then((data) => res.send(data))
+    .catch(() => res.sendStatus(500));
 };
