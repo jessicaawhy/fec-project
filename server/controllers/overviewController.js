@@ -3,8 +3,6 @@ const { formatStyles } = require('../helpers/dataTransforms');
 
 module.exports = {
   getProductById: (req, res) => {
-    console.log('getProductById is running...');
-
     const { id } = req.params;
 
     axios({
@@ -26,8 +24,6 @@ module.exports = {
   },
 
   getProductStyles: (req, res) => {
-    console.log('getProductStyles is running...');
-
     const { id } = req.params;
 
     axios({
