@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import AddQuestion from './AddQuestion';
+import AddQuestion from '../AddQuestion';
 
 it('should render add a question + button correctly', () => {
   const { getByTestId } = render(<AddQuestion />);
