@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   Container1, LabelArea, LargeText, InputArea, Notes, SubmitInput,
 } from '../styles/Modal.style';
@@ -65,4 +66,12 @@ const QuestionForm = ({
     </form>
   );
 };
+
+QuestionForm.propTypes = {
+  newQuestion: PropTypes.shape({}).isRequired,
+  setNewQuestion: PropTypes.func.isRequired,
+  setOpen: PropTypes.func.isRequired,
+  handleAddQuestion: PropTypes.func.isRequired,
+};
+
 export default QuestionForm;

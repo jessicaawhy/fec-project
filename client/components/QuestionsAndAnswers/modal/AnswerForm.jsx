@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   Container1, LabelArea, LargeText, InputArea, Notes, SubmitInput,
 } from '../styles/Modal.style';
@@ -76,6 +77,13 @@ const AnswerForm = ({
       />
     </form>
   );
+};
+
+AnswerForm.propTypes = {
+  newAnswer: PropTypes.shape({}).isRequired,
+  setNewAnswer: PropTypes.func.isRequired,
+  setIsAdd: PropTypes.func.isRequired,
+  handleAddAnswer: PropTypes.func.isRequired,
 };
 
 export default AnswerForm;
