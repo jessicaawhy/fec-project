@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
-  StyledRecommend, StyledName, StyledEmail, StyledCharacteristics,
+  StyledRecommend, StyledName, StyledEmail, StyledBody, StyledCharacteristics,
 } from './styles/FormField.styled';
 import FormElement from './FormElement';
 
@@ -46,6 +46,37 @@ export const Email = () => (
     />
   </StyledEmail>
 );
+
+export const Body = () => {
+  const [message, setMessage] = useState('');
+
+  const handleChange = (e) => {
+    const current = e.target.value;
+
+    if (current.length < 50) {
+      setMessage(`Minimum required characters left: [${50 - current.length}]`);
+    } else {
+      setMessage('Minimum reached!');
+    }
+  };
+
+  return (
+    <StyledBody>
+      <label htmlFor="body">
+        Review
+        <textarea
+          name="body"
+          rows="5"
+          onKeyPress={(e) => {
+            if (e.key === 'Enter') { e.preventDefault(); }
+          }}
+          onChange={handleChange}
+        />
+        <p>{message}</p>
+      </label>
+    </StyledBody>
+  );
+};
 
 // Characteristics
 

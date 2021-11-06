@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Button from '../styles/Button.styled';
 import StyledForm from './styles/Form.styled';
 import {
-  Recommend, Name, Email, Characteristics,
+  Recommend, Name, Email, Body, Characteristics,
 } from './FormFields';
 
 const ReviewsForm = () => {
@@ -11,6 +11,7 @@ const ReviewsForm = () => {
     e.preventDefault();
     // console.log(e.target.nickname.value);
     // console.log(e.target.email.value);
+    // console.log(e.target.body.value);
     // console.log(e.target.recommend.value);
     // console.log(e.target.size.value);
     // console.log(e.target.width.value);
@@ -27,6 +28,7 @@ const ReviewsForm = () => {
 
       <Name />
       <Email />
+      <Body />
       <Recommend />
 
       <Characteristics

@@ -68,6 +68,32 @@ export const StyledEmail = styled.fieldset`
   };
 `;
 
+export const StyledBody = styled.fieldset`
+  border: none;
+  margin: 10px 0;
+
+  label {
+    font-weight: bold;
+  }
+
+  label {
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+  };
+
+  textarea {
+    margin: 5px 0;
+    padding: 3px;
+    resize: none;
+    overflow-y: scroll;
+  };
+
+  p {
+    font-weight: normal;
+  }
+`;
+
 export const StyledCharacteristics = styled.fieldset`
   border: none;
   margin: 10px 0;
