@@ -6,13 +6,33 @@ import {
   from './styles/ProductDescription.style';
 
 const ProductDescription = ({ id }) => (
-  <div data-testid="productDescription">
-    <SloganStyle>{id.slogan}</SloganStyle>
-    <DescriptionStyle>{id.description}</DescriptionStyle>
-    <FeaturesStyle>Features</FeaturesStyle>
-    <FeatureListStyle>
+  <div data-testid="product-description">
+    <SloganStyle
+      data-testid="slogan"
+      className="slogan"
+    >
+      {id.slogan}
+
+    </SloganStyle>
+    <DescriptionStyle
+      data-testid="description"
+      className="description"
+    >
+      {id.description}
+
+    </DescriptionStyle>
+    <FeaturesStyle>
+      Features
+
+    </FeaturesStyle>
+    <FeatureListStyle
+      data-testid="features"
+      className="features"
+    >
       {id.features.map((feature) => (
-        <FeatureStyle>{`${feature.feature}: ${feature.value}`}</FeatureStyle>
+        <FeatureStyle>
+          {`${feature.feature}: ${feature.value}`}
+        </FeatureStyle>
       ))}
     </FeatureListStyle>
   </div>

@@ -5,7 +5,7 @@ import {
 } from './styles/ProductInfo.style';
 
 const ProductInfo = ({ /* styles */ id }) => (
-  <ProductInfoContainer data-testid="productInfo">
+  <ProductInfoContainer data-testid="product-info">
     <CategoryStyle>{id.category}</CategoryStyle>
     <NameStyle>{id.name}</NameStyle>
     <PriceStyle>
