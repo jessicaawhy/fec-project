@@ -5,10 +5,15 @@ import StyleButton from './StyleButton';
 import { StyleSelectorContainer } from './styles/StyleSelector.style';
 
 const StyleSelector = ({ styles }) => (
-  <StyleSelectorContainer className="style-selector">
+  <StyleSelectorContainer
+    data-testid="style-selector"
+    className="style-selector"
+  >
     {styles.results.map((style) => (
       map(style.photos, (photo) => (
-        <StyleButton photo={photo} />
+        <StyleButton
+          photo={photo}
+        />
       ))
     ))}
   </StyleSelectorContainer>

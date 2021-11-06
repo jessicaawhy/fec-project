@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import ReviewsList from './ReviewsList';
-import exampleGetReviews from './exampleGetReviews';
+import ReviewsList from '../ReviewsList';
+import exampleGetReviews from '../sampleData/exampleGetReviews';
 
 const exampleReviews = exampleGetReviews.results;
 

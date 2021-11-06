@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import { QuestionModal } from './ModalForm';
 
-const AddQuestion = () => (
-  <Button
-    data-testid="addQuestion"
-    onClick={() => console.log('clicked?')}
-  >
-    ADD A QUESTION +
-  </Button>
-);
+const AddQuestion = ({ handleAddQuestion }) => {
+  const [open, setOpen] = useState(false);
+  return (
+    <div>
+      <Button
+        data-testid="addQuestion"
+        onClick={() => setOpen(true)}
+      >
+        ADD A QUESTION +
+      </Button>
+      {open && (<QuestionModal setOpen={setOpen} handleAddQuestion={handleAddQuestion} />)}
+    </div>
+  );
+};
 
 // style
 const Button = styled.button`

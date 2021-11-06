@@ -9,41 +9,63 @@ import {
   from './styles/ImageGallery.style';
 
 const ImageGallery = ({ styles }) => (
-  <GalleryContainer className="image-gallery grid-container">
-    <ThumbnailContainer className="thumbnail-container">
+  <GalleryContainer
+    data-testid="gallery-container"
+    className="gallery-container"
+  >
+    <ThumbnailContainer
+      data-testid="thumbnail-container"
+      className="thumbnail-container"
+    >
       <UpArrowStyle>
-        <UpArrow className="up-arrow" />
+        <UpArrow
+          data-testid="up-arrow"
+          className="up-arrow"
+        />
       </UpArrowStyle>
       {styles.results.map((style) => (
         map(style.photos, (photo) => (
           <div>
             <ThumbnailStyle
-              src={photo.thumbnail_url}
+              data-testid="thumbnail-image"
+              className="thumbnail-image"
               alt="thumbnail"
+              src={photo.thumbnail_url}
             />
           </div>
         ))
       ))}
       <DownArrowStyle>
-        <DownArrow className="down-arrow" />
+        <DownArrow
+          data-testid="down-arrow"
+          className="down-arrow"
+        />
       </DownArrowStyle>
     </ThumbnailContainer>
     <GalleryStyle className="gallery-container">
       <RightArrowStyle>
-        <RightArrow className="right-arrow" />
+        <RightArrow
+          data-testid="right-arrow"
+          className="right-arrow"
+        />
       </RightArrowStyle>
       {styles.results.map((style) => (
         map(style.photos, (photo) => (
           <div>
             <ImageStyle
+              data-testid="full-image"
+              className="full-image"
+              alt="full image"
               src={photo.url}
-              alt="fullImage"
             />
           </div>
         ))
       ))}
       <LeftArrowStyle>
-        <LeftArrow className="left-arrow" />
+        <LeftArrow
+          data-testid="left-arrow"
+          className="left-arrow"
+        />
       </LeftArrowStyle>
     </GalleryStyle>
   </GalleryContainer>

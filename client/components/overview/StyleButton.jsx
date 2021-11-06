@@ -4,6 +4,8 @@ import { ButtonStyle } from './styles/StyleSelector.style';
 
 const StyleButton = ({ photo }) => (
   <ButtonStyle
+    data-testid="style-button"
+    className="style-button"
     type="image"
     name="style-button"
     src={photo.thumbnail_url}

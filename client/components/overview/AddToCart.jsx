@@ -4,11 +4,23 @@ import map from 'lodash/map';
 import { CartContainer, CartButton, DropDown } from './styles/AddToCart.style';
 
 const AddToCart = ({ styles }) => (
-  <CartContainer data-testid="addToCart">
-    <CartButton type="submit">Add To Cart</CartButton>
+  <CartContainer
+    data-testid="cart-container"
+    className="cart-container"
+  >
+    <CartButton
+      data-testid="add-to-cart-button"
+      className="add-to-cart-button"
+      type="submit"
+    >
+      Add To Cart
+    </CartButton>
+
     <DropDown
-      name="sizes"
-      id="sizes"
+      data-testid="size"
+      className="size"
+      name="size"
+      id="size"
     >
       {styles.results.map((style) => (
         map(style.skus, (sku) => (
@@ -18,6 +30,8 @@ const AddToCart = ({ styles }) => (
       ))}
     </DropDown>
     <DropDown
+      data-testid="quantity"
+      className="quantity"
       name="quantity"
       id="quantity"
     >

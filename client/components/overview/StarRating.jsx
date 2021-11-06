@@ -3,7 +3,10 @@ import Star from './Star';
 import StarRatingStyle from './styles/StarRating.style';
 
 const StarRating = () => (
-  <div data-testid="starRating">
+  <div
+    data-testid="star-rating"
+    className="star-rating"
+  >
     <StarRatingStyle>
       <Star />
       <Star />
