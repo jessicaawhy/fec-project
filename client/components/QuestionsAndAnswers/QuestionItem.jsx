@@ -4,7 +4,7 @@ import {
   QuestionDiv, QuestionBody, QuestionMisc, UnderLine, LoadMore,
 } from './styles/QuestionItem.style';
 import AnswerList from './AnswerList';
-import { AnswerModal } from './ModalForm';
+import AnswerModal from './modal/AnswerModal';
 
 const QuestionItem = ({ question, index, updateHelpfulness }) => {
   const sortedAnswers = Object.values(question.answers).sort(
