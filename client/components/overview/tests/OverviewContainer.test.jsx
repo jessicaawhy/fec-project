@@ -13,7 +13,7 @@ it('should display testid from Overview Container', () => {
 
 it('should display all subcomponents', () => {
   const { getByTestId } = render(<OverviewContainer />);
-  const ids = ['starRating', 'productInfo', 'productDescription', 'imageGallery', 'styleSelector', 'addToCart'];
+  const ids = ['star-rating', 'product-info', 'product-description', 'gallery-container', 'style-selector', 'cart-container'];
 
   ids.forEach((id) => {
     expect(getByTestId(id)).toBeInTheDocument();

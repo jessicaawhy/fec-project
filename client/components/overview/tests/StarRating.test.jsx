@@ -1,9 +1,12 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import StarRating from '../StarRating';
 
-it('should display testid from StarRating', () => {
-  const { getByTestId } = render(<StarRating />);
-  expect(getByTestId('starRating')).toBeInTheDocument();
+it('should display StarRating component', () => {
+  render(<StarRating />);
+
+  const starRating = screen.getByTestId('star-rating');
+
+  expect(starRating).toHaveClass('star-rating');
 });
