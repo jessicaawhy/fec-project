@@ -6,7 +6,7 @@ import {
   from './styles/ProductDescription.style';
 
 const ProductDescription = ({ id }) => (
-  <div data-testid="productDescription">
+  <div data-testid="product-description">
     <SloganStyle
       data-testid="slogan"
       className="slogan"

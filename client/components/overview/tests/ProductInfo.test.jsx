@@ -6,7 +6,7 @@ import id from './testData/testId';
 
 it('should display testid from ProductInfo', () => {
   const { getByTestId } = render(<ProductInfo id={id} />);
-  expect(getByTestId('productInfo')).toBeInTheDocument();
+  expect(getByTestId('product-info')).toBeInTheDocument();
 });
 
 it('should render the NAME of a product', () => {
