@@ -6,6 +6,8 @@ import SearchQuestion from './SearchQuestion';
 import Data from './dummyData';
 import { MasterContainer, Btn, Scroller } from './styles/MasterQA.style';
 
+// const axios = require('axios');
+
 const MasterQA = () => {
   const sortedQuestions = Data.questions.results.sort(
     (a, b) => b.question_helpfulness - a.question_helpfulness,
@@ -51,6 +53,7 @@ const MasterQA = () => {
   // useEffect(() => {
   //   setQuestions(sortedQuestions.slice(0, sortedQuestions.length));
   // }, [Data.questions.results]);
+  // axios.get('https://jsonplaceholder.typicode.com/todos?_limit=5').then((res) => console.log(res));
 
   return (
     <>
