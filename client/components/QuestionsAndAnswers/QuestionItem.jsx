@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import {
+  QuestionDiv, QuestionBody, QuestionMisc, UnderLine, LoadMore,
+} from './styles/QuestionItem.style';
 import AnswerList from './AnswerList';
 import { AnswerModal } from './ModalForm';
 
@@ -94,37 +96,5 @@ QuestionItem.propTypes = {
   index: PropTypes.number.isRequired,
   updateHelpfulness: PropTypes.func.isRequired,
 };
-
-// style
-const QuestionDiv = styled.div`
-  display: flex;
-  justify-content: flex-start;
-`;
-
-const QuestionBody = styled.h4`
-  padding: 2px;
-`;
-const QuestionMisc = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 400px;
-`;
-const UnderLine = styled.button`
-  text-decoration: underline;
-  cursor: pointer;
-  border: 0;
-  background-color: inherit;
-`;
-
-const LoadMore = styled.button`
-  cursor: pointer;
-  border: 0;
-  padding: 8px;
-  background-color: inherit;
-  font-weight: bold;
-`;
-// const QuestionBody = styled.h4`
-
-// `;
 
 export default QuestionItem;

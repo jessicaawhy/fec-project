@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
 import AddQuestion from './AddQuestion';
-// import { QuestionModal, AnswerModal } from './ModalForm';
-// import { QuestionModal, AnswerModal } from './ModalForm';
 import MoreQuestions from './MoreQuestions';
 import QuestionList from './QuestionList';
 import SearchQuestion from './SearchQuestion';
 import Data from './dummyData';
+import { MasterContainer, Btn, Scroller } from './styles/MasterQA.style';
 
-// component
 const MasterQA = () => {
   const sortedQuestions = Data.questions.results.sort(
     (a, b) => b.question_helpfulness - a.question_helpfulness,
@@ -72,22 +69,5 @@ const MasterQA = () => {
     </>
   );
 };
-
-// style
-const MasterContainer = styled.div`
-  margin: 30px;
-  height: 100px,
-  display: flex,
-  align-items: center,
-  justify-content: center,
-`;
-const Btn = styled.div`
-  display: flex;
-`;
-const Scroller = styled.div`
-  height: 366px;
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
-`;
 
 export default MasterQA;

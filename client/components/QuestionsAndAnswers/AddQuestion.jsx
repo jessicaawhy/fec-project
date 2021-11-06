@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import Button from './styles/SharedQA.style';
 import { QuestionModal } from './ModalForm';
 
 const AddQuestion = ({ handleAddQuestion }) => {
@@ -16,15 +16,5 @@ const AddQuestion = ({ handleAddQuestion }) => {
     </div>
   );
 };
-
-// style
-const Button = styled.button`
-  padding: 25px;
-  font-size: 1em;
-  color: black;
-  border: 2px solid black;
-  margin: 5px;
-  cursor: pointer;
-`;
 
 export default AddQuestion;
