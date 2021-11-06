@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-  backdrop-filter: blur(2px);
+export const StyledFormModal = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -9,29 +11,30 @@ export const Container = styled.div`
   width: 100vw;
   height: 100vh;
   z-index: 100;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  backdrop-filter: blur(2px);
 `;
 
-export const PhotoContainer = styled.div`
-  width: 70%;
-  height: 70%;
-  background-color: rgb(240, 240, 240);
+export const Container = styled.div`
   display: grid;
   grid-template: 5% 90% 5% / 5% 90% 5%;
+  width: 60%;
+  height: 90%;
+  overflow-y:auto;
+  background-color: rgb(240, 240, 240);
+
   button {
     grid-area: 1 / 3 / 2 / 4;
     place-self: start end;
     padding: 10px;
     border: none;
     font-size: larger;
-  }
-  img {
+  };
+
+  div {
     grid-area: 2 / 2 / 3 / 3;
-    object-fit: contain;
-    height: 90%;
-    width: 90%;
+    overflow-y: auto;
+    height: 100%;
+    width: 100%;
     place-self: center;
-  }
+  };
 `;

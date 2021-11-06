@@ -6,7 +6,7 @@ export const Item = styled.div`
   > * {
     margin: 10px 0;
   };
-  padding: 15px 0;
+  padding: 15px;
 `;
 
 /* Header */
