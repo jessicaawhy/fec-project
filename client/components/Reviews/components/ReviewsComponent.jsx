@@ -1,47 +1,47 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 
 import Summary from './Summary';
 import Reviews from './Reviews';
 import Container from '../styles/ReviewsComponent.styled';
 
-import { sortReviews } from '../helpers/helpers';
-import exampleGetReviews from '../sampleData/exampleGetReviews';
-import exampleReviewsMeta from '../sampleData/exampleReviewsMeta';
-
 const ReviewsComponent = () => {
-  const [sort, setSort] = useState(0);
+  const [sort, setSort] = useState('relevance');
   const [filter, setFilter] = useState({});
-  const [reviews] = useState(exampleGetReviews.results);
-  const [subset, setSubset] = useState(reviews);
+  const [reviews, setReviews] = useState(null);
+  const [subset, setSubset] = useState(null);
+  const [meta, setMeta] = useState(null);
+  const [page, setPage] = useState(1);
+  const [num, setNum] = useState(20);
 
   useEffect(() => {
-    setSubset(sortReviews(subset, sort));
-  }, [sort]);
+    const getData = async () => {
+      const response = await fetch(`http://localhost:3000/reviews/61576/${page}/${num}/${sort}`);
+      const data = await response.json();
+      setReviews(data.results);
+      setSubset(data.results);
+    };
 
-  useEffect(() => {
-    if (Object.keys(filter).length === 0) {
-      setSubset(sortReviews(reviews, sort));
-    } else {
-      const filtered = [];
+    const getMetaData = async () => {
+      const response = await fetch('http://localhost:3000/reviews/meta/61576/');
+      const data = await response.json();
+      setMeta(data);
+    };
 
-      for (let i = 0; i < reviews.length; i += 1) {
-        const { rating } = reviews[i];
-        if (filter[rating]) {
-          filtered.push(reviews[i]);
-        }
-      }
-
-      setSubset(sortReviews(filtered, sort));
-    }
-  }, [filter]);
+    getData();
+    getMetaData();
+  }, []);
 
   return (
-    <Container id="starRating">
-      <Summary filter={filter} setFilter={setFilter} meta={exampleReviewsMeta} />
-      {/* todo: update product name here once we start working with the API */}
-      {/* alternatively: useContext hook for the product name if needed in other modules */}
-      <Reviews product="[Product Name Here]" reviews={subset} sort={sort} setSort={setSort} />
-    </Container>
+    meta && subset
+      && (
+        <Container id="starRating">
+          {/* {console.log('subset: ', subset)} */}
+          <Summary filter={filter} setFilter={setFilter} meta={meta} />
+          {/* todo: update product name here once we start working with the API */}
+          {/* alternatively: useContext hook for the product name if needed in other modules */}
+          <Reviews product="[Product Name Here]" reviews={subset} sort={sort} setSort={setSort} page={page} setPage={setPage} />
+        </Container>
+      )
   );
 };
 

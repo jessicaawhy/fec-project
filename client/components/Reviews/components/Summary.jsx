@@ -11,6 +11,7 @@ import {
 import { getAverageRating, getAverageRec, getRatingBreakdown } from '../helpers/helpers';
 
 const Summary = ({ meta, filter, setFilter }) => {
+  console.log(meta);
   const currentFilter = Object.keys(filter);
   const averageRating = getAverageRating(meta.ratings);
   const ratingsBreakdown = getRatingBreakdown(meta.ratings);
