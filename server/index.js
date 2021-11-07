@@ -17,10 +17,6 @@ app.use('/overview', overviewRouter);
 
 app.use('/qa/questions', questionsRouter);
 
-// app.get('/qa/questions', (req, res) => {
-//   res.send('keep moving');
-// });
-
 app.listen(port, () => {
   console.log(`app listening at http://localhost:${port}`);
 });
