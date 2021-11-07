@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ButtonLink from '../styles/ButtonLink.styled';
+
+import ButtonLink from '../../styles/ButtonLink.styled';
 import {
   Rating, ProgressBorder, ProgressBar,
-} from './styles/SummaryRatingItem.styled';
+} from '../styles/SummaryRatingItem.styled';
 
 const SummaryRatingItem = ({
   value, width, filter, setFilter,

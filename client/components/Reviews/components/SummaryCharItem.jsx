@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import {
   StyledCharItem, CharBorder, CharMarker, Labels,
-} from './styles/SummaryCharItem.styled';
+} from '../styles/SummaryCharItem.styled';
 
 const SummaryCharItem = ({ char, percent }) => {
   const qualityDescriptor = {

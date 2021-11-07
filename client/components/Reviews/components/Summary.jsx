@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ButtonLink from '../styles/ButtonLink.styled';
-import Stars from '../styles/Stars.styled';
-import {
-  Header, FiltersContainer, RatingsContainer, CharContainer,
-} from './styles/Summary.styled';
+
 import SummaryRatingItem from './SummaryRatingItem';
 import SummaryCharItem from './SummaryCharItem';
-import { getAverageRating, getAverageRec, getRatingBreakdown } from './helpers/helpers';
+import ButtonLink from '../../styles/ButtonLink.styled';
+import Stars from '../../styles/Stars.styled';
+import {
+  Header, FiltersContainer, RatingsContainer, CharContainer,
+} from '../styles/Summary.styled';
+import { getAverageRating, getAverageRec, getRatingBreakdown } from '../helpers/helpers';
 
 const Summary = ({ meta, filter, setFilter }) => {
   const currentFilter = Object.keys(filter);

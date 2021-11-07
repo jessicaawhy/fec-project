@@ -2,6 +2,8 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+
+import FormElement from './FormElement';
 import {
   StyledStarRating,
   StyledRecommend,
@@ -9,8 +11,7 @@ import {
   StyledEmail,
   StyledBody,
   StyledCharacteristics,
-} from './styles/FormField.styled';
-import FormElement from './FormElement';
+} from '../styles/FormFields.styled';
 
 /* STAR RATING */
 

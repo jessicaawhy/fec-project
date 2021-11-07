@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import SelectSort from '../styles/SelectSort.styled';
-import Button from '../styles/Button.styled';
-import StyledReviews from './styles/Reviews.styled';
-import FormModal from './FormModal';
+
 import ReviewsList from './ReviewsList';
+import FormModal from './FormModal';
+import SelectSort from '../../styles/SelectSort.styled';
+import Button from '../../styles/Button.styled';
+import StyledReviews from '../styles/Reviews.styled';
 
 const Reviews = ({
   product, reviews, sort, setSort,
