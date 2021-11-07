@@ -3,10 +3,14 @@ import PropTypes from 'prop-types';
 import SelectSort from '../styles/SelectSort.styled';
 import Button from '../styles/Button.styled';
 import { StyledReviews } from './styles/Reviews.styled';
+import FormModal from './FormModal';
 import ReviewsList from './ReviewsList';
 
-const Reviews = ({ reviews, sort, setSort }) => {
+const Reviews = ({
+  product, reviews, sort, setSort,
+}) => {
   const [num, setNum] = useState(reviews.length < 2 ? reviews.length : 2);
+  const [showModal, setShowModal] = useState(false);
 
   const handleSelect = (e) => {
     setNum(reviews.length < 2 ? reviews.length : 2);
@@ -33,11 +37,17 @@ const Reviews = ({ reviews, sort, setSort }) => {
         </SelectSort>
       </div>
       <ReviewsList reviews={reviews.filter((review, i) => i < num)} />
+      <div>
+        {
+          num < reviews.length
+          && <Button type="button" onClick={loadMoreReviews}>MORE REVIEWS</Button>
+        }
+        <Button type="button" onClick={() => setShowModal(true)}>ADD A REVIEW +</Button>
+      </div>
       {
-        num < reviews.length
-        && <Button type="button" onClick={loadMoreReviews}>MORE REVIEWS</Button>
+        showModal
+        && <FormModal product={product} setShowModal={setShowModal} />
       }
-      <Button type="button">ADD A REVIEW +</Button>
     </StyledReviews>
   );
 };
@@ -45,6 +55,7 @@ const Reviews = ({ reviews, sort, setSort }) => {
 export default Reviews;
 
 Reviews.propTypes = {
+  product: PropTypes.string.isRequired,
   reviews: PropTypes.arrayOf(PropTypes.object).isRequired,
   sort: PropTypes.number.isRequired,
   setSort: PropTypes.func.isRequired,
