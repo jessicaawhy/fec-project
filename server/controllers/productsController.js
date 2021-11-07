@@ -21,7 +21,7 @@ module.exports = {
       })
       .catch((err) => {
         console.log('error getting products', err);
-        res.send(500);
+        res.sendStatus(500);
       });
   },
 };
