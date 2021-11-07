@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 import Button from '../styles/Button.styled';
 import StyledForm from './styles/Form.styled';
 import {
-  Recommend, Name, Email, Body, Characteristics,
+  StarRating, Recommend, Name, Email, Body, Characteristics,
 } from './FormFields';
 
 const ReviewsForm = () => {
   const handleClick = (e) => {
     e.preventDefault();
+    // console.log(e.target.rating.value);
     // console.log(e.target.nickname.value);
     // console.log(e.target.email.value);
     // console.log(e.target.body.value);
@@ -25,7 +26,7 @@ const ReviewsForm = () => {
     <StyledForm onSubmit={handleClick}>
 
       {/* TODO:Overall rating */}
-
+      <StarRating />
       <Name />
       <Email />
       <Body />

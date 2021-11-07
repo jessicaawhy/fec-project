@@ -1,9 +1,76 @@
-import React, { useState, useEffect } from 'react';
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
-  StyledRecommend, StyledName, StyledEmail, StyledBody, StyledCharacteristics,
+  StyledStarRating,
+  StyledRecommend,
+  StyledName,
+  StyledEmail,
+  StyledBody,
+  StyledCharacteristics,
 } from './styles/FormField.styled';
 import FormElement from './FormElement';
+
+/* STAR RATING */
+
+const StarRatingElement = ({
+  num, selected, setSelected, filled, setFilled,
+}) => (
+  <label
+    htmlFor="rating"
+    onMouseEnter={() => { setFilled(num); }}
+    onMouseLeave={() => { setFilled(selected); }}
+    onClick={(e) => {
+      setSelected(num);
+      setFilled(num);
+      e.target.querySelector('input').checked = true;
+    }}
+  >
+    {filled >= num ? '★' : '☆' }
+    <input
+      name="rating"
+      type="radio"
+      value={num}
+    />
+  </label>
+);
+
+StarRatingElement.propTypes = {
+  num: PropTypes.number.isRequired,
+  selected: PropTypes.number.isRequired,
+  setSelected: PropTypes.func.isRequired,
+  filled: PropTypes.number.isRequired,
+  setFilled: PropTypes.func.isRequired,
+};
+
+export const StarRating = () => {
+  const [selected, setSelected] = useState(0);
+  const [filled, setFilled] = useState(0);
+
+  return (
+    <StyledStarRating>
+      <legend>Rating</legend>
+
+      <div>
+        {
+          [1, 2, 3, 4, 5].map((num) => (
+            <StarRatingElement
+              key={num}
+              num={num}
+              selected={selected}
+              setSelected={setSelected}
+              filled={filled}
+              setFilled={setFilled}
+            />
+          ))
+        }
+      </div>
+    </StyledStarRating>
+  );
+};
+
+/* RECOMMEND */
 
 export const Recommend = () => (
   <StyledRecommend>
@@ -27,6 +94,8 @@ export const Recommend = () => (
   </StyledRecommend>
 );
 
+/* NAME */
+
 export const Name = () => (
   <StyledName>
     <FormElement
@@ -37,6 +106,8 @@ export const Name = () => (
   </StyledName>
 );
 
+/* EMAIL */
+
 export const Email = () => (
   <StyledEmail>
     <FormElement
@@ -46,6 +117,8 @@ export const Email = () => (
     />
   </StyledEmail>
 );
+
+/* BODY */
 
 export const Body = () => {
   const [message, setMessage] = useState('');
@@ -78,7 +151,7 @@ export const Body = () => {
   );
 };
 
-// Characteristics
+/* CHARACTERISTICS */
 
 export const Characteristics = ({ name, mainLabel, elements }) => (
   <StyledCharacteristics>

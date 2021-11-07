@@ -1,5 +1,25 @@
 import styled from 'styled-components';
 
+export const StyledStarRating = styled.fieldset`
+  border: none;
+  margin: 10px 0;
+
+  legend {
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+  };
+
+  input {
+    display: none;
+  }
+
+  div {
+    margin: 0 5px;
+  }
+`;
+
 export const StyledRecommend = styled.fieldset`
   border: none;
   margin: 10px 0;
@@ -34,9 +54,6 @@ export const StyledName = styled.fieldset`
 
   label {
     font-weight: bold;
-  }
-
-  label {
     display: flex;
     flex-direction: column;
     margin: 5px;
@@ -54,9 +71,6 @@ export const StyledEmail = styled.fieldset`
 
   label {
     font-weight: bold;
-  }
-
-  label {
     display: flex;
     flex-direction: column;
     margin: 5px;
@@ -74,9 +88,6 @@ export const StyledBody = styled.fieldset`
 
   label {
     font-weight: bold;
-  }
-
-  label {
     display: flex;
     flex-direction: column;
     margin: 5px;
@@ -91,7 +102,7 @@ export const StyledBody = styled.fieldset`
 
   p {
     font-weight: normal;
-  }
+  };
 `;
 
 export const StyledCharacteristics = styled.fieldset`
