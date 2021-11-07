@@ -10,12 +10,20 @@ export const getAverageRating = (ratings) => {
     }
   }
 
+  if (total === 0) {
+    return 0;
+  }
+
   return total / count;
 };
 
 export const getRatingBreakdown = (ratings) => {
   const ratingsTotal = Object.values(ratings)
     .reduce((acc, curr) => acc + Number(curr), 0);
+
+  if (ratingsTotal === 0) {
+    return [0, 0, 0, 0, 0];
+  }
 
   return [1, 2, 3, 4, 5].map((x) => (ratings[x] || 0) / ratingsTotal);
 };

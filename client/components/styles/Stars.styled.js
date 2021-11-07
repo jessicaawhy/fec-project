@@ -7,8 +7,8 @@ import styled from 'styled-components';
 
 const Stars = styled.div`
   --star-size: 20px;
-  --star-color: rgb(100, 100, 100); // before
-  --star-background: black; // fill color
+  --star-color: rgb(225, 225, 225); // before
+  --star-background: rgb(100, 100, 100); // fill color
   --percent: calc(${(props) => props.rating} / 5 * 100%);
 
   display: inline-block;

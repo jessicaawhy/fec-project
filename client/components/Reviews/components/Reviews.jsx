@@ -8,7 +8,7 @@ import Button from '../../styles/Button.styled';
 import StyledReviews from '../styles/Reviews.styled';
 
 const Reviews = ({
-  product, reviews, sort, setSort,
+  product, total, reviews, sort, setSort,
 }) => {
   const [showModal, setShowModal] = useState(false);
   const [num, setNum] = useState(reviews.length < 2 ? reviews.length : 2);
@@ -32,7 +32,7 @@ const Reviews = ({
   return (
     <StyledReviews data-testid="reviews">
       <div>
-        {`${reviews.length} reviews, sorted by `}
+        {`${total} reviews, sorted by `}
         {/* eslint-disable-next-line styled-components-a11y/no-onchange */}
         <SelectSort name="sort" id="sort-options" value={sort} onChange={handleSelect}>
           <option value="relevance">relevance</option>

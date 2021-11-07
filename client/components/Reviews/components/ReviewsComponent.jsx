@@ -21,8 +21,8 @@ const ReviewsComponent = () => {
     ]);
 
     setReviews(updatedReviews.results);
-    setSubset(updatedReviews.results);
     setMeta(updatedMeta);
+    setFilter({});
 
     isInitialMount.current = false;
   }, [sort]);
@@ -59,6 +59,7 @@ const ReviewsComponent = () => {
           {/* alternatively: useContext hook for the product name if needed in other modules */}
           <Reviews
             product="[Product Name Here]"
+            total={reviews.length}
             reviews={subset}
             sort={sort}
             setSort={setSort}
