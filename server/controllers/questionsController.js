@@ -1,12 +1,11 @@
 const axios = require('axios');
 
+// apply axios defaults
 axios.defaults.baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions';
 axios.defaults.headers.common.Authorization = process.env.TOKEN;
-// apply default header
 
 const getQuestions = (req, res) => {
   const { product_id, page, count } = req.params;
-  console.log(req.url);
   axios({
     method: 'get',
     url: `/?${new URLSearchParams({ product_id, page, count })}`,
@@ -16,18 +15,10 @@ const getQuestions = (req, res) => {
     .then((data) => res.send(data))
     .catch((err) => {
       console.log('---------', err.request);
-      res.send(500);
+      res.status(500).send(err);
     });
 };
 
 module.exports = {
   getQuestions,
 };
-/** TO BE DELETED */
-// ?product_id=61575&page=1&count=5
-// url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions/?${new URLSearchParams({
-//   product_id,
-//   page,
-//   count,
-// })}`,
-// headers: { Authorization: process.env.TOKEN },
