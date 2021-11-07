@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import MasterQA from './MasterQA';
+import MasterQA from '../MasterQA';
 
 it('should render MasterQA component correctly', () => {
   const { getByTestId } = render(<MasterQA />);

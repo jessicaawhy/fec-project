@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import Button from './styles/SharedQA.style';
 
 const MoreQuestions = ({ renderMoreQuestions }) => (
   <Button
@@ -14,14 +14,5 @@ const MoreQuestions = ({ renderMoreQuestions }) => (
 MoreQuestions.propTypes = {
   renderMoreQuestions: PropTypes.func.isRequired,
 };
-// style
-const Button = styled.button`
-  padding: 25px;
-  font-size: 1em;
-  color: black;
-  border: 2px solid black;
-  margin: 5px;
-  cursor: pointer;
-`;
 
 export default MoreQuestions;

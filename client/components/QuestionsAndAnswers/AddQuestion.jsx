@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
-import { QuestionModal } from './ModalForm';
+import PropTypes from 'prop-types';
+import Button from './styles/SharedQA.style';
+import QuestionModal from './modal/QuestionModal';
 
 const AddQuestion = ({ handleAddQuestion }) => {
   const [open, setOpen] = useState(false);
@@ -17,14 +18,8 @@ const AddQuestion = ({ handleAddQuestion }) => {
   );
 };
 
-// style
-const Button = styled.button`
-  padding: 25px;
-  font-size: 1em;
-  color: black;
-  border: 2px solid black;
-  margin: 5px;
-  cursor: pointer;
-`;
+AddQuestion.propTypes = {
+  handleAddQuestion: PropTypes.func.isRequired,
+};
 
 export default AddQuestion;
