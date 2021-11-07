@@ -8,7 +8,7 @@ import Button from '../../styles/Button.styled';
 import StyledReviews from '../styles/Reviews.styled';
 
 const Reviews = ({
-  product, total, reviews, sort, setSort,
+  total, reviews, sort, setSort,
 }) => {
   const [showModal, setShowModal] = useState(false);
   const [num, setNum] = useState(reviews.length < 2 ? reviews.length : 2);
@@ -50,7 +50,7 @@ const Reviews = ({
       </div>
       {
         showModal
-        && <FormModal product={product} setShowModal={setShowModal} />
+        && <FormModal setShowModal={setShowModal} />
       }
     </StyledReviews>
   );
@@ -59,7 +59,7 @@ const Reviews = ({
 export default Reviews;
 
 Reviews.propTypes = {
-  product: PropTypes.string.isRequired,
+  total: PropTypes.number.isRequired,
   reviews: PropTypes.arrayOf(PropTypes.object).isRequired,
   sort: PropTypes.number.isRequired,
   setSort: PropTypes.func.isRequired,

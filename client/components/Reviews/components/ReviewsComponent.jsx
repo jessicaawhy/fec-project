@@ -1,6 +1,7 @@
 import React, {
   useEffect, useState, useRef,
 } from 'react';
+import { useProduct } from '../../../ProductContext';
 
 import Summary from './Summary';
 import Reviews from './Reviews';
@@ -8,16 +9,23 @@ import Container from '../styles/ReviewsComponent.styled';
 import { getData, getMetaData } from '../helpers/helpers';
 
 const ReviewsComponent = () => {
+  const current = useProduct();
   const isInitialMount = useRef(true);
+
+  const [product, setProduct] = useState(current);
   const [sort, setSort] = useState('relevance');
   const [filter, setFilter] = useState({});
   const [reviews, setReviews] = useState(null);
   const [subset, setSubset] = useState(null);
   const [meta, setMeta] = useState(null);
 
+  useEffect(() => {
+    setProduct(current);
+  }, [current]);
+
   useEffect(async () => {
     const [updatedReviews, updatedMeta] = await Promise.all([
-      getData(61576, 1, 100, sort), getMetaData(61576),
+      getData(product.id, 1, 100, sort), getMetaData(product.id),
     ]);
 
     setReviews(updatedReviews.results);
@@ -25,7 +33,7 @@ const ReviewsComponent = () => {
     setFilter({});
 
     isInitialMount.current = false;
-  }, [sort]);
+  }, [product, sort]);
 
   useEffect(() => {
     if (!isInitialMount.current) {
@@ -55,10 +63,7 @@ const ReviewsComponent = () => {
             setFilter={setFilter}
             meta={meta}
           />
-          {/* todo: update product name here once we start working with the API */}
-          {/* alternatively: useContext hook for the product name if needed in other modules */}
           <Reviews
-            product="[Product Name Here]"
             total={reviews.length}
             reviews={subset}
             sort={sort}

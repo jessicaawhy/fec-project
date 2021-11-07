@@ -1,5 +1,20 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+
+/* ALL PRODUCT */
+
+export const AllProductsContext = React.createContext();
+export const AllProductsContextUpdate = React.createContext();
+
+export const useAllProducts = () => (
+  useContext(AllProductsContext)
+);
+
+export const useAllProductsUpdate = () => (
+  useContext(AllProductsContextUpdate)
+);
+
+/* CURRENT PRODUCT */
 
 export const ProductContext = React.createContext();
 export const ProductContextUpdate = React.createContext();
@@ -12,22 +27,34 @@ export const useProductUpdate = () => (
   useContext(ProductContextUpdate)
 );
 
-export const ProductProvider = ({ children }) => {
-  // hardcoded product id
-  // may need to update this if the DB is updated & product doesn't exist anymore
-  // consider fetching all products on app initialization & picking one to render
-  const [product, setProduct] = useState(61575);
+/* PROVIDER */
 
-  const updateProduct = (id) => (
-    setProduct(id)
+export const ProductProvider = ({ children }) => {
+  const [allProducts, setAllProduct] = useState([]);
+  const [product, setProduct] = useState(null);
+
+  const updateAllProducts = (productsArr) => (
+    setAllProduct(productsArr)
   );
 
+  const updateProduct = (num) => {
+    setProduct(allProducts[num] || null);
+  };
+
+  useEffect(() => {
+    setProduct(allProducts[0] || null);
+  }, [allProducts]);
+
   return (
-    <ProductContext.Provider value={product}>
-      <ProductContextUpdate.Provider value={updateProduct}>
-        { children }
-      </ProductContextUpdate.Provider>
-    </ProductContext.Provider>
+    <AllProductsContext.Provider value={allProducts}>
+      <AllProductsContextUpdate.Provider value={updateAllProducts}>
+        <ProductContext.Provider value={product}>
+          <ProductContextUpdate.Provider value={updateProduct}>
+            { children }
+          </ProductContextUpdate.Provider>
+        </ProductContext.Provider>
+      </AllProductsContextUpdate.Provider>
+    </AllProductsContext.Provider>
   );
 };
 
