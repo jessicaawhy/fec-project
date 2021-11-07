@@ -11,7 +11,7 @@ export const StyledFormModal = styled.div`
   width: 100vw;
   height: 100vh;
   z-index: 100;
-  backdrop-filter: blur(2px);
+  background-color: rgb(255, 255, 255);
 `;
 
 export const Container = styled.div`

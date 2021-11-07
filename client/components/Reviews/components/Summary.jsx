@@ -1,41 +1,44 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ButtonLink from '../styles/ButtonLink.styled';
-import Stars from '../styles/Stars.styled';
-import {
-  Header, LinkContainer, CharBorder, CharMarker,
-} from './styles/Summary.styled';
+
 import SummaryRatingItem from './SummaryRatingItem';
-import { getAverageRating, getAverageRec } from './helpers/helpers';
+import SummaryCharItem from './SummaryCharItem';
+import ButtonLink from '../../styles/ButtonLink.styled';
+import Stars from '../../styles/Stars.styled';
+import {
+  Header, FiltersContainer, RatingsContainer, CharContainer,
+} from '../styles/Summary.styled';
+import { getAverageRating, getAverageRec, getRatingBreakdown } from '../helpers/helpers';
 
 const Summary = ({ meta, filter, setFilter }) => {
   const currentFilter = Object.keys(filter);
-  const ratingsTotal = Object.values(meta.ratings).reduce((acc, curr) => acc + Number(curr), 0);
-  const ratingsBreakdown = [1, 2, 3, 4, 5].map((x) => (meta.ratings[x] || 0) / ratingsTotal);
+  const averageRating = getAverageRating(meta.ratings);
+  const ratingsBreakdown = getRatingBreakdown(meta.ratings);
 
   return (
     <div data-testid="summary-reviews">
       <Header>
-        <span>{getAverageRating(meta.ratings)}</span>
-        <Stars rating={getAverageRating(meta.ratings)} />
+        <span>{averageRating}</span>
+        <Stars rating={averageRating} />
       </Header>
 
-      <p>{`${(getAverageRec(meta.recommended) * 100).toFixed(0)}% of reviews recommend this product`}</p>
+      <FiltersContainer>
+        <p>{`${(getAverageRec(meta.recommended) * 100).toFixed(0)}% of reviews recommend this product`}</p>
+        {
+          currentFilter.length > 0
+          && (
+            <>
+              <div>
+                <span>Current ratings filter:</span>
+                <span>{`[ ${currentFilter.join(', ')} ]`}</span>
+              </div>
+              <ButtonLink onClick={() => setFilter({})} type="button">Remove all filters</ButtonLink>
+            </>
+          )
+        }
+      </FiltersContainer>
 
-      {
-        currentFilter.length > 0
-        && (
-        <div>
-          <p>
-            Current ratings filter:
-            {' '}
-            {currentFilter.join(', ')}
-          </p>
-          <ButtonLink onClick={() => setFilter({})} type="button">Remove all filters</ButtonLink>
-        </div>
-        )
-      }
-      <LinkContainer>
+      <RatingsContainer>
         {
           [5, 4, 3, 2, 1].map(
             (curr) => (
@@ -48,17 +51,18 @@ const Summary = ({ meta, filter, setFilter }) => {
             ),
           )
         }
-      </LinkContainer>
-      {
-        Object.keys(meta.characteristics).map((char) => (
-          <div>
-            {char}
-            <CharBorder>
-              <CharMarker style={{ left: `${(meta.characteristics[char].value / 5) * 100}%` }} />
-            </CharBorder>
-          </div>
-        ))
-      }
+      </RatingsContainer>
+
+      <CharContainer>
+        {
+          Object.keys(meta.characteristics).map((char) => (
+            <SummaryCharItem
+              char={char}
+              percent={((meta.characteristics[char].value - 1) / (5 - 1)) * 100}
+            />
+          ))
+        }
+      </CharContainer>
     </div>
   );
 };

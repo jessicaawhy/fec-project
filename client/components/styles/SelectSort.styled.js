@@ -8,6 +8,7 @@ const SelectSort = styled.select`
     box-shadow: none;
     outline: none;
   }
+  cursor: pointer;
 `;
 
 export default SelectSort;

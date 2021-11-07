@@ -1,26 +1,32 @@
 import styled from 'styled-components';
 import ButtonLink from '../../styles/ButtonLink.styled';
 
-export const RatingContainer = styled.div`
+export const Rating = styled.div`
   display: flex;
   width: 100%;
   justify-content: center;
+  align-items: center;
+
+  :hover {
+    background-color: rgb(245, 245, 245);
+  };
+
   > * {
     margin: 5px;
-  }
+  };
+
   ${ButtonLink} {
     font-size: inherit;
   };
 `;
 
 export const ProgressBorder = styled.div`
-  background-color: rgb(225, 225, 225);
-  height: 15px;
   flex-grow: 1;
-  vertical-align: sub;
+  height: 15px;
+  background-color: rgb(225, 225, 225);
 `;
 
 export const ProgressBar = styled.div`
-  background-color: rgb(100, 100, 100);
   height: 15px;
+  background-color: rgb(100, 100, 100);
 `;

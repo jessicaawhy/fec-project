@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import Flex from '../styles/Flex.styled';
-import ButtonLink from '../styles/ButtonLink.styled';
-import Stars from '../styles/Stars.styled';
-import Modal from './Modal';
+
+import ReviewsPhotoModal from './ReviewsPhotoModal';
+import Flex from '../../styles/Flex.styled';
+import ButtonLink from '../../styles/ButtonLink.styled';
+import Stars from '../../styles/Stars.styled';
 import {
   Item, Header, Summary, Footer, Response, ImgIcon,
-} from './styles/ReviewsListItem.styled';
-import { formatDate } from './helpers/helpers';
+} from '../styles/ReviewsListItem.styled';
+import { formatDate } from '../helpers/helpers';
 
 const ReviewsListItem = ({ review }) => {
   const [showReview, setShowReview] = useState(false);
@@ -89,7 +90,7 @@ const ReviewsListItem = ({ review }) => {
       </Footer>
       {
         showModal
-        && <Modal currentImg={currentImg} setShowModal={setShowModal} />
+        && <ReviewsPhotoModal currentImg={currentImg} setShowModal={setShowModal} />
       }
     </Item>
   );
