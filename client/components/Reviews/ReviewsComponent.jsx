@@ -37,7 +37,9 @@ const ReviewsComponent = () => {
   return (
     <Container>
       <Summary filter={filter} setFilter={setFilter} meta={exampleReviewsMeta} />
-      <Reviews reviews={subset} sort={sort} setSort={setSort} />
+      {/* todo: update product name here once we start working with the API */}
+      {/* alternatively: useContext hook for the product name if needed in other modules */}
+      <Reviews product="[Product Name Here]" reviews={subset} sort={sort} setSort={setSort} />
     </Container>
   );
 };
