@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Container } from './styles/ReviewsComponent.styled';
+
 import Summary from './Summary';
 import Reviews from './Reviews';
-import { sortReviews } from './helpers/helpers';
+import Container from '../styles/ReviewsComponent.styled';
 
-import exampleGetReviews from './sampleData/exampleGetReviews';
-import exampleReviewsMeta from './sampleData/exampleReviewsMeta';
+import { sortReviews } from '../helpers/helpers';
+import exampleGetReviews from '../sampleData/exampleGetReviews';
+import exampleReviewsMeta from '../sampleData/exampleReviewsMeta';
 
 const ReviewsComponent = () => {
   const [sort, setSort] = useState(0);
@@ -35,9 +36,11 @@ const ReviewsComponent = () => {
   }, [filter]);
 
   return (
-    <Container>
+    <Container id="starRating">
       <Summary filter={filter} setFilter={setFilter} meta={exampleReviewsMeta} />
-      <Reviews reviews={subset} sort={sort} setSort={setSort} />
+      {/* todo: update product name here once we start working with the API */}
+      {/* alternatively: useContext hook for the product name if needed in other modules */}
+      <Reviews product="[Product Name Here]" reviews={subset} sort={sort} setSort={setSort} />
     </Container>
   );
 };

@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { List } from './styles/ReviewsList.styled';
+
 import ReviewsListItem from './ReviewsListItem';
+import List from '../styles/ReviewsList.styled';
 
 const ReviewsList = ({ reviews }) => (
   <List data-testid="reviews-list">

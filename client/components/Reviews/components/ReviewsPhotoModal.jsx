@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Container, PhotoContainer } from './styles/StyledModal.styled';
 
-const Modal = ({ currentImg, setShowModal }) => {
+import { Container, PhotoContainer } from '../styles/ReviewsPhotoModal.styled';
+
+const ReviewPhotoModal = ({ currentImg, setShowModal }) => {
   const handleClick = () => {
     setShowModal(false);
   };
@@ -20,9 +21,9 @@ const Modal = ({ currentImg, setShowModal }) => {
   );
 };
 
-export default Modal;
+export default ReviewPhotoModal;
 
-Modal.propTypes = {
+ReviewPhotoModal.propTypes = {
   currentImg: PropTypes.string.isRequired,
   setShowModal: PropTypes.func.isRequired,
 };

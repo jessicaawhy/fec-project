@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ButtonLink from '../styles/ButtonLink.styled';
+
+import ButtonLink from '../../styles/ButtonLink.styled';
 import {
-  RatingContainer, ProgressBorder, ProgressBar,
-} from './styles/SummaryRatingItem.styled';
+  Rating, ProgressBorder, ProgressBar,
+} from '../styles/SummaryRatingItem.styled';
 
 const SummaryRatingItem = ({
   value, width, filter, setFilter,
@@ -21,10 +22,10 @@ const SummaryRatingItem = ({
   };
 
   return (
-    <RatingContainer>
+    <Rating>
       <ButtonLink onClick={updateFilter} value={value} type="button">{`${value} stars`}</ButtonLink>
       <ProgressBorder><ProgressBar style={{ width: `${width}%` }} /></ProgressBorder>
-    </RatingContainer>
+    </Rating>
   );
 };
 

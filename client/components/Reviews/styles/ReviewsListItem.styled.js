@@ -3,10 +3,11 @@ import Flex from '../../styles/Flex.styled';
 import ButtonLink from '../../styles/ButtonLink.styled';
 
 export const Item = styled.div`
+  padding: 15px;
+
   > * {
     margin: 10px 0;
   };
-  padding: 15px 0;
 `;
 
 /* Header */
@@ -19,8 +20,8 @@ export const Header = styled.div`
     > span {
       padding: 0 5px;
       color: rgb(100, 100, 100);
-    }
-  }
+    };
+  };
 `;
 
 /* Body */
@@ -34,11 +35,12 @@ export const Response = styled.div`
   flex-direction: column;
   background-color: rgb(240, 240, 240);
   padding: 15px;
+
   > * {
     &:first-child {
       font-weight: bold;
-    }
-  }
+    };
+  };
 `;
 
 export const ImgIcon = styled.img`
@@ -52,14 +54,9 @@ export const Footer = styled.div`
   display: flex;
 
   ${Flex} {
-    > * {
-      &:first-child {
-        padding-right: 10px;
-      }
-      &:nth-child(2) {
-        padding-right: 5px;
-      }
-    }
+    & :first-child {
+      padding-right: 15px;
+    };
   };
 
   & .separator {
