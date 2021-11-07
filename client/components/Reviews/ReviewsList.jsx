@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { List } from './styles/ReviewsList.styled';
+import List from './styles/ReviewsList.styled';
 import ReviewsListItem from './ReviewsListItem';
 
 const ReviewsList = ({ reviews }) => (

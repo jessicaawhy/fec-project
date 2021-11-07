@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Container } from './styles/ReviewsComponent.styled';
+import Container from './styles/ReviewsComponent.styled';
 import Summary from './Summary';
 import Reviews from './Reviews';
 import { sortReviews } from './helpers/helpers';
@@ -35,7 +35,7 @@ const ReviewsComponent = () => {
   }, [filter]);
 
   return (
-    <Container>
+    <Container id="starRating">
       <Summary filter={filter} setFilter={setFilter} meta={exampleReviewsMeta} />
       {/* todo: update product name here once we start working with the API */}
       {/* alternatively: useContext hook for the product name if needed in other modules */}
