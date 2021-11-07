@@ -1,10 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import Button from '../styles/Button.styled';
-import StyledForm from './styles/Form.styled';
+
 import {
   StarRating, Recommend, Name, Email, Body, Characteristics,
 } from './FormFields';
+import Button from '../../styles/Button.styled';
+import StyledForm from '../styles/Form.styled';
 
 const ReviewsForm = () => {
   const handleClick = (e) => {
@@ -25,7 +25,6 @@ const ReviewsForm = () => {
   return (
     <StyledForm onSubmit={handleClick}>
 
-      {/* TODO:Overall rating */}
       <StarRating />
       <Name />
       <Email />
@@ -113,7 +112,3 @@ const ReviewsForm = () => {
 };
 
 export default ReviewsForm;
-
-ReviewsForm.propTypes = {
-
-};

@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyledFormModal, Container } from './styles/FormModal.styled';
+
 import Form from './Form';
+import { StyledFormModal, Container } from '../styles/FormModal.styled';
 
 const FormModal = ({ product, setShowModal }) => {
   const handleClick = () => {

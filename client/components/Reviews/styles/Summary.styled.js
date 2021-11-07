@@ -1,29 +1,45 @@
 import styled from 'styled-components';
 
 export const Header = styled.div`
+  margin-bottom: 10px;
+
   & :first-child {
     font-weight: bold;
     font-size: 55px;
     margin-right: 15px;
-  }
-  margin-bottom: 20px;
+  };
 `;
 
-export const LinkContainer = styled.div`
+export const FiltersContainer = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  margin: 10px 0;
+
+  p {
+    margin: 10px 0;
+  };
+
+  div, button {
+    margin: 2px 0;
+  };
+
+  div > span {
+    &:first-child::after {
+      content: " ";
+      white-space: pre;
+    };
+  };
 `;
 
-export const CharBorder = styled.div`
-  background-color: #9e9e9e;
-  height: 15px;
-  flex-grow: 1;
+export const RatingsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 10px 5px;
 `;
 
-export const CharMarker = styled.div`
-  background-color: black;
-  height: 15px;
-  width: 4px;
-  position: relative;
-  left: 50%;
+export const CharContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 10px 5px;
 `;

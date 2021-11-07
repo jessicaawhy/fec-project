@@ -1,32 +1,32 @@
 import styled from 'styled-components';
 
 export const StyledStarRating = styled.fieldset`
-  border: none;
   margin: 10px 0;
+  border: none;
 
   legend {
-    font-weight: bold;
     display: flex;
     flex-direction: column;
     margin: 5px;
+    font-weight: bold;
   };
 
   input {
     display: none;
-  }
+  };
 
   div {
     margin: 0 5px;
-  }
+  };
 `;
 
 export const StyledRecommend = styled.fieldset`
-  border: none;
   margin: 10px 0;
+  border: none;
 
   legend {
     font-weight: bold;
-  }
+  };
 
   div {
     display: flex;
@@ -42,21 +42,21 @@ export const StyledRecommend = styled.fieldset`
   };
 
   input, label {
-    vertical-align: baseline;
-    padding: 10px;
     margin: 0 10px;
-  }
+    padding: 10px;
+    vertical-align: baseline;
+  };
 `;
 
 export const StyledName = styled.fieldset`
-  border: none;
   margin: 10px 0;
+  border: none;
 
   label {
-    font-weight: bold;
     display: flex;
     flex-direction: column;
     margin: 5px;
+    font-weight: bold;
   };
 
   input {
@@ -66,14 +66,14 @@ export const StyledName = styled.fieldset`
 `;
 
 export const StyledEmail = styled.fieldset`
-  border: none;
   margin: 10px 0;
+  border: none;
 
   label {
-    font-weight: bold;
     display: flex;
     flex-direction: column;
     margin: 5px;
+    font-weight: bold;
   };
 
   input {
@@ -83,14 +83,14 @@ export const StyledEmail = styled.fieldset`
 `;
 
 export const StyledBody = styled.fieldset`
-  border: none;
   margin: 10px 0;
+  border: none;
 
   label {
-    font-weight: bold;
     display: flex;
     flex-direction: column;
     margin: 5px;
+    font-weight: bold;
   };
 
   textarea {
@@ -106,12 +106,12 @@ export const StyledBody = styled.fieldset`
 `;
 
 export const StyledCharacteristics = styled.fieldset`
-  border: none;
   margin: 10px 0;
+  border: none;
 
   legend {
     font-weight: bold;
-  }
+  };
 
   div {
     display: flex;
@@ -132,5 +132,5 @@ export const StyledCharacteristics = styled.fieldset`
 
   input {
     margin: 10px;
-  }
+  };
 `;

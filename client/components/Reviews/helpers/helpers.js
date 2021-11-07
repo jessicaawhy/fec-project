@@ -47,6 +47,13 @@ const getAverageRating = (ratings) => {
   return total / count;
 };
 
+const getRatingBreakdown = (ratings) => {
+  const ratingsTotal = Object.values(ratings)
+    .reduce((acc, curr) => acc + Number(curr), 0);
+
+  return [1, 2, 3, 4, 5].map((x) => (ratings[x] || 0) / ratingsTotal);
+};
+
 const getAverageRec = (recommended) => {
   const trueCount = recommended.true ? Number(recommended.true) : 0;
   const falseCount = recommended.false ? Number(recommended.false) : 0;
@@ -63,5 +70,5 @@ const formatDate = (date) => (
 );
 
 module.exports = {
-  sortReviews, getAverageRating, getAverageRec, formatDate,
+  getAverageRating, getRatingBreakdown, getAverageRec, formatDate, sortReviews,
 };

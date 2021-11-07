@@ -2,7 +2,7 @@ import React from 'react';
 import GlobalStyles from './styles/Global';
 import OverviewContainer from './overview/OverviewContainer';
 import MasterQA from './QuestionsAndAnswers/MasterQA';
-import ReviewsComponent from './Reviews/ReviewsComponent';
+import ReviewsComponent from './Reviews/components/ReviewsComponent';
 
 const App = () => (
   <>
