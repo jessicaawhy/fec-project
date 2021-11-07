@@ -11,7 +11,6 @@ import {
 import { getAverageRating, getAverageRec, getRatingBreakdown } from '../helpers/helpers';
 
 const Summary = ({ meta, filter, setFilter }) => {
-  console.log(meta);
   const currentFilter = Object.keys(filter);
   const averageRating = getAverageRating(meta.ratings);
   const ratingsBreakdown = getRatingBreakdown(meta.ratings);
@@ -19,7 +18,7 @@ const Summary = ({ meta, filter, setFilter }) => {
   return (
     <div data-testid="summary-reviews">
       <Header>
-        <span>{averageRating}</span>
+        <span>{averageRating.toFixed(1)}</span>
         <Stars rating={averageRating} />
       </Header>
 

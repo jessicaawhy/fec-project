@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import ReviewsList from './ReviewsList';
@@ -8,19 +8,31 @@ import Button from '../../styles/Button.styled';
 import StyledReviews from '../styles/Reviews.styled';
 
 const Reviews = ({
-  product, reviews, sort, setSort, page, setPage,
+  product, reviews, sort, setSort,
 }) => {
-  console.log(reviews);
   const [showModal, setShowModal] = useState(false);
+  const [num, setNum] = useState(reviews.length < 2 ? reviews.length : 2);
 
   const handleSelect = (e) => {
     setSort(e.target.value);
   };
 
+  const loadMoreReviews = () => {
+    if (num + 2 < reviews.length) {
+      setNum(num + 2);
+    } else {
+      setNum(reviews.length);
+    }
+  };
+
+  useEffect(() => {
+    setNum(2);
+  }, [sort]);
+
   return (
     <StyledReviews data-testid="reviews">
       <div>
-        {/* {`${reviews.length} reviews, sorted by `} */}
+        {`${reviews.length} reviews, sorted by `}
         {/* eslint-disable-next-line styled-components-a11y/no-onchange */}
         <SelectSort name="sort" id="sort-options" value={sort} onChange={handleSelect}>
           <option value="relevance">relevance</option>
@@ -28,9 +40,12 @@ const Reviews = ({
           <option value="newest">newest</option>
         </SelectSort>
       </div>
-      <ReviewsList reviews={reviews} />
+      <ReviewsList reviews={reviews.filter((review, i) => i < num)} />
       <div>
-        <Button type="button" onClick={() => setPage(page + 1)}>MORE REVIEWS</Button>
+        {
+          num < reviews.length
+          && <Button type="button" onClick={loadMoreReviews}>MORE REVIEWS</Button>
+        }
         <Button type="button" onClick={() => setShowModal(true)}>ADD A REVIEW +</Button>
       </div>
       {
