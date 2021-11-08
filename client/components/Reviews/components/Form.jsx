@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {
-  StarRating, Recommend, Name, Email, Body, Characteristics,
+  StarRating, Recommend, Name, Email, Summary, Body, Characteristics,
 } from './FormFields';
 import Button from '../../styles/Button.styled';
 import StyledForm from '../styles/Form.styled';
@@ -9,11 +9,15 @@ import StyledForm from '../styles/Form.styled';
 const ReviewsForm = () => {
   const handleClick = (e) => {
     e.preventDefault();
+
     // console.log(e.target.rating.value);
-    // console.log(e.target.nickname.value);
-    // console.log(e.target.email.value);
+    // console.log(e.target.summary.value);
     // console.log(e.target.body.value);
     // console.log(e.target.recommend.value);
+
+    // console.log(e.target.name.value);
+    // console.log(e.target.email.value);
+
     // console.log(e.target.size.value);
     // console.log(e.target.width.value);
     // console.log(e.target.comfort.value);
@@ -28,6 +32,7 @@ const ReviewsForm = () => {
       <StarRating />
       <Name />
       <Email />
+      <Summary />
       <Body />
       <Recommend />
 

@@ -82,6 +82,23 @@ export const StyledEmail = styled.fieldset`
   };
 `;
 
+export const StyledSummary = styled.fieldset`
+  margin: 10px 0;
+  border: none;
+
+  label {
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+    font-weight: bold;
+  };
+
+  input {
+    margin: 5px 0;
+    padding: 3px;
+  };
+`;
+
 export const StyledBody = styled.fieldset`
   margin: 10px 0;
   border: none;
