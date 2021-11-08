@@ -15,6 +15,7 @@ const MasterQA = () => {
   );
 
   const [questionsLength, setQuestionsLength] = useState(2);
+  const [questionsFromAPI, setQuestionsFromAPI] = useState([]);
   const [questions, setQuestions] = useState(sortedQuestions.slice(0, questionsLength));
 
   const renderMoreQuestions = () => {
@@ -24,23 +25,23 @@ const MasterQA = () => {
       setQuestions(sortedQuestions.slice(0, setQuestionsLength(sortedQuestions.length)));
     }
   };
+
   useEffect(async () => {
-    const theResult = await getQuestions(61575, 1, 1);
-    console.log('----- results', theResult.results);
-    setQuestions(theResult.results.slice(0, questionsLength));
+    const questionsFetched = await getQuestions(61575, 1, 5);
+    console.log('----- results', questionsFetched.results);
+
+    setQuestionsFromAPI(questionsFetched.results);
+    // setQuestions(questionsFromAPI.slice(0, questionsLength));
+
+    // const promise = new Promise((resolve, reject) => resolve(setQuestionsFromAPI(questionsFetched.results)));
+    // promise.then(() => setQuestions(questionsFromAPI.slice(0, questionsLength))).catch((err) => console.log('err///', err));
+    // setQuestions(questionsFromAPI.slice(0, questionsLength));
   }, []);
 
-  // useEffect(async () => {
-  //   const [updatedReviews, updatedMeta] = await Promise.all([
-  //     getData(product.id, 1, 100, sort), getMetaData(product.id),
-  //   ]);
-
-  //   setReviews(updatedReviews.results);
-  //   setMeta(updatedMeta);
-  //   setFilter({});
-
-  //   isInitialMount.current = false;
-  // }, [product, sort]);
+  useEffect(() => {
+    console.log('what is quesitons from API-------', questionsFromAPI);
+    setQuestions(questionsFromAPI.slice(0, questionsLength));
+  }, [questionsFromAPI]);
 
   const updateHelpfulness = (index) => {
     console.log('testing');
