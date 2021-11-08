@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import map from 'lodash/map';
 import { CartContainer, CartButton, DropDown } from './styles/AddToCart.style';
 
 const AddToCart = ({ styles }) => (
@@ -21,9 +22,9 @@ const AddToCart = ({ styles }) => (
       name="size"
       id="size"
     >
-      {styles.skus.map((sku) => (
+      {map(styles, (style) => (
         // does not yet reflect corresponding size/quantity data
-        <option value={`${sku}`}>{sku.size}</option>
+        map(style.skus, (sku) => <option value={`${sku.sku}`}>{sku.size}</option>)
       ))}
     </DropDown>
     <DropDown
@@ -32,9 +33,9 @@ const AddToCart = ({ styles }) => (
       name="quantity"
       id="quantity"
     >
-      {styles.skus.map((sku) => (
+      {map(styles, (style) => (
         // does not yet reflect corresponding size/quantity data
-        <option value={`${sku}`}>{sku.quantity}</option>
+        map(style.skus, (sku) => <option value={`${sku.sku}`}>{sku.quantity}</option>)
       ))}
     </DropDown>
   </CartContainer>

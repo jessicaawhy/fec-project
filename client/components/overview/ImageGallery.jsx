@@ -1,4 +1,5 @@
 import React from 'react';
+import map from 'lodash/map';
 import PropTypes from 'prop-types';
 import {
   GalleryContainer, GalleryStyle, ImageStyle, ThumbnailContainer, ThumbnailStyle, RightArrow,
@@ -22,15 +23,17 @@ const ImageGallery = ({ styles }) => (
           className="up-arrow"
         />
       </UpArrowStyle>
-      {styles.photos.map((photo) => (
-        <div>
-          <ThumbnailStyle
-            data-testid="thumbnail-image"
-            className="thumbnail-image"
-            alt="thumbnail"
-            src={photo.thumbnail_url}
-          />
-        </div>
+      {map(styles, (style) => (
+        map(style.photos, (photo) => (
+          <div>
+            <ThumbnailStyle
+              data-testid="thumbnail-image"
+              className="thumbnail-image"
+              alt="thumbnail"
+              src={photo.thumbnail_url}
+            />
+          </div>
+        ))
       ))}
       <DownArrowStyle>
         <DownArrow
@@ -46,15 +49,17 @@ const ImageGallery = ({ styles }) => (
           className="right-arrow"
         />
       </RightArrowStyle>
-      {styles.photos.map((photo) => (
-        <div>
-          <ImageStyle
-            data-testid="full-image"
-            className="full-image"
-            alt="full image"
-            src={photo.url}
-          />
-        </div>
+      {map(styles, (style) => (
+        map(style.photos, (photo) => (
+          <div>
+            <ImageStyle
+              data-testid="full-image"
+              className="full-image"
+              alt="full image"
+              src={photo.url}
+            />
+          </div>
+        ))
       ))}
       <LeftArrowStyle>
         <LeftArrow

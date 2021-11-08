@@ -1,4 +1,5 @@
 import React from 'react';
+import map from 'lodash/map';
 import PropTypes from 'prop-types';
 import StyleButton from './StyleButton';
 import { StyleSelectorContainer } from './styles/StyleSelector.style';
@@ -8,7 +9,7 @@ const StyleSelector = ({ styles }) => (
     data-testid="style-selector"
     className="style-selector"
   >
-    {styles.photos.map((photo) => (
+    {map(styles.photos, (photo) => (
       <StyleButton
         photo={photo}
       />
