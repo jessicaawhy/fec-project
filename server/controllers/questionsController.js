@@ -21,7 +21,6 @@ const getQuestions = (req, res) => {
 
 const getAnswers = (req, res) => {
   const { question_id, page, count } = req.params;
-  console.log('req.params', req.params);
   axios({
     method: 'get',
     url: `/${question_id}/answers/?page=${page}&count=${count}`,
@@ -36,6 +35,14 @@ const getAnswers = (req, res) => {
 
 const postQuestion = (req, res) => {
   res.send('from post question API');
+  const {
+    product_id, body, name, email,
+  } = req.params;
+  axios({
+    method: 'post',
+    url: '',
+    data: `{${body}, ${name}, ${email}}`,
+  });
 };
 
 module.exports = {
