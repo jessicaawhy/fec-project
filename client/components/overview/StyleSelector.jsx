@@ -9,10 +9,12 @@ const StyleSelector = ({ styles }) => (
     data-testid="style-selector"
     className="style-selector"
   >
-    {map(styles.photos, (photo) => (
-      <StyleButton
-        photo={photo}
-      />
+    {map(styles, (style) => (
+      map(style.photos, (photo) => (
+        <StyleButton
+          photo={photo}
+        />
+      ))
     ))}
   </StyleSelectorContainer>
 );

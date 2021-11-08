@@ -6,7 +6,6 @@ import ImageGallery from './ImageGallery';
 import StyleSelector from './StyleSelector';
 import AddToCart from './AddToCart';
 import products from './tests/testData/testProducts';
-// import styles from './tests/testData/testStyles';
 import styles from './tests/testData/formattedStyles';
 import id from './tests/testData/testId';
 import {
@@ -29,6 +28,7 @@ const OverviewContainer = () => (
         <StyleSelector styles={styles} />
         <AddToCart styles={styles} />
       </RightColumn>
+
       <ProductDescription id={id} />
     </Grid>
   </Container>
