@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { useProduct } from '../../../ProductContext';
 
 import {
@@ -136,3 +137,50 @@ const ReviewsForm = ({ meta }) => {
 };
 
 export default ReviewsForm;
+
+ReviewsForm.propTypes = {
+  meta: PropTypes.shape({
+    product_id: PropTypes.number,
+    ratings: {
+      1: PropTypes.number,
+      2: PropTypes.number,
+      3: PropTypes.number,
+      4: PropTypes.number,
+      5: PropTypes.number,
+    },
+    recommended: {
+      true: PropTypes.string,
+      false: PropTypes.string,
+    },
+    characteristics: {
+      Fit: {
+        id: PropTypes.number,
+        value: PropTypes.oneOfType([
+          PropTypes.string,
+          PropTypes.null,
+        ]),
+      },
+      Length: {
+        id: PropTypes.number,
+        value: PropTypes.oneOfType([
+          PropTypes.string,
+          PropTypes.null,
+        ]),
+      },
+      Comfort: {
+        id: PropTypes.number,
+        value: PropTypes.oneOfType([
+          PropTypes.string,
+          PropTypes.null,
+        ]),
+      },
+      Quality: {
+        id: PropTypes.number,
+        value: PropTypes.oneOfType([
+          PropTypes.string,
+          PropTypes.null,
+        ]),
+      },
+    },
+  }).isRequired,
+};
