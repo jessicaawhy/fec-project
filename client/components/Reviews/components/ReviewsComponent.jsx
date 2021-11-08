@@ -72,6 +72,7 @@ const ReviewsComponent = () => {
             reviews={subset}
             sort={sort}
             setSort={setSort}
+            meta={meta}
           />
         </Container>
       )
