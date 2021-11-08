@@ -19,6 +19,10 @@ const getQuestions = (req, res) => {
     });
 };
 
+const getAnswers = (req, res) => {
+  res.send('hello from getAnswers');
+};
 module.exports = {
   getQuestions,
+  getAnswers,
 };
