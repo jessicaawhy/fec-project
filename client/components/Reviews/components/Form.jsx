@@ -46,7 +46,9 @@ const ReviewsForm = ({ meta }) => {
   };
 
   return (submitted
-    ? <div>Submitted!</div>
+    ? (
+      <p>Form submitted successfully! Thank you for your feedback! ☺</p>
+    )
     : (
       <StyledForm onSubmit={handleSubmit}>
 

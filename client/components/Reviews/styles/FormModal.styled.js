@@ -22,6 +22,10 @@ export const Container = styled.div`
   overflow-y:auto;
   background-color: rgb(240, 240, 240);
 
+  h2, h3 {
+    margin: 20px 0;
+  }
+
   button {
     grid-area: 1 / 3 / 2 / 4;
     place-self: start end;
