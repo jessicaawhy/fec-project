@@ -61,15 +61,13 @@ exports.review_report = (req, res) => {
 };
 
 exports.review_create = (req, res) => {
-  // update body
+  const { body } = req;
 
-  // const body = {};
+  const config = {
+    headers: { Authorization: process.env.TOKEN },
+  };
 
-  // const config = {
-  //   headers: { Authorization: process.env.TOKEN },
-  // };
-
-  // axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews/', body, config)
-  //   .then(() => res.sendStatus(201))
-  //   .catch(() => res.sendStatus(500));
+  axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews/', body, config)
+    .then(() => res.sendStatus(201))
+    .catch(() => res.sendStatus(500));
 };

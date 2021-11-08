@@ -12,9 +12,10 @@ const ReviewsForm = () => {
   const [submitted, setSubmitted] = useState(false);
   const current = useProduct();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // TODO: add error handling for pre & post submit
     const data = {
       product_id: current.id,
       rating: Number(e.target.rating.value),
@@ -24,18 +25,19 @@ const ReviewsForm = () => {
       name: e.target.name.value,
       email: e.target.email.value,
       characteristics: {
-        size: Number(e.target.size.value),
-        width: Number(e.target.width.value),
-        comfort: Number(e.target.comfort.value),
-        quality: Number(e.target.quality.value),
-        length: Number(e.target.length.value),
-        fit: Number(e.target.fit.value),
+        14: Number(e.target.size.value),
+        15: Number(e.target.width.value),
+        16: Number(e.target.comfort.value),
+        17: Number(e.target.quality.value),
+        18: Number(e.target.length.value),
+        19: Number(e.target.fit.value),
       },
-      // add photo feature
+      // TODO: add photo feature
+      photos: [],
     };
 
-    submitForm(data);
-    setSubmitted(true);
+    const result = await submitForm(data);
+    setSubmitted(result);
   };
 
   return (submitted

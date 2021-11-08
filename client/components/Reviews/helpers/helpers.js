@@ -65,18 +65,20 @@ export const markReviewHelpful = (id) => (
     .catch(() => false)
 );
 
-export const reportReview = (id) => {
+export const reportReview = (id) => (
   fetch(`http://localhost:3000/reviews/${id}/report`, {
     method: 'PUT',
   })
     .then(() => true)
-    .catch(() => false);
-};
+    .catch(() => false)
+);
 
-export const submitForm = (data) => {
+export const submitForm = (data) => (
   fetch('http://localhost:3000/reviews/', {
-    method: 'POST', // or 'PUT'
+    method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
-  });
-};
+  })
+    .then(() => true)
+    .catch(() => false)
+);
