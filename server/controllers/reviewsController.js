@@ -35,3 +35,27 @@ exports.review_get_meta = (req, res) => {
     .then((data) => res.send(data))
     .catch(() => res.sendStatus(500));
 };
+
+exports.review_mark_helpful = (req, res) => {
+  const { review_id } = req.params;
+
+  const config = {
+    headers: { Authorization: process.env.TOKEN },
+  };
+
+  axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews/${review_id}/helpful/`, config)
+    .then(() => res.sendStatus(204))
+    .catch(() => res.sendStatus(500));
+};
+
+exports.review_report = (req, res) => {
+  const { review_id } = req.params;
+
+  const config = {
+    headers: { Authorization: process.env.TOKEN },
+  };
+
+  axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews/${review_id}/report/`, config)
+    .then(() => res.sendStatus(204))
+    .catch(() => res.sendStatus(500));
+};
