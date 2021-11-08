@@ -5,7 +5,7 @@ import { useProduct } from '../../../ProductContext';
 import Form from './Form';
 import { StyledFormModal, Container } from '../styles/FormModal.styled';
 
-const FormModal = ({ setShowModal }) => {
+const FormModal = ({ setShowModal, meta }) => {
   const product = useProduct();
 
   const handleClick = () => {
@@ -19,7 +19,7 @@ const FormModal = ({ setShowModal }) => {
         <div>
           <h2>Write Your Review</h2>
           <h3>{`About the ${product.name}`}</h3>
-          <Form />
+          <Form meta={meta} />
         </div>
       </Container>
     </StyledFormModal>

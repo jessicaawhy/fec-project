@@ -8,7 +8,7 @@ import Button from '../../styles/Button.styled';
 import StyledReviews from '../styles/Reviews.styled';
 
 const Reviews = ({
-  total, reviews, sort, setSort,
+  total, reviews, sort, setSort, meta,
 }) => {
   const [showModal, setShowModal] = useState(false);
   const [num, setNum] = useState(reviews.length < 2 ? reviews.length : 2);
@@ -50,7 +50,7 @@ const Reviews = ({
       </div>
       {
         showModal
-        && <FormModal setShowModal={setShowModal} />
+        && <FormModal setShowModal={setShowModal} meta={meta} />
       }
     </StyledReviews>
   );
