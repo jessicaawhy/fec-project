@@ -18,7 +18,7 @@ const Summary = ({ meta, filter, setFilter }) => {
   return (
     <div data-testid="summary-reviews">
       <Header>
-        <span>{averageRating}</span>
+        <span>{averageRating.toFixed(1)}</span>
         <Stars rating={averageRating} />
       </Header>
 
@@ -58,7 +58,11 @@ const Summary = ({ meta, filter, setFilter }) => {
           Object.keys(meta.characteristics).map((char) => (
             <SummaryCharItem
               char={char}
-              percent={((meta.characteristics[char].value - 1) / (5 - 1)) * 100}
+              percent={
+                !meta.characteristics[char].value
+                  ? 0
+                  : ((meta.characteristics[char].value - 1) / (5 - 1)) * 100
+              }
             />
           ))
         }
