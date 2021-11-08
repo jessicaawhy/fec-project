@@ -72,3 +72,11 @@ export const reportReview = (id) => {
     .then(() => true)
     .catch(() => false);
 };
+
+export const submitForm = (data) => {
+  fetch('http://localhost:3000/reviews/', {
+    method: 'POST', // or 'PUT'
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  });
+};

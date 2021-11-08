@@ -5,10 +5,15 @@ import {
 } from './FormFields';
 import Button from '../../styles/Button.styled';
 import StyledForm from '../styles/Form.styled';
+import { submitForm } from '../helpers/helpers';
 
 const ReviewsForm = () => {
   const handleClick = (e) => {
     e.preventDefault();
+
+    const data = {};
+
+    // add items to data obj
 
     // console.log(e.target.rating.value);
     // console.log(e.target.summary.value);
@@ -24,6 +29,8 @@ const ReviewsForm = () => {
     // console.log(e.target.quality.value);
     // console.log(e.target.length.value);
     // console.log(e.target.fit.value);
+
+    submitForm(data);
   };
 
   return (
