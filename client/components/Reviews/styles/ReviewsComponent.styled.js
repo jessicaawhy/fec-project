@@ -3,10 +3,11 @@ import styled from 'styled-components';
 const Container = styled.div`
   display: grid;
   grid-template-columns: 30% 70%;
-  margin: 0 50px;
 
   > * {
-    margin: 15px;
+    &:first-child {
+      margin-right: 30px;
+    }
   };
 `;
 

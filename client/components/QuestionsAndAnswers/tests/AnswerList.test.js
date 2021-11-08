@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import AnswerList from './AnswerList';
-import Data from './dummyData';
+import AnswerList from '../AnswerList';
+import Data from '../dummyData';
 
 it('should render the AnswerList component correctly', () => {
   const { getByTestId } = render(

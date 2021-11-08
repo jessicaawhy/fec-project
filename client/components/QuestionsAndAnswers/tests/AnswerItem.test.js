@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import AnswerItem from './AnswerItem';
-import Data from './dummyData';
+import AnswerItem from '../AnswerItem';
+import Data from '../dummyData';
 
 it('render answer details for a question correctly', () => {
   const { getByTestId } = render(

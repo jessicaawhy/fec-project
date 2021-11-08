@@ -37,6 +37,7 @@ const ReviewsListItem = ({ review }) => {
           ? <Summary>{review.summary}</Summary>
           : <Summary>{`${review.summary.substring(0, 60)}...`}</Summary>
       }
+
       {
         review.body.length < 250 || showReview
           ? <p>{review.body}</p>
@@ -47,12 +48,14 @@ const ReviewsListItem = ({ review }) => {
             </div>
           )
       }
+
       {
         review.recommend
         && <span>✓ I recommend this product</span>
       }
+
       {
-        review.response.length > 0
+        review.response
         && (
           <Response>
             <span>Response:</span>
@@ -60,6 +63,7 @@ const ReviewsListItem = ({ review }) => {
           </Response>
         )
       }
+
       {
         review.photos.length > 0
         && (

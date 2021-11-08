@@ -1,12 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-
-// style
+import Search from './styles/SearchQuestion.style';
 
 const SearchQuestion = ({ handleSearch }) => {
   // const [searchInput, setSearchInput] = useState('');
-
   const handleSearchInput = (e) => {
     const input = e.target.value.toLowerCase();
     // setSearchInput(input);
@@ -24,14 +21,6 @@ const SearchQuestion = ({ handleSearch }) => {
   );
 };
 
-// style
-const Search = styled.form`
-  width: 666px;
-  input {
-    width: 100%;
-    height: 50px;
-  }
-`;
 SearchQuestion.propTypes = {
   handleSearch: PropTypes.func.isRequired,
 };

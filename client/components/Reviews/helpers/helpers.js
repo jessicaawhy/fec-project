@@ -1,38 +1,4 @@
-const sortHelpful = (reviewsArray) => {
-  const copy = reviewsArray.slice();
-
-  copy.sort((a, b) => b.helpfulness - a.helpfulness);
-
-  return copy;
-};
-
-const sortNewest = (reviewsArray) => {
-  const copy = reviewsArray.slice();
-
-  copy.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-  return copy;
-};
-
-const sortRelevant = (reviewsArray) => {
-  const copy = reviewsArray.slice();
-
-  copy.sort((a, b) => new Date(b.date) - new Date(a.date));
-  copy.sort((a, b) => b.helpfulness - a.helpfulness);
-
-  return copy;
-};
-
-const sortReviews = (reviewsArray, option) => {
-  if (option === 0) {
-    return sortRelevant(reviewsArray);
-  } if (option === 1) {
-    return sortHelpful(reviewsArray);
-  }
-  return sortNewest(reviewsArray);
-};
-
-const getAverageRating = (ratings) => {
+export const getAverageRating = (ratings) => {
   let total = 0;
   let count = 0;
 
@@ -44,17 +10,25 @@ const getAverageRating = (ratings) => {
     }
   }
 
+  if (total === 0) {
+    return 0;
+  }
+
   return total / count;
 };
 
-const getRatingBreakdown = (ratings) => {
+export const getRatingBreakdown = (ratings) => {
   const ratingsTotal = Object.values(ratings)
     .reduce((acc, curr) => acc + Number(curr), 0);
+
+  if (ratingsTotal === 0) {
+    return [0, 0, 0, 0, 0];
+  }
 
   return [1, 2, 3, 4, 5].map((x) => (ratings[x] || 0) / ratingsTotal);
 };
 
-const getAverageRec = (recommended) => {
+export const getAverageRec = (recommended) => {
   const trueCount = recommended.true ? Number(recommended.true) : 0;
   const falseCount = recommended.false ? Number(recommended.false) : 0;
 
@@ -65,10 +39,20 @@ const getAverageRec = (recommended) => {
   return trueCount / (trueCount + falseCount);
 };
 
-const formatDate = (date) => (
+export const formatDate = (date) => (
   new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
 );
 
-module.exports = {
-  getAverageRating, getRatingBreakdown, getAverageRec, formatDate, sortReviews,
+export const getData = async (productID, page, num, sortOption) => {
+  const response = await fetch(`http://localhost:3000/reviews/${productID}/${page}/${num}/${sortOption}`);
+  const data = await response.json();
+
+  return data;
+};
+
+export const getMetaData = async (productID) => {
+  const response = await fetch(`http://localhost:3000/reviews/meta/${productID}/`);
+  const data = await response.json();
+
+  return data;
 };
