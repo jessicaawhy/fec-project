@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const MasterContainer = styled.div`
-  margin: 30px;
   height: 100px,
   display: flex,
   align-items: center,

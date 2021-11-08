@@ -1,8 +1,9 @@
 import React from 'react';
-
 import {
   useProduct, useProductUpdate, useAllProducts,
 } from '../ProductContext';
+
+import SelectSort from './styles/SelectSort.styled';
 
 const SelectProduct = () => {
   const allProducts = useAllProducts();
@@ -17,11 +18,11 @@ const SelectProduct = () => {
     product
     && (
       <>
-        <select name="product" onChange={handleSelect}>
+        <SelectSort name="product" onChange={handleSelect}>
           {
             allProducts.map((curr, i) => (<option value={i}>{curr.name}</option>))
           }
-        </select>
+        </SelectSort>
       </>
     )
   );
