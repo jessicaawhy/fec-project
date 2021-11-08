@@ -33,7 +33,13 @@ const getAnswers = (req, res) => {
       res.status(500).send(err);
     });
 };
+
+const postQuestion = (req, res) => {
+  res.send('from post question API');
+};
+
 module.exports = {
   getQuestions,
   getAnswers,
+  postQuestion,
 };
