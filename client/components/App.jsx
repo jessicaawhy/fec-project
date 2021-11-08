@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useProduct, useAllProductsUpdate } from '../ProductContext';
+import { StyledContainer, StyledHeader, ModulesContainer } from './styles/App.styled';
 import GlobalStyles from './styles/Global';
 import SelectProduct from './SelectProduct';
 import OverviewContainer from './overview/OverviewContainer';
@@ -11,7 +12,7 @@ const App = () => {
   const product = useProduct();
 
   useEffect(async () => {
-    fetch('http://localhost:3000/products/1/10')
+    fetch('http://localhost:3000/products/1/50')
       .then((response) => response.json())
       .then((data) => updateAll(data));
   }, []);
@@ -19,15 +20,19 @@ const App = () => {
   return (
     product
     && (
-      <>
+      <StyledContainer>
         <GlobalStyles />
-        <SelectProduct />
-        {/* place main module components within this fragment */}
-        <h1>7 Satsumas</h1>
-        <OverviewContainer />
-        <MasterQA />
-        <ReviewsComponent />
-      </>
+        <StyledHeader>
+          <h1>7 Satsumas</h1>
+          <SelectProduct />
+        </StyledHeader>
+
+        <ModulesContainer>
+          <OverviewContainer />
+          <MasterQA />
+          <ReviewsComponent />
+        </ModulesContainer>
+      </StyledContainer>
     )
   );
 };

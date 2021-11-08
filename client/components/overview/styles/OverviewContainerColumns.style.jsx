@@ -7,11 +7,6 @@ export const RightColumn = styled.div`
 `;
 
 export const Container = styled.div`
-  width: 100%;
-  margin: 0px auto;
-  max-width: 1380px;
-  padding: 0px 24px;
-
 `;
 
 export const Grid = styled.div`
