@@ -6,13 +6,13 @@ import { Container, PhotoContainer } from '../styles/ReviewsPhotoModal.styled';
 const ReviewPhotoModal = ({ currentImg, setShowModal }) => {
   const handleClick = (e) => {
     const { id } = e.target;
-    if (id === 'container' || id === 'exit') {
+    if (id === 'photo-container' || id === 'exit') {
       setShowModal(false);
     }
   };
 
   return (
-    <Container id="container" onClick={handleClick}>
+    <Container id="photo-container" onClick={handleClick}>
       <PhotoContainer>
         <button onClick={handleClick} type="button" id="exit">x</button>
         <img

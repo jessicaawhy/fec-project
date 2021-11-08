@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledFormModal = styled.div`
+export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,7 +14,7 @@ export const StyledFormModal = styled.div`
   background-color: rgb(255, 255, 255);
 `;
 
-export const Container = styled.div`
+export const FormContainer = styled.div`
   display: grid;
   grid-template: 5% 90% 5% / 5% 90% 5%;
   width: 60%;
