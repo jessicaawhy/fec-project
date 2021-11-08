@@ -8,16 +8,38 @@ import Stars from '../../styles/Stars.styled';
 import {
   Item, Header, Summary, Footer, Response, ImgIcon,
 } from '../styles/ReviewsListItem.styled';
-import { formatDate } from '../helpers/helpers';
+import { formatDate, markReviewHelpful, reportReview } from '../helpers/helpers';
 
 const ReviewsListItem = ({ review }) => {
   const [showReview, setShowReview] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [currentImg, setCurrentImg] = useState('');
+  const [helpful, setHelpful] = useState(false);
+  const [reported, setReported] = useState(false);
 
   const renderModal = (url) => {
     setCurrentImg(url);
     setShowModal(true);
+  };
+
+  const handleHelpfulClick = async (e, id) => {
+    if (!helpful) {
+      const result = await markReviewHelpful(id);
+      if (result) {
+        setHelpful(result);
+        e.target.classList.add('marked');
+      }
+    }
+  };
+
+  const handleReportClick = async (e, id) => {
+    if (!reported) {
+      const result = await reportReview(id);
+      if (result) {
+        setReported(result);
+        e.target.classList.add('marked');
+      }
+    }
   };
 
   return (
@@ -86,11 +108,16 @@ const ReviewsListItem = ({ review }) => {
       <Footer>
         <Flex>
           <span>Helpful? </span>
-          <ButtonLink type="button">Yes</ButtonLink>
-          <span>{`(${review.helpfulness})`}</span>
+          <ButtonLink onClick={(e) => handleHelpfulClick(e, review.review_id)} type="button">Yes</ButtonLink>
+          <span>{`(${review.helpfulness + Number(helpful)})`}</span>
         </Flex>
         <div className="separator">|</div>
-        <ButtonLink type="button">Report</ButtonLink>
+        <ButtonLink
+          onClick={(e) => handleReportClick(e, review.review_id)}
+          type="button"
+        >
+          {`${reported ? 'Reported' : 'Report'}`}
+        </ButtonLink>
       </Footer>
       {
         showModal

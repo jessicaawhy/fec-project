@@ -23,6 +23,10 @@ const ReviewsComponent = () => {
     setProduct(current);
   }, [current]);
 
+  useEffect(() => {
+    setSort('relevance');
+  }, [product]);
+
   useEffect(async () => {
     const [updatedReviews, updatedMeta] = await Promise.all([
       getData(product.id, 1, 100, sort), getMetaData(product.id),
@@ -33,7 +37,7 @@ const ReviewsComponent = () => {
     setFilter({});
 
     isInitialMount.current = false;
-  }, [product, sort]);
+  }, [sort, product]);
 
   useEffect(() => {
     if (!isInitialMount.current) {

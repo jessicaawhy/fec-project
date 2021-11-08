@@ -9,6 +9,7 @@ import {
   StyledRecommend,
   StyledName,
   StyledEmail,
+  StyledSummary,
   StyledBody,
   StyledCharacteristics,
 } from '../styles/FormFields.styled';
@@ -33,6 +34,7 @@ const StarRatingElement = ({
       name="rating"
       type="radio"
       value={num}
+      required
     />
   </label>
 );
@@ -50,7 +52,7 @@ export const StarRating = () => {
   const [filled, setFilled] = useState(0);
 
   return (
-    <StyledStarRating>
+    <StyledStarRating htmlFor="rating">
       <legend>Rating</legend>
 
       <div>
@@ -100,9 +102,12 @@ export const Recommend = () => (
 export const Name = () => (
   <StyledName>
     <FormElement
-      name="nickname"
+      name="name"
       type="text"
-      label="Nickname"
+      label="Name"
+      min={1}
+      max={60}
+      req={1}
     />
   </StyledName>
 );
@@ -113,10 +118,23 @@ export const Email = () => (
   <StyledEmail>
     <FormElement
       name="email"
-      type="text"
+      type="email"
       label="Email"
     />
   </StyledEmail>
+);
+
+export const Summary = () => (
+  <StyledSummary>
+    <FormElement
+      name="summary"
+      type="text"
+      label="Summary"
+      min={1}
+      max={60}
+      req={0}
+    />
+  </StyledSummary>
 );
 
 /* BODY */
@@ -141,10 +159,13 @@ export const Body = () => {
         <textarea
           name="body"
           rows="5"
+          min={50}
+          max={1000}
           onKeyPress={(e) => {
             if (e.key === 'Enter') { e.preventDefault(); }
           }}
           onChange={handleChange}
+          required
         />
         <p>{message}</p>
       </label>
@@ -155,44 +176,20 @@ export const Body = () => {
 /* CHARACTERISTICS */
 
 export const Characteristics = ({ name, mainLabel, elements }) => (
-  <StyledCharacteristics>
+  <StyledCharacteristics required>
     <legend>{mainLabel}</legend>
 
     <div>
-      <FormElement
-        name={name}
-        type="radio"
-        label={elements[0]}
-        value="1"
-      />
-
-      <FormElement
-        name={name}
-        type="radio"
-        label={elements[1]}
-        value="2"
-      />
-
-      <FormElement
-        name={name}
-        type="radio"
-        label={elements[2]}
-        value="3"
-      />
-
-      <FormElement
-        name={name}
-        type="radio"
-        label={elements[3]}
-        value="4"
-      />
-
-      <FormElement
-        name={name}
-        type="radio"
-        label={elements[4]}
-        value="5"
-      />
+      {
+        [1, 2, 3, 4, 5].map((curr) => (
+          <FormElement
+            name={name}
+            type="radio"
+            label={elements[curr - 1]}
+            value={curr}
+          />
+        ))
+      }
     </div>
   </StyledCharacteristics>
 );
