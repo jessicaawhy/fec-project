@@ -65,5 +65,14 @@ export const Footer = styled.div`
 
   ${ButtonLink} {
     font-size: inherit;
+
+    &.marked {
+      color: rgb(179, 0, 0);
+      text-decoration: none;
+      cursor: auto;
+      &:active {
+        transform: none;
+      }
+    }
   };
 `;
