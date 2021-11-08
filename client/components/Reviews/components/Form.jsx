@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useProduct } from '../../../ProductContext';
 
 import {
@@ -9,6 +9,7 @@ import StyledForm from '../styles/Form.styled';
 import { submitForm } from '../helpers/helpers';
 
 const ReviewsForm = () => {
+  const [submitted, setSubmitted] = useState(false);
   const current = useProduct();
 
   const handleSubmit = (e) => {
@@ -34,96 +35,98 @@ const ReviewsForm = () => {
     };
 
     submitForm(data);
+    setSubmitted(true);
   };
 
-  return (
-    <StyledForm onSubmit={handleSubmit}>
+  return (submitted
+    ? <div>Submitted!</div>
+    : (
+      <StyledForm onSubmit={handleSubmit}>
 
-      <StarRating />
-      <Name />
-      <Email />
-      <Summary />
-      <Body />
-      <Recommend />
+        <StarRating />
+        <Name />
+        <Email />
+        <Summary />
+        <Body />
+        <Recommend />
 
-      <Characteristics
-        name="size"
-        mainLabel="Size"
-        elements={[
-          'A size too small',
-          '1/2 a size too small',
-          'Perfect',
-          '1/2 a size too big',
-          'A size too big',
-        ]}
-      />
+        <Characteristics
+          name="size"
+          mainLabel="Size"
+          elements={[
+            'A size too small',
+            '1/2 a size too small',
+            'Perfect',
+            '1/2 a size too big',
+            'A size too big',
+          ]}
+        />
 
-      <Characteristics
-        name="width"
-        mainLabel="Width"
-        elements={[
-          'Too narrow',
-          'Slightly narrow',
-          'Perfect',
-          'Slightly wide',
-          'Too wide',
-        ]}
-      />
+        <Characteristics
+          name="width"
+          mainLabel="Width"
+          elements={[
+            'Too narrow',
+            'Slightly narrow',
+            'Perfect',
+            'Slightly wide',
+            'Too wide',
+          ]}
+        />
 
-      <Characteristics
-        name="comfort"
-        mainLabel="Comfort"
-        elements={[
-          'Uncomfortable',
-          'Slightly uncomfortable',
-          'Ok',
-          'Comfortable',
-          'Perfect',
-        ]}
-      />
+        <Characteristics
+          name="comfort"
+          mainLabel="Comfort"
+          elements={[
+            'Uncomfortable',
+            'Slightly uncomfortable',
+            'Ok',
+            'Comfortable',
+            'Perfect',
+          ]}
+        />
 
-      <Characteristics
-        name="quality"
-        mainLabel="Quality"
-        elements={[
-          'Poor',
-          'Below Average',
-          'Expected',
-          'Pretty Great',
-          'Perfect',
-        ]}
-      />
+        <Characteristics
+          name="quality"
+          mainLabel="Quality"
+          elements={[
+            'Poor',
+            'Below Average',
+            'Expected',
+            'Pretty Great',
+            'Perfect',
+          ]}
+        />
 
-      <Characteristics
-        name="length"
-        mainLabel="Length"
-        elements={[
-          'Runs short',
-          'Runs slightly short',
-          'Perfect',
-          'Runs slightly long',
-          'Runs long',
-        ]}
-      />
+        <Characteristics
+          name="length"
+          mainLabel="Length"
+          elements={[
+            'Runs short',
+            'Runs slightly short',
+            'Perfect',
+            'Runs slightly long',
+            'Runs long',
+          ]}
+        />
 
-      <Characteristics
-        name="fit"
-        mainLabel="Fit"
-        elements={[
-          'Runs tight',
-          'Runs slightly tight',
-          'Perfect',
-          'Runs slightly loose',
-          'Runs loose',
-        ]}
-      />
+        <Characteristics
+          name="fit"
+          mainLabel="Fit"
+          elements={[
+            'Runs tight',
+            'Runs slightly tight',
+            'Perfect',
+            'Runs slightly loose',
+            'Runs loose',
+          ]}
+        />
 
-      {/* TODO: Upload your photos */}
+        {/* TODO: Upload your photos */}
 
-      <Button type="submit">Submit</Button>
-    </StyledForm>
-
-  );
+        <Button type="submit">Submit</Button>
+      </StyledForm>
+    ));
 };
 
 export default ReviewsForm;
