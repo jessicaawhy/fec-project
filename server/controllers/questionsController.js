@@ -41,7 +41,7 @@ const postQuestion = (req, res) => {
   axios({
     method: 'post',
     url: '',
-    data: `{${body}, ${name}, ${email}}`,
+    data: { body, name, email },
   });
 };
 

@@ -1,10 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useProduct } from '../../../ProductContext';
 
 import Form from './Form';
 import { StyledFormModal, Container } from '../styles/FormModal.styled';
 
-const FormModal = ({ product, setShowModal }) => {
+const FormModal = ({ setShowModal }) => {
+  const product = useProduct();
+
   const handleClick = () => {
     setShowModal(false);
   };
@@ -15,7 +18,7 @@ const FormModal = ({ product, setShowModal }) => {
         <button onClick={handleClick} type="button">x</button>
         <div>
           <h2>Write Your Review</h2>
-          <h3>{`About the ${product}`}</h3>
+          <h3>{`About the ${product.name}`}</h3>
           <Form />
         </div>
       </Container>
@@ -26,6 +29,5 @@ const FormModal = ({ product, setShowModal }) => {
 export default FormModal;
 
 FormModal.propTypes = {
-  product: PropTypes.string.isRequired,
   setShowModal: PropTypes.func.isRequired,
 };
