@@ -1,4 +1,5 @@
 import React from 'react';
+import { useProduct } from '../../../ProductContext';
 
 import {
   StarRating, Recommend, Name, Email, Summary, Body, Characteristics,
@@ -8,33 +9,35 @@ import StyledForm from '../styles/Form.styled';
 import { submitForm } from '../helpers/helpers';
 
 const ReviewsForm = () => {
-  const handleClick = (e) => {
+  const current = useProduct();
+
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    const data = {};
-
-    // add items to data obj
-
-    // console.log(e.target.rating.value);
-    // console.log(e.target.summary.value);
-    // console.log(e.target.body.value);
-    // console.log(e.target.recommend.value);
-
-    // console.log(e.target.name.value);
-    // console.log(e.target.email.value);
-
-    // console.log(e.target.size.value);
-    // console.log(e.target.width.value);
-    // console.log(e.target.comfort.value);
-    // console.log(e.target.quality.value);
-    // console.log(e.target.length.value);
-    // console.log(e.target.fit.value);
+    const data = {
+      product_id: current.id,
+      rating: Number(e.target.rating.value),
+      summary: e.target.summary.value,
+      body: e.target.body.value,
+      recommend: e.target.recommend.value === true,
+      name: e.target.name.value,
+      email: e.target.email.value,
+      characteristics: {
+        size: Number(e.target.size.value),
+        width: Number(e.target.width.value),
+        comfort: Number(e.target.comfort.value),
+        quality: Number(e.target.quality.value),
+        length: Number(e.target.length.value),
+        fit: Number(e.target.fit.value),
+      },
+      // add photo feature
+    };
 
     submitForm(data);
   };
 
   return (
-    <StyledForm onSubmit={handleClick}>
+    <StyledForm onSubmit={handleSubmit}>
 
       <StarRating />
       <Name />
