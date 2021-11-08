@@ -4,6 +4,7 @@ import MoreQuestions from './MoreQuestions';
 import QuestionList from './QuestionList';
 import SearchQuestion from './SearchQuestion';
 import Data from './dummyData';
+import { getQuestions, getAnswers } from './helpers/helpers';
 import { MasterContainer, Btn, Scroller } from './styles/MasterQA.style';
 
 // const axios = require('axios');
@@ -23,6 +24,23 @@ const MasterQA = () => {
       setQuestions(sortedQuestions.slice(0, setQuestionsLength(sortedQuestions.length)));
     }
   };
+  useEffect(async () => {
+    const theResult = await getQuestions(61575, 1, 1);
+    console.log('----- results', theResult.results);
+    setQuestions(theResult.results.slice(0, questionsLength));
+  }, []);
+
+  // useEffect(async () => {
+  //   const [updatedReviews, updatedMeta] = await Promise.all([
+  //     getData(product.id, 1, 100, sort), getMetaData(product.id),
+  //   ]);
+
+  //   setReviews(updatedReviews.results);
+  //   setMeta(updatedMeta);
+  //   setFilter({});
+
+  //   isInitialMount.current = false;
+  // }, [product, sort]);
 
   const updateHelpfulness = (index) => {
     console.log('testing');
