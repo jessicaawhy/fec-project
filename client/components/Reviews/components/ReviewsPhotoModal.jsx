@@ -4,14 +4,17 @@ import PropTypes from 'prop-types';
 import { Container, PhotoContainer } from '../styles/ReviewsPhotoModal.styled';
 
 const ReviewPhotoModal = ({ currentImg, setShowModal }) => {
-  const handleClick = () => {
-    setShowModal(false);
+  const handleClick = (e) => {
+    const { id } = e.target;
+    if (id === 'container' || id === 'exit') {
+      setShowModal(false);
+    }
   };
 
   return (
-    <Container>
+    <Container id="container" onClick={handleClick}>
       <PhotoContainer>
-        <button onClick={handleClick} type="button">x</button>
+        <button onClick={handleClick} type="button" id="exit">x</button>
         <img
           src={currentImg}
           alt="customer uploaded"
