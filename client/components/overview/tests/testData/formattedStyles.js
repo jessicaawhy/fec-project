@@ -1,4 +1,4 @@
-const styles = [
+const mockStyles = [
   {
     style_id: 378556,
     name: 'Forest Green & Black',
@@ -391,4 +391,4 @@ const styles = [
   },
 ];
 
-export default styles;
+export default mockStyles;

@@ -37,7 +37,6 @@ module.exports = {
       .then((response) => response.data)
       .then((data) => formatStyles(data))
       .then((formattedData) => {
-        console.log('formattedData: ', formattedData);
         res.send(formattedData);
       })
       .catch((err) => {

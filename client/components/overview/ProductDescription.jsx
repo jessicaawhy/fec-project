@@ -5,38 +5,49 @@ import {
 }
   from './styles/ProductDescription.style';
 
-const ProductDescription = ({ id }) => (
-  <div data-testid="product-description">
-    <SloganStyle
-      data-testid="slogan"
-      className="slogan"
-    >
-      {id.slogan}
+const ProductDescription = ({ id }) => {
+  let idLoaded = false;
 
-    </SloganStyle>
-    <DescriptionStyle
-      data-testid="description"
-      className="description"
-    >
-      {id.description}
+  if (id.features) {
+    idLoaded = true;
+  }
 
-    </DescriptionStyle>
-    <FeaturesStyle>
-      Features
+  return (
+    idLoaded
+    && (
+    <div data-testid="product-description">
+      <SloganStyle
+        data-testid="slogan"
+        className="slogan"
+      >
+        {id.slogan}
 
-    </FeaturesStyle>
-    <FeatureListStyle
-      data-testid="features"
-      className="features"
-    >
-      {id.features.map((feature) => (
-        <FeatureStyle>
-          {`${feature.feature}: ${feature.value}`}
-        </FeatureStyle>
-      ))}
-    </FeatureListStyle>
-  </div>
-);
+      </SloganStyle>
+      <DescriptionStyle
+        data-testid="description"
+        className="description"
+      >
+        {id.description}
+
+      </DescriptionStyle>
+      <FeaturesStyle>
+        Features
+
+      </FeaturesStyle>
+      <FeatureListStyle
+        data-testid="features"
+        className="features"
+      >
+        {id.features.map((feature) => (
+          <FeatureStyle>
+            {`${feature.feature}: ${feature.value}`}
+          </FeatureStyle>
+        ))}
+      </FeatureListStyle>
+    </div>
+    )
+  );
+};
 
 export default ProductDescription;
 ProductDescription.propTypes = PropTypes.shape({
