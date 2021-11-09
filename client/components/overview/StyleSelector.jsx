@@ -5,7 +5,7 @@ import StyleButton from './StyleButton';
 import { StyleSelectorContainer } from './styles/StyleSelector.style';
 
 const StyleSelector = ({ productStyles, currentStyle, setCurrentStyle }) => {
-  useEffect(async () => {
+  useEffect(() => {
     map(productStyles, (style) => {
       if (style.default) {
         setCurrentStyle(style);

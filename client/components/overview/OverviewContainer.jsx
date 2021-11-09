@@ -19,8 +19,8 @@ const OverviewContainer = () => {
   const [productInfo, setProductInfo] = useState({});
 
   const addProductToCart = () => {
-    console.log('addProductToCart running...');
-    // fetch(`http://localhost:3000/overview/${currentProduct.id}/styles`)
+    // console.log('addProductToCart running...');
+    // todo: add endpoint and fetch for posting to cart
   };
 
   useEffect(() => {
@@ -63,7 +63,7 @@ const OverviewContainer = () => {
             setCurrentStyle={setCurrentStyle}
           />
           <AddToCart
-            addProductToCart={addProductToCart}
+            // addProductToCart={addProductToCart}
             currentStyle={currentStyle}
           />
         </RightColumn>

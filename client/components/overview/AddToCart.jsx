@@ -29,8 +29,8 @@ const AddToCart = ({ addProductToCart, currentStyle }) => {
   };
 
   const handleCartButton = () => {
-    console.log('AddToCart handleCartButton running....');
-    addProductToCart();
+    // console.log('AddToCart handleCartButton running....');
+    // addProductToCart();
   };
 
   return (

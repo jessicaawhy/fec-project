@@ -8,7 +8,7 @@ const StyleButton = ({
   const [styleSelected, setStyleSelected] = useState(false);
 
   const handleClick = () => {
-    console.log('StyleButton handleClick running....');
+    // console.log('StyleButton handleClick running....');
     setStyleSelected(!styleSelected);
     if (currentStyle.styleId !== styleId) {
       setCurrentStyle(styleId);
