@@ -4,13 +4,20 @@ import map from 'lodash/map';
 import range from 'lodash/range';
 import { CartContainer, CartButton, DropDown } from './styles/AddToCart.style';
 
-const AddToCart = ({ productStyles, currentStyle }) => {
+const AddToCart = ({ /* productStyles, */ currentStyle }) => {
   const [currentSize, setCurrentSize] = useState('Size');
   const [currentQuantity, setCurrentQuantity] = useState('Quantity');
+  const [quantityForSelectedSize, setQuantityForSelectedSize] = useState(null);
+  const [isDisabled, setIsDisabled] = useState(true);
+  const [currentSku, setCurrentSku] = useState(null);
 
   const handleSizeChange = (event) => {
-    console.log('size value', event.target.value);
-    setCurrentSize(event.target.value);
+    console.log('handleSizeChange running...');
+    const { size, sku, quantity } = JSON.parse(event.target.value);
+    setCurrentSize(size);
+    setCurrentSku(sku);
+    setQuantityForSelectedSize(quantity);
+    setIsDisabled(false);
   };
 
   const handleQtyChange = (event) => {
@@ -25,7 +32,27 @@ const AddToCart = ({ productStyles, currentStyle }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log('AddToCart handleSubmit running....');
-    // addToCart(sku, qty);
+  };
+
+  const handleQtyDropDown = () => {
+    if (currentSize === 'Size') {
+      setIsDisabled(true);
+    } else {
+      setIsDisabled(false);
+    }
+  };
+
+  const renderQuantityOptions = () => {
+    const availableQuantity = range(1, quantityForSelectedSize + 1);
+
+    return availableQuantity.map((num) => (
+      <option
+        value={`${num}`}
+        onChange={handleQtyChange}
+      >
+        {num}
+      </option>
+    ));
   };
 
   return (
@@ -48,16 +75,23 @@ const AddToCart = ({ productStyles, currentStyle }) => {
           data-testid="size"
           className="size"
           name="size"
-          id="size"
+          onChange={handleSizeChange}
         >
+          <option
+            selected="selected"
+          >
+            {currentSize}
+
+          </option>
           {map(currentStyle.skus, (sku) => (
-          // does not yet reflect corresponding size/quantity data
-            <option
-              value={`${sku.size}`}
-              onChange={handleSizeChange}
-            >
-              {sku.size}
-            </option>
+            <>
+              <option
+                value={JSON.stringify(sku)}
+              >
+
+                {sku.size}
+              </option>
+            </>
           ))}
         </DropDown>
         <DropDown
@@ -65,28 +99,21 @@ const AddToCart = ({ productStyles, currentStyle }) => {
           className="quantity"
           name="quantity"
           id="quantity"
+          onClick={handleQtyDropDown}
+          disabled={isDisabled}
         >
-          {
-          (typeof currentSize === 'number')
-            ? (
-              map(currentStyle.skus, (sku) => {
-                // does not yet reflect corresponding size/quantity data
-                const itemQuantity = range(sku.quantity);
-                console.log(itemQuantity);
+          <option
+            selected="selected"
+          >
+            {currentQuantity}
 
-                // return map(itemQuantity, (num) => (
-                //   <option
-                //     value={`${num}`}
-                //     onChange={handleQtyChange}
-                //   >
-                //     {num}
-                //   </option>
-                // ));
-              }))
-            : (
-              { currentSize }
-            )
-        }
+          </option>
+
+          {
+            (currentSku)
+            && renderQuantityOptions()
+          }
+
         </DropDown>
       </CartContainer>
     </form>
@@ -99,3 +126,23 @@ AddToCart.propTypes = PropTypes.shape({
   styles: PropTypes.objectOf(PropTypes.any),
   id: PropTypes.objectOf(PropTypes.any),
 }).isRequired;
+
+/* ************************************************** */
+/*
+const [alertQuantity, setAlertQuantity] = useState(false);
+setAlertQuantity(true);
+setAlertQuantity(false);
+
+{
+  // TODO: alert to let user know to select size before quantity
+  // (does not work as implemented below)
+  (alertQuantity)
+  &&
+
+<p>Please select a size before choosing a quantity.</p>}
+
+********************
+
+addToCart(sku, qty);
+
+*/
