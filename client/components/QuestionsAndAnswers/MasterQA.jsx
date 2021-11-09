@@ -35,16 +35,22 @@ const MasterQA = () => {
     setQuestions(questionsFromAPI.slice(0, questionsLength));
   }, [questionsFromAPI]);
 
-  useEffect(() => {
+  const handleAddQuestion = (newQuestion) => {
     const data = {
-      product_id: 61579,
-      body: 'what is body for the request',
-      name: 'what is your name',
-      email: 'whatisemail@gmail.com',
+      product_id: product.id,
+      body: newQuestion.body,
+      name: newQuestion.name,
+      email: newQuestion.email,
     };
     postQuestion(data);
-    // product_id, body, name, email
-  });
+    // getQuestions(product.id, 1, 10);
+    // const updatedQuestions = [...questionsFromAPI, newQuestion];
+    // const sortedUpdQuestions = updatedQuestions.sort(
+    //   (a, b) => b.question_helpfulness - a.question_helpfulness,
+    // );
+    // setQuestions(sortedUpdQuestions.slice(0, 2));
+  };
+
   const renderMoreQuestions = () => {
     if ((questionsLength + 2) <= sortedQuestions.length) {
       setQuestions(sortedQuestions.slice(0, setQuestionsLength(questionsLength + 2)));
@@ -68,13 +74,6 @@ const MasterQA = () => {
       ));
       setQuestions(matchedQuestions);
     }
-  };
-  const handleAddQuestion = (newQuestion) => {
-    const updatedQuestions = [...questionsFromAPI, newQuestion];
-    const sortedUpdQuestions = updatedQuestions.sort(
-      (a, b) => b.question_helpfulness - a.question_helpfulness,
-    );
-    setQuestions(sortedUpdQuestions.slice(0, 2));
   };
 
   return (

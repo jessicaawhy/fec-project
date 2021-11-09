@@ -3,6 +3,7 @@ const axios = require('axios');
 // apply axios defaults
 axios.defaults.baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions';
 axios.defaults.headers.common.Authorization = process.env.TOKEN;
+// axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 const getQuestions = (req, res) => {
   const { product_id, page, count } = req.params;
@@ -44,8 +45,9 @@ const postQuestion = (req, res) => {
     data: {
       product_id, body, name, email,
     },
-  }).then(res.status(201).send('thank you for posting a question'))
-    .catch((err) => res.status(500).send(err));
+  }).then(console.log('sdklfjdsl--------???'))
+    .catch((err) => { console.log('postQUestion-----', err); });
+  // res.status(500).send(err);
 };
 
 const postAnswer = (req, res) => {
@@ -60,7 +62,7 @@ const postAnswer = (req, res) => {
       body, name, email, photos,
     },
   }).then((res.status(201).send('thank you for adding an answer')))
-    .catch((err) => res.status(500).send(err));
+    .catch((err) => res.send(err));
 };
 
 module.exports = {

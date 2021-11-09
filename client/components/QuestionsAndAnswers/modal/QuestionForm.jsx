@@ -25,7 +25,7 @@ const QuestionForm = ({
           id="question"
           type="text"
           maxlength="1000"
-          onChange={(e) => setNewQuestion({ ...newQuestion, question_body: e.target.value })}
+          onChange={(e) => setNewQuestion({ ...newQuestion, body: e.target.value })}
         />
       </Container1>
       <Container1>
@@ -37,7 +37,7 @@ const QuestionForm = ({
           type="text"
           maxlength="60"
           placeholder="Example: jackson11!"
-          onChange={(e) => setNewQuestion({ ...newQuestion, asker_name: e.target.value })}
+          onChange={(e) => setNewQuestion({ ...newQuestion, name: e.target.value })}
         />
         <Notes>
           For privacy reasons, do not use your full name or email address
