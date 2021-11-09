@@ -1,7 +1,6 @@
 require('dotenv').config();
 
 const express = require('express');
-const bodyParser = require('body-parser');
 const path = require('path');
 const reviewRouter = require('./routes/reviews');
 const overviewRouter = require('./routes/overview');
@@ -11,8 +10,6 @@ const questionsRouter = require('./routes/questions');
 const app = express();
 const port = 3000;
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '/../public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

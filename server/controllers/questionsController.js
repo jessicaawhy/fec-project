@@ -44,7 +44,7 @@ const postQuestion = (req, res) => {
     data: {
       product_id, body, name, email,
     },
-  }).then(res.status(204).send('thank you for posting'))
+  }).then(res.status(201).send('thank you for posting'))
     .catch((err) => res.status(500).send(err));
 };
 

@@ -12,7 +12,7 @@ import { MasterContainer, Btn, Scroller } from './styles/MasterQA.style';
 const MasterQA = () => {
   const [questionsFromAPI, setQuestionsFromAPI] = useState([]);
   const [questionsLength, setQuestionsLength] = useState(2);
-  const sortedQuestions = questionsFromAPI.sort(
+  const sortedQuestions = questionsFromAPI.slice().sort(
     (a, b) => b.question_helpfulness - a.question_helpfulness,
   );
   const [questions, setQuestions] = useState(sortedQuestions.slice(0, questionsLength));
