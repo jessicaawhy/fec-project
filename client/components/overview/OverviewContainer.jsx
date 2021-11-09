@@ -48,8 +48,9 @@ const OverviewContainer = () => {
         <RightColumn>
           <StarRating products={products} />
           <ProductInfo
-            productStyles={productStyles}
             productInfo={productInfo}
+            currentStyle={currentStyle}
+
           />
           <StyleSelector
             productStyles={productStyles}

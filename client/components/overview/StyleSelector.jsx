@@ -24,6 +24,9 @@ const StyleSelector = ({ productStyles, currentStyle, setCurrentStyle }) => {
           <StyleButton
             styleId={styleId}
             photo={photo}
+            currentStyle={currentStyle}
+            setCurrentStyle={setCurrentStyle}
+
           />
         );
       })}
