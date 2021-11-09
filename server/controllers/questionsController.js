@@ -44,7 +44,22 @@ const postQuestion = (req, res) => {
     data: {
       product_id, body, name, email,
     },
-  }).then(res.status(201).send('thank you for posting'))
+  }).then(res.status(201).send('thank you for posting a question'))
+    .catch((err) => res.status(500).send(err));
+};
+
+const postAnswer = (req, res) => {
+  const { question_id } = req.params;
+  const {
+    body, name, email, photos,
+  } = req.body;
+  axios({
+    method: 'post',
+    url: `/${question_id}/answers`,
+    data: {
+      body, name, email, photos,
+    },
+  }).then((res.status(201).send('thank you for adding an answer')))
     .catch((err) => res.status(500).send(err));
 };
 
@@ -52,4 +67,5 @@ module.exports = {
   getQuestions,
   getAnswers,
   postQuestion,
+  postAnswer,
 };

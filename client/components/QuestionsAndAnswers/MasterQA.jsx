@@ -7,8 +7,6 @@ import Data from './dummyData';
 import { getQuestions, getAnswers } from './helpers/helpers';
 import { MasterContainer, Btn, Scroller } from './styles/MasterQA.style';
 
-// const axios = require('axios');
-
 const MasterQA = () => {
   const [questionsFromAPI, setQuestionsFromAPI] = useState([]);
   const [questionsLength, setQuestionsLength] = useState(2);
@@ -18,7 +16,7 @@ const MasterQA = () => {
   const [questions, setQuestions] = useState(sortedQuestions.slice(0, questionsLength));
 
   useEffect(async () => {
-    const questionsFetched = await getQuestions(61579, 1, 5);
+    const questionsFetched = await getQuestions(61579, 1, 10);
     // understand useContext more and replace this hardcoded productID
     console.log('----- results', questionsFetched.results);
     setQuestionsFromAPI(questionsFetched.results);
