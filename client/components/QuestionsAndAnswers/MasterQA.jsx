@@ -10,13 +10,26 @@ import { MasterContainer, Btn, Scroller } from './styles/MasterQA.style';
 // const axios = require('axios');
 
 const MasterQA = () => {
-  const sortedQuestions = Data.questions.results.sort(
+  const [questionsFromAPI, setQuestionsFromAPI] = useState([]);
+  const [questionsLength, setQuestionsLength] = useState(2);
+  const sortedQuestions = questionsFromAPI.sort(
     (a, b) => b.question_helpfulness - a.question_helpfulness,
   );
-
-  const [questionsLength, setQuestionsLength] = useState(2);
-  const [questionsFromAPI, setQuestionsFromAPI] = useState([]);
   const [questions, setQuestions] = useState(sortedQuestions.slice(0, questionsLength));
+
+  useEffect(async () => {
+    const questionsFetched = await getQuestions(61579, 1, 5);
+    // understand useContext more and replace this hardcoded productID
+    console.log('----- results', questionsFetched.results);
+    setQuestionsFromAPI(questionsFetched.results);
+    // revisit to figure out why promisfy is not working and why need to useEffect
+  }, []);
+
+  useEffect(() => {
+    console.log('what is quesitons from API-------', questionsFromAPI);
+    console.log('what is sorted-------', sortedQuestions);
+    setQuestions(questionsFromAPI.slice(0, questionsLength));
+  }, [questionsFromAPI]);
 
   const renderMoreQuestions = () => {
     if ((questionsLength + 2) <= sortedQuestions.length) {
@@ -25,23 +38,6 @@ const MasterQA = () => {
       setQuestions(sortedQuestions.slice(0, setQuestionsLength(sortedQuestions.length)));
     }
   };
-
-  useEffect(async () => {
-    const questionsFetched = await getQuestions(61575, 1, 5);
-    console.log('----- results', questionsFetched.results);
-
-    setQuestionsFromAPI(questionsFetched.results);
-    // setQuestions(questionsFromAPI.slice(0, questionsLength));
-
-    // const promise = new Promise((resolve, reject) => resolve(setQuestionsFromAPI(questionsFetched.results)));
-    // promise.then(() => setQuestions(questionsFromAPI.slice(0, questionsLength))).catch((err) => console.log('err///', err));
-    // setQuestions(questionsFromAPI.slice(0, questionsLength));
-  }, []);
-
-  useEffect(() => {
-    console.log('what is quesitons from API-------', questionsFromAPI);
-    setQuestions(questionsFromAPI.slice(0, questionsLength));
-  }, [questionsFromAPI]);
 
   const updateHelpfulness = (index) => {
     console.log('testing');
@@ -66,13 +62,7 @@ const MasterQA = () => {
       (a, b) => b.question_helpfulness - a.question_helpfulness,
     );
     setQuestions(temp1.slice(0, 2));
-    // temp1 && setQuestions(temp1.slice(0, 2));
   };
-
-  // useEffect(() => {
-  //   setQuestions(sortedQuestions.slice(0, sortedQuestions.length));
-  // }, [Data.questions.results]);
-  // axios.get('https://jsonplaceholder.typicode.com/todos?_limit=5').then((res) => console.log(res));
 
   return (
     <>
@@ -93,3 +83,7 @@ const MasterQA = () => {
 };
 
 export default MasterQA;
+
+// const promise = new Promise((resolve, reject) => resolve(setQuestionsFromAPI(questionsFetched.results)));
+// promise.then(() => setQuestions(questionsFromAPI.slice(0, questionsLength))).catch((err) => console.log('err///', err));
+// setQuestions(questionsFromAPI.slice(0, questionsLength));

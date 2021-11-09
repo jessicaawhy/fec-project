@@ -34,15 +34,18 @@ const getAnswers = (req, res) => {
 };
 
 const postQuestion = (req, res) => {
-  res.send('from post question API');
   const {
     product_id, body, name, email,
-  } = req.params;
+  } = req.body;
+  // console.log('.....', req.body);
   axios({
     method: 'post',
-    url: '',
-    data: { body, name, email },
-  });
+    url: '/',
+    data: {
+      product_id, body, name, email,
+    },
+  }).then(res.status(204).send('thank you for posting'))
+    .catch((err) => res.status(500).send(err));
 };
 
 module.exports = {
