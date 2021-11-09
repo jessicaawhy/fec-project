@@ -29,8 +29,12 @@ const AddToCart = ({ addProductToCart, currentStyle }) => {
   };
 
   const handleCartButton = () => {
-    // console.log('AddToCart handleCartButton running....');
-    // addProductToCart();
+    const id = {
+      sku_id: currentSku,
+    };
+
+    console.log('AddToCart handleCartButton running....', id);
+    addProductToCart(id);
   };
 
   return (

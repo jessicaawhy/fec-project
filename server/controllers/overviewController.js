@@ -49,49 +49,9 @@ module.exports = {
     console.log('req.body', req.body);
     const { body } = req;
 
-    // axios({
-    //   url: '/cart',
-    //   method: 'post',
-    //   body,
-    //   baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     Authorization: process.env.TOKEN,
-    //   },
-    // })
-    //   .then((response) => {
-    //     console.log('response.data: ', response.data);
-    //     return response.data;
-    //   })
-    //   .then((data) => {
-    //     axios({
-    //       url: '/cart',
-    //       method: 'get',
-    //       body,
-    //       baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products',
-    //       headers: {
-    //         'Content-Type': 'application/json',
-    //         Authorization: process.env.TOKEN,
-    //       },
-    //     })
-    //       .then((response) => response.data)
-    //       .then((cart) => {
-    //         console.log('cart', cart, 'data', data);
-    //         res.send(cart);
-    //       })
-    //       .catch((error) => {
-    //         console.log('error getting data after posting', error);
-    //         res.sendStatus(500);
-    //       });
-    //   })
-    //   .catch((err) => {
-    //     console.log('error getting styles', err);
-    //     res.sendStatus(500);
-    //   });
-
     function addToCart() {
       return axios.post('/cart', body, {
-        baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products',
+        baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo',
         headers: {
           'Content-Type': 'application/json',
           Authorization: process.env.TOKEN,
@@ -101,7 +61,7 @@ module.exports = {
 
     function retrieveProductsInCart() {
       return axios.get('/cart', {
-        baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products',
+        baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo',
         headers: {
           Authorization: process.env.TOKEN,
         },
@@ -133,8 +93,47 @@ module.exports = {
       .then((response) => response.data)
       .then((data) => res.send(data))
       .catch((err) => {
-        console.log('error getting styles', err);
+        console.log('error getting cart', err);
         res.sendStatus(500);
       });
   },
 };
+/** ******************************************** */
+
+/*    axios({
+      url: '/cart',
+      method: 'post',
+      body,
+      baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: process.env.TOKEN,
+      },
+    })
+      .then((response) => {
+        console.log('response.data: ', response.data);
+        return response.data;
+      })
+      .then((data) => axios({
+        url: '/cart',
+        method: 'get',
+        body,
+        baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: process.env.TOKEN,
+        },
+      })
+        .then((response) => response.data)
+        .then((cart) => {
+          console.log('cart', cart, 'data', data);
+          res.send(cart);
+        })
+        .catch((error) => {
+          console.log('error getting data after posting', error);
+          res.sendStatus(500);
+        }))
+      .catch((err) => {
+        console.log('error posting to cart', err);
+        res.sendStatus(500);
+      }); */

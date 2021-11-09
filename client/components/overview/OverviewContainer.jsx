@@ -18,9 +18,31 @@ const OverviewContainer = () => {
   const [currentStyle, setCurrentStyle] = useState({});
   const [productInfo, setProductInfo] = useState({});
 
-  const addProductToCart = () => {
-    // console.log('addProductToCart running...');
-    // todo: add endpoint and fetch for posting to cart
+  const addProductToCart = (id) => {
+    console.log('addProductToCart running...');
+    fetch('http://localhost:3000/overview/cart', {
+      method: 'POST',
+      body: JSON.stringify(id),
+      // data: JSON.stringify(id),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(async (response) =>
+        // try {
+        //   const data = await response.json();
+        //   console.log('response data?', data);
+        // } catch (error) {
+        //   console.log('Error happened here!');
+        //   console.log(error);
+        // }
+        response.json())
+      .then((data) => {
+        console.log('product added to cart', data);
+      })
+      .catch((error) => {
+        console.log('error in adding product to cart', error);
+      });
   };
 
   useEffect(() => {
@@ -63,7 +85,7 @@ const OverviewContainer = () => {
             setCurrentStyle={setCurrentStyle}
           />
           <AddToCart
-            // addProductToCart={addProductToCart}
+            addProductToCart={addProductToCart}
             currentStyle={currentStyle}
           />
         </RightColumn>
