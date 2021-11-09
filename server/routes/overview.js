@@ -7,8 +7,8 @@ router.get('/:id', overviewController.getProductById);
 
 router.get('/:id/styles', overviewController.getProductStyles);
 
-router.get('/cart', overviewController.getCart);
-
 router.post('/cart', overviewController.postToCart);
+
+router.get('/cart', overviewController.getCart);
 
 module.exports = router;
