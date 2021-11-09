@@ -18,3 +18,10 @@ export const getProductStyles = ({ currentProduct, setStyles, styles }) => {
 export const selectStyle = () => {
 
 };
+
+// export const addToCart = async (sku, qty) => {
+//   const response = await fetch(`http://localhost:3000/overview/cart/${productID}/`);
+//   const data = await response.json();
+
+//   return data;
+// };

@@ -57,7 +57,10 @@ const OverviewContainer = () => {
             currentStyle={currentStyle}
             setCurrentStyle={setCurrentStyle}
           />
-          <AddToCart productStyles={productStyles} />
+          <AddToCart
+            productStyles={productStyles}
+            currentStyle={currentStyle}
+          />
         </RightColumn>
 
         <ProductDescription productInfo={productInfo} />
