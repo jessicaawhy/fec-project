@@ -42,8 +42,8 @@ const MasterQA = () => {
       name: newQuestion.name,
       email: newQuestion.email,
     };
-    postQuestion(data);
-    // getQuestions(product.id, 1, 10);
+    postQuestion(data); // if time allowed, consider fixing it
+    getQuestions(product.id, 1, 10);
     // const updatedQuestions = [...questionsFromAPI, newQuestion];
     // const sortedUpdQuestions = updatedQuestions.sort(
     //   (a, b) => b.question_helpfulness - a.question_helpfulness,

@@ -9,8 +9,9 @@ export const MasterContainer = styled.div`
 export const Btn = styled.div`
   display: flex;
 `;
+
 export const Scroller = styled.div`
-  height: 366px;
+  height: 399px;
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
 `;

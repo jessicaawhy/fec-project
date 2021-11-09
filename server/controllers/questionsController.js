@@ -45,7 +45,7 @@ const postQuestion = (req, res) => {
     data: {
       product_id, body, name, email,
     },
-  }).then(console.log('sdklfjdsl--------???'))
+  }).then(res.status(201).send('thanks for posting'))
     .catch((err) => { console.log('postQUestion-----', err); });
   // res.status(500).send(err);
 };
