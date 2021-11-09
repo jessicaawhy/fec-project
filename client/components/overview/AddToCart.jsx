@@ -32,7 +32,7 @@ const AddToCart = ({ /* productStyles, */ currentStyle }) => {
     console.log('AddToCart handleSubmit running....');
   };
 
-  const handleQtyDropDown = () => {
+  const disableDropDown = () => {
     if (currentSize === 'Size') {
       setIsDisabled(true);
     } else {
@@ -96,8 +96,7 @@ const AddToCart = ({ /* productStyles, */ currentStyle }) => {
           data-testid="quantity"
           className="quantity"
           name="quantity"
-          id="quantity"
-          onClick={handleQtyDropDown}
+          onClick={disableDropDown}
           disabled={isDisabled}
         >
           <option
