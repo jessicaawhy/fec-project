@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import { useProduct } from '../../ProductContext';
 import AddQuestion from './AddQuestion';
 import MoreQuestions from './MoreQuestions';
 import QuestionList from './QuestionList';
 import SearchQuestion from './SearchQuestion';
 import Data from './dummyData';
-import { getQuestions, getAnswers } from './helpers/helpers';
+import { getQuestions, getAnswers, postQuestion } from './helpers/helpers';
 import { MasterContainer, Btn, Scroller } from './styles/MasterQA.style';
 
 const MasterQA = () => {
+  const currProduct = useProduct(); // const useProduct = () => useContext(ProductContext)
+  const [product, setProduct] = useState(currProduct);
   const [questionsFromAPI, setQuestionsFromAPI] = useState([]);
   const [questionsLength, setQuestionsLength] = useState(2);
   const sortedQuestions = questionsFromAPI.slice().sort(
@@ -15,10 +18,13 @@ const MasterQA = () => {
   );
   const [questions, setQuestions] = useState(sortedQuestions.slice(0, questionsLength));
 
+  useEffect(() => {
+    setProduct(currProduct);
+  }, [currProduct]);
+
   useEffect(async () => {
-    const questionsFetched = await getQuestions(61579, 1, 10);
-    // understand useContext more and replace this hardcoded productID
-    console.log('----- results', questionsFetched.results);
+    const questionsFetched = await getQuestions(product.id, 1, 10);
+    console.log('----- results', questionsFetched);
     setQuestionsFromAPI(questionsFetched.results);
     // revisit to figure out why promisfy is not working and why need to useEffect
   }, []);
@@ -29,6 +35,16 @@ const MasterQA = () => {
     setQuestions(questionsFromAPI.slice(0, questionsLength));
   }, [questionsFromAPI]);
 
+  useEffect(() => {
+    const data = {
+      product_id: 61579,
+      body: 'what is body for the request',
+      name: 'what is your name',
+      email: 'whatisemail@gmail.com',
+    };
+    postQuestion(data);
+    // product_id, body, name, email
+  });
   const renderMoreQuestions = () => {
     if ((questionsLength + 2) <= sortedQuestions.length) {
       setQuestions(sortedQuestions.slice(0, setQuestionsLength(questionsLength + 2)));
@@ -54,12 +70,11 @@ const MasterQA = () => {
     }
   };
   const handleAddQuestion = (newQuestion) => {
-    console.log('from QA', Data.questions.results);
-    const temp = [...Data.questions.results, newQuestion];
-    const temp1 = temp.sort(
+    const updatedQuestions = [...questionsFromAPI, newQuestion];
+    const sortedUpdQuestions = updatedQuestions.sort(
       (a, b) => b.question_helpfulness - a.question_helpfulness,
     );
-    setQuestions(temp1.slice(0, 2));
+    setQuestions(sortedUpdQuestions.slice(0, 2));
   };
 
   return (

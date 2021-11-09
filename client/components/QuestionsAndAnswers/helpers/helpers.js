@@ -1,5 +1,3 @@
-// replace the product_id after read more about useContext
-// const getQuestions = fetch(`http://localhost:3000/qa/questions/${prodcut_id}/${page}/${count}`)
 export const getQuestions = async (productID, page, count) => {
   const response = await fetch(`http://localhost:3000/qa/questions/${productID}/${page}/${count}`);
   console.log('what is fetch resposne', response);
@@ -16,13 +14,34 @@ export const getAnswers = async (questionID, page, count) => {
   return data;
 };
 
-// export default getQuestions;
-
-// /:question_id/answers/:page/:count'
-
-// export const getData = async (productID, page, num, sortOption) => {
-//   const response = await fetch(`http://localhost:3000/reviews/${productID}/${page}/${num}/${sortOption}`);
+// export const postQuestion = async (product_id, body, name, email) => {
+//   const newQuestion = {
+//     product_id, body, name, email,
+//   };
+//   const response = await fetch('http://localhost:3000/qa/questions/', {
+//     method: 'post',
+//     header: {
+//       'Content-Type': 'application/json',
+//       // 'Content-Type': 'application/x-www-form-urlencoded',
+//     },
+//     body: JSON.stringify(newQuestion),
+//   });
+//   console.log('----PostQuestion', response);
+//   // // return response.json();
 //   const data = await response.json();
-
-//   return data;
+//   console.log('what is data postQuestion', data);
+//   // return data;
 // };
+
+export const postQuestion = (newQuestion) => {
+  fetch('http://localhost:3000/qa/questions/', {
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(newQuestion),
+  })
+    // .then((response) => response.json())
+    .then((data) => console.log('success', data))
+    .catch((err) => console.log('what is POST err', err));
+};
