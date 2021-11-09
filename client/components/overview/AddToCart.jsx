@@ -12,7 +12,6 @@ const AddToCart = ({ /* productStyles, */ currentStyle }) => {
   const [currentSku, setCurrentSku] = useState(null);
 
   const handleSizeChange = (event) => {
-    console.log('handleSizeChange running...');
     const { size, sku, quantity } = JSON.parse(event.target.value);
     setCurrentSize(size);
     setCurrentSku(sku);
@@ -21,7 +20,6 @@ const AddToCart = ({ /* productStyles, */ currentStyle }) => {
   };
 
   const handleQtyChange = (event) => {
-    console.log('qty value', event.target.value);
     setCurrentQuantity(event.target.value);
   };
 
