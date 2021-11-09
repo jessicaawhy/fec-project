@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ButtonStyle } from './styles/StyleSelector.style';
 
-const StyleButton = ({ photo }) => (
+const StyleButton = ({ styleId, photo }) => (
   <ButtonStyle
     data-testid="style-button"
     className="style-button"
     type="image"
-    name="style-button"
+    styleId={styleId}
     src={photo.thumbnail_url}
     alt="style"
   />

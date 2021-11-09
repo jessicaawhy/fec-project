@@ -6,16 +6,14 @@ import ImageGallery from './ImageGallery';
 import StyleSelector from './StyleSelector';
 import AddToCart from './AddToCart';
 import products from './tests/testData/testProducts';
-// import mockStyles from './tests/testData/formattedStyles';
-// import id from './tests/testData/testId';
+// import Stars from '../styles/Stars.styled';
 import { useProduct } from '../../ProductContext';
-// import { getProductStyles } from './helpers/helpers';
 import {
   RightColumn, Container, Grid, LeftColumn,
 } from './styles/OverviewContainerColumns.style';
 
 const OverviewContainer = () => {
-  const [currentProduct, setCurrentProduct] = useState(useProduct());
+  const currentProduct = useProduct();
   const [styles, setStyles] = useState([{}]);
   const [id, setId] = useState({});
 
