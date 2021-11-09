@@ -56,3 +56,29 @@ export const getMetaData = async (productID) => {
 
   return data;
 };
+
+export const markReviewHelpful = (id) => (
+  fetch(`http://localhost:3000/reviews/${id}/helpful`, {
+    method: 'PUT',
+  })
+    .then(() => true)
+    .catch(() => false)
+);
+
+export const reportReview = (id) => (
+  fetch(`http://localhost:3000/reviews/${id}/report`, {
+    method: 'PUT',
+  })
+    .then(() => true)
+    .catch(() => false)
+);
+
+export const submitForm = (data) => (
+  fetch('http://localhost:3000/reviews/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  })
+    .then(() => true)
+    .catch(() => false)
+);

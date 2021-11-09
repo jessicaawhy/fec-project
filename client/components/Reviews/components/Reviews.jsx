@@ -8,7 +8,7 @@ import Button from '../../styles/Button.styled';
 import StyledReviews from '../styles/Reviews.styled';
 
 const Reviews = ({
-  total, reviews, sort, setSort,
+  total, reviews, sort, setSort, meta,
 }) => {
   const [showModal, setShowModal] = useState(false);
   const [num, setNum] = useState(reviews.length < 2 ? reviews.length : 2);
@@ -50,7 +50,7 @@ const Reviews = ({
       </div>
       {
         showModal
-        && <FormModal setShowModal={setShowModal} />
+        && <FormModal setShowModal={setShowModal} meta={meta} />
       }
     </StyledReviews>
   );
@@ -63,4 +63,48 @@ Reviews.propTypes = {
   reviews: PropTypes.arrayOf(PropTypes.object).isRequired,
   sort: PropTypes.number.isRequired,
   setSort: PropTypes.func.isRequired,
+  meta: PropTypes.shape({
+    product_id: PropTypes.number,
+    ratings: {
+      1: PropTypes.number,
+      2: PropTypes.number,
+      3: PropTypes.number,
+      4: PropTypes.number,
+      5: PropTypes.number,
+    },
+    recommended: {
+      true: PropTypes.string,
+      false: PropTypes.string,
+    },
+    characteristics: {
+      Fit: {
+        id: PropTypes.number,
+        value: PropTypes.oneOfType([
+          PropTypes.string,
+          PropTypes.null,
+        ]),
+      },
+      Length: {
+        id: PropTypes.number,
+        value: PropTypes.oneOfType([
+          PropTypes.string,
+          PropTypes.null,
+        ]),
+      },
+      Comfort: {
+        id: PropTypes.number,
+        value: PropTypes.oneOfType([
+          PropTypes.string,
+          PropTypes.null,
+        ]),
+      },
+      Quality: {
+        id: PropTypes.number,
+        value: PropTypes.oneOfType([
+          PropTypes.string,
+          PropTypes.null,
+        ]),
+      },
+    },
+  }).isRequired,
 };
