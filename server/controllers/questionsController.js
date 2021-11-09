@@ -11,14 +11,45 @@ const getQuestions = (req, res) => {
     url: `/?${new URLSearchParams({ product_id, page, count })}`,
     // url: `/?product_id=${product_id}&page=${page}&count=${count}`,
   })
-    .then((response) => response.data)
-    .then((data) => res.send(data))
+    .then((response) => res.send(response.data))
+    // .then((data) => res.send(data))
     .catch((err) => {
       console.log('---------', err.request);
       res.status(500).send(err);
     });
 };
 
+const getAnswers = (req, res) => {
+  const { question_id, page, count } = req.params;
+  axios({
+    method: 'get',
+    url: `/${question_id}/answers/?page=${page}&count=${count}`,
+  })
+    .then((response) => res.send(response.data))
+    // .then((data) => res.send(data))
+    .catch((err) => {
+      console.log('get answers ----', err.request);
+      res.status(500).send(err);
+    });
+};
+
+const postQuestion = (req, res) => {
+  const {
+    product_id, body, name, email,
+  } = req.body;
+  // console.log('.....', req.body);
+  axios({
+    method: 'post',
+    url: '/',
+    data: {
+      product_id, body, name, email,
+    },
+  }).then(res.status(201).send('thank you for posting'))
+    .catch((err) => res.status(500).send(err));
+};
+
 module.exports = {
   getQuestions,
+  getAnswers,
+  postQuestion,
 };
