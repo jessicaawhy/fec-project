@@ -4,116 +4,100 @@ import map from 'lodash/map';
 import range from 'lodash/range';
 import { CartContainer, CartButton, DropDown } from './styles/AddToCart.style';
 
-const AddToCart = ({ /* productStyles, */ currentStyle }) => {
+const AddToCart = ({ addProductToCart, currentStyle }) => {
   const [currentSize, setCurrentSize] = useState('Size');
   const [currentQuantity, setCurrentQuantity] = useState('Quantity');
-  const [quantityForSelectedSize, setQuantityForSelectedSize] = useState(null);
-  const [isDisabled, setIsDisabled] = useState(true);
   const [currentSku, setCurrentSku] = useState(null);
+  const [quantityForSelectedSize, setQuantityForSelectedSize] = useState(null);
+  const [cartIsDisabled, setCartIsDisabled] = useState(true);
+  const [quantityIsDisabled, setQuantityIsDisabled] = useState(true);
 
   const handleSizeChange = (event) => {
     const { size, sku, quantity } = JSON.parse(event.target.value);
+
     setCurrentSize(size);
     setCurrentSku(sku);
     setQuantityForSelectedSize(quantity);
-    setIsDisabled(false);
+    setQuantityIsDisabled(false);
   };
 
   const handleQtyChange = (event) => {
-    setCurrentQuantity(event.target.value);
+    const { value } = event.target;
+
+    setCurrentQuantity(value);
+    setCartIsDisabled(false);
   };
 
-  const handleClick = () => {
-    console.log('AddToCart handleClick running....');
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log('AddToCart handleSubmit running....');
-  };
-
-  const disableDropDown = () => {
-    if (currentSize === 'Size') {
-      setIsDisabled(true);
-    } else {
-      setIsDisabled(false);
-    }
-  };
-
-  const renderQuantityOptions = () => {
-    const availableQuantity = range(1, quantityForSelectedSize + 1);
-
-    return availableQuantity.map((num) => (
-      <option
-        value={`${num}`}
-        onChange={handleQtyChange}
-      >
-        {num}
-      </option>
-    ));
+  const handleCartButton = () => {
+    console.log('AddToCart handleCartButton running....');
+    addProductToCart();
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      {console.log('currentStyle', currentStyle)}
-      <CartContainer
-        data-testid="cart-container"
-        className="cart-container"
+    <CartContainer
+      data-testid="cart-container"
+      className="cart-container"
+    >
+      <CartButton
+        data-testid="add-to-cart-button"
+        className="add-to-cart-button"
+        type="submit"
+        onClick={handleCartButton}
+        disabled={cartIsDisabled}
       >
-        <CartButton
-          data-testid="add-to-cart-button"
-          className="add-to-cart-button"
-          type="submit"
-          onClick={handleClick}
+        Add To Cart
+      </CartButton>
+
+      <DropDown
+        data-testid="size"
+        className="size"
+        name="size"
+        onChange={handleSizeChange}
+      >
+        <option
+          selected="selected"
         >
-          Add To Cart
-        </CartButton>
+          {currentSize}
 
-        <DropDown
-          data-testid="size"
-          className="size"
-          name="size"
-          onChange={handleSizeChange}
+        </option>
+        {map(currentStyle.skus, (sku) => (
+          <>
+            <option
+              value={JSON.stringify(sku)}
+            >
+
+              {sku.size}
+            </option>
+          </>
+        ))}
+      </DropDown>
+      <DropDown
+        data-testid="quantity"
+        className="quantity"
+        name="quantity"
+        onChange={handleQtyChange}
+        disabled={quantityIsDisabled}
+      >
+        <option
+          selected="selected"
         >
-          <option
-            selected="selected"
-          >
-            {currentSize}
+          {currentQuantity}
 
-          </option>
-          {map(currentStyle.skus, (sku) => (
-            <>
-              <option
-                value={JSON.stringify(sku)}
-              >
+        </option>
 
-                {sku.size}
-              </option>
-            </>
-          ))}
-        </DropDown>
-        <DropDown
-          data-testid="quantity"
-          className="quantity"
-          name="quantity"
-          onClick={disableDropDown}
-          disabled={isDisabled}
-        >
-          <option
-            selected="selected"
-          >
-            {currentQuantity}
-
-          </option>
-
-          {
+        {
             (currentSku)
-            && renderQuantityOptions()
+            && range(1, quantityForSelectedSize + 1).map((num) => (
+              <option
+                value={`${num}`}
+              >
+                {num}
+              </option>
+            ))
           }
 
-        </DropDown>
-      </CartContainer>
-    </form>
+      </DropDown>
+    </CartContainer>
   );
 };
 
