@@ -4,6 +4,7 @@ import {
   AnswerContainer, AnswerBody, AnswerDetails, UnderLine, Image, ImgContainer, ImgDialog, PopupImg,
 } from './styles/AnswerItem.style';
 import { ModalShadow, Modal } from './styles/Modal.style';
+import PhotoModal from './modal/PhotoModal';
 
 const AnswerItem = ({ answer, index, updateAnswerHelpfulness }) => {
   const [isHelpful, setIsHelpful] = useState(false);
@@ -50,23 +51,13 @@ const AnswerItem = ({ answer, index, updateAnswerHelpfulness }) => {
               alt="Answerer's Images"
               onClick={handleImgModal}
             />
-            {/* {isEnlarged
+            {isEnlarged
             && (
-            <ModalShadow>
-              <dialog
-                open
-                // style={{ postion: 'absolute' }}
-                onClick={handleImgModal}
-              >
-                <img
-                  src={`${photo}`}
-                  style={{ width: '300px' }}
-                  alt="Answerer's Images"
-                  onClick={handleImgModal}
-                />
-              </dialog>
-            </ModalShadow>
-            )} */}
+            <PhotoModal
+              handleImgModal={handleImgModal}
+              currPhoto={photo}
+            />
+            )}
           </div>
         ))}
       </ImgContainer>

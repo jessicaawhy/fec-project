@@ -4,7 +4,6 @@ import { ModalShadow, Modal } from '../styles/Modal.style';
 import QuestionForm from './QuestionForm';
 
 const QuestionModal = ({ setOpen, handleAddQuestion }) => {
-  // const [localData, setLocalData] = useState(question);
   const [newQuestion, setNewQuestion] = useState({
     question_body: '',
     asker_name: '',

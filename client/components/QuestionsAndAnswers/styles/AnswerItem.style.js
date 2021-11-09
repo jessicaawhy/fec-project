@@ -28,12 +28,6 @@ export const ImgContainer = styled.div`
   padding: 5px;
 `;
 
-// export const ImgDialog = styled.dialog`
-//   box-shadow: 0 8px 6px -6px black;
-//   // postion: static;
-//   left: 20%;
-//   top: 10%;
-// `;
 export const PopupImg = styled.img`
   width: 300px;
 `;
