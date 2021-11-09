@@ -4,7 +4,7 @@ const Star = () => (
   <div
     data-testid="star"
     aria-hidden="true"
-    className="jsx-2022988330 Icon Icon--STAR_FULL"
+    className="star"
   >
     <svg
       id="Layer_1"

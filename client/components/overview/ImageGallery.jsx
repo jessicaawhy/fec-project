@@ -8,7 +8,7 @@ import {
 }
   from './styles/ImageGallery.style';
 
-const ImageGallery = ({ styles }) => (
+const ImageGallery = ({ productStyles }) => (
   <GalleryContainer
     data-testid="gallery-container"
     className="gallery-container"
@@ -23,7 +23,7 @@ const ImageGallery = ({ styles }) => (
           className="up-arrow"
         />
       </UpArrowStyle>
-      {map(styles, (style) => (
+      {map(productStyles, (style) => (
         map(style.photos, (photo) => (
           <div>
             <ThumbnailStyle
@@ -49,7 +49,7 @@ const ImageGallery = ({ styles }) => (
           className="right-arrow"
         />
       </RightArrowStyle>
-      {map(styles, (style) => (
+      {map(productStyles, (style) => (
         map(style.photos, (photo) => (
           <div>
             <ImageStyle

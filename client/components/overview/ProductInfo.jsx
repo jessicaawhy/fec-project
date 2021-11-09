@@ -4,13 +4,13 @@ import {
   ProductInfoContainer, CategoryStyle, NameStyle, PriceStyle,
 } from './styles/ProductInfo.style';
 
-const ProductInfo = ({ /* styles */ id }) => (
+const ProductInfo = ({ /* styles */ productInfo }) => (
   <ProductInfoContainer data-testid="product-info">
-    <CategoryStyle>{id.category}</CategoryStyle>
-    <NameStyle>{id.name}</NameStyle>
+    <CategoryStyle>{productInfo.category}</CategoryStyle>
+    <NameStyle>{productInfo.name}</NameStyle>
     <PriceStyle>
       $
-      {id.default_price}
+      {productInfo.default_price}
     </PriceStyle>
   </ProductInfoContainer>
 );

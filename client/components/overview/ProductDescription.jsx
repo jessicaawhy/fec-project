@@ -5,10 +5,10 @@ import {
 }
   from './styles/ProductDescription.style';
 
-const ProductDescription = ({ id }) => {
+const ProductDescription = ({ productInfo }) => {
   let idLoaded = false;
 
-  if (id.features) {
+  if (productInfo.features) {
     idLoaded = true;
   }
 
@@ -20,14 +20,14 @@ const ProductDescription = ({ id }) => {
         data-testid="slogan"
         className="slogan"
       >
-        {id.slogan}
+        {productInfo.slogan}
 
       </SloganStyle>
       <DescriptionStyle
         data-testid="description"
         className="description"
       >
-        {id.description}
+        {productInfo.description}
 
       </DescriptionStyle>
       <FeaturesStyle>
@@ -38,9 +38,9 @@ const ProductDescription = ({ id }) => {
         data-testid="features"
         className="features"
       >
-        {id.features.map((feature) => (
+        {productInfo.features.map((featureList) => (
           <FeatureStyle>
-            {`${feature.feature}: ${feature.value}`}
+            {`${featureList.feature}: ${featureList.value}`}
           </FeatureStyle>
         ))}
       </FeatureListStyle>

@@ -14,14 +14,15 @@ import {
 
 const OverviewContainer = () => {
   const currentProduct = useProduct();
-  const [styles, setStyles] = useState([{}]);
-  const [id, setId] = useState({});
+  const [productStyles, setProductStyles] = useState([{}]);
+  const [currentStyle, setCurrentStyle] = useState({});
+  const [productInfo, setProductInfo] = useState({});
 
   useEffect(() => {
     fetch(`http://localhost:3000/overview/${currentProduct.id}/styles`)
       .then((response) => response.json())
       .then((data) => {
-        setStyles(data);
+        setProductStyles(data);
       })
       .catch((error) => {
         console.log(`error in fetching data for id ${currentProduct.id}`, error);
@@ -30,7 +31,7 @@ const OverviewContainer = () => {
     fetch(`http://localhost:3000/overview/${currentProduct.id}`)
       .then((response) => response.json())
       .then((data) => {
-        setId(data);
+        setProductInfo(data);
       })
       .catch((error) => {
         console.log(`error in fetching id ${currentProduct.id}`, error);
@@ -41,20 +42,24 @@ const OverviewContainer = () => {
     <Container data-testid="container">
       <Grid>
         <LeftColumn>
-          <ImageGallery styles={styles} />
+          <ImageGallery productStyles={productStyles} />
         </LeftColumn>
 
         <RightColumn>
           <StarRating products={products} />
           <ProductInfo
-            styles={styles}
-            id={id}
+            productStyles={productStyles}
+            productInfo={productInfo}
           />
-          <StyleSelector styles={styles} />
-          <AddToCart styles={styles} />
+          <StyleSelector
+            productStyles={productStyles}
+            currentStyle={currentStyle}
+            setCurrentStyle={setCurrentStyle}
+          />
+          <AddToCart productStyles={productStyles} />
         </RightColumn>
 
-        <ProductDescription id={id} />
+        <ProductDescription productInfo={productInfo} />
       </Grid>
     </Container>
   );

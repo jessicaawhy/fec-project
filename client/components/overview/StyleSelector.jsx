@@ -1,19 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import map from 'lodash/map';
 import PropTypes from 'prop-types';
 import StyleButton from './StyleButton';
 import { StyleSelectorContainer } from './styles/StyleSelector.style';
 
-const StyleSelector = ({ styles }) => {
-  const [currentStyle, setCurrentStyle] = useState({});
-
+const StyleSelector = ({ productStyles, currentStyle, setCurrentStyle }) => {
   useEffect(async () => {
-    map(styles, (style) => {
+    map(productStyles, (style) => {
       if (style.default) {
         setCurrentStyle(style);
       }
     });
-  }, [styles, currentStyle]);
+  }, [productStyles, currentStyle]);
 
   return (
     <StyleSelectorContainer
