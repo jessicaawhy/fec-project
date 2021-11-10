@@ -5,18 +5,10 @@ import StyleButton from './StyleButton';
 import { StyleSelectorContainer } from './styles/StyleSelector.style';
 
 const StyleSelector = ({ productStyles, currentStyle, setCurrentStyle }) => {
-  const [defaultStyle, setDefaultStyle] = useState(() => {
-    productStyles.forEach((style) => {
-      if (style.default) {
-        setCurrentStyle(style);
-      }
-    });
-  });
-
   useEffect(() => {
-    console.log('useEffect StyleSelector is running....');
-    setDefaultStyle(currentStyle);
-  }, [productStyles, currentStyle]);
+    console.log('-------------- useEffect() StyleSelector is running.... //');
+    console.log('CurrentStyle: ', currentStyle);
+  }, [currentStyle]);
 
   const renderStyleButtons = () => productStyles.map((style) => {
     const styleId = style.style_id;

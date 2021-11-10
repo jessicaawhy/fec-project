@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import map from 'lodash/map';
 import range from 'lodash/range';
@@ -36,6 +36,11 @@ const AddToCart = ({ currentStyle }) => {
 
     addProductToCart(skuId);
   };
+
+  // useEffect(() => {
+  //   setCurrentSize('Size');
+  //   setCurrentQuantity('Quantity');
+  // }, [currentStyle]);
 
   return (
     <CartContainer
