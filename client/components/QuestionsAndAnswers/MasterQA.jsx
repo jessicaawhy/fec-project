@@ -95,7 +95,3 @@ const MasterQA = () => {
 };
 
 export default MasterQA;
-
-// const promise = new Promise((resolve, reject) => resolve(setQuestionsFromAPI(questionsFetched.results)));
-// promise.then(() => setQuestions(questionsFromAPI.slice(0, questionsLength))).catch((err) => console.log('err///', err));
-// setQuestions(questionsFromAPI.slice(0, questionsLength));

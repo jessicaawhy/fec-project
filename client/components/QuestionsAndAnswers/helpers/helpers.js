@@ -14,25 +14,6 @@ export const getAnswers = async (questionID, page, count) => {
   return data;
 };
 
-// export const postQuestion = async (product_id, body, name, email) => {
-//   const newQuestion = {
-//     product_id, body, name, email,
-//   };
-//   const response = await fetch('http://localhost:3000/qa/questions/', {
-//     method: 'post',
-//     header: {
-//       'Content-Type': 'application/json',
-//       // 'Content-Type': 'application/x-www-form-urlencoded',
-//     },
-//     body: JSON.stringify(newQuestion),
-//   });
-//   console.log('----PostQuestion', response);
-//   // // return response.json();
-//   const data = await response.json();
-//   console.log('what is data postQuestion', data);
-//   // return data;
-// };
-
 export const postQuestion = (newQuestion) => {
   fetch('http://localhost:3000/qa/questions/', {
     method: 'post',
@@ -44,4 +25,16 @@ export const postQuestion = (newQuestion) => {
     // .then((response) => response.json())
     .then((data) => console.log('success', data))
     .catch((err) => console.log('what is POST err', err));
+};
+
+export const postAnswer = (newAnswer, questionID) => {
+  fetch(`http://localhost:3000/qa/questions/${questionID}/answers`, {
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(newAnswer),
+  })
+    .then((data) => console.log('newAnswer added to server', data))
+    .catch((err) => console.log('what is post answer err', err));
 };

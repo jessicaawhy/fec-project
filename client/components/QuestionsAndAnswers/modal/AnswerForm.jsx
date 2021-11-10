@@ -38,7 +38,7 @@ const AnswerForm = ({
           type="text"
           maxlength="60"
           placeholder="Example: jack543!"
-          onChange={(e) => setNewAnswer({ ...newAnswer, answerer_name: e.target.value })}
+          onChange={(e) => setNewAnswer({ ...newAnswer, name: e.target.value })}
         />
         <Notes>
           For privacy reasons, do not use your full name or email address

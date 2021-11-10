@@ -5,8 +5,11 @@ import {
 } from './styles/QuestionItem.style';
 import AnswerList from './AnswerList';
 import AnswerModal from './modal/AnswerModal';
+import { postAnswer } from './helpers/helpers';
 
-const QuestionItem = ({ question, index, updateHelpfulness }) => {
+const QuestionItem = ({
+  question, index, updateHelpfulness,
+}) => {
   const sortedAnswers = Object.values(question.answers).sort(
     (a, b) => b.helpfulness - a.helpfulness,
   );
@@ -37,14 +40,8 @@ const QuestionItem = ({ question, index, updateHelpfulness }) => {
   };
 
   const handleAddAnswer = (newAnswer) => {
-    console.log(1);
-    console.log('cool');
-    const randomId = Math.floor(Math.random() * 389457934);
-    const temp = { ...question.answers, randomId: newAnswer };
-    const temp1 = Object.values(temp).sort(
-      (a, b) => b.helpfulness - a.helpfulness,
-    );
-    setDisplayedAnswers(temp1.slice(0, length));
+    postAnswer(newAnswer, question.question_id);
+    setDisplayedAnswers(sortedAnswers.slice(0, length));
   };
 
   return (
@@ -90,6 +87,7 @@ const QuestionItem = ({ question, index, updateHelpfulness }) => {
 QuestionItem.propTypes = {
   question: PropTypes.shape({
     question_body: PropTypes.string,
+    question_id: PropTypes.number,
     question_helpfulness: PropTypes.number,
     answers: PropTypes.shape({}),
   }).isRequired,
