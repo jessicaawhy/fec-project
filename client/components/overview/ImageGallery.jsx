@@ -1,6 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import map from 'lodash/map';
+import PropTypes from 'prop-types';
 import {
   GalleryContainer, GalleryStyle, ImageStyle, ThumbnailContainer, ThumbnailStyle, RightArrow,
   LeftArrow, UpArrow, DownArrow, RightArrowStyle,
@@ -8,7 +8,7 @@ import {
 }
   from './styles/ImageGallery.style';
 
-const ImageGallery = ({ styles }) => (
+const ImageGallery = ({ productStyles }) => (
   <GalleryContainer
     data-testid="gallery-container"
     className="gallery-container"
@@ -23,7 +23,7 @@ const ImageGallery = ({ styles }) => (
           className="up-arrow"
         />
       </UpArrowStyle>
-      {styles.results.map((style) => (
+      {map(productStyles, (style) => (
         map(style.photos, (photo) => (
           <div>
             <ThumbnailStyle
@@ -49,7 +49,7 @@ const ImageGallery = ({ styles }) => (
           className="right-arrow"
         />
       </RightArrowStyle>
-      {styles.results.map((style) => (
+      {map(productStyles, (style) => (
         map(style.photos, (photo) => (
           <div>
             <ImageStyle

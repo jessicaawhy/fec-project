@@ -1,23 +1,38 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect } from 'react';
 import map from 'lodash/map';
+import PropTypes from 'prop-types';
 import StyleButton from './StyleButton';
 import { StyleSelectorContainer } from './styles/StyleSelector.style';
 
-const StyleSelector = ({ styles }) => (
-  <StyleSelectorContainer
-    data-testid="style-selector"
-    className="style-selector"
-  >
-    {styles.results.map((style) => (
-      map(style.photos, (photo) => (
-        <StyleButton
-          photo={photo}
-        />
-      ))
-    ))}
-  </StyleSelectorContainer>
-);
+const StyleSelector = ({ productStyles, currentStyle, setCurrentStyle }) => {
+  useEffect(() => {
+    map(productStyles, (style) => {
+      if (style.default) {
+        setCurrentStyle(style);
+      }
+    });
+  }, [productStyles, currentStyle]);
+
+  return (
+    <StyleSelectorContainer
+      data-testid="style-selector"
+      className="style-selector"
+    >
+      {map(currentStyle.photos, (photo) => {
+        const styleId = currentStyle.style_id;
+        return (
+          <StyleButton
+            styleId={styleId}
+            photo={photo}
+            currentStyle={currentStyle}
+            setCurrentStyle={setCurrentStyle}
+
+          />
+        );
+      })}
+    </StyleSelectorContainer>
+  );
+};
 
 export default StyleSelector;
 StyleSelector.propTypes = PropTypes.shape({
