@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable jsx-a11y/label-has-for */
 /* eslint-disable react/require-default-props */
 
@@ -9,38 +10,34 @@ const FormElement = ({
 }) => {
   let elem;
 
+  const defaultProps = {
+    name,
+    type,
+    id: name,
+  };
+
   if (type === 'text') {
+    defaultProps.placeholder = placeholder;
+    defaultProps.minLength = min;
+    defaultProps.maxLength = max;
+
     if (req === 0) {
       elem = (
-        <input
-          name={name}
-          type={type}
-          id={name}
-          placeholder={placeholder}
-          maxLength={max}
-        />
+        <input {...defaultProps} />
       );
     } else {
       elem = (
-        <input
-          name={name}
-          type={type}
-          id={name}
-          placeholder={placeholder}
-          minLength={min}
-          maxLength={max}
-          required
-        />
+        <input {...defaultProps} required />
       );
     }
   }
 
   if (type === 'radio') {
-    elem = <input name={name} type={type} id={name} value={value} required />;
+    elem = <input {...defaultProps} value={value} required />;
   }
 
   if (type === 'email') {
-    elem = <input name={name} type={type} id={name} placeholder={placeholder} required />;
+    elem = <input {...defaultProps} placeholder={placeholder} required />;
   }
 
   return (
