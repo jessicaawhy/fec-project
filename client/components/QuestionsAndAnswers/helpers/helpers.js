@@ -52,3 +52,9 @@ export const reportQuestion = (questionID) => {
   }).then((data) => console.log('updated Q helpfulness!!!', data))
     .catch((err) => console.log('what is updated Q helpfulness ERR', err));
 };
+export const updAnswerHelpfulness = (answerID) => {
+  fetch(`http://localhost:3000/qa/answers/${answerID}/helpful`, {
+    method: 'put',
+  }).then((data) => console.log('updated Q helpfulness!!!', data))
+    .catch((err) => console.log('what is updated Q helpfulness ERR', err));
+};

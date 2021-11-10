@@ -5,7 +5,7 @@ import {
 } from './styles/AnswerItem.style';
 import { ModalShadow, Modal } from './styles/Modal.style';
 import PhotoModal from './modal/PhotoModal';
-import { reportQuestion } from './helpers/helpers';
+import { reportQuestion, updAnswerHelpfulness } from './helpers/helpers';
 
 const AnswerItem = ({
   questionID, answer, index, updateAnswerHelpfulness,
@@ -19,9 +19,10 @@ const AnswerItem = ({
     console.log('image is clicked---------');
   };
 
-  const handleAnswerHelpfulness = (e) => {
+  const handleAnswerHelpfulness = (e, answerID) => {
     console.log('clicked -------');
     if (!isHelpful) {
+      updAnswerHelpfulness(answerID);
       setIsHelpful(true);
       e.target.classList.add('marked');
       updateAnswerHelpfulness(index);
@@ -49,7 +50,7 @@ const AnswerItem = ({
           {new Date(answer.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
         </span>
         <span>Helpful? </span>
-        <UnderLine type="button" onClick={(e) => handleAnswerHelpfulness(e)}>Yes</UnderLine>
+        <UnderLine type="button" onClick={(e) => handleAnswerHelpfulness(e, answer.id)}>Yes</UnderLine>
         <span>{`(${answer.helpfulness})`}</span>
         <UnderLine type="button" onClick={(e) => handleReportedAnswer(e, questionID)}>
           {isReported ? 'Reported' : 'Report'}
@@ -81,6 +82,7 @@ const AnswerItem = ({
 
 AnswerItem.propTypes = {
   answer: PropTypes.shape({
+    id: PropTypes.number,
     body: PropTypes.string,
     answerer_name: PropTypes.string,
     date: PropTypes.string,
