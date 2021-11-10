@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
   GalleryContainer, GalleryStyle, ImageStyle, ThumbnailContainer, ThumbnailStyle, RightArrow,
@@ -7,12 +7,39 @@ import {
 }
   from './styles/ImageGallery.style';
 
-const ImageGallery = ({ currentStyle }) => (
-  <GalleryContainer
-    data-testid="gallery-container"
-    className="gallery-container"
-  >
-    {(currentStyle.photos !== undefined)
+const ImageGallery = ({ currentStyle }) => {
+  const [thumbnailPhotos, setThumbnailPhotos] = useState([]);
+  const [fullPhotos, setFullPhotos] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const createThumbnailPhotoSet = () => {
+    const thumbnails = [];
+    currentStyle.photos.forEach((photo) => {
+      thumbnails.push(photo.thumbnail_url);
+    });
+    return thumbnails;
+  };
+
+  const createFullPhotoSet = () => {
+    const fullSizePhotos = [];
+    currentStyle.photos.forEach((photo) => {
+      fullSizePhotos.push(photo.url);
+    });
+    return fullSizePhotos;
+  };
+
+  useEffect(() => {
+    if (currentStyle.photos) {
+      setThumbnailPhotos(createThumbnailPhotoSet());
+      setFullPhotos(createFullPhotoSet());
+    }
+  }, [currentStyle]);
+  return (
+    <GalleryContainer
+      data-testid="gallery-container"
+      className="gallery-container"
+    >
+      {(currentStyle.photos !== undefined)
     && (
     <ThumbnailContainer
       data-testid="thumbnail-container"
@@ -42,7 +69,7 @@ const ImageGallery = ({ currentStyle }) => (
       </DownArrowStyle>
     </ThumbnailContainer>
     )}
-    {(currentStyle.photos !== undefined)
+      {(currentStyle.photos !== undefined)
     && (
     <GalleryStyle className="gallery-container">
       <RightArrowStyle>
@@ -69,8 +96,9 @@ const ImageGallery = ({ currentStyle }) => (
       </LeftArrowStyle>
     </GalleryStyle>
     )}
-  </GalleryContainer>
-);
+    </GalleryContainer>
+  );
+};
 
 export default ImageGallery;
 ImageGallery.propTypes = PropTypes.shape({
