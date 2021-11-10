@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import map from 'lodash/map';
 import range from 'lodash/range';
+import { addProductToCart } from './helpers/api';
 import { CartContainer, CartButton, DropDown } from './styles/AddToCart.style';
 
-const AddToCart = ({ addProductToCart, currentStyle }) => {
+const AddToCart = ({ currentStyle }) => {
   const [currentSize, setCurrentSize] = useState('Size');
   const [currentQuantity, setCurrentQuantity] = useState('Quantity');
   const [currentSku, setCurrentSku] = useState(null);
@@ -29,8 +30,11 @@ const AddToCart = ({ addProductToCart, currentStyle }) => {
   };
 
   const handleCartButton = () => {
-    // console.log('AddToCart handleCartButton running....');
-    // addProductToCart();
+    const skuId = {
+      sku_id: currentSku,
+    };
+
+    addProductToCart(skuId);
   };
 
   return (

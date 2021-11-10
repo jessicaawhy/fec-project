@@ -8,6 +8,7 @@ import AddToCart from './AddToCart';
 import products from './tests/testData/testProducts';
 // import Stars from '../styles/Stars.styled';
 import { useProduct } from '../../ProductContext';
+import { getProductInfo, getProductStyles } from './helpers/api';
 import {
   RightColumn, Container, Grid, LeftColumn,
 } from './styles/OverviewContainerColumns.style';
@@ -18,29 +19,9 @@ const OverviewContainer = () => {
   const [currentStyle, setCurrentStyle] = useState({});
   const [productInfo, setProductInfo] = useState({});
 
-  const addProductToCart = () => {
-    // console.log('addProductToCart running...');
-    // todo: add endpoint and fetch for posting to cart
-  };
-
   useEffect(() => {
-    fetch(`http://localhost:3000/overview/${currentProduct.id}/styles`)
-      .then((response) => response.json())
-      .then((data) => {
-        setProductStyles(data);
-      })
-      .catch((error) => {
-        console.log(`error in fetching data for id ${currentProduct.id}`, error);
-      });
-
-    fetch(`http://localhost:3000/overview/${currentProduct.id}`)
-      .then((response) => response.json())
-      .then((data) => {
-        setProductInfo(data);
-      })
-      .catch((error) => {
-        console.log(`error in fetching id ${currentProduct.id}`, error);
-      });
+    getProductInfo(currentProduct, setProductInfo);
+    getProductStyles(currentProduct, setProductStyles);
   }, []);
 
   return (
@@ -63,7 +44,6 @@ const OverviewContainer = () => {
             setCurrentStyle={setCurrentStyle}
           />
           <AddToCart
-            // addProductToCart={addProductToCart}
             currentStyle={currentStyle}
           />
         </RightColumn>
