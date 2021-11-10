@@ -51,7 +51,6 @@ const ImageGallery = ({ currentStyle }) => (
           className="right-arrow"
         />
       </RightArrowStyle>
-      {console.log('currentStyle.photos', currentStyle.photos)}
       {currentStyle.photos.map((photoSet) => (
         <div>
           <ImageStyle
