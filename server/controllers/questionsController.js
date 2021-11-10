@@ -71,10 +71,20 @@ const updateHelpfullness = (req, res) => {
     .catch((err) => res.status(500).send(err));
 };
 
+const reportQuestion = (req, res) => {
+  const { question_id } = req.params;
+  axios({
+    method: 'put',
+    url: `/${question_id}/report`,
+  }).then(res.status(204).send('updated'))
+    .catch((err) => res.status(500).send(err));
+};
+
 module.exports = {
   getQuestions,
   getAnswers,
   postQuestion,
   postAnswer,
   updateHelpfullness,
+  reportQuestion,
 };

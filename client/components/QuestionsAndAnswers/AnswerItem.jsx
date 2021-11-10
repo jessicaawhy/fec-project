@@ -5,8 +5,11 @@ import {
 } from './styles/AnswerItem.style';
 import { ModalShadow, Modal } from './styles/Modal.style';
 import PhotoModal from './modal/PhotoModal';
+import { reportQuestion } from './helpers/helpers';
 
-const AnswerItem = ({ answer, index, updateAnswerHelpfulness }) => {
+const AnswerItem = ({
+  questionID, answer, index, updateAnswerHelpfulness,
+}) => {
   const [isHelpful, setIsHelpful] = useState(false);
   const [isReported, setIsReported] = useState(false);
   const [isEnlarged, setIsEnlarged] = useState(false);
@@ -24,9 +27,10 @@ const AnswerItem = ({ answer, index, updateAnswerHelpfulness }) => {
       updateAnswerHelpfulness(index);
     }
   };
-  const handleReportedAnswer = (e) => {
+  const handleReportedAnswer = (e, currQuestionID) => {
     if (!isReported) {
       setIsReported(true);
+      reportQuestion(currQuestionID);
       e.target.classList.add('marked');
     }
   };
@@ -47,7 +51,7 @@ const AnswerItem = ({ answer, index, updateAnswerHelpfulness }) => {
         <span>Helpful? </span>
         <UnderLine type="button" onClick={(e) => handleAnswerHelpfulness(e)}>Yes</UnderLine>
         <span>{`(${answer.helpfulness})`}</span>
-        <UnderLine type="button" onClick={(e) => handleReportedAnswer(e)}>
+        <UnderLine type="button" onClick={(e) => handleReportedAnswer(e, questionID)}>
           {isReported ? 'Reported' : 'Report'}
         </UnderLine>
       </AnswerDetails>

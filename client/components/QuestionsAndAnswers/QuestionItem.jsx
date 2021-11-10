@@ -79,6 +79,7 @@ const QuestionItem = ({
         )}
       </QuestionDiv>
       <AnswerList
+        questionID={question.question_id}
         answers={Object.values(displayedAnswers)}
         updateAnswerHelpfulness={updateAnswerHelpfulness}
       />
