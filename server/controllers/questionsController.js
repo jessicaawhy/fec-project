@@ -3,7 +3,6 @@ const axios = require('axios');
 // apply axios defaults
 axios.defaults.baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions';
 axios.defaults.headers.common.Authorization = process.env.TOKEN;
-// axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 const getQuestions = (req, res) => {
   const { product_id, page, count } = req.params;
@@ -38,7 +37,6 @@ const postQuestion = (req, res) => {
   const {
     product_id, body, name, email,
   } = req.body;
-  // console.log('.....', req.body);
   axios({
     method: 'post',
     url: '/',
@@ -47,7 +45,6 @@ const postQuestion = (req, res) => {
     },
   }).then(res.status(201).send('thanks for posting'))
     .catch((err) => { console.log('postQUestion-----', err); });
-  // res.status(500).send(err);
 };
 
 const postAnswer = (req, res) => {
@@ -65,9 +62,19 @@ const postAnswer = (req, res) => {
     .catch((err) => res.send(err));
 };
 
+const updateHelpfullness = (req, res) => {
+  const { question_id } = req.params;
+  axios({
+    method: 'put',
+    url: `/${question_id}/helpful`,
+  }).then(res.status(204).send('updated'))
+    .catch((err) => res.status(500).send(err));
+};
+
 module.exports = {
   getQuestions,
   getAnswers,
   postQuestion,
   postAnswer,
+  updateHelpfullness,
 };

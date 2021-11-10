@@ -25,14 +25,13 @@ const MasterQA = () => {
     const questionsFetched = await getQuestions(product.id, 1, 11);
     console.log('----- results', questionsFetched);
     setQuestionsFromAPI(questionsFetched.results);
-    // revisit to figure out why promisfy is not working and why need to useEffect
   }, []);
 
   useEffect(() => {
     console.log('what is quesitons from API-------', questionsFromAPI);
     console.log('what is sorted-------', sortedQuestions);
     setQuestions(questionsFromAPI.slice(0, questionsLength));
-  }, [questionsFromAPI]);
+  }, [questionsFromAPI, currProduct]);
 
   const handleAddQuestion = (newQuestion) => {
     const data = {

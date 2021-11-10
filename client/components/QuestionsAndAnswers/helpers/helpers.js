@@ -38,3 +38,11 @@ export const postAnswer = (newAnswer, questionID) => {
     .then((data) => console.log('newAnswer added to server', data))
     .catch((err) => console.log('what is post answer err', err));
 };
+
+export const updQuestionHelpfulness = (questionID) => {
+  fetch(`http://localhost:3000/qa/questions/${questionID}/helpful`, {
+    method: 'put',
+
+  }).then((data) => console.log('updated Q helpfulness!!!', data))
+    .catch((err) => console.log('what is updated Q helpfulness ERR', err));
+};

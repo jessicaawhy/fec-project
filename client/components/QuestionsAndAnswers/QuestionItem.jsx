@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
   QuestionDiv, QuestionBody, QuestionMisc, UnderLine, LoadMore,
 } from './styles/QuestionItem.style';
 import AnswerList from './AnswerList';
 import AnswerModal from './modal/AnswerModal';
-import { postAnswer } from './helpers/helpers';
+import { postAnswer, updQuestionHelpfulness, getQuestions } from './helpers/helpers';
 
 const QuestionItem = ({
   question, index, updateHelpfulness,
@@ -18,6 +18,10 @@ const QuestionItem = ({
   const [length, setLength] = useState(2);
   const [displayedAnswers, setDisplayedAnswers] = useState(sortedAnswers.slice(0, length));
 
+  // useEffect(() => {
+  //   setDisplayedAnswers(sortedAnswers.slice(0, setLength(sortedAnswers.length)));
+  // }, [question]);
+
   const loadMoreAnswers = (e) => {
     console.log(e.target.innerText);
     if (e.target.innerText === 'COLLAPSE ANSWERS') {
@@ -27,10 +31,15 @@ const QuestionItem = ({
     }
   };
 
-  const handleQuestionHelpfulness = () => {
+  const handleQuestionHelpfulness = async () => {
     if (!isHelpful) {
-      setIsHelpful(true);
+      const response = await updQuestionHelpfulness(question.question_id);
       updateHelpfulness(index);
+      if (response) {
+        setIsHelpful(true);
+        // getQuestions()
+        // getAnswers(question.question_id, 1, 5)
+      }
     }
   };
 
