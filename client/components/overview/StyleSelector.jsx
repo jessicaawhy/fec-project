@@ -15,13 +15,17 @@ const StyleSelector = ({ productStyles, currentStyle, setCurrentStyle }) => {
     const { photos } = style;
 
     return (
-      <StyleButton
-        styleId={styleId}
-        photos={photos}
-        currentStyle={currentStyle}
-        setCurrentStyle={setCurrentStyle}
-        productStyles={productStyles}
-      />
+      <>
+        <StyleButton
+          styleId={styleId}
+          photos={photos}
+          currentStyle={currentStyle}
+          setCurrentStyle={setCurrentStyle}
+          productStyles={productStyles}
+        />
+
+        {console.log('-------------- currentStyle StyleSelector running... ', currentStyle)}
+      </>
     );
   });
 
