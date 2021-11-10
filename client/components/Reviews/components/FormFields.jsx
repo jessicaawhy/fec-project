@@ -105,6 +105,7 @@ export const Name = () => (
       name="name"
       type="text"
       label="Name"
+      placeholder="Example: jackson11!"
       min={1}
       max={60}
       req={1}
@@ -120,6 +121,7 @@ export const Email = () => (
       name="email"
       type="email"
       label="Email"
+      placeholder="Example: jackson11@email.com"
     />
   </StyledEmail>
 );
@@ -130,6 +132,7 @@ export const Summary = () => (
       name="summary"
       type="text"
       label="Summary"
+      placeholder="Example: Best purchase ever!"
       min={1}
       max={60}
       req={0}
@@ -158,6 +161,7 @@ export const Body = () => {
         Review
         <textarea
           name="body"
+          placeholder="Why did you like the product or not?"
           rows="5"
           min={50}
           max={1000}

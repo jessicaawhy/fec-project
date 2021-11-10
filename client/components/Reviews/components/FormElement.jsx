@@ -1,26 +1,43 @@
+/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable jsx-a11y/label-has-for */
+/* eslint-disable react/require-default-props */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 
 const FormElement = ({
-  name, type, label, value, min, max, req,
+  name, type, label, value, placeholder = '', min = '', max = '', req,
 }) => {
   let elem;
 
+  const defaultProps = {
+    name,
+    type,
+    id: name,
+  };
+
   if (type === 'text') {
+    defaultProps.placeholder = placeholder;
+    defaultProps.minLength = min;
+    defaultProps.maxLength = max;
+
     if (req === 0) {
-      elem = <input name={name} type={type} maxLength={max || ''} />;
+      elem = (
+        <input {...defaultProps} />
+      );
     } else {
-      elem = <input name={name} type={type} minLength={min || ''} maxLength={max || ''} required />;
+      elem = (
+        <input {...defaultProps} required />
+      );
     }
   }
 
   if (type === 'radio') {
-    elem = <input name={name} type={type} defaultValue={value} value={value} required />;
+    elem = <input {...defaultProps} value={value} required />;
   }
 
   if (type === 'email') {
-    elem = <input name={name} type={type} required />;
+    elem = <input {...defaultProps} placeholder={placeholder} required />;
   }
 
   return (
@@ -37,8 +54,9 @@ FormElement.propTypes = {
   name: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
-  min: PropTypes.number.isRequired,
-  max: PropTypes.number.isRequired,
-  req: PropTypes.number.isRequired,
+  placeholder: PropTypes.string,
+  value: PropTypes.string,
+  min: PropTypes.number,
+  max: PropTypes.number,
+  req: PropTypes.number,
 };
