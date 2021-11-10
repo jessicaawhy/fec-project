@@ -29,12 +29,11 @@ const AddToCart = ({ addProductToCart, currentStyle }) => {
   };
 
   const handleCartButton = () => {
-    const id = {
+    const skuId = {
       sku_id: currentSku,
     };
 
-    console.log('AddToCart handleCartButton running....', id);
-    addProductToCart(id);
+    addProductToCart(skuId);
   };
 
   return (

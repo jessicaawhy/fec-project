@@ -18,31 +18,16 @@ const OverviewContainer = () => {
   const [currentStyle, setCurrentStyle] = useState({});
   const [productInfo, setProductInfo] = useState({});
 
-  const addProductToCart = (id) => {
-    console.log('addProductToCart running...');
+  const addProductToCart = (skuId) => {
     fetch('http://localhost:3000/overview/cart', {
       method: 'POST',
-      body: JSON.stringify(id),
-      // data: JSON.stringify(id),
       headers: {
         'Content-Type': 'application/json',
       },
+      body: JSON.stringify(skuId),
     })
-      .then(async (response) =>
-        // try {
-        //   const data = await response.json();
-        //   console.log('response data?', data);
-        // } catch (error) {
-        //   console.log('Error happened here!');
-        //   console.log(error);
-        // }
-        response.json())
-      .then((data) => {
-        console.log('product added to cart', data);
-      })
-      .catch((error) => {
-        console.log('error in adding product to cart', error);
-      });
+      .then(() => { console.log('product added to cart!'); })
+      .catch((error) => console.log('error in adding product to cart', error));
   };
 
   useEffect(() => {
