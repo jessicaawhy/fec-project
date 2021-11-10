@@ -22,13 +22,15 @@ const OverviewContainer = () => {
   useEffect(() => {
     getProductInfo(currentProduct, setProductInfo);
     getProductStyles(currentProduct, setProductStyles);
-  }, []);
+  }, [currentProduct]);
 
   return (
     <Container data-testid="container">
       <Grid>
         <LeftColumn>
-          <ImageGallery productStyles={productStyles} />
+          <ImageGallery
+            currentStyle={currentStyle}
+          />
         </LeftColumn>
 
         <RightColumn>

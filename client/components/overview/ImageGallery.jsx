@@ -1,5 +1,4 @@
 import React from 'react';
-import map from 'lodash/map';
 import PropTypes from 'prop-types';
 import {
   GalleryContainer, GalleryStyle, ImageStyle, ThumbnailContainer, ThumbnailStyle, RightArrow,
@@ -8,11 +7,13 @@ import {
 }
   from './styles/ImageGallery.style';
 
-const ImageGallery = ({ productStyles }) => (
+const ImageGallery = ({ currentStyle }) => (
   <GalleryContainer
     data-testid="gallery-container"
     className="gallery-container"
   >
+    {(currentStyle.photos !== undefined)
+    && (
     <ThumbnailContainer
       data-testid="thumbnail-container"
       className="thumbnail-container"
@@ -23,17 +24,15 @@ const ImageGallery = ({ productStyles }) => (
           className="up-arrow"
         />
       </UpArrowStyle>
-      {map(productStyles, (style) => (
-        map(style.photos, (photo) => (
-          <div>
-            <ThumbnailStyle
-              data-testid="thumbnail-image"
-              className="thumbnail-image"
-              alt="thumbnail"
-              src={photo.thumbnail_url}
-            />
-          </div>
-        ))
+      {currentStyle.photos.map((photoSet) => (
+        <div>
+          <ThumbnailStyle
+            data-testid="thumbnail-image"
+            className="thumbnail-image"
+            alt="thumbnail"
+            src={photoSet.thumbnail_url}
+          />
+        </div>
       ))}
       <DownArrowStyle>
         <DownArrow
@@ -42,6 +41,9 @@ const ImageGallery = ({ productStyles }) => (
         />
       </DownArrowStyle>
     </ThumbnailContainer>
+    )}
+    {(currentStyle.photos !== undefined)
+    && (
     <GalleryStyle className="gallery-container">
       <RightArrowStyle>
         <RightArrow
@@ -49,17 +51,16 @@ const ImageGallery = ({ productStyles }) => (
           className="right-arrow"
         />
       </RightArrowStyle>
-      {map(productStyles, (style) => (
-        map(style.photos, (photo) => (
-          <div>
-            <ImageStyle
-              data-testid="full-image"
-              className="full-image"
-              alt="full image"
-              src={photo.url}
-            />
-          </div>
-        ))
+      {console.log('currentStyle.photos', currentStyle.photos)}
+      {currentStyle.photos.map((photoSet) => (
+        <div>
+          <ImageStyle
+            data-testid="full-image"
+            className="full-image"
+            alt="full image"
+            src={photoSet.url}
+          />
+        </div>
       ))}
       <LeftArrowStyle>
         <LeftArrow
@@ -68,6 +69,7 @@ const ImageGallery = ({ productStyles }) => (
         />
       </LeftArrowStyle>
     </GalleryStyle>
+    )}
   </GalleryContainer>
 );
 
