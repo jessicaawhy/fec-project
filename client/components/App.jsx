@@ -4,8 +4,8 @@ import { StyledContainer, StyledHeader, ModulesContainer } from './styles/App.st
 import GlobalStyles from './styles/Global';
 import SelectProduct from './SelectProduct';
 import OverviewContainer from './overview/OverviewContainer';
-import MasterQA from './QuestionsAndAnswers/MasterQA';
-import ReviewsComponent from './Reviews/components/ReviewsComponent';
+// import MasterQA from './QuestionsAndAnswers/MasterQA';
+// import ReviewsComponent from './Reviews/components/ReviewsComponent';
 
 const App = () => {
   const updateAll = useAllProductsUpdate();
@@ -29,8 +29,8 @@ const App = () => {
 
         <ModulesContainer>
           <OverviewContainer />
-          <MasterQA />
-          <ReviewsComponent />
+          {/* <MasterQA />
+          <ReviewsComponent /> */}
         </ModulesContainer>
       </StyledContainer>
     )
