@@ -4,7 +4,6 @@ import QuestionItem from './QuestionItem';
 
 const QuestionList = ({ questions, updateHelpfulness }) => (
   <div data-testid="questionList">
-    {console.log('from QuestionList', typeof questions, questions, typeof updateHelpfulness)}
     {questions.map((question, index) => (
       <QuestionItem
         question={question}

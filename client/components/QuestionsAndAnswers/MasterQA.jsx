@@ -23,13 +23,10 @@ const MasterQA = () => {
 
   useEffect(async () => {
     const questionsFetched = await getQuestions(product.id, 1, 11);
-    console.log('----- results', questionsFetched);
     setQuestionsFromAPI(questionsFetched.results);
   }, []);
 
   useEffect(() => {
-    console.log('what is quesitons from API-------', questionsFromAPI);
-    console.log('what is sorted-------', sortedQuestions);
     setQuestions(questionsFromAPI.slice(0, questionsLength));
   }, [questionsFromAPI, currProduct]);
 
@@ -42,11 +39,6 @@ const MasterQA = () => {
     };
     postQuestion(data); // if time allowed, consider fixing it
     getQuestions(product.id, 1, 10);
-    // const updatedQuestions = [...questionsFromAPI, newQuestion];
-    // const sortedUpdQuestions = updatedQuestions.sort(
-    //   (a, b) => b.question_helpfulness - a.question_helpfulness,
-    // );
-    // setQuestions(sortedUpdQuestions.slice(0, 2));
   };
 
   const renderMoreQuestions = () => {
@@ -58,7 +50,6 @@ const MasterQA = () => {
   };
 
   const updateHelpfulness = (index) => {
-    console.log('testing');
     sortedQuestions[index].question_helpfulness++;
     setQuestions(sortedQuestions.slice(0, questionsLength)); // might introduce a bug here
   };

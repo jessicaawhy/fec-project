@@ -33,14 +33,12 @@ const QuestionItem = ({
     }
   };
 
-  const handleQuestionHelpfulness = async () => {
+  const handleQuestionHelpfulness = (e, questionID) => {
     if (!isHelpful) {
-      const response = await updQuestionHelpfulness(question.question_id);
+      setIsHelpful(true);
+      updQuestionHelpfulness(questionID);
       updateHelpfulness(index);
-      if (response) {
-        setIsHelpful(true);
-        getQuestions(currProduct.id, 1, 11);
-      }
+      e.target.classList.add('marked');
     }
   };
 
@@ -65,7 +63,12 @@ const QuestionItem = ({
         </QuestionBody>
         <QuestionMisc>
           <span>Helpful? </span>
-          <UnderLine type="button" onClick={handleQuestionHelpfulness}>Yes</UnderLine>
+          <UnderLine
+            type="button"
+            onClick={(e) => handleQuestionHelpfulness(e, question.question_id)}
+          >
+            Yes
+          </UnderLine>
           <span>{`(${question.question_helpfulness})`}</span>
           <UnderLine onClick={() => setIsAdd(true)}> Add Answer </UnderLine>
         </QuestionMisc>

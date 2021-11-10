@@ -3,10 +3,8 @@ import PropTypes from 'prop-types';
 import Search from './styles/SearchQuestion.style';
 
 const SearchQuestion = ({ handleSearch }) => {
-  // const [searchInput, setSearchInput] = useState('');
   const handleSearchInput = (e) => {
     const input = e.target.value.toLowerCase();
-    // setSearchInput(input);
     handleSearch(input);
   };
 

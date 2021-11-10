@@ -20,7 +20,6 @@ const AnswerItem = ({
   };
 
   const handleAnswerHelpfulness = (e, answerID) => {
-    console.log('clicked -------');
     if (!isHelpful) {
       updAnswerHelpfulness(answerID);
       setIsHelpful(true);
