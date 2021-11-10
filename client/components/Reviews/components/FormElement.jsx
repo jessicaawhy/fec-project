@@ -5,15 +5,33 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const FormElement = ({
-  name, type, label, value, min = '', max = '', req,
+  name, type, label, value, placeholder = '', min = '', max = '', req,
 }) => {
   let elem;
 
   if (type === 'text') {
     if (req === 0) {
-      elem = <input name={name} type={type} id={name} maxLength={max} />;
+      elem = (
+        <input
+          name={name}
+          type={type}
+          id={name}
+          placeholder={placeholder}
+          maxLength={max}
+        />
+      );
     } else {
-      elem = <input name={name} type={type} id={name} minLength={min} maxLength={max} required />;
+      elem = (
+        <input
+          name={name}
+          type={type}
+          id={name}
+          placeholder={placeholder}
+          minLength={min}
+          maxLength={max}
+          required
+        />
+      );
     }
   }
 
@@ -22,7 +40,7 @@ const FormElement = ({
   }
 
   if (type === 'email') {
-    elem = <input name={name} type={type} id={name} required />;
+    elem = <input name={name} type={type} id={name} placeholder={placeholder} required />;
   }
 
   return (
@@ -39,6 +57,7 @@ FormElement.propTypes = {
   name: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
+  placeholder: PropTypes.string,
   value: PropTypes.string,
   min: PropTypes.number,
   max: PropTypes.number,
