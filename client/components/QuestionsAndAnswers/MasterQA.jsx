@@ -4,7 +4,6 @@ import AddQuestion from './AddQuestion';
 import MoreQuestions from './MoreQuestions';
 import QuestionList from './QuestionList';
 import SearchQuestion from './SearchQuestion';
-import Data from './dummyData';
 import { getQuestions, getAnswers, postQuestion } from './helpers/helpers';
 import { MasterContainer, Btn, Scroller } from './styles/MasterQA.style';
 
@@ -23,7 +22,7 @@ const MasterQA = () => {
   }, [currProduct]);
 
   useEffect(async () => {
-    const questionsFetched = await getQuestions(product.id, 1, 10);
+    const questionsFetched = await getQuestions(product.id, 1, 11);
     console.log('----- results', questionsFetched);
     setQuestionsFromAPI(questionsFetched.results);
     // revisit to figure out why promisfy is not working and why need to useEffect
