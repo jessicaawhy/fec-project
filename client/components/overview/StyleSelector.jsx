@@ -1,16 +1,21 @@
-import React, { useEffect } from 'react';
-import map from 'lodash/map';
+import React, { useState, useEffect } from 'react';
+// import map from 'lodash/map';
 import PropTypes from 'prop-types';
 import StyleButton from './StyleButton';
 import { StyleSelectorContainer } from './styles/StyleSelector.style';
 
 const StyleSelector = ({ productStyles, currentStyle, setCurrentStyle }) => {
-  useEffect(() => {
-    map(productStyles, (style) => {
+  const [defaultStyle, setDefaultStyle] = useState(() => {
+    productStyles.forEach((style) => {
       if (style.default) {
         setCurrentStyle(style);
       }
     });
+  });
+
+  useEffect(() => {
+    console.log('useEffect StyleSelector is running....');
+    setDefaultStyle(currentStyle);
   }, [productStyles, currentStyle]);
 
   const renderStyleButtons = () => productStyles.map((style) => {

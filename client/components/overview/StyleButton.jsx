@@ -7,20 +7,15 @@ const StyleButton = ({
 }) => {
   const [styleSelected, setStyleSelected] = useState(currentStyle);
 
-  const findStyle = (styleNum) => {
-    console.log('findStyle running....', styleNum);
+  const handleClick = (e, styleNum) => {
+    console.log('StyleButton handleClick running....');
+    console.log('currentStyle.style_id', currentStyle.style_id, 'styleId', styleNum);
     productStyles.forEach((style) => {
       if (style.style_id === styleNum) {
         setCurrentStyle(style);
-        setStyleSelected(style);
+        // setStyleSelected(style);
       }
     });
-  };
-
-  const handleClick = (e, styleNum) => {
-    console.log('StyleButton handleClick running....');
-    console.log('currentStyle.style_id', currentStyle.style_id, 'style', styleNum);
-    findStyle(styleNum);
   };
 
   useEffect(() => {
