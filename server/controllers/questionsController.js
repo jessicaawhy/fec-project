@@ -37,14 +37,46 @@ const postQuestion = (req, res) => {
   const {
     product_id, body, name, email,
   } = req.body;
-  // console.log('.....', req.body);
   axios({
     method: 'post',
     url: '/',
     data: {
       product_id, body, name, email,
     },
-  }).then(res.status(201).send('thank you for posting'))
+  }).then(res.status(201).send('thanks for posting'))
+    .catch((err) => { console.log('postQUestion-----', err); });
+};
+
+const postAnswer = (req, res) => {
+  const { question_id } = req.params;
+  const {
+    body, name, email, photos,
+  } = req.body;
+  axios({
+    method: 'post',
+    url: `/${question_id}/answers`,
+    data: {
+      body, name, email, photos,
+    },
+  }).then((res.status(201).send('thank you for adding an answer')))
+    .catch((err) => res.send(err));
+};
+
+const updateHelpfullness = (req, res) => {
+  const { question_id } = req.params;
+  axios({
+    method: 'put',
+    url: `/${question_id}/helpful`,
+  }).then(res.status(204).send('updated'))
+    .catch((err) => res.status(500).send(err));
+};
+
+const reportQuestion = (req, res) => {
+  const { question_id } = req.params;
+  axios({
+    method: 'put',
+    url: `/${question_id}/report`,
+  }).then(res.status(204).send('updated'))
     .catch((err) => res.status(500).send(err));
 };
 
@@ -52,4 +84,7 @@ module.exports = {
   getQuestions,
   getAnswers,
   postQuestion,
+  postAnswer,
+  updateHelpfullness,
+  reportQuestion,
 };

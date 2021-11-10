@@ -15,7 +15,7 @@ export const Modal = styled.div`
   position: fixed;
   top: 75px;
   z-index: 5;
-  max-height: calc(100% - 200px);
+  max-height: calc(100%- 200px);
   left: calc(50% - 250px);
   display: flex;
   flex-direction: column;
@@ -47,4 +47,8 @@ export const Notes = styled.div`
 `;
 export const SubmitInput = styled.input`
   padding: 10px;
+`;
+
+export const PopupImg = styled.img`
+  width: 500px;
 `;
