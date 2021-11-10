@@ -6,6 +6,7 @@ import {
 import AnswerList from './AnswerList';
 import AnswerModal from './modal/AnswerModal';
 import { postAnswer, updQuestionHelpfulness, getQuestions } from './helpers/helpers';
+import { useProduct } from '../../ProductContext';
 
 const QuestionItem = ({
   question, index, updateHelpfulness,
@@ -17,6 +18,7 @@ const QuestionItem = ({
   const [isHelpful, setIsHelpful] = useState(false);
   const [length, setLength] = useState(2);
   const [displayedAnswers, setDisplayedAnswers] = useState(sortedAnswers.slice(0, length));
+  const currProduct = useProduct();
 
   // useEffect(() => {
   //   setDisplayedAnswers(sortedAnswers.slice(0, setLength(sortedAnswers.length)));
@@ -37,8 +39,7 @@ const QuestionItem = ({
       updateHelpfulness(index);
       if (response) {
         setIsHelpful(true);
-        // getQuestions()
-        // getAnswers(question.question_id, 1, 5)
+        getQuestions(currProduct.id, 1, 11);
       }
     }
   };

@@ -17,6 +17,14 @@ export const UnderLine = styled.button`
   cursor: pointer;
   background-color: inherit;
   border: 0;
+  &.marked {
+    color: rgb(179, 0, 0);
+    text-decoration: none;
+    cursor: auto;
+    &:active {
+      transform: none;
+    }
+  }
 `;
 export const Image = styled.img`
   margin: 0 10px;

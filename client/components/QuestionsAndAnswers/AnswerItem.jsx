@@ -8,6 +8,7 @@ import PhotoModal from './modal/PhotoModal';
 
 const AnswerItem = ({ answer, index, updateAnswerHelpfulness }) => {
   const [isHelpful, setIsHelpful] = useState(false);
+  const [isReported, setIsReported] = useState(false);
   const [isEnlarged, setIsEnlarged] = useState(false);
 
   const handleImgModal = () => {
@@ -15,11 +16,18 @@ const AnswerItem = ({ answer, index, updateAnswerHelpfulness }) => {
     console.log('image is clicked---------');
   };
 
-  const handleAnswerHelpfulness = () => {
+  const handleAnswerHelpfulness = (e) => {
     console.log('clicked -------');
     if (!isHelpful) {
       setIsHelpful(true);
+      e.target.classList.add('marked');
       updateAnswerHelpfulness(index);
+    }
+  };
+  const handleReportedAnswer = (e) => {
+    if (!isReported) {
+      setIsReported(true);
+      e.target.classList.add('marked');
     }
   };
 
@@ -37,9 +45,11 @@ const AnswerItem = ({ answer, index, updateAnswerHelpfulness }) => {
           {new Date(answer.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
         </span>
         <span>Helpful? </span>
-        <UnderLine type="button" onClick={handleAnswerHelpfulness}>Yes</UnderLine>
+        <UnderLine type="button" onClick={(e) => handleAnswerHelpfulness(e)}>Yes</UnderLine>
         <span>{`(${answer.helpfulness})`}</span>
-        <UnderLine type="button" onClick={() => console.log('report this answer?')}>Report</UnderLine>
+        <UnderLine type="button" onClick={(e) => handleReportedAnswer(e)}>
+          {isReported ? 'Reported' : 'Report'}
+        </UnderLine>
       </AnswerDetails>
       <ImgContainer>
         {answer.photos.length !== 0
