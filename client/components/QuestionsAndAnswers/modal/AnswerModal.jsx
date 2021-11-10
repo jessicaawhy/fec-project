@@ -20,9 +20,9 @@ const AnswerModal = ({ question, setIsAdd, handleAddAnswer }) => {
       <>
         <ModalShadow />
         <Modal>
-          <h4>
+          <h3>
             Submit Your Answer
-          </h4>
+          </h3>
           <h5>
             {`${currProduct.name}: ${question.question_body}`}
           </h5>

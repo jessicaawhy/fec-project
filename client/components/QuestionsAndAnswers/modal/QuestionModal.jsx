@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
-import { ModalShadow, Modal } from '../styles/Modal.style';
 import QuestionForm from './QuestionForm';
+import { useProduct } from '../../../ProductContext';
+import { ModalShadow, Modal } from '../styles/Modal.style';
 
 const QuestionModal = ({ setOpen, handleAddQuestion }) => {
+  const currProduct = useProduct();
   const [newQuestion, setNewQuestion] = useState({
     question_body: '',
     asker_name: '',
@@ -17,11 +19,11 @@ const QuestionModal = ({ setOpen, handleAddQuestion }) => {
       <>
         <ModalShadow />
         <Modal>
-          <h4>
+          <h3>
             Ask Your Question
-          </h4>
+          </h3>
           <h5>
-            About the [Product Name Here]
+            {`About the ${currProduct.name}`}
           </h5>
           <QuestionForm
             setNewQuestion={setNewQuestion}
