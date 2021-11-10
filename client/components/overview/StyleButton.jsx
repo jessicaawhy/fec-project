@@ -8,12 +8,9 @@ const StyleButton = ({
   const [styleSelected, setStyleSelected] = useState(currentStyle);
 
   const handleClick = (e, styleNum) => {
-    console.log('StyleButton handleClick running....');
-    console.log('currentStyle.style_id', currentStyle.style_id, 'styleId', styleNum);
     productStyles.forEach((style) => {
       if (style.style_id === styleNum) {
         setCurrentStyle(style);
-        // setStyleSelected(style);
       }
     });
   };
@@ -29,7 +26,7 @@ const StyleButton = ({
       data-testid="style-button"
       className="style-button"
       type="image"
-      styleId={styleId}
+      styleId={styleSelected.style_id}
       src={photos[0].thumbnail_url}
       alt={`style-${styleId}`}
       onClick={(e) => { handleClick(e, styleId); }}
