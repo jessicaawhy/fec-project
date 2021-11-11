@@ -15,7 +15,6 @@ import {
 
 const OverviewContainer = () => {
   const currentProduct = useProduct();
-  console.log('currentProduct', currentProduct);
   const [productStyles, setProductStyles] = useState([{}]);
   const [currentStyle, setCurrentStyle] = useState({});
   const [productInfo, setProductInfo] = useState({});
