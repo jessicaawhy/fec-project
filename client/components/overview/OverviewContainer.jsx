@@ -3,7 +3,7 @@ import StarRating from './StarRating';
 import ProductInfo from './ProductInfo';
 import ProductDescription from './ProductDescription';
 // import ImageGallery from './ImageGallery';
-import Slider from './Slider';
+import ImageSlider from './ImageSlider';
 import StyleSelector from './StyleSelector';
 import AddToCart from './AddToCart';
 import products from './tests/testData/testProducts';
@@ -35,34 +35,36 @@ const OverviewContainer = () => {
   }, [productStyles]);
 
   return (
-    <Container data-testid="container">
-      <Grid>
-        <LeftColumn>
-          <Slider
-            currentStyle={currentStyle}
-          />
-        </LeftColumn>
+    currentStyle
+    && (
+      <Container data-testid="container">
+        <Grid>
+          <LeftColumn>
+            <ImageSlider
+              currentStyle={currentStyle}
+            />
+          </LeftColumn>
 
-        <RightColumn>
-          <StarRating products={products} />
-          <ProductInfo
-            productInfo={productInfo}
-            currentStyle={currentStyle}
+          <RightColumn>
+            <StarRating products={products} />
+            <ProductInfo
+              productInfo={productInfo}
+              currentStyle={currentStyle}
+            />
+            <StyleSelector
+              productStyles={productStyles}
+              currentStyle={currentStyle}
+              setCurrentStyle={setCurrentStyle}
+            />
+            <AddToCart
+              currentStyle={currentStyle}
+            />
+          </RightColumn>
 
-          />
-          <StyleSelector
-            productStyles={productStyles}
-            currentStyle={currentStyle}
-            setCurrentStyle={setCurrentStyle}
-          />
-          <AddToCart
-            currentStyle={currentStyle}
-          />
-        </RightColumn>
-
-        <ProductDescription productInfo={productInfo} />
-      </Grid>
-    </Container>
+          <ProductDescription productInfo={productInfo} />
+        </Grid>
+      </Container>
+    )
   );
 };
 
