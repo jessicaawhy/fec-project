@@ -15,6 +15,7 @@ import {
 
 const OverviewContainer = () => {
   const currentProduct = useProduct();
+  console.log('currentProduct', currentProduct);
   const [productStyles, setProductStyles] = useState([{}]);
   const [currentStyle, setCurrentStyle] = useState({});
   const [productInfo, setProductInfo] = useState({});
@@ -25,18 +26,11 @@ const OverviewContainer = () => {
   }, [currentProduct]);
 
   useEffect(() => {
-    if (productStyles.length > 1) {
-      const defaultStyle = () => {
-        const initialStyle = productStyles.filter((style) => {
-          if (style.default === true) {
-            return true;
-          }
-          return false;
-        });
-        setCurrentStyle(initialStyle[0]);
-      };
+    if (productStyles.length > 1 || productStyles[0].style_id) {
+      const defaultStyle = productStyles.filter((style) => style.default)[0];
+      const initialStyle = defaultStyle || productStyles[0];
 
-      defaultStyle();
+      setCurrentStyle(initialStyle);
     }
   }, [productStyles]);
 
