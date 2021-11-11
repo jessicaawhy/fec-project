@@ -6,6 +6,7 @@ import { addProductToCart } from './helpers/api';
 import { CartContainer, CartButton, DropDown } from './styles/AddToCart.style';
 
 const AddToCart = ({ currentStyle }) => {
+  // Tech Debt: make dropdowns reset when a new product or style is selected
   const [currentSize, setCurrentSize] = useState('Size');
   const [currentQuantity, setCurrentQuantity] = useState('Quantity');
   const [currentSku, setCurrentSku] = useState(null);
@@ -91,12 +92,13 @@ const AddToCart = ({ currentStyle }) => {
 
         {
             (currentSku)
-            && range(1, quantityForSelectedSize + 1).map((num) => (
-              <option
-                value={`${num}`}
-              >
-                {num}
-              </option>
+            && range(1, quantityForSelectedSize > 12
+              ? 13 : quantityForSelectedSize + 1).map((num) => (
+                <option
+                  value={`${num}`}
+                >
+                  {num}
+                </option>
             ))
           }
 
@@ -111,23 +113,3 @@ AddToCart.propTypes = PropTypes.shape({
   styles: PropTypes.objectOf(PropTypes.any),
   id: PropTypes.objectOf(PropTypes.any),
 }).isRequired;
-
-/* ************************************************** */
-/*
-const [alertQuantity, setAlertQuantity] = useState(false);
-setAlertQuantity(true);
-setAlertQuantity(false);
-
-{
-  // TODO: alert to let user know to select size before quantity
-  // (does not work as implemented below)
-  (alertQuantity)
-  &&
-
-<p>Please select a size before choosing a quantity.</p>}
-
-********************
-
-addToCart(sku, qty);
-
-*/

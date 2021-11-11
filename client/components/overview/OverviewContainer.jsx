@@ -20,9 +20,18 @@ const OverviewContainer = () => {
   const [productInfo, setProductInfo] = useState({});
 
   useEffect(() => {
-    getProductInfo(currentProduct, setProductInfo);
     getProductStyles(currentProduct, setProductStyles);
+    getProductInfo(currentProduct, setProductInfo);
   }, [currentProduct]);
+
+  useEffect(() => {
+    if (productStyles.length > 1 || productStyles[0].style_id) {
+      const defaultStyle = productStyles.filter((style) => style.default)[0];
+      const initialStyle = defaultStyle || productStyles[0];
+
+      setCurrentStyle(initialStyle);
+    }
+  }, [productStyles]);
 
   return (
     <Container data-testid="container">
