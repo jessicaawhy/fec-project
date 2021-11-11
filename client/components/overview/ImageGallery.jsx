@@ -1,65 +1,131 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
-  createThumbnailPhotoSet, createFullPhotoSet, goToPreviousPhoto, goToNextPhoto,
-}
-  from './helpers/imageGalleryHelpers';
-import {
-  GalleryContainer, GalleryStyle, ImageStyle, ThumbnailContainer, ThumbnailStyle, RightArrow,
-  LeftArrow, UpArrow, DownArrow, RightArrowStyle,
-  LeftArrowStyle, UpArrowStyle, DownArrowStyle,
-}
-  from './styles/ImageGallery.style';
+  GalleryCSS, Image, GalleryContent, Arrow,
+} from './styles/ImageGallery.style';
 
 const ImageGallery = ({ currentStyle }) => {
-  const [thumbnailPhotos, setThumbnailPhotos] = useState([]);
-  const [fullPhotos, setFullPhotos] = useState([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  // const [translateValue, setTranslateValue] = useState(0);
+  const width = 600;
 
-  useEffect(() => {
-    console.log('useEffect() ImageGallery running....');
-    if (currentStyle.photos) {
-      setThumbnailPhotos(createThumbnailPhotoSet(currentStyle));
-      setFullPhotos(createFullPhotoSet(currentStyle));
+  const [imagePosition, setImagePosition] = useState({
+    activeIndex: 0,
+    translate: 0,
+    transition: 0.45,
+  });
+
+  const { translate, transition, activeIndex } = imagePosition;
+
+  const nextImage = () => {
+    if (activeIndex === currentStyle.photos.length - 1) {
+      return setImagePosition({
+        ...imagePosition,
+        translate: 0,
+        activeIndex: 0,
+      });
     }
-  }, [currentStyle]);
+
+    return setImagePosition({
+      ...imagePosition,
+      activeIndex: activeIndex + 1,
+      translate: (activeIndex + 1) * width,
+    });
+  };
+
+  const prevImage = () => {
+    if (activeIndex === 0) {
+      return setImagePosition({
+        ...imagePosition,
+        translate: (currentStyle.photos.length - 1) * width,
+        activeIndex: currentStyle.photos.length - 1,
+      });
+    }
+
+    return setImagePosition({
+      ...imagePosition,
+      activeIndex: activeIndex - 1,
+      translate: (activeIndex - 1) * width,
+    });
+  };
 
   return (
-    <GalleryContainer
-      data-testid="gallery-container"
-      className="gallery-container"
-    >
-      {/* <RightArrow
-        data-testid="right-arrow"
-        className="right-arrow"
-        onClick={() => goToNextPhoto(currentIndex, setCurrentIndex, fullPhotos)}
-      /> */}
-      {(fullPhotos)
-        && (
-          fullPhotos.map((photo, i) => (
-            <div>
-              <ImageStyle
-                data-testid="full-image"
-                className="full-image"
-                alt="full image"
-                key={i}
-                src={photo}
-              />
-            </div>
-          )))}
-      {/* <LeftArrow
-        data-testid="left-arrow"
-        className="left-arrow"
-        onClick={() => goToPreviousPhoto(currentIndex, setCurrentIndex)}
-      /> */}
-    </GalleryContainer>
+    (Object.keys(currentStyle).length !== 0)
+    && (
+      <>
+        <GalleryCSS>
+          <GalleryContent
+            translate={translate}
+            transition={transition}
+            width={width * currentStyle.photos.length}
+          >
+            {currentStyle.photos.map((photo) => (
+              <Image photo={photo.url} />
+            ))}
+          </GalleryContent>
+        </GalleryCSS>
+        <Arrow type="submit" adjust={92} onClick={nextImage}>&#10095;</Arrow>
+        <Arrow type="submit" adjust={2} onClick={prevImage}>&#10094;</Arrow>
+      </>
+    )
   );
 };
 
 export default ImageGallery;
-ImageGallery.propTypes = PropTypes.shape({
-  products: PropTypes.arrayOf(PropTypes.object),
-  styles: PropTypes.objectOf(PropTypes.any),
-  id: PropTypes.objectOf(PropTypes.any),
-}).isRequired;
+
+ImageGallery.propTypes = {
+  currentStyle: PropTypes.objectOf(PropTypes.any).isRequired,
+};
+
+/** tech debt: make arrows disappear when at the beginning and end of currentStyle.photos array */
+/* const [showArrow, setShowArrow] = useState({
+  previous: true,
+  next: true,
+}); */
+
+/* {showArrow.next
+  ? <Arrow type="submit" adjust={92} onClick={nextSlide}>&#10095;</Arrow>
+  : null}
+{showArrow.previous
+  ? <Arrow type="submit" adjust={2} onClick={prevSlide}>&#10094;</Arrow>
+  : null} */
+
+/* const prevSlide = () => {
+  console.log('prevSlide running....');
+
+  if (activeIndex === 0) {
+    return setShowArrow({
+      ...showArrow,
+      previous: false,
+    });
+  }
+  setShowArrow({
+    ...showArrow,
+    previous: true,
+  });
+
+  setState({
+    ...state,
+    activeIndex: activeIndex - 1,
+    translate: (activeIndex - 1) * width,
+  });
+}; */
+
+/* const nextSlide = () => {
+  console.log('nextSlide running....');
+
+  if (activeIndex === currentStyle.photos.length - 1) {
+    return setShowArrow({
+      ...showArrow,
+      next: false,
+    });
+  }
+  setShowArrow({
+    ...showArrow,
+    next: true,
+  });
+
+  setState({
+    ...state,
+    activeIndex: activeIndex + 1,
+    translate: (activeIndex + 1) * width,
+  });
+}; */
