@@ -20,16 +20,11 @@ const OverviewContainer = () => {
   const [productInfo, setProductInfo] = useState({});
 
   useEffect(() => {
-    console.log('-------------- useEffect() - 1 - OverviewContainer running.... //');
-    console.log('Current Style: ', currentStyle);
     getProductStyles(currentProduct, setProductStyles);
     getProductInfo(currentProduct, setProductInfo);
-  }, [currentProduct]); /* this also works with currentStyle, why? */
+  }, [currentProduct]);
 
   useEffect(() => {
-    console.log('-------------- useEffect() - 2 - OverviewContainer running....');
-    console.log('Current Style: ', currentStyle);
-
     if (productStyles.length > 1) {
       const defaultStyle = () => {
         const initialStyle = productStyles.filter((style) => {
@@ -38,19 +33,12 @@ const OverviewContainer = () => {
           }
           return false;
         });
-        console.log('initialStyle', initialStyle);
-        setCurrentStyle(initialStyle);
+        setCurrentStyle(initialStyle[0]);
       };
 
       defaultStyle();
     }
   }, [productStyles]);
-
-  // useEffect(() => {
-  //   if (productStyles.length > 1) {
-  //     // defaultStyle();
-  //   }
-  // }, [productStyles]);
 
   return (
     <Container data-testid="container">
@@ -83,26 +71,3 @@ const OverviewContainer = () => {
 };
 
 export default OverviewContainer;
-
-// const [currentStyle, setCurrentStyle] = useState(() => {
-//   // if (productStyles.length > 1) {
-//   const isDefault = (style) => {
-//     console.log(style);
-//     if (style.default === true) {
-//       return true;
-//     }
-//     return false;
-//   };
-//   const initialStyle = productStyles.filter(isDefault);
-//   console.log('initialStyle', initialStyle);
-//   return initialStyle;
-//   // productStyles.forEach((style) => {
-//   //   if (style.default) {
-//   //     setCurrentStyle(style);
-//   //     // console.log(style);
-//   //   }
-//   // });
-//   // }
-//   // console.log('no default style');
-//   // return 'no default style';
-// });
