@@ -9,7 +9,7 @@ module.exports = {
     path: path.resolve(__dirname, 'public/dist'),
   },
   plugins: [
-    new Dotenv(),
+    new Dotenv()
   ],
   resolve: {
     extensions: ['.js', '.jsx']
