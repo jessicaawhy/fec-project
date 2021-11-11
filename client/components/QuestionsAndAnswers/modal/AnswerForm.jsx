@@ -25,12 +25,12 @@ const AnswerForm = ({
         <Title>
           Submit Your Answer
         </Title>
+        <Exit onClick={() => setIsAdd(false)}>
+          X
+        </Exit>
         <SubTitle>
           {`${currProduct.name}: ${question.question_body}`}
         </SubTitle>
-        <Exit>
-          X
-        </Exit>
       </TitleContainer>
       <Container1>
         <LabelArea htmlFor="yourAnswer">

@@ -32,7 +32,7 @@ export const Container1 = styled.div`
 `;
 export const SubmitContainer = styled.div`
   display: flex;
-  padding: 15px 15px 0 15px;
+  padding: 15px;
   justify-content: center;
 `;
 
@@ -80,6 +80,10 @@ export const SubTitle = styled.h5`
 
 export const Exit = styled.button`
   grid-column: span 1;
-
+  border: none;
+  border-radius: 40%;
+  padding: 11px 0;
   align-self: center;
+  background-color: white;
+  color: red;
 `;
