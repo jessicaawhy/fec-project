@@ -22,7 +22,8 @@ const MasterQA = () => {
   }, [currProduct]);
 
   useEffect(async () => {
-    const questionsFetched = await getQuestions(product.id, 1, 11);
+    const questionsFetched = await getQuestions(61579, 1, 11);
+    // const questionsFetched = await getQuestions(product.id, 1, 11);
     setQuestionsFromAPI(questionsFetched.results);
   }, []);
 
