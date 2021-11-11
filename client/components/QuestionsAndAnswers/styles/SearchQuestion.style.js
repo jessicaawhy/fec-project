@@ -10,4 +10,15 @@ export const Search = styled.form`
 `;
 export const SearchInput = styled.input`
   border-radius: 15px;
+  padding: 15px;
+  ::placeholder,
+  ::-webkit-input-placeholder {
+    color: grey;
+  }
+  :-ms-input-placeholder {
+     color: grey;
+  }
+`;
+
+export const EmojiSpan = styled.span`
 `;
