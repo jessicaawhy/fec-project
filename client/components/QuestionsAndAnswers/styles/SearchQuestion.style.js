@@ -19,6 +19,3 @@ export const SearchInput = styled.input`
      color: grey;
   }
 `;
-
-export const EmojiSpan = styled.span`
-`;

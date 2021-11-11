@@ -40,7 +40,7 @@ export const LabelArea = styled.label`
   padding: 0 0 5px;
 `;
 export const InputArea = styled.input`
-  width: 399px;
+  width: 333px;
   height: 33px;
 `;
 export const LargeText = styled.textarea`
@@ -67,7 +67,7 @@ export const SubmitInput = styled.input`
 `;
 
 export const PopupImg = styled.img`
-  width: 333px;
+  width: 399px;
 `;
 
 export const TitleContainer = styled.div`

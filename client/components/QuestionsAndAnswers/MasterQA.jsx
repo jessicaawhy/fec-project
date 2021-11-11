@@ -5,7 +5,7 @@ import MoreQuestions from './MoreQuestions';
 import QuestionList from './QuestionList';
 import SearchQuestion from './SearchQuestion';
 import { getQuestions, getAnswers, postQuestion } from './helpers/helpers';
-import { MasterContainer, Btn } from './styles/MasterQA.style';
+import { MasterContainer, Btn, Header } from './styles/MasterQA.style';
 
 const MasterQA = () => {
   const currProduct = useProduct(); // const useProduct = () => useContext(ProductContext)
@@ -69,7 +69,7 @@ const MasterQA = () => {
   return (
     <>
       <MasterContainer data-testid="masterQA">
-        <h2>QUESTIONS & ANSWERS</h2>
+        <Header>QUESTIONS & ANSWERS</Header>
         <SearchQuestion handleSearch={handleSearch} />
         <QuestionList questions={questions} updateHelpfulness={updateHelpfulness} />
         <Btn>

@@ -8,3 +8,6 @@ export const MasterContainer = styled.div`
 export const Btn = styled.div`
   display: flex;
 `;
+export const Header = styled.div`
+  padding: 10px;
+`;
