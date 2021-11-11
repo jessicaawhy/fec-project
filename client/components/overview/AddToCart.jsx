@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import map from 'lodash/map';
 import range from 'lodash/range';
@@ -36,11 +36,6 @@ const AddToCart = ({ currentStyle }) => {
 
     addProductToCart(skuId);
   };
-
-  // useEffect(() => {
-  //   setCurrentSize('Size');
-  //   setCurrentQuantity('Quantity');
-  // }, [currentStyle]);
 
   return (
     <CartContainer
@@ -116,23 +111,3 @@ AddToCart.propTypes = PropTypes.shape({
   styles: PropTypes.objectOf(PropTypes.any),
   id: PropTypes.objectOf(PropTypes.any),
 }).isRequired;
-
-/* ************************************************** */
-/*
-const [alertQuantity, setAlertQuantity] = useState(false);
-setAlertQuantity(true);
-setAlertQuantity(false);
-
-{
-  // TODO: alert to let user know to select size before quantity
-  // (does not work as implemented below)
-  (alertQuantity)
-  &&
-
-<p>Please select a size before choosing a quantity.</p>}
-
-********************
-
-addToCart(sku, qty);
-
-*/
