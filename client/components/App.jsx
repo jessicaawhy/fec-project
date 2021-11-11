@@ -12,7 +12,7 @@ const App = () => {
   const product = useProduct();
 
   useEffect(async () => {
-    fetch('http://localhost:3000/products/1/50')
+    fetch('/products/1/50')
       .then((response) => response.json())
       .then((data) => updateAll(data));
   }, []);

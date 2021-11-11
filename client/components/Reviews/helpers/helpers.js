@@ -44,21 +44,21 @@ export const formatDate = (date) => (
 );
 
 export const getData = async (productID, page, num, sortOption) => {
-  const response = await fetch(`http://localhost:3000/reviews/${productID}/${page}/${num}/${sortOption}`);
+  const response = await fetch(`/reviews/${productID}/${page}/${num}/${sortOption}`);
   const data = await response.json();
 
   return data;
 };
 
 export const getMetaData = async (productID) => {
-  const response = await fetch(`http://localhost:3000/reviews/meta/${productID}/`);
+  const response = await fetch(`/reviews/meta/${productID}/`);
   const data = await response.json();
 
   return data;
 };
 
 export const markReviewHelpful = (id) => (
-  fetch(`http://localhost:3000/reviews/${id}/helpful`, {
+  fetch(`/reviews/${id}/helpful`, {
     method: 'PUT',
   })
     .then(() => true)
@@ -66,7 +66,7 @@ export const markReviewHelpful = (id) => (
 );
 
 export const reportReview = (id) => (
-  fetch(`http://localhost:3000/reviews/${id}/report`, {
+  fetch(`/reviews/${id}/report`, {
     method: 'PUT',
   })
     .then(() => true)
@@ -74,7 +74,7 @@ export const reportReview = (id) => (
 );
 
 export const submitForm = (data) => (
-  fetch('http://localhost:3000/reviews/', {
+  fetch('/reviews/', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),

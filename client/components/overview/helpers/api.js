@@ -1,5 +1,5 @@
 export const addProductToCart = (skuId) => {
-  fetch('http://localhost:3000/overview/cart', {
+  fetch('/overview/cart', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -11,7 +11,7 @@ export const addProductToCart = (skuId) => {
 };
 
 export const getProductInfo = (currentProduct, setProductInfo) => {
-  fetch(`http://localhost:3000/overview/${currentProduct.id}`)
+  fetch(`/overview/${currentProduct.id}`)
     .then((response) => response.json())
     .then((data) => {
       setProductInfo(data);
@@ -22,7 +22,7 @@ export const getProductInfo = (currentProduct, setProductInfo) => {
 };
 
 export const getProductStyles = (currentProduct, setProductStyles) => {
-  fetch(`http://localhost:3000/overview/${currentProduct.id}/styles`)
+  fetch(`/overview/${currentProduct.id}/styles`)
     .then((response) => response.json())
     .then((data) => {
       setProductStyles(data);
