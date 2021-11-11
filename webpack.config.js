@@ -10,7 +10,6 @@ module.exports = {
   },
   plugins: [
     new Dotenv(),
-    "babel-plugin-styled-components"
   ],
   resolve: {
     extensions: ['.js', '.jsx']
