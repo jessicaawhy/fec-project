@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import AnswerItem from './AnswerItem';
+import { AnswersContainer } from './styles/Lists.style';
 
 const AnswerList = ({ questionID, answers, updateAnswerHelpfulness }) => (
-  <div data-testid="answerList">
+  <AnswersContainer data-testid="answerList">
     {answers.map((answer, index) => (
       <AnswerItem
         questionID={questionID}
@@ -13,7 +14,7 @@ const AnswerList = ({ questionID, answers, updateAnswerHelpfulness }) => (
         updateAnswerHelpfulness={updateAnswerHelpfulness}
       />
     ))}
-  </div>
+  </AnswersContainer>
 );
 
 AnswerList.propTypes = {

@@ -5,7 +5,7 @@ import MoreQuestions from './MoreQuestions';
 import QuestionList from './QuestionList';
 import SearchQuestion from './SearchQuestion';
 import { getQuestions, getAnswers, postQuestion } from './helpers/helpers';
-import { MasterContainer, Btn, Scroller } from './styles/MasterQA.style';
+import { MasterContainer, Btn } from './styles/MasterQA.style';
 
 const MasterQA = () => {
   const currProduct = useProduct(); // const useProduct = () => useContext(ProductContext)
@@ -70,9 +70,7 @@ const MasterQA = () => {
       <MasterContainer data-testid="masterQA">
         <h2>QUESTIONS & ANSWERS</h2>
         <SearchQuestion handleSearch={handleSearch} />
-        <Scroller>
-          <QuestionList questions={questions} updateHelpfulness={updateHelpfulness} />
-        </Scroller>
+        <QuestionList questions={questions} updateHelpfulness={updateHelpfulness} />
         <Btn>
           {(questionsLength !== sortedQuestions.length && sortedQuestions.length >= 2)
           && <MoreQuestions renderMoreQuestions={renderMoreQuestions} />}

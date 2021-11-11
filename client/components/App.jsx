@@ -3,7 +3,7 @@ import { useProduct, useAllProductsUpdate } from '../ProductContext';
 import { StyledContainer, StyledHeader, ModulesContainer } from './styles/App.styled';
 import GlobalStyles from './styles/Global';
 import SelectProduct from './SelectProduct';
-import OverviewContainer from './overview/OverviewContainer';
+// import OverviewContainer from './overview/OverviewContainer';
 import MasterQA from './QuestionsAndAnswers/MasterQA';
 import ReviewsComponent from './Reviews/components/ReviewsComponent';
 
@@ -28,7 +28,7 @@ const App = () => {
         </StyledHeader>
 
         <ModulesContainer>
-          <OverviewContainer />
+          {/* <OverviewContainer /> */}
           <MasterQA />
           <ReviewsComponent />
         </ModulesContainer>

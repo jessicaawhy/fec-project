@@ -1,19 +1,26 @@
 import styled from 'styled-components';
 
 export const QuestionDiv = styled.div`
-  display: flex;
-  justify-content: flex-start;
+  display: grid;
+  grid-template-columns: repeat(4, 25%);
+  padding: 10px;
 `;
 
-export const QuestionBody = styled.h4`
+export const QuestionBody = styled.div`
+  grid-column: span 2;
+  justify-content: start;
+  font-weight: bold;
   padding: 2px;
 `;
 export const QuestionMisc = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 400px;
+  grid-column: span 1;
+  align-items: space-between;
+  justify-self: end;
 `;
+
 export const UnderLine = styled.button`
+  padding: 5px;
+  font-size: 15px;
   text-decoration: underline;
   cursor: pointer;
   border: 0;
