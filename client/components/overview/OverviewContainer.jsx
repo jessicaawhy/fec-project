@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import StarRating from './StarRating';
 import ProductInfo from './ProductInfo';
 import ProductDescription from './ProductDescription';
-// import ImageGallery from './ImageGallery';
-import ImageSlider from './ImageSlider';
+import ImageGallery from './ImageGallery';
 import StyleSelector from './StyleSelector';
 import AddToCart from './AddToCart';
 import products from './tests/testData/testProducts';
@@ -11,7 +10,7 @@ import products from './tests/testData/testProducts';
 import { useProduct } from '../../ProductContext';
 import { getProductInfo, getProductStyles } from './helpers/api';
 import {
-  RightColumn, Container, Grid, LeftColumn,
+  RightColumn, Grid, LeftColumn,
 } from './styles/OverviewContainerColumns.style';
 
 const OverviewContainer = () => {
@@ -37,10 +36,10 @@ const OverviewContainer = () => {
   return (
     currentStyle
     && (
-      <Container data-testid="container">
-        <Grid>
+      <div>
+        <Grid data-testid="grid">
           <LeftColumn>
-            <ImageSlider
+            <ImageGallery
               currentStyle={currentStyle}
             />
           </LeftColumn>
@@ -63,7 +62,7 @@ const OverviewContainer = () => {
 
           <ProductDescription productInfo={productInfo} />
         </Grid>
-      </Container>
+      </div>
     )
   );
 };

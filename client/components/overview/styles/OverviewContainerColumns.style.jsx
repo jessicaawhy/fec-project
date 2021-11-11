@@ -6,9 +6,6 @@ export const RightColumn = styled.div`
   width: 33.3333%;
 `;
 
-export const Container = styled.div`
-`;
-
 export const Grid = styled.div`
   display: flex;
   width: 100%;
@@ -19,4 +16,5 @@ export const Grid = styled.div`
 export const LeftColumn = styled.div`
   width: 66.6667%;
   position: relative;
+  /* display: contents; */
 `;

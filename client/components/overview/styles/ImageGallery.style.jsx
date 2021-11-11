@@ -15,6 +15,7 @@ height: 100%;
 width: ${(props) => props.width}px;
 object-fit: cover;
 display: flex;
+/* will remove yellow when done styling */
 background: yellow;
 `;
 
@@ -32,6 +33,7 @@ export const Arrow = styled.span`
   position: absolute;
   top: 42%;
   left: ${(props) => props.adjust}%;
+  /* will change arrow color when done styling */
   color: yellow;
   font-size: 100px;
   line-height: 100px;
