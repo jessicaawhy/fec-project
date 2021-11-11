@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
   GalleryCSS, Image, GalleryContent, Arrow,
@@ -46,6 +46,14 @@ const ImageGallery = ({ currentStyle }) => {
       translate: (activeIndex - 1) * width,
     });
   };
+
+  useEffect(() => {
+    setImagePosition({
+      activeIndex: 0,
+      translate: 0,
+      transition: 0.45,
+    });
+  }, [currentStyle]);
 
   return (
     (Object.keys(currentStyle).length !== 0)
