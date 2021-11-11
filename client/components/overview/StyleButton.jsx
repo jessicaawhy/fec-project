@@ -1,30 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { ButtonStyle } from './styles/StyleSelector.style';
 
 const StyleButton = ({
-  styleId, photo, currentStyle, setCurrentStyle,
+  styleId, photos, currentStyle, setCurrentStyle, productStyles,
 }) => {
-  const [styleSelected, setStyleSelected] = useState(false);
+  const [styleSelected, setStyleSelected] = useState(currentStyle);
 
-  const handleClick = () => {
-    // console.log('StyleButton handleClick running....');
-    setStyleSelected(!styleSelected);
-    if (currentStyle.styleId !== styleId) {
-      setCurrentStyle(styleId);
-    }
+  const handleClick = (e, styleNum) => {
+    productStyles.forEach((style) => {
+      if (style.style_id === styleNum) {
+        setCurrentStyle(style);
+      }
+    });
   };
 
+  useEffect(() => {
+    setStyleSelected(currentStyle);
+  }, [currentStyle]);
+
   return (
+    (productStyles.length > 1)
+    && (
     <ButtonStyle
       data-testid="style-button"
       className="style-button"
       type="image"
-      styleId={styleId}
-      src={photo.thumbnail_url}
+      styleId={styleSelected.style_id}
+      src={photos[0].thumbnail_url}
       alt={`style-${styleId}`}
-      onClick={handleClick}
+      onClick={(e) => { handleClick(e, styleId); }}
     />
+    )
   );
 };
 

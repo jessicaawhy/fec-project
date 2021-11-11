@@ -8,23 +8,20 @@ const ProductInfo = ({ productInfo, currentStyle }) => (
   <ProductInfoContainer data-testid="product-info">
     <CategoryStyle>{productInfo.category}</CategoryStyle>
     <NameStyle>{productInfo.name}</NameStyle>
-    <>
-      {(currentStyle.sale_price !== null)
-        // need to add strikethrough of original price if sale price
-        ? (
-          <PriceStyle>
-            $
-            {currentStyle.sale_price}
-            <strike>{currentStyle.original_price}</strike>
-          </PriceStyle>
-        )
-        : (
-          <PriceStyle>
-            $
-            {currentStyle.original_price}
-          </PriceStyle>
-        )}
-    </>
+    {(currentStyle.sale_price !== null)
+      ? (
+        <PriceStyle>
+          $
+          {currentStyle.sale_price}
+          <strike>{currentStyle.original_price}</strike>
+        </PriceStyle>
+      )
+      : (
+        <PriceStyle>
+          $
+          {currentStyle.original_price}
+        </PriceStyle>
+      )}
   </ProductInfoContainer>
 );
 
