@@ -9,7 +9,8 @@ module.exports = {
     path: path.resolve(__dirname, 'public/dist'),
   },
   plugins: [
-    new Dotenv()
+    new Dotenv(),
+    "babel-plugin-styled-components"
   ],
   resolve: {
     extensions: ['.js', '.jsx']
