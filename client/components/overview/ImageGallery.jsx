@@ -70,8 +70,13 @@ const ImageGallery = ({ currentStyle }) => {
             ))}
           </GalleryContent>
         </GalleryCSS>
-        <Arrow type="submit" adjust={92} onClick={nextImage}>&#10095;</Arrow>
-        <Arrow type="submit" adjust={2} onClick={prevImage}>&#10094;</Arrow>
+        {(currentStyle.photos.length > 2)
+        && (
+        <>
+          <Arrow type="submit" adjust={2} onClick={prevImage}>&#10094;</Arrow>
+          <Arrow type="submit" adjust={92} onClick={nextImage}>&#10095;</Arrow>
+        </>
+        )}
       </>
     )
   );
