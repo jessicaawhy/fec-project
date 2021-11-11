@@ -3,14 +3,15 @@ import styled from 'styled-components';
 export const GalleryContainer = styled.div`
   display: flex;
   grid-template-columns: max-content 600px;
-  grid-column-gap: 1%;
-`;
+  grid-column-gap: 0%;
+  transform: translate3d(-0%, 0, 0);
+  `;
 
 export const GalleryStyle = styled.div`
   width: 100%;
   grid-template-columns: max-content 600px;
-  grid-column-gap: 0%;
-  transform: translate3d(-0%, 0, 0);
+
+
   display: flex;
   flex-direction: row;
   overflow: hidden;

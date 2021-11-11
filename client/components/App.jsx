@@ -29,8 +29,8 @@ const App = () => {
 
         <ModulesContainer>
           <OverviewContainer />
-          <MasterQA />
-          <ReviewsComponent />
+          {/* <MasterQA />
+          <ReviewsComponent /> */}
         </ModulesContainer>
       </StyledContainer>
     )
