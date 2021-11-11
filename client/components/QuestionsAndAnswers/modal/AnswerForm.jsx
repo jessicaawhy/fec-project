@@ -1,15 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useProduct } from '../../../ProductContext';
 import {
-  Container1, LabelArea, LargeText, InputArea, Notes, SubmitInput,
+  Container1, LabelArea, LargeText, InputArea, Notes, SubmitInput, SubmitContainer, Title, SubTitle, TitleContainer, Exit,
 } from '../styles/Modal.style';
 
 const AnswerForm = ({
+  question,
   newAnswer,
   setNewAnswer,
   setIsAdd,
   handleAddAnswer,
 }) => {
+  const currProduct = useProduct();
   const handleAnswerSumbit = (e) => {
     e.preventDefault();
     handleAddAnswer(newAnswer);
@@ -17,7 +20,18 @@ const AnswerForm = ({
   };
 
   return (
-    <form>
+    <form onSubmit={handleAnswerSumbit}>
+      <TitleContainer>
+        <Title>
+          Submit Your Answer
+        </Title>
+        <SubTitle>
+          {`${currProduct.name}: ${question.question_body}`}
+        </SubTitle>
+        <Exit>
+          X
+        </Exit>
+      </TitleContainer>
       <Container1>
         <LabelArea htmlFor="yourAnswer">
           Your Answer
@@ -26,6 +40,7 @@ const AnswerForm = ({
           id="yourAnswer"
           type="text"
           maxlength="1000"
+          required
           onChange={(e) => setNewAnswer({ ...newAnswer, body: e.target.value })}
         />
       </Container1>
@@ -37,6 +52,7 @@ const AnswerForm = ({
           id="yourNickname"
           type="text"
           maxlength="60"
+          required
           placeholder="Example: jack543!"
           onChange={(e) => setNewAnswer({ ...newAnswer, name: e.target.value })}
         />
@@ -46,9 +62,10 @@ const AnswerForm = ({
       </Container1>
       <Container1>
         <LabelArea htmlFor="yourEmail">
-          Your Email
+          Email
         </LabelArea>
         <InputArea
+          required
           id="yourEmail"
           type="email"
           maxlength="60"
@@ -70,16 +87,20 @@ const AnswerForm = ({
           multiple
         />
       </Container1>
-      <SubmitInput
-        type="submit"
-        value="Submit Answer"
-        onClick={handleAnswerSumbit}
-      />
+      <SubmitContainer>
+        <SubmitInput
+          type="submit"
+          value="Submit Answer"
+        />
+      </SubmitContainer>
     </form>
   );
 };
 
 AnswerForm.propTypes = {
+  question: PropTypes.shape({
+    question_body: PropTypes.string,
+  }).isRequired,
   newAnswer: PropTypes.shape({}).isRequired,
   setNewAnswer: PropTypes.func.isRequired,
   setIsAdd: PropTypes.func.isRequired,

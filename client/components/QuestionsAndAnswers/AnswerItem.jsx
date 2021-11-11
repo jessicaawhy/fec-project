@@ -5,7 +5,7 @@ import {
 } from './styles/AnswerItem.style';
 import { ModalShadow, Modal } from './styles/Modal.style';
 import PhotoModal from './modal/PhotoModal';
-import { reportQuestion, updAnswerHelpfulness } from './helpers/helpers';
+import { reportQuestion, updAnswerHelpfulness, formatDate } from './helpers/helpers';
 
 const AnswerItem = ({
   questionID, answer, index, updateAnswerHelpfulness,
@@ -41,9 +41,11 @@ const AnswerItem = ({
         {`A: ${answer.body}`}
       </AnswerBody>
       <AnswerDetails>
-        <FlexSpan>{answer.answerer_name}</FlexSpan>
         <FlexSpan>
-          {new Date(answer.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+          {`By: ${answer.answerer_name}`}
+        </FlexSpan>
+        <FlexSpan>
+          {formatDate(answer.date)}
         </FlexSpan>
         <FlexSpan>Helpful? </FlexSpan>
         <UnderLine type="button" onClick={(e) => handleAnswerHelpfulness(e, answer.id)}>Yes</UnderLine>

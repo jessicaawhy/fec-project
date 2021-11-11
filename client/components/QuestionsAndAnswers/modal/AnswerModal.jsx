@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import AnswerForm from './AnswerForm';
-import { useProduct } from '../../../ProductContext';
-import { ModalShadow, Modal } from '../styles/Modal.style';
+import {
+  ModalShadow, Modal,
+} from '../styles/Modal.style';
 
 const AnswerModal = ({ question, setIsAdd, handleAddAnswer }) => {
-  const currProduct = useProduct();
-  console.log('what is currP', currProduct);
   const [newAnswer, setNewAnswer] = useState({
     body: '',
     answerer_name: '',
-    date: '2018-01-04T00:00:00.000Z', // need refactor;
+    date: '2018-01-04T00:00:00.000Z',
     helpfulness: 333,
     email: '',
     photos: [],
@@ -20,13 +19,8 @@ const AnswerModal = ({ question, setIsAdd, handleAddAnswer }) => {
       <>
         <ModalShadow />
         <Modal>
-          <h3>
-            Submit Your Answer
-          </h3>
-          <h5>
-            {`${currProduct.name}: ${question.question_body}`}
-          </h5>
           <AnswerForm
+            question={question}
             newAnswer={newAnswer}
             setNewAnswer={setNewAnswer}
             handleAddAnswer={handleAddAnswer}

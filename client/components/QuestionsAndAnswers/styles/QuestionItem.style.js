@@ -34,11 +34,11 @@ export const UnderLine = styled.button`
     }
   }
 `;
-
+/* top | right | bottom | left */
 export const LoadMore = styled.button`
   cursor: pointer;
   border: 0;
-  padding: 8px;
+  padding: 0px 8px 15px 15px;
   background-color: inherit;
   font-weight: bold;
 `;
