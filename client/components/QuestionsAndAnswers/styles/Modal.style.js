@@ -40,14 +40,14 @@ export const LabelArea = styled.label`
   padding: 0 0 5px;
 `;
 export const InputArea = styled.input`
-  width: 399px;
+  width: 333px;
   height: 33px;
 `;
 export const LargeText = styled.textarea`
-  width: 399px;
+  width: 333px;
   height: 99px;
 `;
-/* top | right | bottom | left */
+
 export const Notes = styled.div`
   padding: 3px 0 0;;
   font-size: 10px;
@@ -55,7 +55,15 @@ export const Notes = styled.div`
 export const SubmitInput = styled.input`
   padding: 10px;
   width: 90%;
-  border-radius: 10px;
+  border-radius: 20px;
+  &:hover {
+    background:#016ABC;
+     color: #fff;
+     border:1px solid #eee;
+     border-radius:20px;
+     box-shadow:5px 5px 5px #eee;
+     text-shadow: none;
+  }
 `;
 
 export const PopupImg = styled.img`
@@ -73,9 +81,10 @@ export const Title = styled.h3`
   grid-column: span 7;
   padding: 10px;
 `;
+/* top | right | bottom | left */
 export const SubTitle = styled.h5`
   grid-column: span 7;
-  padding: 0 10px;
+  padding: 0 10px 10px 10px;
 `;
 
 export const Exit = styled.button`
@@ -86,4 +95,5 @@ export const Exit = styled.button`
   align-self: center;
   background-color: white;
   color: red;
+  font-weigth: bold;
 `;

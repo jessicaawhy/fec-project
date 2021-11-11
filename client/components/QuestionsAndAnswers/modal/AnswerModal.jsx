@@ -9,8 +9,6 @@ const AnswerModal = ({ question, setIsAdd, handleAddAnswer }) => {
   const [newAnswer, setNewAnswer] = useState({
     body: '',
     answerer_name: '',
-    date: '2018-01-04T00:00:00.000Z',
-    helpfulness: 333,
     email: '',
     photos: [],
   });
