@@ -6,7 +6,8 @@ import { addProductToCart } from './helpers/api';
 import { CartContainer, CartButton, DropDown } from './styles/AddToCart.style';
 
 const AddToCart = ({ currentStyle }) => {
-  // TODOS: make dropdowns reset when a new product or style is selected
+  // TODOS: make dropdowns reset when a new product or style is selected;
+  // limit drop down quantity to 12
   const [currentSize, setCurrentSize] = useState('Size');
   const [currentQuantity, setCurrentQuantity] = useState('Quantity');
   const [currentSku, setCurrentSku] = useState(null);
@@ -92,12 +93,13 @@ const AddToCart = ({ currentStyle }) => {
 
         {
             (currentSku)
-            && range(1, quantityForSelectedSize + 1).map((num) => (
-              <option
-                value={`${num}`}
-              >
-                {num}
-              </option>
+            && range(1, quantityForSelectedSize > 12
+              ? 13 : quantityForSelectedSize + 1).map((num) => (
+                <option
+                  value={`${num}`}
+                >
+                  {num}
+                </option>
             ))
           }
 
