@@ -18,6 +18,14 @@ export const UnderLine = styled.button`
   cursor: pointer;
   border: 0;
   background-color: inherit;
+  &.marked {
+    color: rgb(179, 0, 0);
+    text-decoration: none;
+    cursor: auto;
+    &:active {
+      transform: none;
+    }
+  }
 `;
 
 export const LoadMore = styled.button`

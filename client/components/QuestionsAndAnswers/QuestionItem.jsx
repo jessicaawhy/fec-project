@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
   QuestionDiv, QuestionBody, QuestionMisc, UnderLine, LoadMore,
 } from './styles/QuestionItem.style';
 import AnswerList from './AnswerList';
 import AnswerModal from './modal/AnswerModal';
+import { postAnswer, updQuestionHelpfulness, getQuestions } from './helpers/helpers';
+import { useProduct } from '../../ProductContext';
 
-const QuestionItem = ({ question, index, updateHelpfulness }) => {
+const QuestionItem = ({
+  question, index, updateHelpfulness,
+}) => {
   const sortedAnswers = Object.values(question.answers).sort(
     (a, b) => b.helpfulness - a.helpfulness,
   );
@@ -14,6 +18,11 @@ const QuestionItem = ({ question, index, updateHelpfulness }) => {
   const [isHelpful, setIsHelpful] = useState(false);
   const [length, setLength] = useState(2);
   const [displayedAnswers, setDisplayedAnswers] = useState(sortedAnswers.slice(0, length));
+  const currProduct = useProduct();
+
+  // useEffect(() => {
+  //   setDisplayedAnswers(sortedAnswers.slice(0, setLength(sortedAnswers.length)));
+  // }, [question]);
 
   const loadMoreAnswers = (e) => {
     console.log(e.target.innerText);
@@ -24,10 +33,12 @@ const QuestionItem = ({ question, index, updateHelpfulness }) => {
     }
   };
 
-  const handleQuestionHelpfulness = () => {
+  const handleQuestionHelpfulness = (e, questionID) => {
     if (!isHelpful) {
       setIsHelpful(true);
+      updQuestionHelpfulness(questionID);
       updateHelpfulness(index);
+      e.target.classList.add('marked');
     }
   };
 
@@ -37,14 +48,8 @@ const QuestionItem = ({ question, index, updateHelpfulness }) => {
   };
 
   const handleAddAnswer = (newAnswer) => {
-    console.log(1);
-    console.log('cool');
-    const randomId = Math.floor(Math.random() * 389457934);
-    const temp = { ...question.answers, randomId: newAnswer };
-    const temp1 = Object.values(temp).sort(
-      (a, b) => b.helpfulness - a.helpfulness,
-    );
-    setDisplayedAnswers(temp1.slice(0, length));
+    postAnswer(newAnswer, question.question_id);
+    setDisplayedAnswers(sortedAnswers.slice(0, length));
   };
 
   return (
@@ -58,7 +63,12 @@ const QuestionItem = ({ question, index, updateHelpfulness }) => {
         </QuestionBody>
         <QuestionMisc>
           <span>Helpful? </span>
-          <UnderLine type="button" onClick={handleQuestionHelpfulness}>Yes</UnderLine>
+          <UnderLine
+            type="button"
+            onClick={(e) => handleQuestionHelpfulness(e, question.question_id)}
+          >
+            Yes
+          </UnderLine>
           <span>{`(${question.question_helpfulness})`}</span>
           <UnderLine onClick={() => setIsAdd(true)}> Add Answer </UnderLine>
         </QuestionMisc>
@@ -72,6 +82,7 @@ const QuestionItem = ({ question, index, updateHelpfulness }) => {
         )}
       </QuestionDiv>
       <AnswerList
+        questionID={question.question_id}
         answers={Object.values(displayedAnswers)}
         updateAnswerHelpfulness={updateAnswerHelpfulness}
       />
@@ -90,6 +101,7 @@ const QuestionItem = ({ question, index, updateHelpfulness }) => {
 QuestionItem.propTypes = {
   question: PropTypes.shape({
     question_body: PropTypes.string,
+    question_id: PropTypes.number,
     question_helpfulness: PropTypes.number,
     answers: PropTypes.shape({}),
   }).isRequired,

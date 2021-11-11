@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
-import { ModalShadow, Modal } from '../styles/Modal.style';
 import AnswerForm from './AnswerForm';
+import { useProduct } from '../../../ProductContext';
+import { ModalShadow, Modal } from '../styles/Modal.style';
 
 const AnswerModal = ({ question, setIsAdd, handleAddAnswer }) => {
+  const currProduct = useProduct();
+  console.log('what is currP', currProduct);
   const [newAnswer, setNewAnswer] = useState({
     body: '',
     answerer_name: '',
@@ -17,12 +20,11 @@ const AnswerModal = ({ question, setIsAdd, handleAddAnswer }) => {
       <>
         <ModalShadow />
         <Modal>
-          <h4>
+          <h3>
             Submit Your Answer
-          </h4>
+          </h3>
           <h5>
-            [Procut Name Here --- to be added]:
-            {question.question_body}
+            {`${currProduct.name}: ${question.question_body}`}
           </h5>
           <AnswerForm
             newAnswer={newAnswer}
