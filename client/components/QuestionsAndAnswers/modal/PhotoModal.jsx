@@ -1,19 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { ModalShadow, Modal, PopupImg } from '../styles/Modal.style';
+import { ModalShadow, PicModal, PopupImg } from '../styles/Modal.style';
 
-const PhotoModal = ({ currPhoto, handleImgModal }) => (
+const PhotoModal = ({ currPhoto, setShowPhtoModal }) => (
   ReactDOM.createPortal(
     <>
-      {console.log('what is currPhoto', currPhoto)}
       <ModalShadow />
-      <Modal>
+      <PicModal>
         <PopupImg
           src={currPhoto}
           alt="Answerer's Images"
-          onClick={handleImgModal}
+          onClick={() => setShowPhtoModal(false)}
         />
-      </Modal>
+      </PicModal>
     </>,
     document.getElementById('app-modal'),
   )
