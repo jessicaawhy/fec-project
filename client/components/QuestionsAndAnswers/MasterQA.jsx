@@ -24,12 +24,13 @@ const MasterQA = () => {
   useEffect(async () => {
     const questionsFetched = await getQuestions(product.id, 1, 11);
     setQuestionsFromAPI(questionsFetched.results);
-  }, [currProduct]);
+    console.log('Q From API is running?');
+  }, [product.id]);
 
   useEffect(() => {
     setQuestions(questionsFromAPI.slice(0, questionsLength));
     console.log('setQ---', product.id);
-  }, [questionsFromAPI, currProduct]);
+  }, [questionsFromAPI]);
 
   const handleAddQuestion = (newQuestion) => {
     const data = {

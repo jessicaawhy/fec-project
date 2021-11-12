@@ -32,7 +32,7 @@ export const PicModal = styled.div`
   position: fixed;
   top: 75px;
   bottom: 100px;
-  z-index: 5;
+  z-index: 6;
   max-height: calc(100%- 200px);
   left: calc(50% - 250px);
   display: flex;
