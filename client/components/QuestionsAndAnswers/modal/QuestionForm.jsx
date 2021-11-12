@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useProduct } from '../../../ProductContext';
 import {
-  Container1, LabelArea, LargeText, InputArea, Notes, SubmitInput,
+  Container1, LabelArea, LargeText, InputArea, Notes, SubmitInput, SubmitContainer, Title, SubTitle, TitleContainer, Exit,
 } from '../styles/Modal.style';
 
 const QuestionForm = ({
@@ -10,13 +11,25 @@ const QuestionForm = ({
   setNewQuestion,
   handleAddQuestion,
 }) => {
+  const currProduct = useProduct();
   const handleSumbit = (e) => {
     e.preventDefault();
     handleAddQuestion(newQuestion);
     setOpen(false);
   };
   return (
-    <form>
+    <form onSubmit={handleSumbit}>
+      <TitleContainer>
+        <Title>
+          Ask Your Question
+        </Title>
+        <Exit onClick={() => setOpen(false)}>
+          X
+        </Exit>
+        <SubTitle>
+          {`About the ${currProduct.name}`}
+        </SubTitle>
+      </TitleContainer>
       <Container1>
         <LabelArea htmlFor="question">
           Your Question
@@ -25,6 +38,7 @@ const QuestionForm = ({
           id="question"
           type="text"
           maxlength="1000"
+          required
           onChange={(e) => setNewQuestion({ ...newQuestion, body: e.target.value })}
         />
       </Container1>
@@ -35,6 +49,7 @@ const QuestionForm = ({
         <InputArea
           id="nickname"
           type="text"
+          required
           maxlength="60"
           placeholder="Example: jackson11!"
           onChange={(e) => setNewQuestion({ ...newQuestion, name: e.target.value })}
@@ -50,6 +65,7 @@ const QuestionForm = ({
         <InputArea
           id="email"
           type="email"
+          required
           maxlength="60"
           placeholder="Why did you like the product or not?"
           onChange={(e) => setNewQuestion({ ...newQuestion, email: e.target.value })}
@@ -58,11 +74,12 @@ const QuestionForm = ({
           For authentication reasons, you will not be emailed
         </Notes>
       </Container1>
-      <SubmitInput
-        type="submit"
-        value="Submit Question"
-        onClick={handleSumbit}
-      />
+      <SubmitContainer>
+        <SubmitInput
+          type="submit"
+          value="Submit Question"
+        />
+      </SubmitContainer>
     </form>
   );
 };

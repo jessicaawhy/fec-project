@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
-  AnswerContainer, AnswerBody, AnswerDetails, UnderLine, Image, ImgContainer, ImgDialog, PopupImg,
+  AnswerContainer, AnswerBody, AnswerDetails, UnderLine, Image, ImgContainer, ImgDialog, PopupImg, FlexSpan,
 } from './styles/AnswerItem.style';
 import { ModalShadow, Modal } from './styles/Modal.style';
 import PhotoModal from './modal/PhotoModal';
-import { reportQuestion, updAnswerHelpfulness } from './helpers/helpers';
+import { reportQuestion, updAnswerHelpfulness, formatDate } from './helpers/helpers';
 
 const AnswerItem = ({
   questionID, answer, index, updateAnswerHelpfulness,
@@ -38,19 +38,18 @@ const AnswerItem = ({
   return (
     <AnswerContainer data-testid="answerContainer">
       <AnswerBody>
-        A:
-      </AnswerBody>
-      <AnswerBody>
-        {answer.body}
+        {`A: ${answer.body}`}
       </AnswerBody>
       <AnswerDetails>
-        <span>{answer.answerer_name}</span>
-        <span>
-          {new Date(answer.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-        </span>
-        <span>Helpful? </span>
+        <FlexSpan>
+          {`By: ${answer.answerer_name}`}
+        </FlexSpan>
+        <FlexSpan>
+          {formatDate(answer.date)}
+        </FlexSpan>
+        <FlexSpan>Helpful? </FlexSpan>
         <UnderLine type="button" onClick={(e) => handleAnswerHelpfulness(e, answer.id)}>Yes</UnderLine>
-        <span>{`(${answer.helpfulness})`}</span>
+        <FlexSpan>{` (${answer.helpfulness})`}</FlexSpan>
         <UnderLine type="button" onClick={(e) => handleReportedAnswer(e, questionID)}>
           {isReported ? 'Reported' : 'Report'}
         </UnderLine>

@@ -56,10 +56,7 @@ const QuestionItem = ({
     <div>
       <QuestionDiv data-testid="questionItem">
         <QuestionBody>
-          Q:
-        </QuestionBody>
-        <QuestionBody>
-          {question.question_body}
+          {`Q: ${question.question_body}`}
         </QuestionBody>
         <QuestionMisc>
           <span>Helpful? </span>

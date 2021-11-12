@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Search from './styles/SearchQuestion.style';
+import { Search, SearchInput } from './styles/SearchQuestion.style';
 
 const SearchQuestion = ({ handleSearch }) => {
   const handleSearchInput = (e) => {
@@ -10,7 +10,7 @@ const SearchQuestion = ({ handleSearch }) => {
 
   return (
     <Search data-testid="searchQuestions">
-      <input
+      <SearchInput
         type="text"
         placeholder="HAVE A QUESTIONS? SEARCH FOR ANSWERS... " // 🔍
         onChange={handleSearchInput}
