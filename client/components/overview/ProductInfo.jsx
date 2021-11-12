@@ -26,6 +26,7 @@ const ProductInfo = ({ productInfo, currentStyle }) => (
 );
 
 export default ProductInfo;
+
 ProductInfo.propTypes = PropTypes.shape({
   products: PropTypes.arrayOf(PropTypes.object),
   styles: PropTypes.objectOf(PropTypes.any),

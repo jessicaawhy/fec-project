@@ -10,7 +10,7 @@ import products from './tests/testData/testProducts';
 import { useProduct } from '../../ProductContext';
 import { getProductInfo, getProductStyles } from './helpers/api';
 import {
-  RightColumn, Container, Grid, LeftColumn,
+  RightColumn, Grid, LeftColumn,
 } from './styles/OverviewContainerColumns.style';
 
 const OverviewContainer = () => {
@@ -34,32 +34,36 @@ const OverviewContainer = () => {
   }, [productStyles]);
 
   return (
-    <Container data-testid="container">
-      <Grid>
-        <LeftColumn>
-          <ImageGallery productStyles={productStyles} />
-        </LeftColumn>
+    currentStyle
+    && (
+      <div>
+        <Grid data-testid="grid">
+          <LeftColumn>
+            <ImageGallery
+              currentStyle={currentStyle}
+            />
+          </LeftColumn>
 
-        <RightColumn>
-          <StarRating products={products} />
-          <ProductInfo
-            productInfo={productInfo}
-            currentStyle={currentStyle}
+          <RightColumn>
+            <StarRating products={products} />
+            <ProductInfo
+              productInfo={productInfo}
+              currentStyle={currentStyle}
+            />
+            <StyleSelector
+              productStyles={productStyles}
+              currentStyle={currentStyle}
+              setCurrentStyle={setCurrentStyle}
+            />
+            <AddToCart
+              currentStyle={currentStyle}
+            />
+          </RightColumn>
 
-          />
-          <StyleSelector
-            productStyles={productStyles}
-            currentStyle={currentStyle}
-            setCurrentStyle={setCurrentStyle}
-          />
-          <AddToCart
-            currentStyle={currentStyle}
-          />
-        </RightColumn>
-
-        <ProductDescription productInfo={productInfo} />
-      </Grid>
-    </Container>
+          <ProductDescription productInfo={productInfo} />
+        </Grid>
+      </div>
+    )
   );
 };
 
