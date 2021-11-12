@@ -3,7 +3,8 @@ import styled from 'styled-components';
 export const GalleryCSS = styled.div`
 position: relative;
 height: 567px;
-width: inherit;
+/* width: inherit; */
+width: 100%;
 max-width: 1000px;
 overflow: hidden;
 `;
