@@ -12,6 +12,7 @@ import { getProductInfo, getProductStyles } from './helpers/api';
 import {
   RightColumn, Grid, LeftColumn,
 } from './styles/OverviewContainerColumns.style';
+// import { getMetaData, getAverageRating } from '../Reviews/helpers/helpers';
 
 const OverviewContainer = () => {
   const currentProduct = useProduct();
@@ -45,6 +46,7 @@ const OverviewContainer = () => {
           </LeftColumn>
 
           <RightColumn>
+            {/* <Stars averageRating={averageRating} /> */}
             <StarRating products={products} />
             <ProductInfo
               productInfo={productInfo}
