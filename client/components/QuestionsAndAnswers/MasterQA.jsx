@@ -25,10 +25,11 @@ const MasterQA = () => {
     // const questionsFetched = await getQuestions(61579, 1, 11);
     const questionsFetched = await getQuestions(product.id, 1, 11);
     setQuestionsFromAPI(questionsFetched.results);
-  }, []);
+  }, [currProduct]);
 
   useEffect(() => {
     setQuestions(questionsFromAPI.slice(0, questionsLength));
+    console.log('setQ---', product.id);
   }, [questionsFromAPI, currProduct]);
 
   const handleAddQuestion = (newQuestion) => {
