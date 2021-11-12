@@ -53,3 +53,5 @@ export const updAnswerHelpfulness = (answerID) => {
   }).then(() => true)
     .catch((err) => console.log('what is updated Q helpfulness ERR', err));
 };
+
+export const formatDate = (newDate) => new Date(newDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });

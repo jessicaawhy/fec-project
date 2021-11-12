@@ -3,16 +3,24 @@ import styled from 'styled-components';
 export const AnswerContainer = styled.div`
   display: flex;
   flex-direction: column;
+  padding: 0px 10px 10px 10px;
 `;
 export const AnswerBody = styled.div`
-  padding: 3px;
 `;
 export const AnswerDetails = styled.div`
   display: flex;
-  justify-content: space-between;
-  width: 400px;
+  align-items: space-between;
+  width: 35%;
+  font-size: 11px;
+`;
+export const FlexSpan = styled.span`
+  flex-grow: 2;
+  padding: 11px;
+  font-size: 11px;
 `;
 export const UnderLine = styled.button`
+  flex-grow: 2
+  padding: 5px;
   text-decoration: underline;
   cursor: pointer;
   background-color: inherit;

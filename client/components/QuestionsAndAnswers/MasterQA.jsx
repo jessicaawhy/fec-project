@@ -5,7 +5,7 @@ import MoreQuestions from './MoreQuestions';
 import QuestionList from './QuestionList';
 import SearchQuestion from './SearchQuestion';
 import { getQuestions, getAnswers, postQuestion } from './helpers/helpers';
-import { MasterContainer, Btn, Scroller } from './styles/MasterQA.style';
+import { MasterContainer, Btn, Header } from './styles/MasterQA.style';
 
 const MasterQA = () => {
   const currProduct = useProduct(); // const useProduct = () => useContext(ProductContext)
@@ -22,6 +22,7 @@ const MasterQA = () => {
   }, [currProduct]);
 
   useEffect(async () => {
+    // const questionsFetched = await getQuestions(61579, 1, 11);
     const questionsFetched = await getQuestions(product.id, 1, 11);
     setQuestionsFromAPI(questionsFetched.results);
   }, []);
@@ -68,11 +69,9 @@ const MasterQA = () => {
   return (
     <>
       <MasterContainer data-testid="masterQA">
-        <h2>QUESTIONS & ANSWERS</h2>
+        <Header>QUESTIONS & ANSWERS</Header>
         <SearchQuestion handleSearch={handleSearch} />
-        <Scroller>
-          <QuestionList questions={questions} updateHelpfulness={updateHelpfulness} />
-        </Scroller>
+        <QuestionList questions={questions} updateHelpfulness={updateHelpfulness} />
         <Btn>
           {(questionsLength !== sortedQuestions.length && sortedQuestions.length >= 2)
           && <MoreQuestions renderMoreQuestions={renderMoreQuestions} />}

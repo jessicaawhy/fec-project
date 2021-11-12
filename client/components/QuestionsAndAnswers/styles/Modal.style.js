@@ -28,27 +28,72 @@ export const Modal = styled.div`
 export const Container1 = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 5px;
+  padding: 15px 15px 0 15px;
+`;
+export const SubmitContainer = styled.div`
+  display: flex;
+  padding: 15px;
+  justify-content: center;
 `;
 
 export const LabelArea = styled.label`
   padding: 0 0 5px;
 `;
 export const InputArea = styled.input`
-  width: 500px;
+  width: 333px;
   height: 33px;
 `;
 export const LargeText = styled.textarea`
-  width: 500px;
+  width: 333px;
   height: 99px;
 `;
+
 export const Notes = styled.div`
   padding: 3px 0 0;;
+  font-size: 10px;
 `;
 export const SubmitInput = styled.input`
   padding: 10px;
+  width: 90%;
+  border-radius: 20px;
+  &:hover {
+    background:#016ABC;
+     color: #fff;
+     border:1px solid #eee;
+     border-radius:20px;
+     box-shadow:5px 5px 5px #eee;
+     text-shadow: none;
+  }
 `;
 
 export const PopupImg = styled.img`
-  width: 500px;
+  width: 399px;
+`;
+
+export const TitleContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(8, 12.5%);
+  background-color: #016ABC;
+  color: #fff;
+`;
+
+export const Title = styled.h3`
+  grid-column: span 7;
+  padding: 10px;
+`;
+/* top | right | bottom | left */
+export const SubTitle = styled.h5`
+  grid-column: span 7;
+  padding: 0 10px 10px 10px;
+`;
+
+export const Exit = styled.button`
+  grid-column: span 1;
+  border: none;
+  border-radius: 40%;
+  padding: 11px 0;
+  align-self: center;
+  background-color: white;
+  color: red;
+  font-weigth: bold;
 `;
