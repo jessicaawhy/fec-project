@@ -27,7 +27,7 @@ export const Modal = styled.div`
 `;
 
 export const PicModal = styled.div`
-  max-width: 399px;
+  max-width: 600px;
   background-color: white;
   position: fixed;
   top: 75px;
@@ -58,11 +58,12 @@ export const LabelArea = styled.label`
   padding: 0 0 5px;
 `;
 export const InputArea = styled.input`
-  width: 333px;
+  width: 100%;
   height: 33px;
 `;
+
 export const LargeText = styled.textarea`
-  width: 333px;
+  width: 100%;
   height: 99px;
 `;
 

@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { ModalShadow, PicModal, PopupImg } from '../styles/Modal.style';
+import {
+  ModalShadow, PicModal, Modal, PopupImg,
+} from '../styles/Modal.style';
 
 const PhotoModal = ({ currPhoto, setShowPhtoModal }) => (
   ReactDOM.createPortal(
