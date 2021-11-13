@@ -6,7 +6,6 @@ import { addProductToCart } from './helpers/api';
 import { CartContainer, CartButton, DropDown } from './styles/AddToCart.style';
 
 const AddToCart = ({ currentStyle }) => {
-  // Tech Debt: make dropdowns reset when a new product or style is selected
   const [currentSize, setCurrentSize] = useState('Size');
   const [currentQuantity, setCurrentQuantity] = useState('Quantity');
   const [currentSku, setCurrentSku] = useState(null);

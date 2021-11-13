@@ -13,7 +13,6 @@ const StarRating = () => (
       <Star />
       <Star />
       <Star />
-      {/* change href="#starRating" to reference Reviews module */}
       <a href="#starRating">Read All Reviews</a>
     </StarRatingStyle>
   </div>
