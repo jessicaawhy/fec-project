@@ -8,7 +8,7 @@ import {
 const ProductInfo = ({ productInfo, currentStyle }) => (
   <ProductInfoContainer data-testid="product-info">
     <CategoryStyle>
-      All Products /
+      Home / Products /&nbsp;
       {productInfo.category}
 
     </CategoryStyle>

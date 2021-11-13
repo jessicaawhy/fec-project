@@ -3,7 +3,9 @@ import styled from 'styled-components';
 export const RightColumn = styled.div`
   padding-left: 36px;
   display: block;
+  position: relative;
   width: 34%;
+  /* max-width: 406px; */
 `;
 
 export const Grid = styled.div`

@@ -44,16 +44,6 @@ const AddToCart = ({ currentStyle }) => {
       data-testid="cart-container"
       className="cart-container"
     >
-      <CartButton
-        data-testid="add-to-cart-button"
-        className="add-to-cart-button"
-        type="submit"
-        onClick={handleCartButton}
-        disabled={cartIsDisabled}
-      >
-        Add To Cart
-      </CartButton>
-
       <DropDown
         data-testid="size"
         className="size"
@@ -104,6 +94,16 @@ const AddToCart = ({ currentStyle }) => {
           }
 
       </DropDown>
+
+      <CartButton
+        data-testid="add-to-cart-button"
+        className="add-to-cart-button"
+        type="submit"
+        onClick={handleCartButton}
+        disabled={cartIsDisabled}
+      >
+        Add To Cart
+      </CartButton>
     </CartContainer>
   );
 };

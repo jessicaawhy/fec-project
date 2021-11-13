@@ -46,16 +46,11 @@ const OverviewContainer = () => {
           </LeftColumn>
 
           <RightColumn>
-<<<<<<< HEAD
-            {/* <Stars averageRating={averageRating} /> */}
-            <StarRating products={products} />
-=======
-            <StarRating />
->>>>>>> 0c2d0fbe37d5bec3d4bbf75cd7e09e679a3a7796
             <ProductInfo
               productInfo={productInfo}
               currentStyle={currentStyle}
             />
+            <StarRating />
             <StyleSelector
               productStyles={productStyles}
               currentStyle={currentStyle}
