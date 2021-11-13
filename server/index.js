@@ -21,6 +21,4 @@ app.use('/products', productsRouter);
 app.use('/qa/questions', questionsRouter);
 app.use('/qa/answers', answersRouter);
 
-app.listen(port, () => {
-  console.log(`app listening at http://localhost:${port}`);
-});
+app.listen(port);
