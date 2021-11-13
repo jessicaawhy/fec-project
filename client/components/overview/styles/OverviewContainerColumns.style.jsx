@@ -17,5 +17,4 @@ export const LeftColumn = styled.div`
   width: 66%;
   max-width: 866px;
   position: relative;
-  // display: contents;
 `;
