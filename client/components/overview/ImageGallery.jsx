@@ -5,7 +5,7 @@ import {
 } from './styles/ImageGallery.style';
 
 const ImageGallery = ({ currentStyle }) => {
-  const width = 840;
+  const width = 858;
 
   const [imagePosition, setImagePosition] = useState({
     activeIndex: 0,
