@@ -4,12 +4,22 @@ export const StyleSelectorContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  gap: 5px;
+  justify-content: flex-start;
+  align-contnet: flex-start;
+  gap: 10px;
+`;
+
+export const Style = styled.p`
+  text-transform: uppercase;
+  display: inline-block;
+  padding-bottom: 5px;
+  letter-spacing: 1px;
 `;
 
 export const ButtonStyle = styled.input`
-  width: 30px;
-  height: 30px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
-  border: 1px solid #212a2f;
+  border: 1px solid #3C3F3F;
+  object-fit: cover;
 `;

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import StyleButton from './StyleButton';
-import { StyleSelectorContainer } from './styles/StyleSelector.style';
+import { StyleSelectorContainer, Style } from './styles/StyleSelector.style';
 
 const StyleSelector = ({ productStyles, currentStyle, setCurrentStyle }) => {
   const renderStyleButtons = () => productStyles.map((style) => {
@@ -21,13 +21,18 @@ const StyleSelector = ({ productStyles, currentStyle, setCurrentStyle }) => {
   });
 
   return (
-    <StyleSelectorContainer
-      data-testid="style-selector"
-      className="style-selector"
-    >
-      {(productStyles)
+    <>
+      <Style>Style:&nbsp;</Style>
+      {currentStyle.name}
+      <StyleSelectorContainer
+        data-testid="style-selector"
+        className="style-selector"
+      >
+
+        {(productStyles)
       && renderStyleButtons()}
-    </StyleSelectorContainer>
+      </StyleSelectorContainer>
+    </>
   );
 };
 
