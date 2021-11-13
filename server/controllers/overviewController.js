@@ -51,6 +51,7 @@ module.exports = {
       data: body,
       baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo',
       headers: {
+        'Content-Type': 'application/json',
         Authorization: process.env.TOKEN,
       },
     })
