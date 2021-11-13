@@ -51,6 +51,7 @@ const ProductDescription = ({ productInfo }) => {
 };
 
 export default ProductDescription;
+
 ProductDescription.propTypes = {
   productInfo: PropTypes.objectOf(PropTypes.any).isRequired,
 };

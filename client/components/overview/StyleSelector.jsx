@@ -32,6 +32,7 @@ const StyleSelector = ({ productStyles, currentStyle, setCurrentStyle }) => {
 };
 
 export default StyleSelector;
+
 StyleSelector.propTypes = {
   productStyles: PropTypes.arrayOf(PropTypes.object),
   currentStyle: PropTypes.objectOf(PropTypes.any),
