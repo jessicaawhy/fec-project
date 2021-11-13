@@ -15,10 +15,7 @@ module.exports = {
         Authorization: process.env.TOKEN,
       },
     })
-      .then((response) => (response.data))
-      .then((data) => {
-        res.send(data);
-      })
+      .then((response) => res.send(response.data))
       .catch((err) => {
         console.log('error getting products', err);
         res.sendStatus(500);
