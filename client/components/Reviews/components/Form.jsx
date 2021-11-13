@@ -28,7 +28,6 @@ const ReviewsForm = ({ meta }) => {
       characteristics[id] = Number(value);
     }
 
-    // TODO: add error handling for pre & post submit
     const data = {
       product_id: current.id,
       rating: Number(e.target.rating.value),
@@ -38,7 +37,6 @@ const ReviewsForm = ({ meta }) => {
       name: e.target.name.value,
       email: e.target.email.value,
       characteristics,
-      // TODO: add photo feature
       photos: [],
     };
 
@@ -68,8 +66,6 @@ const ReviewsForm = ({ meta }) => {
             />
           ))
         }
-
-        {/* TODO: Upload your photos */}
 
         <Button type="submit">Submit</Button>
       </StyledForm>
