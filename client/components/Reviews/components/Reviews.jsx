@@ -33,7 +33,6 @@ const Reviews = ({
     <StyledReviews data-testid="reviews">
       <div>
         {`${total} reviews, sorted by `}
-        {/* eslint-disable-next-line styled-components-a11y/no-onchange */}
         <SelectSort name="sort" id="sort-options" value={sort} onChange={handleSelect}>
           <option value="relevance">relevance</option>
           <option value="helpful">helpful</option>

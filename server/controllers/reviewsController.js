@@ -1,10 +1,13 @@
 /* eslint-disable camelcase */
 const axios = require('axios');
 
-axios.defaults.headers.common.Authorization = process.env.TOKEN;
-
 const instance = axios.create({
   baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews/',
+  headers: {
+    common: {
+      Authorization: process.env.TOKEN,
+    },
+  },
 });
 
 exports.review_get = (req, res) => {

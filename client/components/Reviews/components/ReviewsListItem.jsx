@@ -6,7 +6,7 @@ import Flex from '../../styles/Flex.styled';
 import ButtonLink from '../../styles/ButtonLink.styled';
 import Stars from '../../styles/Stars.styled';
 import {
-  Item, Header, Summary, Footer, Response, ImgIcon,
+  Item, Header, Summary, Review, Recommend, Footer, Response, ImgIcon,
 } from '../styles/ReviewsListItem.styled';
 import { formatDate, markReviewHelpful, reportReview } from '../helpers/helpers';
 
@@ -65,7 +65,7 @@ const ReviewsListItem = ({ review }) => {
           ? <p>{review.body}</p>
           : (
             <div>
-              <span>{`${review.body.substring(0, 250)}... ` }</span>
+              <Review>{`${review.body.substring(0, 250)}... ` }</Review>
               <ButtonLink onClick={() => setShowReview(true)}>Show more</ButtonLink>
             </div>
           )
@@ -73,7 +73,7 @@ const ReviewsListItem = ({ review }) => {
 
       {
         review.recommend
-        && <span>✓ I recommend this product</span>
+        && <Recommend classList="recommend">✓ I recommend this product</Recommend>
       }
 
       {
