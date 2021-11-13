@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+
 import map from 'lodash/map';
 import range from 'lodash/range';
+
 import { addProductToCart } from './helpers/api';
 import { CartContainer, CartButton, DropDown } from './styles/AddToCart.style';
 
 const AddToCart = ({ currentStyle }) => {
-  // Tech Debt: make dropdowns reset when a new product or style is selected
   const [currentSize, setCurrentSize] = useState('Size');
   const [currentQuantity, setCurrentQuantity] = useState('Quantity');
   const [currentSku, setCurrentSku] = useState(null);
@@ -109,7 +110,6 @@ const AddToCart = ({ currentStyle }) => {
 
 export default AddToCart;
 
-AddToCart.propTypes = PropTypes.shape({
-  styles: PropTypes.objectOf(PropTypes.any),
-  id: PropTypes.objectOf(PropTypes.any),
-}).isRequired;
+AddToCart.propTypes = {
+  currentStyle: PropTypes.objectOf(PropTypes.any).isRequired,
+};

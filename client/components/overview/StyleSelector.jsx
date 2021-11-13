@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import StyleButton from './StyleButton';
 import { StyleSelectorContainer } from './styles/StyleSelector.style';
 
@@ -31,8 +32,9 @@ const StyleSelector = ({ productStyles, currentStyle, setCurrentStyle }) => {
 };
 
 export default StyleSelector;
-StyleSelector.propTypes = PropTypes.shape({
-  products: PropTypes.arrayOf(PropTypes.object),
-  styles: PropTypes.objectOf(PropTypes.any),
-  id: PropTypes.objectOf(PropTypes.any),
-}).isRequired;
+
+StyleSelector.propTypes = {
+  productStyles: PropTypes.arrayOf(PropTypes.object),
+  currentStyle: PropTypes.objectOf(PropTypes.any),
+  setCurrentStyle: PropTypes.func,
+}.isRequired;

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
+
 import StarRating from './StarRating';
 import ProductInfo from './ProductInfo';
 import ProductDescription from './ProductDescription';
 import ImageGallery from './ImageGallery';
 import StyleSelector from './StyleSelector';
 import AddToCart from './AddToCart';
-import products from './tests/testData/testProducts';
-// import Stars from '../styles/Stars.styled';
+
 import { useProduct } from '../../ProductContext';
 import { getProductInfo, getProductStyles } from './helpers/api';
 import {
@@ -46,8 +46,12 @@ const OverviewContainer = () => {
           </LeftColumn>
 
           <RightColumn>
+<<<<<<< HEAD
             {/* <Stars averageRating={averageRating} /> */}
             <StarRating products={products} />
+=======
+            <StarRating />
+>>>>>>> 0c2d0fbe37d5bec3d4bbf75cd7e09e679a3a7796
             <ProductInfo
               productInfo={productInfo}
               currentStyle={currentStyle}
