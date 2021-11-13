@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
+
 import StarRating from './StarRating';
 import ProductInfo from './ProductInfo';
 import ProductDescription from './ProductDescription';
 import ImageGallery from './ImageGallery';
 import StyleSelector from './StyleSelector';
 import AddToCart from './AddToCart';
-import products from './tests/testData/testProducts';
+
+// import products from './tests/testData/testProducts';
 import { useProduct } from '../../ProductContext';
 import { getProductInfo, getProductStyles } from './helpers/api';
 import {

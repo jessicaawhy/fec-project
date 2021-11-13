@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+
 import map from 'lodash/map';
 import range from 'lodash/range';
+
 import { addProductToCart } from './helpers/api';
 import { CartContainer, CartButton, DropDown } from './styles/AddToCart.style';
 

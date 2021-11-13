@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import {
   ProductInfoContainer, CategoryStyle, NameStyle, PriceStyle,
 } from './styles/ProductInfo.style';

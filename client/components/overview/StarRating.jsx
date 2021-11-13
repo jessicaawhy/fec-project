@@ -1,5 +1,6 @@
 import React from 'react';
 import Star from './Star';
+
 import StarRatingStyle from './styles/StarRating.style';
 
 const StarRating = () => (
