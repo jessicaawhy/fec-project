@@ -5,7 +5,9 @@ import map from 'lodash/map';
 import range from 'lodash/range';
 
 import { addProductToCart } from './helpers/api';
-import { CartContainer, CartButton, DropDown } from './styles/AddToCart.style';
+import {
+  CartContainer, CartButton, DropDown, DropDownContainer,
+} from './styles/AddToCart.style';
 
 const AddToCart = ({ currentStyle }) => {
   const [currentSize, setCurrentSize] = useState('Size');
@@ -44,44 +46,45 @@ const AddToCart = ({ currentStyle }) => {
       data-testid="cart-container"
       className="cart-container"
     >
-      <DropDown
-        data-testid="size"
-        className="size"
-        name="size"
-        onChange={handleSizeChange}
-      >
-        <option
-          selected="selected"
+      <DropDownContainer>
+        <DropDown
+          data-testid="size"
+          className="size"
+          name="size"
+          onChange={handleSizeChange}
         >
-          {currentSize}
+          <option
+            selected="selected"
+          >
+            {currentSize}
 
-        </option>
-        {map(currentStyle.skus, (sku) => (
-          <>
-            <option
-              value={JSON.stringify(sku)}
-            >
+          </option>
+          {map(currentStyle.skus, (sku) => (
+            <>
+              <option
+                value={JSON.stringify(sku)}
+              >
 
-              {sku.size}
-            </option>
-          </>
-        ))}
-      </DropDown>
-      <DropDown
-        data-testid="quantity"
-        className="quantity"
-        name="quantity"
-        onChange={handleQtyChange}
-        disabled={quantityIsDisabled}
-      >
-        <option
-          selected="selected"
+                {sku.size}
+              </option>
+            </>
+          ))}
+        </DropDown>
+        <DropDown
+          data-testid="quantity"
+          className="quantity"
+          name="quantity"
+          onChange={handleQtyChange}
+          disabled={quantityIsDisabled}
         >
-          {currentQuantity}
+          <option
+            selected="selected"
+          >
+            {currentQuantity}
 
-        </option>
+          </option>
 
-        {
+          {
             (currentSku)
             && range(1, quantityForSelectedSize > 12
               ? 13 : quantityForSelectedSize + 1).map((num) => (
@@ -93,7 +96,8 @@ const AddToCart = ({ currentStyle }) => {
             ))
           }
 
-      </DropDown>
+        </DropDown>
+      </DropDownContainer>
 
       <CartButton
         data-testid="add-to-cart-button"

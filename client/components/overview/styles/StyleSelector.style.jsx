@@ -10,8 +10,10 @@ export const StyleSelectorContainer = styled.div`
 `;
 
 export const Style = styled.p`
-  display: block;
+  text-transform: uppercase;
+  display: inline-block;
   padding-bottom: 5px;
+  letter-spacing: 1px;
 `;
 
 export const ButtonStyle = styled.input`

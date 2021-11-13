@@ -1,20 +1,20 @@
 import styled from 'styled-components';
 
 export const GalleryCSS = styled.div`
-position: relative;
-height: 567px;
-width: 100%;
-max-width: 1000px;
-overflow: hidden;
+  position: relative;
+  height: 567px;
+  width: 100%;
+  max-width: 1000px;
+  overflow: hidden;
 `;
 
 export const GalleryContent = styled.div`
-transform: translateX(-${(props) => props.translate}px);
-transition: transform ease-out ${(props) => props.transition}s;
-height: 100%;
-width: ${(props) => props.width}px;
-object-fit: cover;
-display: flex;
+  transform: translateX(-${(props) => props.translate}px);
+  transition: transform ease-out ${(props) => props.transition}s;
+  height: 100%;
+  width: ${(props) => props.width}px;
+  object-fit: cover;
+  display: flex;
 `;
 
 export const Image = styled.div`

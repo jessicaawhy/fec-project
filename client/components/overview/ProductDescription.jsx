@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import {
-  SloganStyle, DescriptionStyle, FeaturesStyle, FeatureListStyle, FeatureStyle,
+  SloganStyle, DescriptionStyle, FeatureListStyle, FeatureStyle, HorizontalRule,
+  DescriptionContainer,
 }
   from './styles/ProductDescription.style';
 
@@ -16,7 +17,7 @@ const ProductDescription = ({ productInfo }) => {
   return (
     idLoaded
     && (
-    <div data-testid="product-description">
+    <DescriptionContainer data-testid="product-description">
       <SloganStyle
         data-testid="slogan"
         className="slogan"
@@ -24,6 +25,7 @@ const ProductDescription = ({ productInfo }) => {
         {productInfo.slogan}
 
       </SloganStyle>
+
       <DescriptionStyle
         data-testid="description"
         className="description"
@@ -31,21 +33,23 @@ const ProductDescription = ({ productInfo }) => {
         {productInfo.description}
 
       </DescriptionStyle>
-      <FeaturesStyle>
-        Features
 
-      </FeaturesStyle>
       <FeatureListStyle
         data-testid="features"
         className="features"
       >
-        {productInfo.features.map((featureList) => (
-          <FeatureStyle>
-            {`${featureList.feature}: ${featureList.value}`}
-          </FeatureStyle>
-        ))}
+        <FeatureStyle>
+          <h4>Features</h4>
+          {productInfo.features.map((featureList) => (
+            <>
+              <HorizontalRule />
+              {`${featureList.feature}: ${featureList.value}`}
+            </>
+          ))}
+        </FeatureStyle>
       </FeatureListStyle>
-    </div>
+
+    </DescriptionContainer>
     )
   );
 };

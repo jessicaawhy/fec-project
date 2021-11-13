@@ -22,11 +22,8 @@ const StyleSelector = ({ productStyles, currentStyle, setCurrentStyle }) => {
 
   return (
     <>
-      <Style>
-        Style:&nbsp;
-        {currentStyle.name}
-
-      </Style>
+      <Style>Style:&nbsp;</Style>
+      {currentStyle.name}
       <StyleSelectorContainer
         data-testid="style-selector"
         className="style-selector"
