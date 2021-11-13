@@ -5,12 +5,12 @@ module.exports = {
     const { page, count } = req.params;
 
     axios({
-      url: `?${new URLSearchParams({
+      url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products',
+      method: 'get',
+      params: {
         page,
         count,
-      })}`,
-      method: 'get',
-      baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products',
+      },
       headers: {
         Authorization: process.env.TOKEN,
       },
