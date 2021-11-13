@@ -42,7 +42,13 @@ export const FeatureStyle = styled.div`
   text-align: center;
   background-color: rgb(245, 245, 245);
   border-radius: 2px;
+`;
+
+export const Feature = styled.p`
   padding: 12px 24px;
   font-size: 14px;
-  margin: 0px;
+`;
+
+export const FeatureTitle = styled.h4`
+  padding: 12px 24px;
 `;

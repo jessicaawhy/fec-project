@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import {
   SloganStyle, DescriptionStyle, FeatureListStyle, FeatureStyle, HorizontalRule,
-  DescriptionContainer,
+  DescriptionContainer, Feature, FeatureTitle,
 }
   from './styles/ProductDescription.style';
 
@@ -39,11 +39,19 @@ const ProductDescription = ({ productInfo }) => {
         className="features"
       >
         <FeatureStyle>
-          <h4>Features</h4>
+          <FeatureTitle>Features</FeatureTitle>
           {productInfo.features.map((featureList) => (
             <>
               <HorizontalRule />
-              {`${featureList.feature}: ${featureList.value}`}
+              <Feature>
+                {
+                (featureList.value !== null)
+                  ? (
+                    `${featureList.feature}: ${featureList.value}`)
+                  : (
+                    `${featureList.feature}`)
+                }
+              </Feature>
             </>
           ))}
         </FeatureStyle>
