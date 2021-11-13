@@ -4,9 +4,10 @@ export const ProductInfoContainer = styled.div`
 display: grid;
 `;
 
-export const CategoryStyle = styled.h3`
+export const CategoryStyle = styled.ul`
 display: block;
 margin: 0;
+list-style: none;
 `;
 
 export const NameStyle = styled.h1`

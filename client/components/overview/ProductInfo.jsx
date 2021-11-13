@@ -6,7 +6,11 @@ import {
 
 const ProductInfo = ({ productInfo, currentStyle }) => (
   <ProductInfoContainer data-testid="product-info">
-    <CategoryStyle>{productInfo.category}</CategoryStyle>
+    <CategoryStyle>
+      All Products /
+      {productInfo.category}
+
+    </CategoryStyle>
     <NameStyle>{productInfo.name}</NameStyle>
     {(currentStyle.sale_price !== null)
       ? (
