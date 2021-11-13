@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const axios = require('axios');
 
 // apply axios defaults
@@ -12,7 +13,6 @@ const getQuestions = (req, res) => {
     // url: `/?product_id=${product_id}&page=${page}&count=${count}`,
   })
     .then((response) => res.send(response.data))
-    // .then((data) => res.send(data))
     .catch((err) => {
       console.log('---------', err.request);
       res.status(500).send(err);
@@ -26,9 +26,7 @@ const getAnswers = (req, res) => {
     url: `/${question_id}/answers/?page=${page}&count=${count}`,
   })
     .then((response) => res.send(response.data))
-    // .then((data) => res.send(data))
     .catch((err) => {
-      console.log('get answers ----', err.request);
       res.status(500).send(err);
     });
 };
@@ -43,8 +41,8 @@ const postQuestion = (req, res) => {
     data: {
       product_id, body, name, email,
     },
-  }).then(res.status(201).send('thanks for posting'))
-    .catch((err) => { console.log('postQUestion-----', err); });
+  }).then(res.status(201).send('Question is posted'))
+    .catch((err) => res.status(500).send(err));
 };
 
 const postAnswer = (req, res) => {
@@ -58,7 +56,7 @@ const postAnswer = (req, res) => {
     data: {
       body, name, email, photos,
     },
-  }).then((res.status(201).send('thank you for adding an answer')))
+  }).then((res.status(201).send('Answer is posted')))
     .catch((err) => res.send(err));
 };
 
