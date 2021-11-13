@@ -46,7 +46,7 @@ const OverviewContainer = () => {
           </LeftColumn>
 
           <RightColumn>
-            <StarRating products={products} />
+            <StarRating />
             <ProductInfo
               productInfo={productInfo}
               currentStyle={currentStyle}
