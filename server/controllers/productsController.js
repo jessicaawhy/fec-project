@@ -5,20 +5,17 @@ module.exports = {
     const { page, count } = req.params;
 
     axios({
-      url: `?${new URLSearchParams({
+      url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products',
+      method: 'get',
+      params: {
         page,
         count,
-      })}`,
-      method: 'get',
-      baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products',
+      },
       headers: {
         Authorization: process.env.TOKEN,
       },
     })
-      .then((response) => (response.data))
-      .then((data) => {
-        res.send(data);
-      })
+      .then((response) => res.send(response.data))
       .catch((err) => {
         console.log('error getting products', err);
         res.sendStatus(500);

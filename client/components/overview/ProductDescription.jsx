@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import {
   SloganStyle, DescriptionStyle, FeaturesStyle, FeatureListStyle, FeatureStyle,
 }
@@ -50,8 +51,7 @@ const ProductDescription = ({ productInfo }) => {
 };
 
 export default ProductDescription;
-ProductDescription.propTypes = PropTypes.shape({
-  products: PropTypes.arrayOf(PropTypes.object),
-  styles: PropTypes.objectOf(PropTypes.any),
-  id: PropTypes.objectOf(PropTypes.any),
-}).isRequired;
+
+ProductDescription.propTypes = {
+  productInfo: PropTypes.objectOf(PropTypes.any).isRequired,
+};
