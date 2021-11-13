@@ -33,3 +33,8 @@ ProductInfo.propTypes = PropTypes.shape({
   styles: PropTypes.objectOf(PropTypes.any),
   id: PropTypes.objectOf(PropTypes.any),
 }).isRequired;
+
+ProductInfo.propTypes = {
+  productInfo: PropTypes.objectOf(PropTypes.any).isRequired,
+  currentStyle: PropTypes.objectOf(PropTypes.any).isRequired,
+};

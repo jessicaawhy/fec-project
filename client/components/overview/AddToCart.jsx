@@ -110,7 +110,6 @@ const AddToCart = ({ currentStyle }) => {
 
 export default AddToCart;
 
-AddToCart.propTypes = PropTypes.shape({
-  styles: PropTypes.objectOf(PropTypes.any),
-  id: PropTypes.objectOf(PropTypes.any),
-}).isRequired;
+AddToCart.propTypes = {
+  currentStyle: PropTypes.objectOf(PropTypes.any).isRequired,
+};

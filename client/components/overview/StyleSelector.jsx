@@ -32,8 +32,8 @@ const StyleSelector = ({ productStyles, currentStyle, setCurrentStyle }) => {
 };
 
 export default StyleSelector;
-StyleSelector.propTypes = PropTypes.shape({
-  products: PropTypes.arrayOf(PropTypes.object),
-  styles: PropTypes.objectOf(PropTypes.any),
-  id: PropTypes.objectOf(PropTypes.any),
-}).isRequired;
+StyleSelector.propTypes = {
+  productStyles: PropTypes.arrayOf(PropTypes.object),
+  currentStyle: PropTypes.objectOf(PropTypes.any),
+  setCurrentStyle: PropTypes.func,
+}.isRequired;

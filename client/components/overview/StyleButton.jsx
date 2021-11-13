@@ -38,6 +38,10 @@ const StyleButton = ({
 
 export default StyleButton;
 
-StyleButton.propTypes = PropTypes.shape({
-  photo: PropTypes.objectOf(PropTypes.any),
-}).isRequired;
+StyleButton.propTypes = {
+  styleId: PropTypes.number,
+  photos: PropTypes.arrayOf(PropTypes.object),
+  currentStyle: PropTypes.objectOf(PropTypes.any).isRequired,
+  seCurrentStyle: PropTypes.func,
+  productStyles: PropTypes.arrayOf(PropTypes.any),
+}.isRequired;
