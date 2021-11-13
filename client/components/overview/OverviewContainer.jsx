@@ -7,7 +7,6 @@ import ImageGallery from './ImageGallery';
 import StyleSelector from './StyleSelector';
 import AddToCart from './AddToCart';
 
-// import products from './tests/testData/testProducts';
 import { useProduct } from '../../ProductContext';
 import { getProductInfo, getProductStyles } from './helpers/api';
 import {
