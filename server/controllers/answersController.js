@@ -1,6 +1,6 @@
+/* eslint-disable camelcase */
 const axios = require('axios');
 
-// apply axios defaults
 axios.defaults.headers.common.Authorization = process.env.TOKEN;
 
 const updateAnswerHelpfuless = (req, res) => {
@@ -9,6 +9,6 @@ const updateAnswerHelpfuless = (req, res) => {
     method: 'put',
     url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/answers/${answers_id}/helpful`,
   }).then(res.status(204).send('updated'))
-    .catch((err) => console.log('-----', err));
+    .catch((err) => res.status(500).send(err));
 };
 module.exports = updateAnswerHelpfuless;

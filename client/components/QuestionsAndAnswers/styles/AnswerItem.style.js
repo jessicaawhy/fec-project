@@ -5,7 +5,9 @@ export const AnswerContainer = styled.div`
   flex-direction: column;
   padding: 0px 10px 10px 10px;
 `;
+/* top | right | bottom | left */
 export const AnswerBody = styled.div`
+  padding: 0 0 0 3px;
 `;
 export const AnswerDetails = styled.div`
   display: flex;

@@ -24,6 +24,7 @@ const MasterQA = () => {
   useEffect(async () => {
     const questionsFetched = await getQuestions(product.id, 1, 11);
     setQuestionsFromAPI(questionsFetched.results);
+    setQuestionsLength(2);
     console.log('Q From API is running?');
   }, [product.id]);
 
@@ -74,7 +75,7 @@ const MasterQA = () => {
         <SearchQuestion handleSearch={handleSearch} />
         <QuestionList questions={questions} updateHelpfulness={updateHelpfulness} />
         <Btn>
-          {(questionsLength !== sortedQuestions.length && sortedQuestions.length >= 2)
+          {(questionsLength !== sortedQuestions.length && sortedQuestions.length > 2)
           && <MoreQuestions renderMoreQuestions={renderMoreQuestions} />}
           <AddQuestion handleAddQuestion={handleAddQuestion} />
         </Btn>
