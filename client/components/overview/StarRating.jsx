@@ -14,6 +14,7 @@ const StarRating = () => (
       <Star />
       <Star />
       <Star />
+      &nbsp;
       <a href="#starRating">Read All Reviews</a>
     </StarRatingStyle>
   </div>
