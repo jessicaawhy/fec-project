@@ -10,11 +10,30 @@ export const ModalShadow = styled.div`
   z-index: 4;
 `;
 export const Modal = styled.div`
-  max-width: 600px;
+  min-width: 349px;
+  max-width: 399px;
   background-color: white;
   position: fixed;
   top: 75px;
   z-index: 5;
+  max-height: calc(100%- 200px);
+  left: calc(50% - 250px);
+  display: flex;
+  flex-direction: column;
+  @media (max-width: 600px) {
+    left: 0px;
+    margin: 0px 10px;
+    padding: 10px;
+  }
+`;
+
+export const PicModal = styled.div`
+  max-width: 600px;
+  background-color: white;
+  position: fixed;
+  top: 75px;
+  bottom: 100px;
+  z-index: 6;
   max-height: calc(100%- 200px);
   left: calc(50% - 250px);
   display: flex;
@@ -40,11 +59,12 @@ export const LabelArea = styled.label`
   padding: 0 0 5px;
 `;
 export const InputArea = styled.input`
-  width: 333px;
+  width: 100%;
   height: 33px;
 `;
+
 export const LargeText = styled.textarea`
-  width: 333px;
+  width: 100%;
   height: 99px;
 `;
 
@@ -67,7 +87,8 @@ export const SubmitInput = styled.input`
 `;
 
 export const PopupImg = styled.img`
-  width: 399px;
+  width: 100%;
+  height: 100%
 `;
 
 export const TitleContainer = styled.div`
@@ -96,4 +117,9 @@ export const Exit = styled.button`
   background-color: white;
   color: red;
   font-weigth: bold;
+  &:hover {
+     background:#016ABC;
+     border:1px solid #eee;
+     border-radius:20px;
+  }
 `;

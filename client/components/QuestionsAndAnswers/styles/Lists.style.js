@@ -6,7 +6,7 @@ export const AnswersContainer = styled.div`
 `;
 
 export const QuestionsContainer = styled.div`
-  min-height: 431px;
-  max-height: 433px;
+  min-height: 566px;
+  max-height: 566px;
   overflow-y: auto;
 `;

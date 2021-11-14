@@ -6,6 +6,7 @@ export const AnswerContainer = styled.div`
   padding: 0px 10px 10px 10px;
 `;
 export const AnswerBody = styled.div`
+  padding: 0 0 0 3px;
 `;
 export const AnswerDetails = styled.div`
   display: flex;

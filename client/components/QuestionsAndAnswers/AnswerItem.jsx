@@ -1,22 +1,23 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import {
-  AnswerContainer, AnswerBody, AnswerDetails, UnderLine, Image, ImgContainer, ImgDialog, PopupImg, FlexSpan,
-} from './styles/AnswerItem.style';
-import { ModalShadow, Modal } from './styles/Modal.style';
 import PhotoModal from './modal/PhotoModal';
 import { reportQuestion, updAnswerHelpfulness, formatDate } from './helpers/helpers';
+import {
+  AnswerContainer, AnswerBody, AnswerDetails, UnderLine,
+  Image, ImgContainer, FlexSpan,
+} from './styles/AnswerItem.style';
 
 const AnswerItem = ({
   questionID, answer, index, updateAnswerHelpfulness,
 }) => {
   const [isHelpful, setIsHelpful] = useState(false);
   const [isReported, setIsReported] = useState(false);
-  const [isEnlarged, setIsEnlarged] = useState(false);
+  const [showPhotoModal, setShowPhtoModal] = useState(false);
+  const [currPhoto, setCurrPhoto] = useState('');
 
-  const handleImgModal = () => {
-    setIsEnlarged((prevState) => !prevState);
-    console.log('image is clicked---------');
+  const handleImgModal = (photo) => {
+    setShowPhtoModal(true);
+    setCurrPhoto(photo);
   };
 
   const handleAnswerHelpfulness = (e, answerID) => {
@@ -62,18 +63,18 @@ const AnswerItem = ({
               src={`${photo}`}
               key={i}
               alt="Answerer's Images"
-              onClick={handleImgModal}
+              onClick={() => handleImgModal(photo)}
             />
-            {isEnlarged
-            && (
-            <PhotoModal
-              handleImgModal={handleImgModal}
-              currPhoto={photo}
-            />
-            )}
           </div>
         ))}
       </ImgContainer>
+      {showPhotoModal
+          && (
+          <PhotoModal
+            currPhoto={currPhoto}
+            setShowPhtoModal={setShowPhtoModal}
+          />
+          )}
     </AnswerContainer>
   );
 };

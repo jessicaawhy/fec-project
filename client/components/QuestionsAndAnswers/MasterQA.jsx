@@ -4,11 +4,11 @@ import AddQuestion from './AddQuestion';
 import MoreQuestions from './MoreQuestions';
 import QuestionList from './QuestionList';
 import SearchQuestion from './SearchQuestion';
-import { getQuestions, getAnswers, postQuestion } from './helpers/helpers';
 import { MasterContainer, Btn, Header } from './styles/MasterQA.style';
+import { getQuestions, postQuestion } from './helpers/helpers';
 
 const MasterQA = () => {
-  const currProduct = useProduct(); // const useProduct = () => useContext(ProductContext)
+  const currProduct = useProduct();
   const [product, setProduct] = useState(currProduct);
   const [questionsFromAPI, setQuestionsFromAPI] = useState([]);
   const [questionsLength, setQuestionsLength] = useState(2);
@@ -22,14 +22,14 @@ const MasterQA = () => {
   }, [currProduct]);
 
   useEffect(async () => {
-    // const questionsFetched = await getQuestions(61579, 1, 11);
     const questionsFetched = await getQuestions(product.id, 1, 11);
     setQuestionsFromAPI(questionsFetched.results);
-  }, []);
+    setQuestionsLength(2);
+  }, [product.id]);
 
   useEffect(() => {
     setQuestions(questionsFromAPI.slice(0, questionsLength));
-  }, [questionsFromAPI, currProduct]);
+  }, [questionsFromAPI]);
 
   const handleAddQuestion = (newQuestion) => {
     const data = {
@@ -38,7 +38,7 @@ const MasterQA = () => {
       name: newQuestion.name,
       email: newQuestion.email,
     };
-    postQuestion(data); // if time allowed, consider fixing it
+    postQuestion(data);
     getQuestions(product.id, 1, 10);
   };
 
@@ -52,7 +52,7 @@ const MasterQA = () => {
 
   const updateHelpfulness = (index) => {
     sortedQuestions[index].question_helpfulness++;
-    setQuestions(sortedQuestions.slice(0, questionsLength)); // might introduce a bug here
+    setQuestions(sortedQuestions.slice(0, questionsLength));
   };
 
   const handleSearch = (input) => {
@@ -73,7 +73,7 @@ const MasterQA = () => {
         <SearchQuestion handleSearch={handleSearch} />
         <QuestionList questions={questions} updateHelpfulness={updateHelpfulness} />
         <Btn>
-          {(questionsLength !== sortedQuestions.length && sortedQuestions.length >= 2)
+          {(questionsLength !== sortedQuestions.length && sortedQuestions.length > 2)
           && <MoreQuestions renderMoreQuestions={renderMoreQuestions} />}
           <AddQuestion handleAddQuestion={handleAddQuestion} />
         </Btn>

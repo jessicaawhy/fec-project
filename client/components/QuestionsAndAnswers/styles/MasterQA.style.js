@@ -5,6 +5,7 @@ export const MasterContainer = styled.div`
   align-items: center,
   justify-content: center,
 `;
+
 export const Btn = styled.div`
   display: flex;
 `;

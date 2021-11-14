@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import Button from './styles/SharedQA.style';
 import QuestionModal from './modal/QuestionModal';
+import Button from './styles/SharedQA.style';
 
 const AddQuestion = ({ handleAddQuestion }) => {
   const [open, setOpen] = useState(false);
