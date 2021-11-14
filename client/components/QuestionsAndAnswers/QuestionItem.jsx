@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import AnswerList from './AnswerList';
+import AnswerModal from './modal/AnswerModal';
 import {
   QuestionDiv, QuestionBody, QuestionMisc, UnderLine, LoadMore,
 } from './styles/QuestionItem.style';
-import AnswerList from './AnswerList';
-import AnswerModal from './modal/AnswerModal';
-import { postAnswer, updQuestionHelpfulness, getQuestions } from './helpers/helpers';
-import { useProduct } from '../../ProductContext';
+import { postAnswer, updQuestionHelpfulness } from './helpers/helpers';
 
 const QuestionItem = ({
   question, index, updateHelpfulness,
@@ -18,14 +17,8 @@ const QuestionItem = ({
   const [isHelpful, setIsHelpful] = useState(false);
   const [length, setLength] = useState(2);
   const [displayedAnswers, setDisplayedAnswers] = useState(sortedAnswers.slice(0, length));
-  const currProduct = useProduct();
-
-  // useEffect(() => {
-  //   setDisplayedAnswers(sortedAnswers.slice(0, setLength(sortedAnswers.length)));
-  // }, [question]);
 
   const loadMoreAnswers = (e) => {
-    console.log(e.target.innerText);
     if (e.target.innerText === 'COLLAPSE ANSWERS') {
       setDisplayedAnswers(sortedAnswers.slice(0, 2));
     } else if (e.target.innerText === 'LOAD MORE ANSWERS') {

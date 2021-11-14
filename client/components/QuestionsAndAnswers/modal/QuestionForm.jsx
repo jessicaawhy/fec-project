@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useProduct } from '../../../ProductContext';
 import {
-  Container1, LabelArea, LargeText, InputArea, Notes, SubmitInput, SubmitContainer, Title, SubTitle, TitleContainer, Exit,
+  Container1, LabelArea, LargeText, InputArea, Notes,
+  SubmitInput, SubmitContainer, Title, SubTitle, TitleContainer, Exit,
 } from '../styles/Modal.style';
 
 const QuestionForm = ({

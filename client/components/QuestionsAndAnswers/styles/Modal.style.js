@@ -10,6 +10,7 @@ export const ModalShadow = styled.div`
   z-index: 4;
 `;
 export const Modal = styled.div`
+  min-width: 349px;
   max-width: 399px;
   background-color: white;
   position: fixed;
@@ -116,4 +117,9 @@ export const Exit = styled.button`
   background-color: white;
   color: red;
   font-weigth: bold;
+  &:hover {
+     background:#016ABC;
+     border:1px solid #eee;
+     border-radius:20px;
+  }
 `;

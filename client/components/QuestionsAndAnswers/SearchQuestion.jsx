@@ -12,7 +12,7 @@ const SearchQuestion = ({ handleSearch }) => {
     <Search data-testid="searchQuestions">
       <SearchInput
         type="text"
-        placeholder="HAVE A QUESTIONS? SEARCH FOR ANSWERS... " // 🔍
+        placeholder="HAVE A QUESTIONS? SEARCH FOR ANSWERS... "
         onChange={handleSearchInput}
       />
     </Search>

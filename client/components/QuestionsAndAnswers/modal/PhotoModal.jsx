@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {
-  ModalShadow, PicModal, Modal, PopupImg,
+  ModalShadow, PicModal, PopupImg,
 } from '../styles/Modal.style';
 
 const PhotoModal = ({ currPhoto, setShowPhtoModal }) => (

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import {
-  AnswerContainer, AnswerBody, AnswerDetails, UnderLine,
-  Image, ImgContainer, ImgDialog, PopupImg, FlexSpan,
-} from './styles/AnswerItem.style';
 import PhotoModal from './modal/PhotoModal';
 import { reportQuestion, updAnswerHelpfulness, formatDate } from './helpers/helpers';
+import {
+  AnswerContainer, AnswerBody, AnswerDetails, UnderLine,
+  Image, ImgContainer, FlexSpan,
+} from './styles/AnswerItem.style';
 
 const AnswerItem = ({
   questionID, answer, index, updateAnswerHelpfulness,
