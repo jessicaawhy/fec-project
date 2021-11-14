@@ -1,49 +1,52 @@
 /* eslint-disable camelcase */
 const axios = require('axios');
 
+const instance = axios.create({
+  baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews/',
+  headers: {
+    common: {
+      Authorization: process.env.TOKEN,
+    },
+  },
+});
+
 exports.review_get = (req, res) => {
   const {
     product_id, page, count, sort,
   } = req.params;
 
-  const config = {
-    headers: { Authorization: process.env.TOKEN },
-  };
-
-  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews/?${new URLSearchParams({
-    product_id,
-    page,
-    count,
-    sort,
-  })}`, config)
-    .then((response) => response.data)
-    .then((data) => res.send(data))
+  instance({
+    url: '/',
+    method: 'get',
+    params: {
+      product_id, page, count, sort,
+    },
+  })
+    .then((response) => res.send(response.data))
     .catch(() => res.sendStatus(500));
 };
 
 exports.review_get_meta = (req, res) => {
   const { product_id } = req.params;
 
-  const config = {
-    headers: { Authorization: process.env.TOKEN },
-  };
-
-  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews/meta/?${new URLSearchParams({
-    product_id,
-  })}`, config)
-    .then((response) => response.data)
-    .then((data) => res.send(data))
+  instance({
+    url: '/meta',
+    method: 'get',
+    params: {
+      product_id,
+    },
+  })
+    .then((response) => res.send(response.data))
     .catch(() => res.sendStatus(500));
 };
 
 exports.review_mark_helpful = (req, res) => {
   const { review_id } = req.params;
 
-  const config = {
-    headers: { Authorization: process.env.TOKEN },
-  };
-
-  axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews/${review_id}/helpful/`, config)
+  instance({
+    url: `${review_id}/helpful/`,
+    method: 'put',
+  })
     .then(() => res.sendStatus(204))
     .catch(() => res.sendStatus(500));
 };
@@ -51,11 +54,10 @@ exports.review_mark_helpful = (req, res) => {
 exports.review_report = (req, res) => {
   const { review_id } = req.params;
 
-  const config = {
-    headers: { Authorization: process.env.TOKEN },
-  };
-
-  axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews/${review_id}/report/`, config)
+  instance({
+    url: `${review_id}/report/`,
+    method: 'put',
+  })
     .then(() => res.sendStatus(204))
     .catch(() => res.sendStatus(500));
 };
@@ -63,11 +65,11 @@ exports.review_report = (req, res) => {
 exports.review_create = (req, res) => {
   const { body } = req;
 
-  const config = {
-    headers: { Authorization: process.env.TOKEN },
-  };
-
-  axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews/', body, config)
+  instance({
+    url: '/',
+    method: 'post',
+    data: body,
+  })
     .then(() => res.sendStatus(201))
     .catch(() => res.sendStatus(500));
 };

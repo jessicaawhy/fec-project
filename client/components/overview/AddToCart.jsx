@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+
 import map from 'lodash/map';
 import range from 'lodash/range';
+
 import { addProductToCart } from './helpers/api';
-import { CartContainer, CartButton, DropDown } from './styles/AddToCart.style';
+import {
+  CartContainer, CartButton, DropDown, DropDownContainer,
+} from './styles/AddToCart.style';
 
 const AddToCart = ({ currentStyle }) => {
-  // Tech Debt: make dropdowns reset when a new product or style is selected
   const [currentSize, setCurrentSize] = useState('Size');
   const [currentQuantity, setCurrentQuantity] = useState('Quantity');
   const [currentSku, setCurrentSku] = useState(null);
@@ -43,54 +46,45 @@ const AddToCart = ({ currentStyle }) => {
       data-testid="cart-container"
       className="cart-container"
     >
-      <CartButton
-        data-testid="add-to-cart-button"
-        className="add-to-cart-button"
-        type="submit"
-        onClick={handleCartButton}
-        disabled={cartIsDisabled}
-      >
-        Add To Cart
-      </CartButton>
-
-      <DropDown
-        data-testid="size"
-        className="size"
-        name="size"
-        onChange={handleSizeChange}
-      >
-        <option
-          selected="selected"
+      <DropDownContainer>
+        <DropDown
+          data-testid="size"
+          className="size"
+          name="size"
+          onChange={handleSizeChange}
         >
-          {currentSize}
+          <option
+            selected="selected"
+          >
+            {currentSize}
 
-        </option>
-        {map(currentStyle.skus, (sku) => (
-          <>
-            <option
-              value={JSON.stringify(sku)}
-            >
+          </option>
+          {map(currentStyle.skus, (sku) => (
+            <>
+              <option
+                value={JSON.stringify(sku)}
+              >
 
-              {sku.size}
-            </option>
-          </>
-        ))}
-      </DropDown>
-      <DropDown
-        data-testid="quantity"
-        className="quantity"
-        name="quantity"
-        onChange={handleQtyChange}
-        disabled={quantityIsDisabled}
-      >
-        <option
-          selected="selected"
+                {sku.size}
+              </option>
+            </>
+          ))}
+        </DropDown>
+        <DropDown
+          data-testid="quantity"
+          className="quantity"
+          name="quantity"
+          onChange={handleQtyChange}
+          disabled={quantityIsDisabled}
         >
-          {currentQuantity}
+          <option
+            selected="selected"
+          >
+            {currentQuantity}
 
-        </option>
+          </option>
 
-        {
+          {
             (currentSku)
             && range(1, quantityForSelectedSize > 12
               ? 13 : quantityForSelectedSize + 1).map((num) => (
@@ -102,14 +96,24 @@ const AddToCart = ({ currentStyle }) => {
             ))
           }
 
-      </DropDown>
+        </DropDown>
+      </DropDownContainer>
+
+      <CartButton
+        data-testid="add-to-cart-button"
+        className="add-to-cart-button"
+        type="submit"
+        onClick={handleCartButton}
+        disabled={cartIsDisabled}
+      >
+        Add To Cart
+      </CartButton>
     </CartContainer>
   );
 };
 
 export default AddToCart;
 
-AddToCart.propTypes = PropTypes.shape({
-  styles: PropTypes.objectOf(PropTypes.any),
-  id: PropTypes.objectOf(PropTypes.any),
-}).isRequired;
+AddToCart.propTypes = {
+  currentStyle: PropTypes.objectOf(PropTypes.any).isRequired,
+};

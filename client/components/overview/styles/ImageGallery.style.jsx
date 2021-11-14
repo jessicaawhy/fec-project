@@ -1,22 +1,20 @@
 import styled from 'styled-components';
 
 export const GalleryCSS = styled.div`
-position: relative;
-height: 567px;
-width: inherit;
-max-width: 1000px;
-overflow: hidden;
+  position: relative;
+  height: 567px;
+  width: 100%;
+  max-width: 1000px;
+  overflow: hidden;
 `;
 
 export const GalleryContent = styled.div`
-transform: translateX(-${(props) => props.translate}px);
-transition: transform ease-out ${(props) => props.transition}s;
-height: 100%;
-width: ${(props) => props.width}px;
-object-fit: cover;
-display: flex;
-/* will remove yellow when done styling */
-background: yellow;
+  transform: translateX(-${(props) => props.translate}px);
+  transition: transform ease-out ${(props) => props.transition}s;
+  height: 100%;
+  width: ${(props) => props.width}px;
+  object-fit: cover;
+  display: flex;
 `;
 
 export const Image = styled.div`
@@ -33,8 +31,7 @@ export const Arrow = styled.span`
   position: absolute;
   top: 42%;
   left: ${(props) => props.adjust}%;
-  /* will change arrow color when done styling */
-  color: yellow;
+  color: black;
   font-size: 100px;
   line-height: 100px;
 `;

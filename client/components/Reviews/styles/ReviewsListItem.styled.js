@@ -3,7 +3,9 @@ import Flex from '../../styles/Flex.styled';
 import ButtonLink from '../../styles/ButtonLink.styled';
 
 export const Item = styled.div`
-  padding: 30px 15px;
+  padding: 15px;
+
+  <Flex>
 `;
 
 /* Header */
@@ -11,6 +13,7 @@ export const Item = styled.div`
 export const Header = styled.div`
   display: flex;
   justify-content: space-between;
+  margin: 15px 0;
 
   ${Flex} {
     > span {
@@ -24,12 +27,22 @@ export const Header = styled.div`
 
 export const Summary = styled.div`
   font-weight: bold;
+  margin: 15px 0;
+`;
+
+export const Review = styled.div`
+  margin: 15px 0;
+`;
+
+export const Recommend = styled.div`
+  margin: 15px 0;
 `;
 
 export const Response = styled.div`
   display: flex;
   flex-direction: column;
   background-color: rgb(240, 240, 240);
+  margin: 15px 0;
   padding: 15px;
 
   > * {
@@ -40,7 +53,7 @@ export const Response = styled.div`
 `;
 
 export const ImgIcon = styled.img`
-  margin: 0 10px;
+  margin: 15px 10px;
   height: 75px;
 `;
 
@@ -48,6 +61,7 @@ export const ImgIcon = styled.img`
 
 export const Footer = styled.div`
   display: flex;
+  margin: 15px 0;
 
   ${Flex} {
     & :first-child {

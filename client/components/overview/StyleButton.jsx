@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+
 import { ButtonStyle } from './styles/StyleSelector.style';
 
 const StyleButton = ({
@@ -37,6 +38,10 @@ const StyleButton = ({
 
 export default StyleButton;
 
-StyleButton.propTypes = PropTypes.shape({
-  photo: PropTypes.objectOf(PropTypes.any),
-}).isRequired;
+StyleButton.propTypes = {
+  styleId: PropTypes.number,
+  photos: PropTypes.arrayOf(PropTypes.object),
+  currentStyle: PropTypes.objectOf(PropTypes.any).isRequired,
+  seCurrentStyle: PropTypes.func,
+  productStyles: PropTypes.arrayOf(PropTypes.any),
+}.isRequired;

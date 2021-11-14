@@ -8,6 +8,7 @@ import {
 import Button from '../../styles/Button.styled';
 import StyledForm from '../styles/Form.styled';
 import { submitForm } from '../helpers/helpers';
+import formChars from '../data/characteristics';
 
 const ReviewsForm = ({ meta }) => {
   const [submitted, setSubmitted] = useState(false);
@@ -27,7 +28,6 @@ const ReviewsForm = ({ meta }) => {
       characteristics[id] = Number(value);
     }
 
-    // TODO: add error handling for pre & post submit
     const data = {
       product_id: current.id,
       rating: Number(e.target.rating.value),
@@ -37,7 +37,6 @@ const ReviewsForm = ({ meta }) => {
       name: e.target.name.value,
       email: e.target.email.value,
       characteristics,
-      // TODO: add photo feature
       photos: [],
     };
 
@@ -51,7 +50,6 @@ const ReviewsForm = ({ meta }) => {
     )
     : (
       <StyledForm onSubmit={handleSubmit}>
-
         <StarRating />
         <Name />
         <Email />
@@ -59,79 +57,15 @@ const ReviewsForm = ({ meta }) => {
         <Body />
         <Recommend />
 
-        <Characteristics
-          name="size"
-          mainLabel="Size"
-          elements={[
-            'A size too small',
-            '1/2 a size too small',
-            'Perfect',
-            '1/2 a size too big',
-            'A size too big',
-          ]}
-        />
-
-        <Characteristics
-          name="width"
-          mainLabel="Width"
-          elements={[
-            'Too narrow',
-            'Slightly narrow',
-            'Perfect',
-            'Slightly wide',
-            'Too wide',
-          ]}
-        />
-
-        <Characteristics
-          name="comfort"
-          mainLabel="Comfort"
-          elements={[
-            'Uncomfortable',
-            'Slightly uncomfortable',
-            'Ok',
-            'Comfortable',
-            'Perfect',
-          ]}
-        />
-
-        <Characteristics
-          name="quality"
-          mainLabel="Quality"
-          elements={[
-            'Poor',
-            'Below Average',
-            'Expected',
-            'Pretty Great',
-            'Perfect',
-          ]}
-        />
-
-        <Characteristics
-          name="length"
-          mainLabel="Length"
-          elements={[
-            'Runs short',
-            'Runs slightly short',
-            'Perfect',
-            'Runs slightly long',
-            'Runs long',
-          ]}
-        />
-
-        <Characteristics
-          name="fit"
-          mainLabel="Fit"
-          elements={[
-            'Runs tight',
-            'Runs slightly tight',
-            'Perfect',
-            'Runs slightly loose',
-            'Runs loose',
-          ]}
-        />
-
-        {/* TODO: Upload your photos */}
+        {
+          Object.keys(formChars).map((char) => (
+            <Characteristics
+              name={char}
+              mainLabel={char[0].toUpperCase() + char.slice(1)}
+              elements={formChars[char]}
+            />
+          ))
+        }
 
         <Button type="submit">Submit</Button>
       </StyledForm>

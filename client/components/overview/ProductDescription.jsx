@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import {
-  SloganStyle, DescriptionStyle, FeaturesStyle, FeatureListStyle, FeatureStyle,
+  SloganStyle, DescriptionStyle, FeatureListStyle, FeatureStyle, HorizontalRule,
+  DescriptionContainer, Feature, FeatureTitle,
 }
   from './styles/ProductDescription.style';
 
@@ -15,7 +17,7 @@ const ProductDescription = ({ productInfo }) => {
   return (
     idLoaded
     && (
-    <div data-testid="product-description">
+    <DescriptionContainer data-testid="product-description">
       <SloganStyle
         data-testid="slogan"
         className="slogan"
@@ -23,6 +25,7 @@ const ProductDescription = ({ productInfo }) => {
         {productInfo.slogan}
 
       </SloganStyle>
+
       <DescriptionStyle
         data-testid="description"
         className="description"
@@ -30,28 +33,37 @@ const ProductDescription = ({ productInfo }) => {
         {productInfo.description}
 
       </DescriptionStyle>
-      <FeaturesStyle>
-        Features
 
-      </FeaturesStyle>
       <FeatureListStyle
         data-testid="features"
         className="features"
       >
-        {productInfo.features.map((featureList) => (
-          <FeatureStyle>
-            {`${featureList.feature}: ${featureList.value}`}
-          </FeatureStyle>
-        ))}
+        <FeatureStyle>
+          <FeatureTitle>Features</FeatureTitle>
+          {productInfo.features.map((featureList) => (
+            <>
+              <HorizontalRule />
+              <Feature>
+                {
+                (featureList.value !== null)
+                  ? (
+                    `${featureList.feature}: ${featureList.value}`)
+                  : (
+                    `${featureList.feature}`)
+                }
+              </Feature>
+            </>
+          ))}
+        </FeatureStyle>
       </FeatureListStyle>
-    </div>
+
+    </DescriptionContainer>
     )
   );
 };
 
 export default ProductDescription;
-ProductDescription.propTypes = PropTypes.shape({
-  products: PropTypes.arrayOf(PropTypes.object),
-  styles: PropTypes.objectOf(PropTypes.any),
-  id: PropTypes.objectOf(PropTypes.any),
-}).isRequired;
+
+ProductDescription.propTypes = {
+  productInfo: PropTypes.objectOf(PropTypes.any).isRequired,
+};
