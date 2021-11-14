@@ -11,6 +11,15 @@ The client has requested a modernization of their  product detail page to be imp
 1. Product Detail
 2. Ratings & Reviews
 3. Questions & Answers
+
+  **QA Screecast Part 1**
+
+![QA_Screencast1](https://user-images.githubusercontent.com/79078502/141670479-df5c4b3d-ea4b-45cd-baa4-3cb66a0c5944.gif)
+
+  **QA Screecast Part 2**
+
+![QA Screencast2](https://user-images.githubusercontent.com/79078502/141670485-648a5cc9-a91b-42df-ac77-f0a1594c0d89.gif)
+
 4. Related Items & Outfit Creation
 
 ## Technologies
