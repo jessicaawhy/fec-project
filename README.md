@@ -11,15 +11,6 @@ The client has requested a modernization of their  product detail page to be imp
 1. Product Detail
 2. Ratings & Reviews
 3. Questions & Answers
-
-  **QA Screecast Part 1**
-
-![QA_Screencast1](https://user-images.githubusercontent.com/79078502/141670479-df5c4b3d-ea4b-45cd-baa4-3cb66a0c5944.gif)
-
-  **QA Screecast Part 2**
-
-![QA Screencast2](https://user-images.githubusercontent.com/79078502/141670485-648a5cc9-a91b-42df-ac77-f0a1594c0d89.gif)
-
 4. Related Items & Outfit Creation
 
 ## Technologies
@@ -30,7 +21,7 @@ We use React with hooks for our frontend codebase. For styling, we use React Sty
 
 To run this project locally, in your terminal...
 
-1. Clone the project `git@github.com:7satsumas/fec-project.git`.
+1. Clone the project `git@github.com:jessicaawhy/fec-project.git`.
 2. Navigate into the root of the project.
 3. Run `npm install` to install dependencies.
 4. Run `npm run build` to compile project files.
